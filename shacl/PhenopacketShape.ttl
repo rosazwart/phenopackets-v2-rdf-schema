@@ -1,0 +1,59 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix : <https://phenopackets.org> .
+
+:PhenopacketShape
+    a sh:NodeShape ;
+    sh:targetClass :Phenopacket ;
+    sh:property
+        [
+            sh:path sio:SIO_000115 ;
+            sh:name "id" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string;
+            sh:description "Arbitrary identifier." ;
+        ],
+        [
+            sh:path :PhenotypicFeatures ;
+            sh:name "phenotypic_features" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:description "Phenotypic features observed in the proband." ;
+        ],
+        [
+            sh:path :Measurement ;
+            sh:name "measurements" ;
+            sh:description "Measurements performed in the proband." ;
+        ],
+        [
+            sh:path :Biosample ;
+            sh:name "biosamples" ;
+            sh:description "Samples (e.g., biopsies)." ;
+        ],
+        [
+            sh:path :Interpretation ;
+            sh:name "interpretations" ;
+            sh:description "Interpretations related to this phenopacket." ;
+        ],
+        [
+            sh:path :Disease ;
+            sh:name "diseases" ;
+            sh:description "Disease(s) diagnosed in the proband." ;
+        ],
+        [
+            sh:path :MedicalAction ;
+            sh:name "medical_actions" ;
+            sh:description "Medical actions performed." ;
+        ],
+        [
+            sh:path :MetaData ;
+            sh:name "meta_data" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:description "Information about ontologies and references used in the phenopacket." ;
+        ] ;
+.
