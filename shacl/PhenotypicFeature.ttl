@@ -65,7 +65,7 @@
             sh:description "Age or time at which the feature resolved or abated." ;
         ],
         [
-            sh:path :evidence ;
+            sh:path sio:SIO_001394 ;
             sh:class :Evidence ;
             sh:name "evidence" ;
             sh:description "The evidence for an assertion of the observation of a type." ;

@@ -26,4 +26,5 @@
             sh:maxCount 1 ;
             sh:description "Representation of the source of the evidence." ;
         ] ;
+    sh:comment "Represents the evidence for an assertion such as an observation of a PhenotypicFeature." ;
 .

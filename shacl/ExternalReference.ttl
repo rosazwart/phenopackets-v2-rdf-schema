@@ -11,7 +11,7 @@
     sh:property
         [
             sh:path sio:SIO_000115 ;
-            sh:name "id" ;
+            sh:name "identifier" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
             sh:datatype xsd:string;
@@ -33,4 +33,5 @@
             sh:datatype xsd:string;
             sh:description "An application specific description." ;
         ] ;
+    sh:comment "Encodes information about an external reference. One typical use case for this elements is to provide a reference to a published article by showing its PubMed identifier as a part of an Evidence element." ;
 .
