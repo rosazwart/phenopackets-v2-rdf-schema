@@ -4,6 +4,7 @@
 @prefix sio: <http://semanticscience.org/resource/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema> .
 @prefix : <https://phenopackets.org> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 
 :PhenopacketShape
     a sh:NodeShape ;
@@ -14,33 +15,43 @@
             sh:name "id" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
-            sh:datatype xsd:string;
+            sh:datatype xsd:string ;
             sh:description "Arbitrary identifier." ;
         ],
         [
-            sh:path :PhenotypicFeatures ;
-            sh:name "phenotypic_features" ;
+            sh:path :subject ;
+            sh:class :Individual ;
+            sh:name "subject" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
+            sh:description "The proband." ;
+        ],
+        [
+            sh:path :phenotypic_features ;
+            sh:class :PhenotypicFeature ;
+            sh:name "phenotypic_features" ;
             sh:description "Phenotypic features observed in the proband." ;
         ],
         [
-            sh:path :Measurement ;
+            sh:path :measurements ;
+            sh:class :Measurement ;
             sh:name "measurements" ;
             sh:description "Measurements performed in the proband." ;
         ],
         [
-            sh:path :Biosample ;
+            sh:path :biosamples ;
+            sh:class :Biosample ;
             sh:name "biosamples" ;
             sh:description "Samples (e.g., biopsies)." ;
         ],
         [
-            sh:path :Interpretation ;
+            sh:path :Interpretation ;   # TODO: VARIATION
             sh:name "interpretations" ;
             sh:description "Interpretations related to this phenopacket." ;
         ],
         [
-            sh:path :Disease ;
+            sh:path :diseases ;
+            sh:class :Disease ;
             sh:name "diseases" ;
             sh:description "Disease(s) diagnosed in the proband." ;
         ],
@@ -50,10 +61,17 @@
             sh:description "Medical actions performed." ;
         ],
         [
+            sh:path :files ;
+            sh:class :File ;
+            sh:name "files" ;
+            sh:description "List of files related to the subject, e.g. VCF or other high-throughput sequencing files." ;
+        ],
+        [
             sh:path :MetaData ;
             sh:name "meta_data" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
             sh:description "Information about ontologies and references used in the phenopacket." ;
         ] ;
+    sh:comment "Anonymous phenotypic description of an individual or biosample with potential genetic findings and/or diagnoses of interest." ;
 .

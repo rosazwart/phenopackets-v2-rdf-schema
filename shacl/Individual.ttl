@@ -1,0 +1,82 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix : <https://phenopackets.org> .
+
+:IndividualShape
+    a sh:NodeShape ;
+    sh:targetClass :Individual ;
+    sh:property
+        [
+            sh:path sio:SIO_000115 ;
+            sh:name "id" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string ;
+            sh:description "An arbitrary identifier." ;
+        ],
+        [
+            sh:path :alternate_ids ;
+            sh:name "alternate_ids" ;
+            sh:datatype xsd:string ;
+            sh:description "A list of alternative CURIE identifiers for the individual." ;
+        ],
+        [
+            sh:path :date_of_birth ;
+            sh:class :Timestamp ;
+            sh:name "date_of_birth" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:description "The timestamp of the date of birth either exact or imprecise." ;
+        ],
+        [
+            sh:path :time_at_last_encounter ;
+            sh:class :TimeElement ;
+            sh:name "time_at_last_encounter" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:description "The age or age range of the individual when last encountered." ;
+        ],
+        [
+            sh:path :vital_status ;
+            sh:class :VitalStatus ;
+            sh:name "vital_status" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:description "The vital status of the individual e.g. whether they are alive or the time and cause of death." ;
+        ],
+        [
+            sh:path :sex ;
+            sh:class :Sex ;
+            sh:name "sex" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:description "Observed apparent sex of the individual." ;
+        ],
+        [
+            sh:path :karyotypic_sex ;
+            sh:class :KaryotypicSex ;
+            sh:name "karyotypic_sex" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:description "The karyotypic sex of the individual." ;
+        ],
+        [
+            sh:path :gender ;
+            sh:class :OntologyClass ;
+            sh:name "gender" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:description "Self-identified gender." ;
+        ],
+        [
+            sh:path :taxonomy ;
+            sh:class :OntologyClass ;
+            sh:name "taxonomy" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:description "An OntologyClass representing the species (e.g., NCBITaxon:9615)." ;
+        ] ;
+.

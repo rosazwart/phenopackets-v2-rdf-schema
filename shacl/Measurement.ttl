@@ -1,0 +1,59 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix : <https://phenopackets.org> .
+
+:MeasurementShape
+    a sh:NodeShape ;
+    sh:targetClass :Measurement ;
+    sh:property
+        [
+            sh:path sio:SIO_000136 ;
+            sh:name "description" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string;
+            sh:description "Free text." ;
+        ],
+        [
+            sh:path sio:SIO_001007 ;
+            sh:class :OntologyClass ;
+            sh:name "assay" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:description "Class that describes the assay used to produce the measurement." ;
+        ],
+        [
+            sh:path sio:SIO_000070 ;
+            sh:xone (
+                [
+                    sh:class :Value ;
+                ]
+                [
+                    sh:class :ComplexValue ;
+                ]
+            ) ;
+            sh:name "measurement_value" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:description "The result of the measurement." ;
+        ],
+        [
+            sh:path :time_observed ;
+            sh:class :TimeElement ;
+            sh:name "time_observed" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:description "Time at which measurement was performed." ;
+        ],
+        [
+            sh:path sio:SIO_000999 ;
+            sh:class :Procedure ;
+            sh:name "procedure" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:description "Clinical procdure performed to acquire the sample used for the measurement." ;
+        ] ;
+.

@@ -1,0 +1,22 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix : <https://phenopackets.org> .
+
+:SexShape
+    a sh:NodeShape ;
+    sh:targetClass :Sex ;
+    sh:property
+        [
+            sh:path sio:SIO_000300 ;
+            sh:name "has_value" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string;
+            sh:in (obo:NCIT_C17998 obo:NCIT_C46113 obo:NCIT_C46112 obo:NCIT_C45908) ;
+            sh:description "Sex." ;
+        ] ;
+.

@@ -1,0 +1,36 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix : <https://phenopackets.org> .
+
+:UpdateShape
+    a sh:NodeShape ;
+    sh:targetClass :Update ;
+    sh:property
+        [
+            sh:path :timestamp ;
+            sh:class :Timestamp ;
+            sh:name "timestamp" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:description "ISO8601 UTC timestamp at which this record was updated." ;
+        ],
+        [
+            sh:path :updated_by ;
+            sh:name "updated_by" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string;
+            sh:description "Information about the person/organisation/network that has updated the phenopacket." ;
+        ],
+        [
+            sh:path sio:SIO_001167 ;
+            sh:name "comment" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string;
+            sh:description "Textual comment about the changes made to the content and/or reason for the update." ;
+        ] ;
+.

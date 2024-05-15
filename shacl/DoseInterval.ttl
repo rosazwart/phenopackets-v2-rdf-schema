@@ -1,0 +1,36 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix : <https://phenopackets.org> .
+
+:DoseIntervalShape
+    a sh:NodeShape ;
+    sh:targetClass :DoseInterval ;
+    sh:property
+        [
+            sh:path sio:SIO_000052 ;
+            sh:class :Quantity ;
+            sh:name "quantity" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:description "Amount administered in one dose." ;
+        ],
+        [
+            sh:path :schedule_frequency ;
+            sh:class :OntologyClass ;
+            sh:name "schedule_frequency" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:description "How often doses are administered per day (or other indicated duration)." ;
+        ],
+        [
+            sh:path :interval ;
+            sh:class :TimeInterval ;
+            sh:name "interval" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:description "The specific interval over which the dosage was administered in the indicated quantity." ;
+        ] ;
+.

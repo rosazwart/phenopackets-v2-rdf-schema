@@ -1,0 +1,50 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix : <https://phenopackets.org> .
+
+:TreatmentShape
+    a sh:NodeShape ;
+    sh:targetClass :Treatment ;
+    sh:property
+        [
+            sh:path :agent ;
+            sh:class :OntologyClass ;
+            sh:name "agent" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:description "The drug or therapeutic agent." ;
+        ],
+        [
+            sh:path :route_of_administration ;
+            sh:class :OntologyClass ;
+            sh:name "route_of_administration" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:description "How was the drug administered." ;
+        ],
+        [
+            sh:path :dose_intervals ;
+            sh:class :DoseInterval ;
+            sh:name "dose_intervals" ;
+            sh:description "Dosages." ;
+        ],
+        [
+            sh:path :drug_type ;
+            sh:class :DrugType ;
+            sh:name "drug_type" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:description "Context of the drug administration." ;
+        ],
+        [
+            sh:path :cumulative_dose ;
+            sh:class :Quantity ;
+            sh:name "cumulative_dose" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:description "The cumulative dose administered during the period of the treatment." ;
+        ] ;
+.

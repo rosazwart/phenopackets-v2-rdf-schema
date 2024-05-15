@@ -1,0 +1,36 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix : <https://phenopackets.org> .
+
+:ExternalReferenceShape
+    a sh:NodeShape ;
+    sh:targetClass :ExternalReference ;
+    sh:property
+        [
+            sh:path sio:SIO_000115 ;
+            sh:name "id" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string;
+            sh:description "An application specific identifier." ;
+        ],
+        [
+            sh:path sio:SIO_000176 ;
+            sh:name "reference" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string;
+            sh:description "An application specific identifier." ;
+        ],
+        [
+            sh:path sio:SIO_000136 ;
+            sh:name "description" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string;
+            sh:description "An application specific description." ;
+        ] ;
+.

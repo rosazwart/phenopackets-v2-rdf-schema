@@ -1,0 +1,51 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix : <https://phenopackets.org> .
+
+:TherapeuticRegimenShape
+    a sh:NodeShape ;
+    sh:targetClass :TherapeuticRegimen ;
+    sh:property
+        [
+            sh:path :identifier ;
+            sh:or (
+                [
+                    sh:class :OntologyClass ;
+                ]
+                [
+                    sh:class :ExternalReference ;
+                ]
+            ) ;
+            sh:name "identifier" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:description "An identifier for the regimen." ;
+        ],
+        [
+            sh:path sio:SIO_000669 ;
+            sh:class :Timestamp ;
+            sh:name "start_time" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:description "When the regimen was started." ;
+        ],
+        [
+            sh:path sio:SIO_000670 ;
+            sh:class :Timestamp ;
+            sh:name "end_time" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:description "When the regimen ended. An empty end_time with a populated start_time would indicate the regimen was ongoing." ;
+        ],
+        [
+            sh:path :status ;
+            sh:class :RegimenStatus ;   # TODO: Same path but different class as object? Is that allowed. Do paths need to be unique in their shape?
+            sh:name "status" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:description "Current status of the regimen for the enclosing MedicalAction on the Individual." ;
+        ] ;
+.

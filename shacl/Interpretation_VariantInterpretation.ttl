@@ -1,0 +1,36 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix : <https://phenopackets.org> .
+
+:VariantInterpretationShape
+    a sh:NodeShape ;
+    sh:targetClass :VariantInterpretation ;
+    sh:property
+        [
+            sh:path :acmg_pathogenicity_classification ;
+            sh:class :AcmgPathogenicityClassification ;
+            sh:name "acmg_pathogenicity_classification" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:description "One of the five ACMG pathogenicity categories, or NOT_PROVIDED." ;
+        ],
+        [
+            sh:path :therapeutic_actionability ;
+            sh:class :TherapeuticActionability ;
+            sh:name "therapeutic_actionability" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:description "The therapeutic actionability of the variant, default is UNKNOWN_ACTIONABILITY." ;
+        ],
+        [
+            sh:path :variation_descriptor ;
+            sh:class :VariationDescriptor ;
+            sh:name "variation_descriptor" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:description "A genetic/genomic variant." ;
+        ] ;
+.

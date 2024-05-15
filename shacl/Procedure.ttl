@@ -1,0 +1,36 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix : <https://phenopackets.org> .
+
+:ProcedureShape
+    a sh:NodeShape ;
+    sh:targetClass :Procedure ;
+    sh:property
+        [
+            sh:path :code ;
+            sh:class :OntologyClass ;
+            sh:name "code" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:description "Clinical procedure performed." ;
+        ],
+        [
+            sh:path :body_site ;
+            sh:class :OntologyClass ;
+            sh:name "body_site" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:description "Specific body site where the procedure was performed." ;
+        ],
+        [
+            sh:path :performed ;
+            sh:class :TimeElement ;
+            sh:name "performed" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:description "Age/time when the procedure was performed." ;
+        ] ;
+.

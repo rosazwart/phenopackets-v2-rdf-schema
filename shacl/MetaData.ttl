@@ -1,0 +1,63 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix : <https://phenopackets.org> .
+
+:MetaDataShape
+    a sh:NodeShape ;
+    sh:targetClass :MetaData ;
+    sh:property
+        [
+            sh:path :created ;
+            sh:name "created" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:dateTime;
+            sh:description "Representation of the time when this object was created." ;
+        ],
+        [
+            sh:path :created_by ;
+            sh:name "created_by" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string;
+            sh:description "Name of person who created the phenopacket." ;
+        ],
+        [
+            sh:path :submitted_by ;
+            sh:name "submitted_by" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string;
+            sh:description "Name of person who submitted the phenopacket." ;
+        ],
+        [
+            sh:path :resources ;
+            sh:class :Resource ;
+            sh:name "resources" ;
+            sh:minCount 1 ;
+            sh:description "Ontologies used to create the phenopacket." ;
+        ],
+        [
+            sh:path :updates ;
+            sh:class :Update ;
+            sh:name "updates" ;
+            sh:description "List of updates to the phenopacket." ;
+        ],
+        [
+            sh:path :phenopacket_schema_version ;
+            sh:name "phenopacket_schema_version" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string;
+            sh:description "Schema version of the current phenopacket." ;
+        ],
+        [
+            sh:path :external_references ;
+            sh:class :ExternalReference ;
+            sh:name "external_references" ;
+            sh:description "List of updates to the phenopacket." ;
+        ] ;
+.

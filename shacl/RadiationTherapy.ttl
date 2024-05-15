@@ -1,0 +1,44 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix : <https://phenopackets.org> .
+
+:RadiationTherapyShape
+    a sh:NodeShape ;
+    sh:targetClass :RadiationTherapy ;
+    sh:property
+        [
+            sh:path :modality ;
+            sh:class :OntologyClass ;
+            sh:name "modality" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:description "The modality of radiation therapy (e.g., electron, photon,…)." ;
+        ],
+        [
+            sh:path :body_site ;
+            sh:class :OntologyClass ;
+            sh:name "body_site" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:description "The anatomical site where radiation therapy was administered." ;
+        ],
+        [
+            sh:path :dosage ;
+            sh:name "dosage" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:integer ;
+            sh:description "The total dose given in units of Gray (Gy)." ;
+        ],
+        [
+            sh:path :fractions ;
+            sh:name "fractions" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:integer ;
+            sh:description "The total number of fractions delivered as part of treatment." ;
+        ] ;
+.

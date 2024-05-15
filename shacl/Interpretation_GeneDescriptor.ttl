@@ -1,0 +1,53 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix : <https://phenopackets.org> .
+
+:GeneDescriptorShape
+    a sh:NodeShape ;
+    sh:targetClass :GeneDescriptor ;
+    sh:property
+        [
+            sh:path :value_id ;
+            sh:name "value_id" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string;
+            sh:description "Official identifier of the gene." ;
+        ],
+        [
+            sh:path :symbol ;
+            sh:name "symbol" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:description "Official gene symbol." ;
+        ],
+        [
+            sh:path sio:SIO_000136 ;
+            sh:name "description" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string;
+            sh:description "A free-text description of the gene." ;
+        ],
+        [
+            sh:path :alternate_ids ;
+            sh:name "alternate_ids" ;
+            sh:datatype xsd:string;
+            sh:description "Alternative identifier(s) of the gene." ;
+        ],
+        [
+            sh:path :xrefs ;
+            sh:name "xrefs" ;
+            sh:datatype xsd:string;
+            sh:description "Related concept IDs (e.g. gene ortholog IDs) may be placed in xrefs." ;
+        ],
+        [
+            sh:path :alternate_symbols ;
+            sh:name "alternate_symbols" ;
+            sh:datatype xsd:string;
+            sh:description "Alternative symbol(s) of the gene." ;
+        ] ;
+.

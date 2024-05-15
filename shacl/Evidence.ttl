@@ -1,0 +1,29 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix : <https://phenopackets.org> .
+
+:EvidenceShape
+    a sh:NodeShape ;
+    sh:targetClass :Evidence ;
+    sh:property
+        [
+            sh:path :evidence_code ;
+            sh:class :OntologyClass ;
+            sh:name "evidence_code" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string;
+            sh:description "An ontology class that represents the evidence type. Use of terms from ECO is recommended." ;
+        ],
+        [
+            sh:path sio:SIO_000176 ;
+            sh:class :ExternalReference ;
+            sh:name "reference" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:description "Representation of the source of the evidence." ;
+        ] ;
+.

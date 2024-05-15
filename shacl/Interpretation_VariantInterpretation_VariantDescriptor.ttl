@@ -1,0 +1,109 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix : <https://phenopackets.org> .
+
+:VariationDescriptorShape
+    a sh:NodeShape ;
+    sh:targetClass :VariationDescriptor ;
+    sh:property
+        [
+            sh:path sio:SIO_000115 ;
+            sh:name "id" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string ;
+            sh:description "Descriptor ID; MUST be unique within document." ;
+        ],
+        [
+            sh:path :variation ;
+            sh:class :Variation ;   # TODO:
+            sh:name "variation" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:description "The VRS Variation object." ;
+        ],
+        [
+            sh:path sio:SIO_000179 ;
+            sh:name "label" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string ;
+            sh:description "A primary label for the variation." ;
+        ],
+        [
+            sh:path :gene_context ;
+            sh:class :GeneDescriptor ;
+            sh:name "gene_context" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string;
+            sh:description "A specific gene context that applies to this variant." ;
+        ],
+        [
+            sh:path :expressions ;
+            sh:class :Expression ;
+            sh:name "expressions" ;
+            sh:description "HGVS, SPDI, and gnomAD-style strings should be represented as Expressions." ;
+        ],
+        [
+            sh:path :vcf_record ;
+            sh:class :VcfRecord ;
+            sh:name "vcf_record" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:description "A VCF Record of the variant. This SHOULD be a single allele, the VCF genotype (GT) field should be represented in the allelic_state." ;
+        ],
+        [
+            sh:path :xrefs ;
+            sh:name "xrefs" ;
+            sh:datatype xsd:string;
+            sh:description "List of CURIEs representing associated concepts. Allele registry, ClinVar, or other related IDs should be included as xrefs." ;
+        ],
+        [
+            sh:path :alternate_labels ;
+            sh:name "alternate_labels" ;
+            sh:datatype xsd:string;
+            sh:description "Common aliases for a variant, e.g. EGFR vIII, are alternate labels." ;
+        ],
+        [
+            sh:path :extensions ;
+            sh:class :Extension ;
+            sh:name "extensions" ;
+            sh:description "List of resource-specific extensions needed to describe the variation." ;
+        ],
+        [
+            sh:path :molecule_context ;
+            sh:class :MoleculeContext ;
+            sh:name "molecule_context" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:description "The molecular context of the vrs variation." ;
+        ],
+        [
+            sh:path :structural_type ;
+            sh:class :OntologyClass ;
+            sh:name "structural_type" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:description "The structural variant type associated with this variant, such as a substitution, deletion, or fusion. We RECOMMEND using a descendent term of SO:0001537." ;
+        ],
+        [
+            sh:path :vrs_ref_allele_seq ;
+            sh:name "vrs_ref_allele_seq" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string;
+            sh:description "A Sequence corresponding to a “ref allele”, describing the sequence expected at a SequenceLocation reference." ;
+        ],
+        [
+            sh:path :allelic_state ;
+            sh:class :OntologyClass ;
+            sh:name "allelic_state" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:description "The zygosity of the variant as determined in all of the samples represented in this Phenopacket is represented using a list of terms taken from the Genotype Ontology (GENO)." ;
+        ] ;
+.

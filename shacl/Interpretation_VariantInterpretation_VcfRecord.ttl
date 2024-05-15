@@ -1,0 +1,84 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix : <https://phenopackets.org> .
+
+:VcfRecordShape
+    a sh:NodeShape ;
+    sh:targetClass :VcfRecord ;
+    sh:property
+        [
+            sh:path :genome_assembly ;
+            sh:name "genome_assembly" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string;
+            sh:description "Identifier for the genome assembly used to call the allele." ;
+        ],
+        [
+            sh:path :chrom ;
+            sh:name "chrom" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string;
+            sh:description "Chromosome or contig identifier." ;
+        ],
+        [
+            sh:path :pos ;
+            sh:name "pos" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:integer;
+            sh:description "The reference position, with the 1st base having position 1." ;
+        ],
+        [
+            sh:path sio:SIO_000115 ;
+            sh:name "id" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string ;
+            sh:description "Identifier: Semicolon-separated list of unique identifiers where available. If this is a dbSNP variant thers number(s) should be used." ;
+        ],
+        [
+            sh:path :ref ;
+            sh:name "ref" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string;
+            sh:description "Reference base." ;
+        ],
+        [
+            sh:path :alt ;
+            sh:name "alt" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string;
+            sh:description "Alternate base." ;
+        ],
+        [
+            sh:path :qual ;
+            sh:name "qual" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string;
+            sh:description "Quality: Phred-scaled quality score for the assertion made in ALT." ;
+        ],
+        [
+            sh:path :filter ;
+            sh:name "filter" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string;
+            sh:description "Filter status: PASS if this position has passed all filters." ;
+        ],
+        [
+            sh:path :info ;
+            sh:name "info" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string;
+            sh:description "Additional information: Semicolon-separated series of additional information fields." ;
+        ] ;
+.

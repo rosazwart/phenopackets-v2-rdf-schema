@@ -1,0 +1,167 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix : <https://phenopackets.org> .
+
+:GestationalAgeShape
+    a sh:NodeShape ;
+    sh:targetClass :GestationalAge ;
+    sh:property
+        [
+            sh:path sio:SIO_001354 ;
+            sh:name "weeks" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:integer ;
+            sh:description "Completed weeks of gestation." ;
+        ],
+        [
+            sh:path sio:SIO_000430 ;
+            sh:name "days" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:integer ;
+            sh:description "Added completed days of gestation." ;
+        ] ;
+.
+
+:AgeShape
+    a sh:NodeShape ;
+    sh:targetClass :Age ;
+    sh:property
+        [
+            sh:path :iso8601duration ;
+            sh:name "iso8601duration" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string ;
+            sh:description "An ISO8601 string representing age." ;
+        ] ;
+.
+
+:AgeRangeShape
+    a sh:NodeShape ;
+    sh:targetClass :AgeRange ;
+    sh:property
+        [
+            sh:path sio:SIO_000031 ;
+            sh:class :Age ;
+            sh:name "start" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:description "Start date of age." ;
+        ],
+        [
+            sh:path sio:SIO_000032 ;
+            sh:class :Age ;
+            sh:name "end" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:description "End date of age." ;
+        ] ;
+.
+
+:TimestampShape
+    a sh:NodeShape ;
+    sh:targetClass :Timestamp ;
+    sh:property
+        [
+            sh:path :iso8601datetime ;
+            sh:name "iso8601datetime" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string ;
+            sh:description "An ISO8601 string representing datetime." ;
+        ] ;
+.
+
+:TimeIntervalShape
+    a sh:NodeShape ;
+    sh:targetClass :TimeInterval ;
+    sh:property
+        [
+            sh:path sio:SIO_000669 ;
+            sh:class :Timestamp ;
+            sh:name "start_time" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:description "Begin of interval." ;
+        ],
+        [
+            sh:path sio:SIO_000670 ;
+            sh:class :Timestamp ;
+            sh:name "end_time" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:description "End of interval." ;
+        ] ;
+.
+
+:TimeElementShape
+    a sh:NodeShape ;
+    sh:targetClass :TimeElement ;
+    sh:xone (
+        [
+            sh:property
+                [
+                    sh:path :GestationalAge ;
+                    sh:name "gestational_age" ;
+                    sh:minCount 1 ;
+                    sh:maxCount 1 ;
+                    sh:description "Measure of the age of a pregnancy." ;
+                ]
+        ]
+        [
+            sh:property
+                [
+                    sh:path :Age ;
+                    sh:name "age" ;
+                    sh:minCount 1 ;
+                    sh:maxCount 1 ;
+                    sh:description "Represents age as a ISO8601 duration (e.g., P40Y10M05D)." ;
+                ]
+        ]
+        [
+            sh:property
+                [
+                    sh:path :AgeRange ;
+                    sh:name "age_range" ;
+                    sh:minCount 1 ;
+                    sh:maxCount 1 ;
+                    sh:description "Indicates that the individual's age lies within a given range." ;
+                ]
+        ]
+        [
+            sh:property
+                [
+                    sh:path :OntologyClass ;
+                    sh:name "ontology_class" ;
+                    sh:minCount 1 ;
+                    sh:maxCount 1 ;
+                    sh:description "Indicates the age of the individual as an ontology class." ;
+                ]
+        ]
+        [
+            sh:property
+                [
+                    sh:path :Timestamp ;
+                    sh:name "timestamp" ;
+                    sh:minCount 1 ;
+                    sh:maxCount 1 ;
+                    sh:description "Indicates a specific time." ;
+                ]
+        ]
+        [
+            sh:property
+                [
+                    sh:path :TimeInterval ;
+                    sh:name "interval" ;
+                    sh:minCount 1 ;
+                    sh:maxCount 1 ;
+                    sh:description "Indicates an interval of time." ;
+                ]
+        ]
+    )
+.

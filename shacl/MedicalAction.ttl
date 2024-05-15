@@ -1,0 +1,71 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix : <https://phenopackets.org> .
+
+:MedicalActionShape
+    a sh:NodeShape ;
+    sh:targetClass :MedicalAction ;
+    sh:property
+        [
+            sh:path :action ;
+            sh:xone (
+                [
+                    sh:class :Procedure ;
+                ]
+                [
+                    sh:class :Treatment ;
+                ]
+                [
+                    sh:class :RadiationTherapy ; 
+                ]
+                [
+                    sh:class :TherapeuticRegimen ;
+                ]
+            ) ;
+            sh:name "action" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:description "One of a list of medical actions." ;
+        ],
+        [
+            sh:path :treatment_target ;
+            sh:class :OntologyClass ;
+            sh:name "treatment_target" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:description "The condition or disease that this treatment was intended to address." ;
+        ],
+        [
+            sh:path :treatment_intent ;
+            sh:class :OntologyClass ;
+            sh:name "treatment_intent" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:description "Whether the intention of the treatment was curative, palliative..." ;
+        ],
+        [
+            sh:path :response_to_treatment ;
+            sh:class :OntologyClass ;
+            sh:name "response_to_treatment" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:description "How the patient responded to the treatment." ;
+        ],
+        [
+            sh:path :adverse_events ;
+            sh:class :OntologyClass ;
+            sh:name "adverse_events" ;
+            sh:description "Any adverse effects experienced by the patient attributed to the treatment." ;
+        ],
+        [
+            sh:path :treatment_termination_reason ;
+            sh:class :OntologyClass ;
+            sh:name "treatment_termination_reason" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:description "The reason that the treatment was stopped." ;
+        ] ;
+.
