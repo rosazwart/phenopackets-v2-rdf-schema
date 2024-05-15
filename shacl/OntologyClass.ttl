@@ -22,6 +22,7 @@
             sh:name "label" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
+            sh:datatype xsd:string ;
             sh:description "Human-readable class name." ;
         ] ;
 .

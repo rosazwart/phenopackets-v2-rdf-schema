@@ -23,7 +23,7 @@
             sh:minCount 0 ;
             sh:maxCount 1 ;
             sh:datatype xsd:integer ;
-            sh:description "Added completed days of gestation." ;
+            sh:description "Remaining completed days of gestation." ;
         ] ;
 .
 
@@ -46,20 +46,20 @@
     sh:targetClass :AgeRange ;
     sh:property
         [
-            sh:path sio:SIO_000031 ;
+            sh:path sio:SIO_000509 ;
             sh:class :Age ;
-            sh:name "start" ;
+            sh:name "start_point" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
-            sh:description "Start date of age." ;
+            sh:description "Start range of age." ;
         ],
         [
-            sh:path sio:SIO_000032 ;
+            sh:path sio:SIO_000508 ;
             sh:class :Age ;
-            sh:name "end" ;
+            sh:name "end_point" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
-            sh:description "End date of age." ;
+            sh:description "End range of age." ;
         ] ;
 .
 
@@ -106,7 +106,8 @@
         [
             sh:property
                 [
-                    sh:path :GestationalAge ;
+                    sh:path :gestational_age ;
+                    sh:class :GestationalAge ;
                     sh:name "gestational_age" ;
                     sh:minCount 1 ;
                     sh:maxCount 1 ;
@@ -116,7 +117,8 @@
         [
             sh:property
                 [
-                    sh:path :Age ;
+                    sh:path sio:SIO_001013 ;
+                    sh:class :Age ;
                     sh:name "age" ;
                     sh:minCount 1 ;
                     sh:maxCount 1 ;
@@ -126,7 +128,8 @@
         [
             sh:property
                 [
-                    sh:path :AgeRange ;
+                    sh:path :age_range ;
+                    sh:class :AgeRange ;
                     sh:name "age_range" ;
                     sh:minCount 1 ;
                     sh:maxCount 1 ;
@@ -136,7 +139,8 @@
         [
             sh:property
                 [
-                    sh:path :OntologyClass ;
+                    sh:path :ontology_class ;
+                    sh:class :OntologyClass ;
                     sh:name "ontology_class" ;
                     sh:minCount 1 ;
                     sh:maxCount 1 ;
@@ -146,7 +150,8 @@
         [
             sh:property
                 [
-                    sh:path :Timestamp ;
+                    sh:path :timestamp ;
+                    sh:class :Timestamp ;
                     sh:name "timestamp" ;
                     sh:minCount 1 ;
                     sh:maxCount 1 ;
@@ -156,12 +161,14 @@
         [
             sh:property
                 [
-                    sh:path :TimeInterval ;
-                    sh:name "interval" ;
+                    sh:path sio:SIO_000417 ;
+                    sh:class :TimeInterval ;
+                    sh:name "time_interval" ;
                     sh:minCount 1 ;
                     sh:maxCount 1 ;
                     sh:description "Indicates an interval of time." ;
                 ]
         ]
-    )
+    ) ;
+    sh:comment "Various ways of denoting time or age." ;
 .

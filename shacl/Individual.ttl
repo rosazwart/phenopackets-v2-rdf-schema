@@ -11,7 +11,7 @@
     sh:property
         [
             sh:path sio:SIO_000115 ;
-            sh:name "id" ;
+            sh:name "identifier" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
             sh:datatype xsd:string ;
@@ -19,8 +19,8 @@
         ],
         [
             sh:path :alternate_ids ;
+            sh:class :CURIEIdentifierList ;
             sh:name "alternate_ids" ;
-            sh:datatype xsd:string ;
             sh:description "A list of alternative CURIE identifiers for the individual." ;
         ],
         [

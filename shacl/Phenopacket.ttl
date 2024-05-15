@@ -12,16 +12,16 @@
     sh:property
         [
             sh:path sio:SIO_000115 ;
-            sh:name "id" ;
+            sh:name "identifier" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
             sh:datatype xsd:string ;
             sh:description "Arbitrary identifier." ;
         ],
         [
-            sh:path :subject ;
+            sh:path sio:SIO_000883 ;
             sh:class :Individual ;
-            sh:name "subject" ;
+            sh:name "subject_role" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
             sh:description "The proband." ;
@@ -45,7 +45,8 @@
             sh:description "Samples (e.g., biopsies)." ;
         ],
         [
-            sh:path :Interpretation ;   # TODO: VARIATION
+            sh:path :interpretations ;
+            sh:class :Interpretation ;
             sh:name "interpretations" ;
             sh:description "Interpretations related to this phenopacket." ;
         ],
@@ -56,7 +57,8 @@
             sh:description "Disease(s) diagnosed in the proband." ;
         ],
         [
-            sh:path :MedicalAction ;
+            sh:path :medical_actions ;
+            sh:class :MedicalAction ;
             sh:name "medical_actions" ;
             sh:description "Medical actions performed." ;
         ],
@@ -67,7 +69,8 @@
             sh:description "List of files related to the subject, e.g. VCF or other high-throughput sequencing files." ;
         ],
         [
-            sh:path :MetaData ;
+            sh:path sio:SIO_001330 ;
+            sh:class :MetaData ;
             sh:name "meta_data" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
