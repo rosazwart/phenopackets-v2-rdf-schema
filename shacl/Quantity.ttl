@@ -33,6 +33,7 @@
             sh:maxCount 1 ;
             sh:description "The normal range for the value." ;
         ] ;
+    sh:comment "Denote quantities of items such as medications." ;
 .
 
 :TypedQuantityShape
@@ -53,6 +54,6 @@
             sh:name "quantity" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
-            sh:description "OntologyClass to describe the type of the measurement." ;
+            sh:description "Quantity denoting the outcome of the measurement." ;
         ] ;
 .

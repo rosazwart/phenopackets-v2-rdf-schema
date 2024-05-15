@@ -54,6 +54,6 @@
             sh:name "procedure" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
-            sh:description "Clinical procdure performed to acquire the sample used for the measurement." ;
+            sh:description "Clinical procedure performed to acquire the sample used for the measurement." ;
         ] ;
 .

@@ -11,8 +11,8 @@
     sh:property
         [
             sh:path sio:SIO_000074 ;
-            sh:name "unit" ;
             sh:class :OntologyClass ;
+            sh:name "unit" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
             sh:description "Ontology term describing the unit." ;

@@ -24,7 +24,7 @@
     sh:property
         [
             sh:path sio:SIO_000300 ;
-            sh:xone (
+            sh:or (
                 [
                     sh:class :Quantity ;
                 ]
