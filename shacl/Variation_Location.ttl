@@ -11,18 +11,18 @@
     sh:property
         [
             sh:path sio:SIO_000115 ;
+            sh:class :CURIEIdentifier ;
             sh:name "id" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
-            sh:datatype xsd:string;
             sh:description "Location Id." ;
         ],
         [
             sh:path :sequence_id ;
+            sh:class :CURIEIdentifier ;
             sh:name "sequence_id" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
-            sh:datatype xsd:string;
             sh:description "A VRS Computed Identifier for the reference Sequence." ;
         ],
         [
@@ -42,19 +42,18 @@
     sh:property
         [
             sh:path sio:SIO_000115 ;
+            sh:class :CURIEIdentifier ;
             sh:name "id" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
-            sh:datatype xsd:string;
             sh:description "Location Id." ;
         ],
         [
             sh:path :species_id ;
+            sh:class :CURIEIdentifier ;
             sh:name "species_id" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
-            sh:datatype xsd:string;
-            sh:defaultValue "taxonomy:9606" ;
             sh:description "CURIE representing a species from the NCBI species taxonomy. Default: “taxonomy:9606” (human)." ;
         ],
         [

@@ -5,9 +5,9 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema> .
 @prefix : <https://phenopackets.org> .
 
-:VariationShape
+:VariationSetShape
     a sh:NodeShape ;
-    sh:targetClass :Variation ;
+    sh:targetClass :VariationSet ;
     sh:property
         [
             sh:path sio:SIO_000115 ;
@@ -18,18 +18,17 @@
             sh:description "Variation Id." ;
         ],
         [
-            sh:path :type ;
+            sh:path :members ;
             sh:or (
                 [
-                    sh:class :Allele ;
+                    sh:class :Variation ;
                 ]
                 [
-                    sh:class :VariationSet ;
+                    sh:class :CURIEIdentifier ;
                 ]
             ) ;
-            sh:name "type" ;
-            sh:minCount 1 ;
-            sh:maxCount 1 ;
+            sh:name "members" ;
             sh:description "The Variation class type." ;
         ] ;
+    sh:comment "An unconstrained set of Variation members." ;
 .

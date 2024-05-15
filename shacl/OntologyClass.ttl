@@ -11,10 +11,10 @@
     sh:property
         [
             sh:path sio:SIO_000115 ;
+            sh:class :CURIEIdentifier ;
             sh:name "id" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
-            sh:datatype xsd:string;
             sh:description "CURIE-style identifier." ;
         ],
         [
