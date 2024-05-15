@@ -11,7 +11,7 @@
     sh:property
         [
             sh:path sio:SIO_000115 ;
-            sh:name "id" ;
+            sh:name "identifier" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
             sh:datatype xsd:string;
@@ -130,7 +130,7 @@
             sh:description "Clinically relevant biomarkers." ;
         ],
         [
-            sh:path :SIO_000999 ;
+            sh:path sio:SIO_000999 ;
             sh:class :Procedure ;
             sh:name "procedure" ;
             sh:minCount 0 ;
@@ -157,7 +157,7 @@
             sh:name "sample_processing" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
-            sh:description "How the specimen was processed" ;
+            sh:description "How the specimen was processed." ;
         ],
         [
             sh:path :sample_storage ;
@@ -165,6 +165,6 @@
             sh:name "sample_storage" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
-            sh:description "How the specimen was stored" ;
+            sh:description "How the specimen was stored." ;
         ] ;
 .
