@@ -1,0 +1,84 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix : <https://phenopackets.org> .
+
+:LiteralSequenceExpressionShape
+    a sh:NodeShape ;
+    sh:targetClass :LiteralSequenceExpression ;
+    sh:property
+        [
+            sh:path :sequence ;
+            sh:name "sequence" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string;
+            sh:description "A character string representation of a contiguous, linear polymer of nucleic acid or amino acid Residues." ;
+        ] ;
+    sh:comment "A string representation of a sequence." ;
+.
+
+:DerivedSequenceExpressionShape
+    a sh:NodeShape ;
+    sh:targetClass :DerivedSequenceExpression ;
+    sh:property
+        [
+            sh:path :location ;
+            sh:class :SequenceLocation ;
+            sh:name "location" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:description "The location from which the approximate sequence is derived." ;
+        ],
+        [
+            sh:path :reverse_complement ;
+            sh:name "reverse_complement" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:boolean;
+            sh:description "A flag indicating if the expressed sequence is the reverse complement of the sequence referred to by location." ;
+        ] ;
+    sh:comment "An approximate expression of a sequence that is derived from a referenced sequence location." ;
+.
+
+:RepeatedSequenceExpressionShape
+    a sh:NodeShape ;
+    sh:targetClass :RepeatedSequenceExpression ;
+    sh:property
+        [
+            sh:path :seq_expr ;
+            sh:or (
+                [
+                    sh:class :LiteralSequenceExpression ;
+                ]
+                [
+                    sh:class :DerivedSequenceExpression ;
+                ]
+            ) ;
+            sh:name "seq_expr" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:description "An expression of the repeating subsequence." ;
+        ],
+        [
+            sh:path :count ;
+            sh:or (
+                [
+                    sh:class :IntegerNumber ;
+                ]
+                [
+                    sh:class :IndefiniteRange ;
+                ]
+                [
+                    sh:class :DefiniteRange ;
+                ]
+            ) ;
+            sh:name "count" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:description "The count of repeated units, as an integer or inclusive range." ;
+        ] ;
+    sh:comment "An expression of a sequence comprised of a tandem repeating subsequence." ;
+.

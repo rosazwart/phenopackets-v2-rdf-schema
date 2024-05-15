@@ -1,0 +1,77 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix : <https://phenopackets.org> .
+
+:SequenceLocationShape
+    a sh:NodeShape ;
+    sh:targetClass :SequenceLocation ;
+    sh:property
+        [
+            sh:path sio:SIO_000115 ;
+            sh:name "id" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string;
+            sh:description "Location Id." ;
+        ],
+        [
+            sh:path :sequence_id ;
+            sh:name "sequence_id" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string;
+            sh:description "A VRS Computed Identifier for the reference Sequence." ;
+        ],
+        [
+            sh:path :interval ;
+            sh:class :SequenceInterval ;
+            sh:name "interval" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:description "Reference sequence region defined by a SequenceInterval." ;
+        ] ;
+    sh:comment "A contiguous segment of a biological sequence." ;
+.
+
+:ChromosomeLocationShape
+    a sh:NodeShape ;
+    sh:targetClass :ChromosomeLocation ;
+    sh:property
+        [
+            sh:path sio:SIO_000115 ;
+            sh:name "id" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string;
+            sh:description "Location Id." ;
+        ],
+        [
+            sh:path :species_id ;
+            sh:name "species_id" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string;
+            sh:defaultValue "taxonomy:9606" ;
+            sh:description "CURIE representing a species from the NCBI species taxonomy. Default: “taxonomy:9606” (human)." ;
+        ],
+        [
+            sh:path :chr ;
+            sh:name "chr" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string;
+            sh:description "The symbolic chromosome name. For humans, chromosome names MUST be one of 1..22, X, Y (case-sensitive)." ;
+        ],
+        [
+            sh:path :interval ;
+            sh:class :CytobandInterval ;
+            sh:name "interval" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:description "The chromosome region defined by a CytobandInterval." ;
+        ] ;
+    sh:comment "A contiguous segment of a biological sequence." ;
+.

@@ -1,0 +1,53 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix : <https://phenopackets.org> .
+
+:DefiniteRangeShape
+    a sh:NodeShape ;
+    sh:targetClass :DefiniteRange ;
+    sh:property
+        [
+            sh:path sio:SIO_001113 ;
+            sh:name "min" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:integer;
+            sh:description "The minimum value; inclusive." ;
+        ],
+        [
+            sh:path sio:SIO_001114 ;
+            sh:name "max" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:integer;
+            sh:description "The maximum value; inclusive." ;
+        ] ;
+    sh:comment "A bounded, inclusive range of numbers." ;
+.
+
+:IndefiniteRangeShape
+    a sh:NodeShape ;
+    sh:targetClass :IndefiniteRange ;
+    sh:property
+        [
+            sh:path sio:SIO_000300 ;
+            sh:name "has_value" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:integer;
+            sh:description "The bounded value; inclusive." ;
+        ],
+        [
+            sh:path :comparator ;
+            sh:name "comparator" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string;
+            sh:in ("<=" ">=") ;
+            sh:description "The maximum value; inclusive." ;
+        ] ;
+    sh:comment "A half-bounded range of numbers represented as a number bound and associated comparator." ;
+.

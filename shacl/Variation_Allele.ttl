@@ -1,0 +1,54 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix : <https://phenopackets.org> .
+
+:AlleleShape
+    a sh:NodeShape ;
+    sh:targetClass :Allele ;
+    sh:property
+        [
+            sh:path sio:SIO_000115 ;
+            sh:name "id" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string;
+            sh:description "Variation Id." ;
+        ],
+        [
+            sh:path :location ;
+            sh:or (
+                [
+                    sh:class :SequenceLocation ;
+                ]
+                [
+                    sh:class :ChromosomeLocation ;
+                ]
+            ) ;
+            sh:name "location" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:description "Where Allele is located." ;
+        ],
+        [
+            sh:path :state ;
+            sh:or (
+                [
+                    sh:class :LiteralSequenceExpression ;
+                ]
+                [
+                    sh:class :DerivedSequenceExpression ;
+                ]
+                [
+                    sh:class :RepeatedSequenceExpression ;
+                ]
+            ) ;
+            sh:name "state" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:description "An expression of the sequence state." ;
+        ] ;
+    sh:comment "The state of a molecule at a Location." ;
+.

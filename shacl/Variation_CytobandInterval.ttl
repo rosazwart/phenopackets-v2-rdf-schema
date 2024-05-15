@@ -1,0 +1,48 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix : <https://phenopackets.org> .
+
+:HumanCytobandShape
+    a sh:NodeShape ;
+    sh:targetClass :HumanCytoband ;
+    sh:property
+        [
+            sh:path sio:SIO_000300 ;
+            sh:name "has_value" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string;
+            sh:in (
+                [
+                    sh:pattern "^cen|[pq](ter|([1-9][0-9]*(\.[1-9][0-9]*)?))$" ;
+                ]
+            ) ;
+            sh:description "A character string representing cytobands derived from the International System for Human Cytogenomic Nomenclature (ISCN) guidelines." ;
+        ] ;
+.
+
+:CytobandIntervalShape
+    a sh:NodeShape ;
+    sh:targetClass :CytobandInterval ;
+    sh:property
+        [
+            sh:path sio:SIO_000509 ;
+            sh:class :HumanCytobandShape ;
+            sh:name "start_point" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:description "The start cytoband region. MUST specify a region nearer the terminal end (telomere) of the chromosome p-arm than end." ;
+        ],
+        [
+            sh:path sio:SIO_000508 ;
+            sh:class :HumanCytobandShape ;
+            sh:name "end_point" ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:description "The end cytoband region. MUST specify a region nearer the terminal end (telomere) of the chromosome q-arm than start." ;
+        ] ;
+    sh:comment "A contiguous span on a chromosome defined by cytoband features. The span includes the constituent regions described by the start and end cytobands, as well as any intervening regions." ;
+.
