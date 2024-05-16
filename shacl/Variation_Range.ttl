@@ -47,7 +47,7 @@
             sh:maxCount 1 ;
             sh:datatype xsd:string;
             sh:in ("<=" ">=") ;
-            sh:description "The maximum value; inclusive." ;
+            sh:description "Indicates which direction the range is indefinite." ;
         ] ;
     sh:comment "A half-bounded range of numbers represented as a number bound and associated comparator." ;
 .

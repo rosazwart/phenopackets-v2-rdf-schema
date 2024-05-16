@@ -11,7 +11,7 @@
     sh:property
         [
             sh:path sio:SIO_000115 ;
-            sh:name "id" ;
+            sh:name "identifier" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
             sh:datatype xsd:string;
@@ -27,6 +27,7 @@
         ],
         [
             sh:path sio:SIO_001331 ;
+            sh:class :Diagnosis ;
             sh:name "diagnosis" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;

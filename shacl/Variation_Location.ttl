@@ -43,7 +43,7 @@
         [
             sh:path sio:SIO_000115 ;
             sh:class :CURIEIdentifier ;
-            sh:name "id" ;
+            sh:name "identifier" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
             sh:description "Location Id." ;

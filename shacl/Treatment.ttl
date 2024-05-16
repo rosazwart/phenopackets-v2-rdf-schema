@@ -47,4 +47,5 @@
             sh:maxCount 1 ;
             sh:description "The cumulative dose administered during the period of the treatment." ;
         ] ;
+    sh:comment "This represents treatment with an agent such as a drug (pharmaceutical agent), broadly defined as prescription and over-the-counter medicines, vaccines, and large-molecule biologic therapies." ;
 .

@@ -41,4 +41,5 @@
             sh:datatype xsd:integer ;
             sh:description "The total number of fractions delivered as part of treatment." ;
         ] ;
+    sh:comment "Ionizing radiation, generally as part of cancer treatment to control or kill malignant cells." ;
 .

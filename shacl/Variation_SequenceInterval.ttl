@@ -10,7 +10,7 @@
     sh:targetClass :SequenceInterval ;
     sh:property
         [
-            sh:path :start ;
+            sh:path sio:SIO_000509 ;
             sh:or (
                 [
                     sh:class :IntegerNumber ;
@@ -22,13 +22,13 @@
                     sh:class :DefiniteRange ;
                 ]
             ) ;
-            sh:name "start" ;
+            sh:name "start_point" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
             sh:description "The start coordinate or range of the interval. The minimum value of this coordinate or range is 0. MUST represent a coordinate or range less than the value of end." ;
         ],
         [
-            sh:path :end ;
+            sh:path sio:SIO_000508 ;
             sh:or (
                 [
                     sh:class :IntegerNumber ;
@@ -40,7 +40,7 @@
                     sh:class :DefiniteRange ;
                 ]
             ) ;
-            sh:name "end" ;
+            sh:name "end_point" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
             sh:description "The end coordinate or range of the interval. The minimum value of this coordinate or range is 0. MUST represent a coordinate or range greater than the value of start." ;

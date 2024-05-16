@@ -10,8 +10,8 @@
     sh:targetClass :GeneDescriptor ;
     sh:property
         [
-            sh:path :value_id ;
-            sh:name "value_id" ;
+            sh:path sio:SIO_000115 ;
+            sh:name "identifier" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
             sh:datatype xsd:string;

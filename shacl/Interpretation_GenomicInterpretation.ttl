@@ -26,7 +26,7 @@
         ],
         [
             sh:path :call ;
-            sh:xone (
+            sh:or (
                 [
                     sh:class :GeneDescriptor ;
                 ]
@@ -39,4 +39,5 @@
             sh:maxCount 1 ;
             sh:description "Represents the interpretation." ;
         ] ;
+    sh:comment "Describes the interpretation for an individual variant or gene." ;
 .

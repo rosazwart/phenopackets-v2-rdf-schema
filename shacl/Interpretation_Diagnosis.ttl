@@ -22,4 +22,5 @@
             sh:name "genomic_interpretations" ;
             sh:description "The genomic elements assessed as being responsible for the disease or empty." ;
         ] ;
+    sh:comment "The disease that is inferred to be present in the individual or family being analyzed." ;
 .

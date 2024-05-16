@@ -10,7 +10,7 @@
     sh:targetClass :TherapeuticRegimen ;
     sh:property
         [
-            sh:path :identifier ;
+            sh:path sio:SIO_000115 ;
             sh:or (
                 [
                     sh:class :OntologyClass ;
@@ -48,4 +48,5 @@
             sh:maxCount 1 ;
             sh:description "Current status of the regimen for the enclosing MedicalAction on the Individual." ;
         ] ;
+    sh:comment "This element represents a therapeutic regimen which will involve a specified set of treatments for a particular condition." ;
 .

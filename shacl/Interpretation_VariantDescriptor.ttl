@@ -11,7 +11,7 @@
     sh:property
         [
             sh:path sio:SIO_000115 ;
-            sh:name "id" ;
+            sh:name "identifier" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
             sh:datatype xsd:string ;
@@ -19,7 +19,7 @@
         ],
         [
             sh:path :variation ;
-            sh:class :Variation ;   # TODO:
+            sh:class :Variation ;
             sh:name "variation" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
@@ -34,12 +34,19 @@
             sh:description "A primary label for the variation." ;
         ],
         [
+            sh:path sio:SIO_000136 ;
+            sh:name "description" ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string;
+            sh:description "A free-text description of the variation." ;
+        ],
+        [
             sh:path :gene_context ;
             sh:class :GeneDescriptor ;
             sh:name "gene_context" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
-            sh:datatype xsd:string;
             sh:description "A specific gene context that applies to this variant." ;
         ],
         [
