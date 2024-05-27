@@ -18,7 +18,7 @@
             sh:description "Amount administered in one dose." ;
         ],
         [
-            sh:path :schedule_frequency ;
+            sh:path obo:NCIT_C64493 ;
             sh:class :OntologyClass ;
             sh:name "schedule_frequency" ;
             sh:minCount 1 ;
@@ -26,7 +26,7 @@
             sh:description "How often doses are administered per day (or other indicated duration)." ;
         ],
         [
-            sh:path :interval ;
+            sh:path obo:NCIT_C25543 ;
             sh:class :TimeInterval ;
             sh:name "interval" ;
             sh:minCount 1 ;

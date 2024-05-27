@@ -1,8 +1,10 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sio: <http://semanticscience.org/resource/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix sio: <http://semanticscience.org/resource/> .
 @prefix : <https://phenopackets.org> .
 
 :TherapeuticRegimenShape
@@ -10,7 +12,7 @@
     sh:targetClass :TherapeuticRegimen ;
     sh:property
         [
-            sh:path sio:SIO_000115 ;
+            sh:path dcterms:identifier ;
             sh:or (
                 [
                     sh:class :OntologyClass ;
@@ -41,8 +43,8 @@
             sh:description "When the regimen ended. An empty end_time with a populated start_time would indicate the regimen was ongoing." ;
         ],
         [
-            sh:path :status ;
-            sh:class :RegimenStatus ;   # TODO: Same path but different class as object? Is that allowed. Do paths need to be unique in their shape?
+            sh:path obo:NCIT_C25688 ;
+            sh:class :RegimenStatus ;
             sh:name "status" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;

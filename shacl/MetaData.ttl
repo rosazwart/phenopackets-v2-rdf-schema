@@ -1,8 +1,9 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sio: <http://semanticscience.org/resource/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix : <https://phenopackets.org> .
 
 :MetaDataShape
@@ -10,7 +11,7 @@
     sh:targetClass :MetaData ;
     sh:property
         [
-            sh:path :created ;
+            sh:path dcterms:created ;
             sh:name "created" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
@@ -18,7 +19,7 @@
             sh:description "Representation of the time when this object was created." ;
         ],
         [
-            sh:path :created_by ;
+            sh:path dcterms:creator ;
             sh:name "created_by" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
@@ -26,7 +27,7 @@
             sh:description "Name of person who created the phenopacket." ;
         ],
         [
-            sh:path :submitted_by ;
+            sh:path obo:NCIT_C54269 ;
             sh:name "submitted_by" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
@@ -34,16 +35,16 @@
             sh:description "Name of person who submitted the phenopacket." ;
         ],
         [
-            sh:path :resources ;
+            sh:path :resource ;
             sh:class :Resource ;
-            sh:name "resources" ;
+            sh:name "resource" ;
             sh:minCount 1 ;
             sh:description "Ontologies used to create the phenopacket." ;
         ],
         [
-            sh:path :updates ;
+            sh:path obo:NCIT_C25710 ;
             sh:class :Update ;
-            sh:name "updates" ;
+            sh:name "update" ;
             sh:description "List of updates to the phenopacket." ;
         ],
         [
@@ -55,9 +56,9 @@
             sh:description "Schema version of the current phenopacket." ;
         ],
         [
-            sh:path :external_references ;
+            sh:path :external_reference ;
             sh:class :ExternalReference ;
-            sh:name "external_references" ;
-            sh:description "List of updates to the phenopacket." ;
+            sh:name "external_reference" ;
+            sh:description "References such as published articles." ;
         ] ;
 .

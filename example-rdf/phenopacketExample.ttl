@@ -1,0 +1,12 @@
+@prefix : <https://phenopackets.org> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+
+<http://example.org/phenopacket/1>
+    a :Phenopacket ;
+    sio:SIO_000115 "example phenopacket" ;
+.
+
+<http://example.org/metadata/1> 
+    a :Metadata ;
+    :created_by "LUMC" ;
+.

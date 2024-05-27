@@ -1,8 +1,9 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sio: <http://semanticscience.org/resource/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix : <https://phenopackets.org> .
 
 :EvidenceShape
@@ -10,7 +11,7 @@
     sh:targetClass :Evidence ;
     sh:property
         [
-            sh:path :evidence_code ;
+            sh:path obo:ECO_0000000 ;
             sh:class :OntologyClass ;
             sh:name "evidence_code" ;
             sh:minCount 1 ;
@@ -19,7 +20,7 @@
             sh:description "An ontology class that represents the evidence type. Use of terms from ECO is recommended." ;
         ],
         [
-            sh:path sio:SIO_000176 ;
+            sh:path dcterms:isReferencedBy ;
             sh:class :ExternalReference ;
             sh:name "reference" ;
             sh:minCount 0 ;

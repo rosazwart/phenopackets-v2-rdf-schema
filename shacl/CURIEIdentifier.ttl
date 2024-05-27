@@ -23,16 +23,3 @@
             sh:description "A W3C Compact URI formatted string. A CURIE string has the structure prefix:reference, as defined by the W3C syntax." ;
         ] ;
 .
-
-:CURIEIdentifierListShape
-    a sh:NodeShape ;
-    sh:targetClass :CURIEIdentifierList ;
-    sh:property
-        [
-            sh:path sio:SIO_001260 ;
-            sh:class :CURIEIdentifier ;
-            sh:name "list_item" ;
-            sh:minCount 1 ;
-            sh:description "A CURIE identifier as part of the list of identifiers." ;
-        ] ;
-.

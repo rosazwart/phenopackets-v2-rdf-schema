@@ -1,8 +1,9 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sio: <http://semanticscience.org/resource/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix : <https://phenopackets.org> .
 
 :PhenotypicFeatureShape
@@ -10,7 +11,7 @@
     sh:targetClass :PhenotypicFeature ;
     sh:property
         [
-            sh:path sio:SIO_000136 ;
+            sh:path dcterms:description ;
             sh:name "description" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
@@ -18,7 +19,7 @@
             sh:description "Human-readable verbiage." ;
         ],
         [
-            sh:path :type ;
+            sh:path obo:NCIT_C25284 ;
             sh:class :OntologyClass ;
             sh:name "type" ;
             sh:minCount 1 ;
@@ -26,7 +27,7 @@
             sh:description "Term denoting the phenotypic feature." ;
         ],
         [
-            sh:path :excluded ;
+            sh:path obo:NCIT_C82931 ;
             sh:name "excluded" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
@@ -35,7 +36,7 @@
             sh:description "Phenotype is observed as either present or absent (excluded)." ;
         ],
         [
-            sh:path :severity ;
+            sh:path obo:NCIT_C25676 ;
             sh:class :OntologyClass ;
             sh:name "severity" ;
             sh:minCount 0 ;
@@ -43,13 +44,13 @@
             sh:description "Description of the severity of the feature described in type. Use for instance HP:0012823." ;
         ],
         [
-            sh:path :modifiers ;
+            sh:path obo:MONDO_0021125 ;
             sh:class :OntologyClass ;
-            sh:name "modifiers" ;
+            sh:name "modifier" ;
             sh:description "For instance one or more terms from HP:0012823." ;
         ],
         [
-            sh:path :onset ;
+            sh:path obo:HP_0003674 ;
             sh:class :TimeElement ;
             sh:name "onset" ;
             sh:minCount 0 ;
@@ -57,7 +58,7 @@
             sh:description "Age or time at which the feature was first observed." ;
         ],
         [
-            sh:path :resolution ;
+            sh:path obo:NCIT_C25655 ;
             sh:class :TimeElement ;
             sh:name "resolution" ;
             sh:minCount 0 ;
@@ -65,7 +66,7 @@
             sh:description "Age or time at which the feature resolved or abated." ;
         ],
         [
-            sh:path sio:SIO_001394 ;
+            sh:path obo:ECO_0000000 ;
             sh:class :Evidence ;
             sh:name "evidence" ;
             sh:description "The evidence for an assertion of the observation of a type." ;

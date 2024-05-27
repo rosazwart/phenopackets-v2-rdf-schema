@@ -10,7 +10,7 @@
     sh:targetClass :RadiationTherapy ;
     sh:property
         [
-            sh:path :modality ;
+            sh:path obo:NCIT_C41147 ;
             sh:class :OntologyClass ;
             sh:name "modality" ;
             sh:minCount 1 ;
@@ -18,7 +18,7 @@
             sh:description "The modality of radiation therapy (e.g., electron, photon,…)." ;
         ],
         [
-            sh:path :body_site ;
+            sh:path obo:NCIT_C13717 ;
             sh:class :OntologyClass ;
             sh:name "body_site" ;
             sh:minCount 1 ;
@@ -26,7 +26,7 @@
             sh:description "The anatomical site where radiation therapy was administered." ;
         ],
         [
-            sh:path :dosage ;
+            sh:path obo:NCIT_C25488 ;
             sh:name "dosage" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
@@ -34,7 +34,7 @@
             sh:description "The total dose given in units of Gray (Gy)." ;
         ],
         [
-            sh:path :fractions ;
+            sh:path obo:NCIT_C15654 ;
             sh:name "fractions" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;

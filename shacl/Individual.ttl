@@ -1,8 +1,9 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sio: <http://semanticscience.org/resource/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix : <https://phenopackets.org> .
 
 :IndividualShape
@@ -10,7 +11,7 @@
     sh:targetClass :Individual ;
     sh:property
         [
-            sh:path sio:SIO_000115 ;
+            sh:path dcterms:identifier ;
             sh:name "identifier" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
@@ -18,13 +19,13 @@
             sh:description "An arbitrary identifier." ;
         ],
         [
-            sh:path :alternate_ids ;
-            sh:class :CURIEIdentifierList ;
-            sh:name "alternate_ids" ;
-            sh:description "A list of alternative CURIE identifiers for the individual." ;
+            sh:path obo:NCIT_C90353 ;
+            sh:class :CURIEIdentifier ;
+            sh:name "alternate_identifier" ;
+            sh:description "An alternative CURIE identifier for the individual." ;
         ],
         [
-            sh:path :date_of_birth ;
+            sh:path obo:NCIT_C94173 ;
             sh:class :Timestamp ;
             sh:name "date_of_birth" ;
             sh:minCount 0 ;
@@ -40,7 +41,7 @@
             sh:description "The age or age range of the individual when last encountered." ;
         ],
         [
-            sh:path :vital_status ;
+            sh:path obo:NCIT_C25717 ;
             sh:class :VitalStatus ;
             sh:name "vital_status" ;
             sh:minCount 0 ;
@@ -48,7 +49,7 @@
             sh:description "The vital status of the individual e.g. whether they are alive or the time and cause of death." ;
         ],
         [
-            sh:path :sex ;
+            sh:path obo:NCIT_C28421 ;
             sh:class :Sex ;
             sh:name "sex" ;
             sh:minCount 0 ;
@@ -56,7 +57,7 @@
             sh:description "Observed apparent sex of the individual." ;
         ],
         [
-            sh:path :karyotypic_sex ;
+            sh:path obo:GSSO_000113 ;
             sh:class :KaryotypicSex ;
             sh:name "karyotypic_sex" ;
             sh:minCount 0 ;
@@ -64,7 +65,7 @@
             sh:description "The karyotypic sex of the individual." ;
         ],
         [
-            sh:path :gender ;
+            sh:path obo:NCIT_C17357 ;
             sh:class :OntologyClass ;
             sh:name "gender" ;
             sh:minCount 0 ;
@@ -72,11 +73,12 @@
             sh:description "Self-identified gender." ;
         ],
         [
-            sh:path :taxonomy ;
+            sh:path obo:NCIT_C17469 ;
             sh:class :OntologyClass ;
             sh:name "taxonomy" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
-            sh:description "An OntologyClass representing the species (e.g., NCBITaxon:9615)." ;
+            sh:description "Represents the species (e.g., NCBITaxon:9615)." ;
         ] ;
+    sh:comment "The proband. Represents an individual human or other organism." ;
 .

@@ -1,8 +1,10 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sio: <http://semanticscience.org/resource/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix sio: <http://semanticscience.org/resource/> .
 @prefix : <https://phenopackets.org> .
 
 :BiosampleShape
@@ -10,7 +12,7 @@
     sh:targetClass :Biosample ;
     sh:property
         [
-            sh:path sio:SIO_000115 ;
+            sh:path dcterms:identifier ;
             sh:name "identifier" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
@@ -34,7 +36,7 @@
             sh:description "Id of the biosample from which the current biosample was derived (if applicable)." ;
         ],
         [
-            sh:path sio:SIO_000136 ;
+            sh:path dcterms:description ;
             sh:name "description" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
@@ -42,15 +44,15 @@
             sh:description "Arbitrary text." ;
         ],
         [
-            sh:path :sampled_tissue ;
+            sh:path obo:NCIT_C12801 ;
             sh:class :OntologyClass ;
-            sh:name "sampled_tissue" ;
+            sh:name "tissue" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
             sh:description "Tissue from which the sample was taken." ;
         ],
         [
-            sh:path :sample_type ;
+            sh:path obo:NCIT_C70713 ;
             sh:class :OntologyClass ;
             sh:name "sample_type" ;
             sh:minCount 0 ;
@@ -58,19 +60,19 @@
             sh:description "Type of material, e.g., RNA, DNA, Cultured cells." ;
         ],
         [
-            sh:path :phenotypic_features ;
+            sh:path :phenotypic_feature ;
             sh:class :PhenotypicFeature ;
-            sh:name "phenotypic_features" ;
+            sh:name "phenotypic_feature" ;
             sh:description "List of phenotypic abnormalities of the sample." ;
         ],
         [
-            sh:path :measurements ;
+            sh:path obo:NCIT_C25209 ;
             sh:class :Measurement ;
-            sh:name "measurements" ;
+            sh:name "measurement" ;
             sh:description "List of measurements of the sample." ;
         ],
         [
-            sh:path :taxonomy ;
+            sh:path obo:NCIT_C17469 ;
             sh:class :OntologyClass ;
             sh:name "taxonomy" ;
             sh:minCount 0 ;
@@ -78,7 +80,7 @@
             sh:description "Species of the sampled individual." ;
         ],
         [
-            sh:path :time_of_collection ;
+            sh:path obo:NCIT_C81287 ;
             sh:class :TimeElement ;
             sh:name "time_of_collection" ;
             sh:minCount 0 ;
@@ -94,7 +96,7 @@
             sh:description "Disease diagnosis that was inferred from the histological examination." ;
         ],
         [
-            sh:path :tumor_progression ;
+            sh:path obo:NCIT_C17609 ;
             sh:class :OntologyClass ;
             sh:name "tumor_progression" ;
             sh:minCount 0 ;
@@ -102,7 +104,7 @@
             sh:description "Indicates primary, metastatic, recurrent." ;
         ],
         [
-            sh:path :tumor_grade ;
+            sh:path obo:NCIT_C18000 ;
             sh:class :OntologyClass ;
             sh:name "tumor_grade" ;
             sh:minCount 0 ;
@@ -124,13 +126,13 @@
             sh:description "Pathological TNM findings, if applicable." ;
         ],
         [
-            sh:path :diagnostic_markers ;
+            sh:path obo:NCIT_C19591 ;
             sh:class :OntologyClass ;
-            sh:name "diagnostic_markers" ;
+            sh:name "diagnostic_marker" ;
             sh:description "Clinically relevant biomarkers." ;
         ],
         [
-            sh:path sio:SIO_000999 ;
+            sh:path obo:NCIT_C79751 ;
             sh:class :Procedure ;
             sh:name "procedure" ;
             sh:minCount 0 ;
@@ -138,9 +140,9 @@
             sh:description "The procedure used to extract the biosample." ;
         ],
         [
-            sh:path :files ;
+            sh:path obo:NCIT_C42883 ;
             sh:class :File ;
-            sh:name "files" ;
+            sh:name "file" ;
             sh:description "List of files related to the biosample, e.g. VCF or other high-throughput sequencing files." ;
         ],
         [

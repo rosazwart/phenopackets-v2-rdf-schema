@@ -10,7 +10,7 @@
     sh:targetClass :Expression ;
     sh:property
         [
-            sh:path :syntax ;
+            sh:path obo:NCIT_C54277 ;
             sh:name "syntax" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
@@ -26,7 +26,7 @@
             sh:description "The concept expression as a string." ;
         ],
         [
-            sh:path :version ;
+            sh:path dcterms:hasVersion ;
             sh:name "version" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;

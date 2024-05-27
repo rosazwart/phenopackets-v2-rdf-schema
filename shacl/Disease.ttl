@@ -1,8 +1,10 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sio: <http://semanticscience.org/resource/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix sio: <http://semanticscience.org/resource/> .
 @prefix : <https://phenopackets.org> .
 
 :DiseaseShape
@@ -10,7 +12,7 @@
     sh:targetClass :Disease ;
     sh:property
         [
-            sh:path sio:SIO_000275 ;
+            sh:path obo:NCIT_C45559 ;
             sh:class :OntologyClass ;
             sh:name "term" ;
             sh:minCount 1 ;
@@ -18,7 +20,7 @@
             sh:description "An ontology class that represents the disease." ;
         ],
         [
-            sh:path :excluded ;
+            sh:path obo:NCIT_C82931 ;
             sh:name "excluded" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
@@ -27,7 +29,7 @@
             sh:description "Flag to indicate whether the disease was observed or not." ;
         ],
         [
-            sh:path :onset ;
+            sh:path obo:HP_0003674 ;
             sh:class :TimeElement ;
             sh:name "onset" ;
             sh:minCount 0 ;
@@ -35,7 +37,7 @@
             sh:description "An element representing the age of onset of the disease." ;
         ],
         [
-            sh:path :resolution ;
+            sh:path obo:NCIT_C25655 ;
             sh:class :TimeElement ;
             sh:name "resolution" ;
             sh:minCount 0 ;
@@ -43,7 +45,7 @@
             sh:description "An element representing the age of resolution (abatement) of the disease." ;
         ],
         [
-            sh:path :disease_stage ;
+            sh:path obo:NCIT_C28108 ;
             sh:class :OntologyClass ;
             sh:name "disease_stage" ;
             sh:description "List of terms representing the disease stage e.g. AJCC stage group." ;
@@ -55,7 +57,7 @@
             sh:description "List of terms representing the tumor TNM score." ;
         ],
         [
-            sh:path :primary_site ;
+            sh:path obo:NCIT_C158874 ;
             sh:class :OntologyClass ;
             sh:name "primary_site" ;
             sh:minCount 0 ;
@@ -63,7 +65,7 @@
             sh:description "The primary site of disease." ;
         ],
         [
-            sh:path :laterality ;
+            sh:path obo:NCIT_C25185 ;
             sh:class :OntologyClass ;
             sh:name "laterality" ;
             sh:minCount 0 ;

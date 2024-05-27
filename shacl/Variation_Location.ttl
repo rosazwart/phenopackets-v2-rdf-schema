@@ -1,8 +1,10 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sio: <http://semanticscience.org/resource/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix sio: <http://semanticscience.org/resource/> .
 @prefix : <https://phenopackets.org> .
 
 :SequenceLocationShape
@@ -10,23 +12,23 @@
     sh:targetClass :SequenceLocation ;
     sh:property
         [
-            sh:path sio:SIO_000115 ;
+            sh:path dcterms:identifier ;
             sh:class :CURIEIdentifier ;
-            sh:name "id" ;
+            sh:name "identifier" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
             sh:description "Location Id." ;
         ],
         [
-            sh:path :sequence_id ;
+            sh:path obo:GENO_0000017 ;
             sh:class :CURIEIdentifier ;
-            sh:name "sequence_id" ;
+            sh:name "reference_sequence" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
             sh:description "A VRS Computed Identifier for the reference Sequence." ;
         ],
         [
-            sh:path :interval ;
+            sh:path obo:NCIT_C25543 ;
             sh:class :SequenceInterval ;
             sh:name "interval" ;
             sh:minCount 1 ;
@@ -41,7 +43,7 @@
     sh:targetClass :ChromosomeLocation ;
     sh:property
         [
-            sh:path sio:SIO_000115 ;
+            sh:path dcterms:identifier ;
             sh:class :CURIEIdentifier ;
             sh:name "identifier" ;
             sh:minCount 0 ;
@@ -49,9 +51,9 @@
             sh:description "Location Id." ;
         ],
         [
-            sh:path :species_id ;
+            sh:path obo:NCIT_C45293 ;
             sh:class :CURIEIdentifier ;
-            sh:name "species_id" ;
+            sh:name "species" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
             sh:description "CURIE representing a species from the NCBI species taxonomy. Default: “taxonomy:9606” (human)." ;
@@ -65,7 +67,7 @@
             sh:description "The symbolic chromosome name. For humans, chromosome names MUST be one of 1..22, X, Y (case-sensitive)." ;
         ],
         [
-            sh:path :interval ;
+            sh:path obo:NCIT_C25543 ;
             sh:class :CytobandInterval ;
             sh:name "interval" ;
             sh:minCount 1 ;

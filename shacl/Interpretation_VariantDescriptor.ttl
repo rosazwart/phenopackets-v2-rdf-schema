@@ -1,8 +1,10 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sio: <http://semanticscience.org/resource/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix sio: <http://semanticscience.org/resource/> .
 @prefix : <https://phenopackets.org> .
 
 :VariationDescriptorShape
@@ -10,7 +12,7 @@
     sh:targetClass :VariationDescriptor ;
     sh:property
         [
-            sh:path sio:SIO_000115 ;
+            sh:path dcterms:identifier ;
             sh:name "identifier" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
@@ -18,7 +20,7 @@
             sh:description "Descriptor ID; MUST be unique within document." ;
         ],
         [
-            sh:path :variation ;
+            sh:path obo:NCIT_C25713 ;
             sh:class :Variation ;
             sh:name "variation" ;
             sh:minCount 0 ;
@@ -34,7 +36,7 @@
             sh:description "A primary label for the variation." ;
         ],
         [
-            sh:path sio:SIO_000136 ;
+            sh:path dcterms:description ;
             sh:name "description" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
@@ -50,9 +52,9 @@
             sh:description "A specific gene context that applies to this variant." ;
         ],
         [
-            sh:path :expressions ;
+            sh:path obo:NCIT_C80488 ;
             sh:class :Expression ;
-            sh:name "expressions" ;
+            sh:name "expression" ;
             sh:description "HGVS, SPDI, and gnomAD-style strings should be represented as Expressions." ;
         ],
         [
@@ -64,7 +66,7 @@
             sh:description "A VCF Record of the variant. This SHOULD be a single allele, the VCF genotype (GT) field should be represented in the allelic_state." ;
         ],
         [
-            sh:path :xrefs ;
+            sh:path obo:NCIT_C43621 ;
             sh:name "xrefs" ;
             sh:datatype xsd:string;
             sh:description "List of CURIEs representing associated concepts. Allele registry, ClinVar, or other related IDs should be included as xrefs." ;
@@ -76,9 +78,9 @@
             sh:description "Common aliases for a variant, e.g. EGFR vIII, are alternate labels." ;
         ],
         [
-            sh:path :extensions ;
+            sh:path :extension ;
             sh:class :Extension ;
-            sh:name "extensions" ;
+            sh:name "extension" ;
             sh:description "List of resource-specific extensions needed to describe the variation." ;
         ],
         [
@@ -106,7 +108,7 @@
             sh:description "A Sequence corresponding to a “ref allele”, describing the sequence expected at a SequenceLocation reference." ;
         ],
         [
-            sh:path :allelic_state ;
+            sh:path obo:GENO_0000133 ;
             sh:class :OntologyClass ;
             sh:name "allelic_state" ;
             sh:minCount 0 ;

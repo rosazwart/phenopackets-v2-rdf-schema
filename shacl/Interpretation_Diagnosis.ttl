@@ -10,7 +10,7 @@
     sh:targetClass :Diagnosis ;
     sh:property
         [
-            sh:path sio:SIO_010299 ;
+            sh:path obo:MONDO_0000001 ;
             sh:class :OntologyClass ;
             sh:name "disease" ;
             sh:minCount 1 ;
@@ -18,8 +18,9 @@
             sh:description "The diagnosed condition." ;
         ],
         [
-            sh:path :genomic_interpretations ;
-            sh:name "genomic_interpretations" ;
+            sh:path :genomic_interpretation ;
+            sh:class :GenomicInterpretation ;
+            sh:name "genomic_interpretation" ;
             sh:description "The genomic elements assessed as being responsible for the disease or empty." ;
         ] ;
     sh:comment "The disease that is inferred to be present in the individual or family being analyzed." ;

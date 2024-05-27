@@ -1,8 +1,10 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sio: <http://semanticscience.org/resource/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix sio: <http://semanticscience.org/resource/> .
 @prefix : <https://phenopackets.org> .
 
 :MedicalActionShape
@@ -31,7 +33,7 @@
             sh:description "One of a list of medical actions." ;
         ],
         [
-            sh:path :treatment_target ;
+            sh:path obo:NCIT_C25702 ;
             sh:class :OntologyClass ;
             sh:name "treatment_target" ;
             sh:minCount 0 ;
@@ -39,7 +41,7 @@
             sh:description "The condition or disease that this treatment was intended to address." ;
         ],
         [
-            sh:path :treatment_intent ;
+            sh:path obo:NCIT_C25725 ;
             sh:class :OntologyClass ;
             sh:name "treatment_intent" ;
             sh:minCount 0 ;
@@ -47,7 +49,7 @@
             sh:description "Whether the intention of the treatment was curative, palliative..." ;
         ],
         [
-            sh:path :response_to_treatment ;
+            sh:path obo:NCIT_C25755 ;
             sh:class :OntologyClass ;
             sh:name "response_to_treatment" ;
             sh:minCount 0 ;
@@ -55,9 +57,9 @@
             sh:description "How the patient responded to the treatment." ;
         ],
         [
-            sh:path :adverse_events ;
+            sh:path obo:NCIT_C41331 ;
             sh:class :OntologyClass ;
-            sh:name "adverse_events" ;
+            sh:name "adverse_event" ;
             sh:description "Any adverse effects experienced by the patient attributed to the treatment." ;
         ],
         [
