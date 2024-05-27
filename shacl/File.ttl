@@ -3,6 +3,8 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix sio: <http://semanticscience.org/resource/> .
 @prefix : <https://phenopackets.org> .
 
 # TODO: https://phenopacket-schema.readthedocs.io/en/latest/file.html#rstfile

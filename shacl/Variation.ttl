@@ -7,7 +7,6 @@
 @prefix sio: <http://semanticscience.org/resource/> .
 @prefix : <https://phenopackets.org> .
 
-
 :VariationShape
     a sh:NodeShape ;
     sh:targetClass :Variation ;
