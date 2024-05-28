@@ -49,3 +49,13 @@ In the next visualizations, the RDF shapes are depicted for each block in the ph
 The visualization of the RDF shapes for each block of the GA4GH VRS is shown below.
 
 ![Variationschema](https://github.com/rosazwart/phenopackets-v2-rdf-schema/blob/main/model/Phenopacket_V2_Variation.jpg)
+
+# RDF Example
+
+For an impression of how an RDF dataset is compiled that adapts the GA4GH Phenopacket data model structure, an example has been provided in [this directory](https://github.com/rosazwart/phenopackets-v2-rdf-schema/tree/main/example-rdf). The RDF data is represented in Terse RDF Triple Language (TTL, turtle) and follows the minimum data requirements of a phenopacket.
+
+The RDF dataset is also visualized in a graph shown [here](https://github.com/rosazwart/phenopackets-v2-rdf-schema/blob/main/example-rdf/phenopacketExampleGraph.png). The image has been generated using the [web service](https://www.ldf.fi/service/rdf-grapher) provided by Linked Data Finland enabling parsing of RDF data to a graph visualization.
+
+# RDF Validation
+
+To validate that an RDF dataset complies to the GA4GH Phenopacket data model such as the [given phenopacket example](https://github.com/rosazwart/phenopackets-v2-rdf-schema/blob/main/example-rdf/phenopacketExample.ttl), a script is provided that can be found in [this directory](https://github.com/rosazwart/phenopackets-v2-rdf-schema/blob/main/validator/main.py). Functionalities are taken from the open source Python library [RDFLib](https://rdflib.readthedocs.io/en/stable/index.html) and the additional module [pySHACL](https://github.com/RDFLib/pySHACL).
