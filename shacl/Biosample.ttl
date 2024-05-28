@@ -5,11 +5,11 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix sio: <http://semanticscience.org/resource/> .
-@prefix : <https://phenopackets.org/> .
+@prefix phenop: <https://phenopackets.org/> .
 
-:BiosampleShape
+phenop:BiosampleShape
     a sh:NodeShape ;
-    sh:targetClass :Biosample ;
+    sh:targetClass phenop:Biosample ;
     sh:property
         [
             sh:path dcterms:identifier ;
@@ -20,7 +20,7 @@
             sh:description "Arbitrary identifier." ;
         ],
         [
-            sh:path :individual_id ;
+            sh:path phenop:individual_id ;
             sh:name "individual_id" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
@@ -28,7 +28,7 @@
             sh:description "Arbitrary identifier." ;
         ],
         [
-            sh:path :derived_from_id ;
+            sh:path phenop:derived_from_id ;
             sh:name "derived_from_id" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
@@ -45,7 +45,7 @@
         ],
         [
             sh:path obo:NCIT_C12801 ;
-            sh:class :OntologyClass ;
+            sh:class phenop:OntologyClass ;
             sh:name "tissue" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
@@ -53,27 +53,27 @@
         ],
         [
             sh:path obo:NCIT_C70713 ;
-            sh:class :OntologyClass ;
+            sh:class phenop:OntologyClass ;
             sh:name "sample_type" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
             sh:description "Type of material, e.g., RNA, DNA, Cultured cells." ;
         ],
         [
-            sh:path :phenotypic_feature ;
-            sh:class :PhenotypicFeature ;
+            sh:path phenop:phenotypic_feature ;
+            sh:class phenop:PhenotypicFeature ;
             sh:name "phenotypic_feature" ;
             sh:description "List of phenotypic abnormalities of the sample." ;
         ],
         [
             sh:path obo:NCIT_C25209 ;
-            sh:class :Measurement ;
+            sh:class phenop:Measurement ;
             sh:name "measurement" ;
             sh:description "List of measurements of the sample." ;
         ],
         [
             sh:path obo:NCIT_C17469 ;
-            sh:class :OntologyClass ;
+            sh:class phenop:OntologyClass ;
             sh:name "taxonomy" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
@@ -81,15 +81,15 @@
         ],
         [
             sh:path obo:NCIT_C81287 ;
-            sh:class :TimeElement ;
+            sh:class phenop:TimeElement ;
             sh:name "time_of_collection" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
             sh:description "Age of the proband at the time the sample was taken." ;
         ],
         [
-            sh:path :histological_diagnosis ;
-            sh:class :OntologyClass ;
+            sh:path phenop:histological_diagnosis ;
+            sh:class phenop:OntologyClass ;
             sh:name "histological_diagnosis" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
@@ -97,7 +97,7 @@
         ],
         [
             sh:path obo:NCIT_C17609 ;
-            sh:class :OntologyClass ;
+            sh:class phenop:OntologyClass ;
             sh:name "tumor_progression" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
@@ -105,35 +105,35 @@
         ],
         [
             sh:path obo:NCIT_C18000 ;
-            sh:class :OntologyClass ;
+            sh:class phenop:OntologyClass ;
             sh:name "tumor_grade" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
             sh:description "Term representing the tumor grade." ;
         ],
         [
-            sh:path :pathological_stage ;
-            sh:class :OntologyClass ;
+            sh:path phenop:pathological_stage ;
+            sh:class phenop:OntologyClass ;
             sh:name "pathological_stage" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
             sh:description "Pathological stage, if applicable." ;
         ],
         [
-            sh:path :pathological_tnm_finding ;
-            sh:class :OntologyClass ;
+            sh:path phenop:pathological_tnm_finding ;
+            sh:class phenop:OntologyClass ;
             sh:name "pathological_tnm_finding" ;
             sh:description "Pathological TNM findings, if applicable." ;
         ],
         [
             sh:path obo:NCIT_C19591 ;
-            sh:class :OntologyClass ;
+            sh:class phenop:OntologyClass ;
             sh:name "diagnostic_marker" ;
             sh:description "Clinically relevant biomarkers." ;
         ],
         [
             sh:path obo:NCIT_C79751 ;
-            sh:class :Procedure ;
+            sh:class phenop:Procedure ;
             sh:name "procedure" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
@@ -141,29 +141,29 @@
         ],
         [
             sh:path obo:NCIT_C42883 ;
-            sh:class :File ;
+            sh:class phenop:File ;
             sh:name "file" ;
             sh:description "List of files related to the biosample, e.g. VCF or other high-throughput sequencing files." ;
         ],
         [
-            sh:path :material_sample ;
-            sh:class :OntologyClass ;
+            sh:path phenop:material_sample ;
+            sh:class phenop:OntologyClass ;
             sh:name "material_sample" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
             sh:description "Status of specimen (tumor tissue, normal control, etc.)." ;
         ],
         [
-            sh:path :sample_processing ;
-            sh:class :OntologyClass ;
+            sh:path phenop:sample_processing ;
+            sh:class phenop:OntologyClass ;
             sh:name "sample_processing" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
             sh:description "How the specimen was processed." ;
         ],
         [
-            sh:path :sample_storage ;
-            sh:class :OntologyClass ;
+            sh:path phenop:sample_storage ;
+            sh:class phenop:OntologyClass ;
             sh:name "sample_storage" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;

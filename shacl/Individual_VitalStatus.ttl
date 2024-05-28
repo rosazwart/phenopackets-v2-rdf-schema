@@ -5,11 +5,11 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix sio: <http://semanticscience.org/resource/> .
-@prefix : <https://phenopackets.org/> .
+@prefix phenop: <https://phenopackets.org/> .
 
-:StatusShape
+phenop:StatusShape
     a sh:NodeShape ;
-    sh:targetClass :Status ;
+    sh:targetClass phenop:Status ;
     sh:property
         [
             sh:path sio:SIO_000300 ;
@@ -22,36 +22,36 @@
         ] ;
 .
 
-:VitalStatusShape
+phenop:VitalStatusShape
     a sh:NodeShape ;
-    sh:targetClass :VitalStatus ;
+    sh:targetClass phenop:VitalStatus ;
     sh:property
         [
             sh:path sio:SIO_001326 ;
-            sh:class :Status ;
+            sh:class phenop:Status ;
             sh:name "status_descriptor" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
             sh:description "One of UNKNOWN_STATUS, ALIVE, DECEASED." ;
         ],
         [
-            sh:path :time_of_death ;
-            sh:class :TimeElement ;
+            sh:path phenop:time_of_death ;
+            sh:class phenop:TimeElement ;
             sh:name "time_of_death" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
             sh:description "Should be left blank if patient not known to be deceased." ;
         ],
         [
-            sh:path :cause_of_death ;
-            sh:class :OntologyClass ;
+            sh:path phenop:cause_of_death ;
+            sh:class phenop:OntologyClass ;
             sh:name "cause_of_death" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
             sh:description "Should be left blank if patient not known to be deceased." ;
         ],
         [
-            sh:path :survival_time_in_days ;
+            sh:path phenop:survival_time_in_days ;
             sh:name "survival_time_in_days" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;

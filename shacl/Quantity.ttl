@@ -5,16 +5,16 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix sio: <http://semanticscience.org/resource/> .
-@prefix : <https://phenopackets.org/> .
+@prefix phenop: <https://phenopackets.org/> .
 
-:QuantityShape
+phenop:QuantityShape
     a sh:NodeShape ;
-    sh:targetClass :Quantity ;
+    sh:targetClass phenop:Quantity ;
     sh:property
         [
             sh:path sio:SIO_000074 ;
             sh:name "unit" ;
-            sh:class :OntologyClass ;
+            sh:class phenop:OntologyClass ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
             sh:description "The kind of unit." ;
@@ -28,8 +28,8 @@
             sh:description "The value of the quantity in the units." ;
         ],
         [
-            sh:path :reference_range ;
-            sh:class :ReferenceRange ;
+            sh:path phenop:reference_range ;
+            sh:class phenop:ReferenceRange ;
             sh:name "reference_range" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
@@ -38,13 +38,13 @@
     sh:comment "Denote quantities of items such as medications." ;
 .
 
-:TypedQuantityShape
+phenop:TypedQuantityShape
     a sh:NodeShape ;
-    sh:targetClass :TypedQuantity ;
+    sh:targetClass phenop:TypedQuantity ;
     sh:property
         [
             sh:path obo:NCIT_C25284 ;
-            sh:class :OntologyClass ;
+            sh:class phenop:OntologyClass ;
             sh:name "type" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
@@ -52,7 +52,7 @@
         ],
         [
             sh:path sio:SIO_000052 ;
-            sh:class :Quantity ;
+            sh:class phenop:Quantity ;
             sh:name "quantity" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;

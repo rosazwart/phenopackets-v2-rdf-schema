@@ -5,15 +5,15 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix sio: <http://semanticscience.org/resource/> .
-@prefix : <https://phenopackets.org/> .
+@prefix phenop: <https://phenopackets.org/> .
 
-:SequenceLocationShape
+phenop:SequenceLocationShape
     a sh:NodeShape ;
-    sh:targetClass :SequenceLocation ;
+    sh:targetClass phenop:SequenceLocation ;
     sh:property
         [
             sh:path dcterms:identifier ;
-            sh:class :CURIEIdentifier ;
+            sh:class phenop:CURIEIdentifier ;
             sh:name "identifier" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
@@ -21,7 +21,7 @@
         ],
         [
             sh:path obo:GENO_0000017 ;
-            sh:class :CURIEIdentifier ;
+            sh:class phenop:CURIEIdentifier ;
             sh:name "reference_sequence" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
@@ -29,7 +29,7 @@
         ],
         [
             sh:path obo:NCIT_C25543 ;
-            sh:class :SequenceInterval ;
+            sh:class phenop:SequenceInterval ;
             sh:name "interval" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
@@ -38,13 +38,13 @@
     sh:comment "A contiguous segment of a biological sequence." ;
 .
 
-:ChromosomeLocationShape
+phenop:ChromosomeLocationShape
     a sh:NodeShape ;
-    sh:targetClass :ChromosomeLocation ;
+    sh:targetClass phenop:ChromosomeLocation ;
     sh:property
         [
             sh:path dcterms:identifier ;
-            sh:class :CURIEIdentifier ;
+            sh:class phenop:CURIEIdentifier ;
             sh:name "identifier" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
@@ -52,14 +52,14 @@
         ],
         [
             sh:path obo:NCIT_C45293 ;
-            sh:class :CURIEIdentifier ;
+            sh:class phenop:CURIEIdentifier ;
             sh:name "species" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
             sh:description "CURIE representing a species from the NCBI species taxonomy. Default: “taxonomy:9606” (human)." ;
         ],
         [
-            sh:path :chr ;
+            sh:path phenop:chr ;
             sh:name "chr" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
@@ -68,7 +68,7 @@
         ],
         [
             sh:path obo:NCIT_C25543 ;
-            sh:class :CytobandInterval ;
+            sh:class phenop:CytobandInterval ;
             sh:name "interval" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;

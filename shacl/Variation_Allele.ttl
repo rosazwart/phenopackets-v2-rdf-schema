@@ -5,15 +5,15 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix sio: <http://semanticscience.org/resource/> .
-@prefix : <https://phenopackets.org/> .
+@prefix phenop: <https://phenopackets.org/> .
 
-:AlleleShape
+phenop:AlleleShape
     a sh:NodeShape ;
-    sh:targetClass :Allele ;
+    sh:targetClass phenop:Allele ;
     sh:property
         [
             sh:path dcterms:identifier ;
-            sh:class :CURIEIdentifier ;
+            sh:class phenop:CURIEIdentifier ;
             sh:name "identifier" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
@@ -23,10 +23,10 @@
             sh:path obo:NCIT_C25341 ;
             sh:or (
                 [
-                    sh:class :SequenceLocation ;
+                    sh:class phenop:SequenceLocation ;
                 ]
                 [
-                    sh:class :ChromosomeLocation ;
+                    sh:class phenop:ChromosomeLocation ;
                 ]
             ) ;
             sh:name "location" ;
@@ -38,13 +38,13 @@
             sh:path obo:NCIT_C25687 ;
             sh:or (
                 [
-                    sh:class :LiteralSequenceExpression ;
+                    sh:class phenop:LiteralSequenceExpression ;
                 ]
                 [
-                    sh:class :DerivedSequenceExpression ;
+                    sh:class phenop:DerivedSequenceExpression ;
                 ]
                 [
-                    sh:class :RepeatedSequenceExpression ;
+                    sh:class phenop:RepeatedSequenceExpression ;
                 ]
             ) ;
             sh:name "state" ;

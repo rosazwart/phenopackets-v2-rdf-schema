@@ -5,33 +5,33 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix sio: <http://semanticscience.org/resource/> .
-@prefix : <https://phenopackets.org/> .
+@prefix phenop: <https://phenopackets.org/> .
 
-:ComplexValueShape
+phenop:ComplexValueShape
     a sh:NodeShape ;
-    sh:targetClass :ComplexValue ;
+    sh:targetClass phenop:ComplexValue ;
     sh:property
         [
-            sh:path :typed_quantities ;
-            sh:class :TypedQuantity ;
+            sh:path phenop:typed_quantities ;
+            sh:class phenop:TypedQuantity ;
             sh:name "typed_quantities" ;
             sh:minCount 1 ;
             sh:description "List of quantities required to fully describe the complex value." ;
         ] ;
 .
 
-:ValueShape
+phenop:ValueShape
     a sh:NodeShape ;
-    sh:targetClass :Value ;
+    sh:targetClass phenop:Value ;
     sh:property
         [
             sh:path sio:SIO_000300 ;
             sh:or (
                 [
-                    sh:class :Quantity ;
+                    sh:class phenop:Quantity ;
                 ]
                 [
-                    sh:class :OntologyClass ;
+                    sh:class phenop:OntologyClass ;
                 ]
             ) ;
             sh:name "has_value" ;

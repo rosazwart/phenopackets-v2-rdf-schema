@@ -5,12 +5,12 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix sio: <http://semanticscience.org/resource/> .
-@prefix : <https://phenopackets.org/> .
+@prefix phenop: <https://phenopackets.org/> .
 
 # Phenopacket
 
 <http://example.org/phenopacket/1>
-    a :Phenopacket ;
+    a phenop:Phenopacket ;
     dcterms:identifier "example" ;
     obo:NCIT_C2991 <http://example.org/disease/1> ;
     obo:NCIT_C43412 <http://example.org/biosample/1> ;
@@ -20,7 +20,7 @@
 # Biosample
 
 <http://example.org/biosample/1>
-    a :Biosample ;
+    a phenop:Biosample ;
     dcterms:identifier "AML-193" ;
     obo:NCIT_C12801 <http://example.org/ontologyclass/2> ;
     obo:NCIT_C17469 <http://example.org/ontologyclass/3> ;
@@ -29,26 +29,26 @@
 # Disease
 
 <http://example.org/disease/1> 
-    a :Disease ;
+    a phenop:Disease ;
     obo:NCIT_C45559 <http://example.org/ontologyclass/1> ;
 .
 
 # Ontology class
 
 <http://example.org/ontologyclass/1> 
-    a :OntologyClass ;
+    a phenop:OntologyClass ;
     dcterms:identifier <http://example.org/curieidentifier/1> ;
     sio:SIO_000179 "childhood acute myeloid leukaemia" ;
 .
 
 <http://example.org/ontologyclass/2> 
-    a :OntologyClass ;
+    a phenop:OntologyClass ;
     dcterms:identifier <http://example.org/curieidentifier/2> ;
     sio:SIO_000179 "hemolymphoid system" ;
 .
 
 <http://example.org/ontologyclass/3> 
-    a :OntologyClass ;
+    a phenop:OntologyClass ;
     dcterms:identifier <http://example.org/curieidentifier/3> ;
     sio:SIO_000179 "Homo sapiens" ;
 .
@@ -56,58 +56,58 @@
 # CURIE identifier
 
 <http://example.org/curieidentifier/1> 
-    a :CURIEIdentifier ;
+    a phenop:CURIEIdentifier ;
     sio:SIO_000300 "EFO:0000330" ;  
 .
 
 <http://example.org/curieidentifier/2> 
-    a :CURIEIdentifier ;
+    a phenop:CURIEIdentifier ;
     sio:SIO_000300 "UBERON:0002193" ;  
 .
 
 <http://example.org/curieidentifier/3> 
-    a :CURIEIdentifier ;
+    a phenop:CURIEIdentifier ;
     sio:SIO_000300 "NCBITaxon:9606" ;  
 .
 
 # Metadata
 
 <http://example.org/metadata/1> 
-    a :MetaData ;
+    a phenop:MetaData ;
     dcterms:created "2024-05-04T09:00:00"^^xsd:dateTime ;
     dcterms:creator "LUMC" ;
-    :phenopacket_schema_version '2.0' ;
-    :resource <http://example.org/resource/1>, <http://example.org/resource/2>, <http://example.org/resource/3> ;
+    phenop:phenopacket_schema_version '2.0' ;
+    phenop:resource <http://example.org/resource/1>, <http://example.org/resource/2>, <http://example.org/resource/3> ;
 .
 
 # Resource
 
 <http://example.org/resource/1> 
-    a :Resource ;
+    a phenop:Resource ;
     dcterms:identifier "UBERON" ;
     sio:SIO_000116 "Uber-anatomy ontology" ;
-    :namespace_prefix "UBERON" ;
+   phenop:namespace_prefix "UBERON" ;
     sio:SIO_000811 "http://purl.obolibrary.org/obo/uberon.owl" ;
     dcterms:hasVersion "http://purl.obolibrary.org/obo/uberon/releases/2024-05-13/uberon.owl" ;
-    :iri_prefix "http://purl.obolibrary.org/obo/" ;
+   phenop:iri_prefix "http://purl.obolibrary.org/obo/" ;
 .
 
 <http://example.org/resource/2> 
-    a :Resource ;
+    a phenop:Resource ;
     dcterms:identifier "EFO" ;
     sio:SIO_000116 "Experimental Factor Ontology" ;
-    :namespace_prefix "EFO" ;
+    phenop:namespace_prefix "EFO" ;
     sio:SIO_000811 "http://www.ebi.ac.uk/efo/efo.owl" ;
     dcterms:hasVersion "http://www.ebi.ac.uk/efo/releases/v3.66.0/efo.owl" ;
-    :iri_prefix "http://www.ebi.ac.uk/efo/" ;
+    phenop:iri_prefix "http://www.ebi.ac.uk/efo/" ;
 .
 
 <http://example.org/resource/3> 
-    a :Resource ;
+    a phenop:Resource ;
     dcterms:identifier "NCBITAXON" ;
     sio:SIO_000116 "NCBI organismal classification" ;
-    :namespace_prefix "NCBITaxon" ;
+    phenop:namespace_prefix "NCBITaxon" ;
     sio:SIO_000811 "http://purl.obolibrary.org/obo/ncbitaxon.owl" ;
     dcterms:hasVersion "http://purl.obolibrary.org/obo/ncbitaxon/2024-05-08/ncbitaxon.owl" ;
-    :iri_prefix " http://purl.obolibrary.org/obo/" ;
+    phenop:iri_prefix " http://purl.obolibrary.org/obo/" ;
 .

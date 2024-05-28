@@ -5,11 +5,11 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix sio: <http://semanticscience.org/resource/> .
-@prefix : <https://phenopackets.org/> .
+@prefix phenop: <https://phenopackets.org/> .
 
-:MeasurementShape
+phenop:MeasurementShape
     a sh:NodeShape ;
-    sh:targetClass :Measurement ;
+    sh:targetClass phenop:Measurement ;
     sh:property
         [
             sh:path dcterms:description ;
@@ -21,7 +21,7 @@
         ],
         [
             sh:path sio:SIO_001007 ;
-            sh:class :OntologyClass ;
+            sh:class phenop:OntologyClass ;
             sh:name "assay" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
@@ -31,10 +31,10 @@
             sh:path sio:SIO_000070 ;
             sh:xone (
                 [
-                    sh:class :Value ;
+                    sh:class phenop:Value ;
                 ]
                 [
-                    sh:class :ComplexValue ;
+                    sh:class phenop:ComplexValue ;
                 ]
             ) ;
             sh:name "measurement_value" ;
@@ -43,8 +43,8 @@
             sh:description "The result of the measurement." ;
         ],
         [
-            sh:path :time_observed ;
-            sh:class :TimeElement ;
+            sh:path phenop:time_observed ;
+            sh:class phenop:TimeElement ;
             sh:name "time_observed" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
@@ -52,7 +52,7 @@
         ],
         [
             sh:path obo:NCIT_C79751 ;
-            sh:class :Procedure ;
+            sh:class phenop:Procedure ;
             sh:name "procedure" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;

@@ -5,15 +5,15 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix sio: <http://semanticscience.org/resource/> .
-@prefix : <https://phenopackets.org/> .
+@prefix phenop: <https://phenopackets.org/> .
 
-:EvidenceShape
+phenop:EvidenceShape
     a sh:NodeShape ;
-    sh:targetClass :Evidence ;
+    sh:targetClass phenop:Evidence ;
     sh:property
         [
             sh:path obo:ECO_0000000 ;
-            sh:class :OntologyClass ;
+            sh:class phenop:OntologyClass ;
             sh:name "evidence_code" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
@@ -22,7 +22,7 @@
         ],
         [
             sh:path dcterms:isReferencedBy ;
-            sh:class :ExternalReference ;
+            sh:class phenop:ExternalReference ;
             sh:name "reference" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;

@@ -5,11 +5,11 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix sio: <http://semanticscience.org/resource/> .
-@prefix : <https://phenopackets.org/> .
+@prefix phenop: <https://phenopackets.org/> .
 
-:InterpretationShape
+phenop:InterpretationShape
     a sh:NodeShape ;
-    sh:targetClass :Interpretation ;
+    sh:targetClass phenop:Interpretation ;
     sh:property
         [
             sh:path dcterms:identifier ;
@@ -20,8 +20,8 @@
             sh:description "Arbitrary identifier." ;
         ],
         [
-            sh:path :progress_status ;
-            sh:class :ProgressStatus ;
+            sh:path phenop:progress_status ;
+            sh:class phenop:ProgressStatus ;
             sh:name "progress_status" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
@@ -29,7 +29,7 @@
         ],
         [
             sh:path obo:NCIT_C15220 ;
-            sh:class :Diagnosis ;
+            sh:class phenop:Diagnosis ;
             sh:name "diagnosis" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;

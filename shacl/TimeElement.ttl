@@ -5,11 +5,11 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix sio: <http://semanticscience.org/resource/> .
-@prefix : <https://phenopackets.org/> .
+@prefix phenop: <https://phenopackets.org/> .
 
-:GestationalAgeShape
+phenop:GestationalAgeShape
     a sh:NodeShape ;
-    sh:targetClass :GestationalAge ;
+    sh:targetClass phenop:GestationalAge ;
     sh:property
         [
             sh:path sio:SIO_001354 ;
@@ -29,12 +29,12 @@
         ] ;
 .
 
-:AgeShape
+phenop:AgeShape
     a sh:NodeShape ;
-    sh:targetClass :Age ;
+    sh:targetClass phenop:Age ;
     sh:property
         [
-            sh:path :iso8601duration ;
+            sh:path phenop:iso8601duration ;
             sh:name "iso8601duration" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
@@ -43,13 +43,13 @@
         ] ;
 .
 
-:AgeRangeShape
+phenop:AgeRangeShape
     a sh:NodeShape ;
-    sh:targetClass :AgeRange ;
+    sh:targetClass phenop:AgeRange ;
     sh:property
         [
             sh:path sio:SIO_000509 ;
-            sh:class :Age ;
+            sh:class phenop:Age ;
             sh:name "start_point" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
@@ -57,7 +57,7 @@
         ],
         [
             sh:path sio:SIO_000508 ;
-            sh:class :Age ;
+            sh:class phenop:Age ;
             sh:name "end_point" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
@@ -65,12 +65,12 @@
         ] ;
 .
 
-:TimestampShape
+phenop:TimestampShape
     a sh:NodeShape ;
-    sh:targetClass :Timestamp ;
+    sh:targetClass phenop:Timestamp ;
     sh:property
         [
-            sh:path :iso8601datetime ;
+            sh:path phenop:iso8601datetime ;
             sh:name "iso8601datetime" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
@@ -79,13 +79,13 @@
         ] ;
 .
 
-:TimeIntervalShape
+phenop:TimeIntervalShape
     a sh:NodeShape ;
-    sh:targetClass :TimeInterval ;
+    sh:targetClass phenop:TimeInterval ;
     sh:property
         [
             sh:path sio:SIO_000669 ;
-            sh:class :Timestamp ;
+            sh:class phenop:Timestamp ;
             sh:name "start_time" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
@@ -93,7 +93,7 @@
         ],
         [
             sh:path sio:SIO_000670 ;
-            sh:class :Timestamp ;
+            sh:class phenop:Timestamp ;
             sh:name "end_time" ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
@@ -101,15 +101,15 @@
         ] ;
 .
 
-:TimeElementShape
+phenop:TimeElementShape
     a sh:NodeShape ;
-    sh:targetClass :TimeElement ;
+    sh:targetClass phenop:TimeElement ;
     sh:xone (
         [
             sh:property
                 [
                     sh:path obo:NCIT_C81253 ;
-                    sh:class :GestationalAge ;
+                    sh:class phenop:GestationalAge ;
                     sh:name "gestational_age" ;
                     sh:minCount 1 ;
                     sh:maxCount 1 ;
@@ -120,7 +120,7 @@
             sh:property
                 [
                     sh:path sio:SIO_001013 ;
-                    sh:class :Age ;
+                    sh:class phenop:Age ;
                     sh:name "age" ;
                     sh:minCount 1 ;
                     sh:maxCount 1 ;
@@ -130,8 +130,8 @@
         [
             sh:property
                 [
-                    sh:path :age_range ;
-                    sh:class :AgeRange ;
+                    sh:path phenop:age_range ;
+                    sh:class phenop:AgeRange ;
                     sh:name "age_range" ;
                     sh:minCount 1 ;
                     sh:maxCount 1 ;
@@ -141,8 +141,8 @@
         [
             sh:property
                 [
-                    sh:path :ontology_class ;
-                    sh:class :OntologyClass ;
+                    sh:path phenop:ontology_class ;
+                    sh:class phenop:OntologyClass ;
                     sh:name "ontology_class" ;
                     sh:minCount 1 ;
                     sh:maxCount 1 ;
@@ -153,7 +153,7 @@
             sh:property
                 [
                     sh:path obo:NCIT_C72669 ;
-                    sh:class :Timestamp ;
+                    sh:class phenop:Timestamp ;
                     sh:name "timestamp" ;
                     sh:minCount 1 ;
                     sh:maxCount 1 ;
@@ -164,7 +164,7 @@
             sh:property
                 [
                     sh:path sio:SIO_000417 ;
-                    sh:class :TimeInterval ;
+                    sh:class phenop:TimeInterval ;
                     sh:name "time_interval" ;
                     sh:minCount 1 ;
                     sh:maxCount 1 ;

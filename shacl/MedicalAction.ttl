@@ -5,26 +5,26 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix sio: <http://semanticscience.org/resource/> .
-@prefix : <https://phenopackets.org/> .
+@prefix phenop: <https://phenopackets.org/> .
 
-:MedicalActionShape
+phenop:MedicalActionShape
     a sh:NodeShape ;
-    sh:targetClass :MedicalAction ;
+    sh:targetClass phenop:MedicalAction ;
     sh:property
         [
             sh:path sio:SIO_000091 ;
             sh:or (
                 [
-                    sh:class :Procedure ;
+                    sh:class phenop:Procedure ;
                 ]
                 [
-                    sh:class :Treatment ;
+                    sh:class phenop:Treatment ;
                 ]
                 [
-                    sh:class :RadiationTherapy ; 
+                    sh:class phenop:RadiationTherapy ; 
                 ]
                 [
-                    sh:class :TherapeuticRegimen ;
+                    sh:class phenop:TherapeuticRegimen ;
                 ]
             ) ;
             sh:name "action_specification" ;
@@ -34,7 +34,7 @@
         ],
         [
             sh:path obo:NCIT_C25702 ;
-            sh:class :OntologyClass ;
+            sh:class phenop:OntologyClass ;
             sh:name "treatment_target" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
@@ -42,7 +42,7 @@
         ],
         [
             sh:path obo:NCIT_C25725 ;
-            sh:class :OntologyClass ;
+            sh:class phenop:OntologyClass ;
             sh:name "treatment_intent" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
@@ -50,7 +50,7 @@
         ],
         [
             sh:path obo:NCIT_C25755 ;
-            sh:class :OntologyClass ;
+            sh:class phenop:OntologyClass ;
             sh:name "response_to_treatment" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
@@ -58,13 +58,13 @@
         ],
         [
             sh:path obo:NCIT_C41331 ;
-            sh:class :OntologyClass ;
+            sh:class phenop:OntologyClass ;
             sh:name "adverse_event" ;
             sh:description "Any adverse effects experienced by the patient attributed to the treatment." ;
         ],
         [
-            sh:path :treatment_termination_reason ;
-            sh:class :OntologyClass ;
+            sh:path phenop:treatment_termination_reason ;
+            sh:class phenop:OntologyClass ;
             sh:name "treatment_termination_reason" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;

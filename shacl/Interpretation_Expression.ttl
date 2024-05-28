@@ -5,11 +5,11 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix sio: <http://semanticscience.org/resource/> .
-@prefix : <https://phenopackets.org/> .
+@prefix phenop: <https://phenopackets.org/> .
 
-:ExpressionShape
+phenop:ExpressionShape
     a sh:NodeShape ;
-    sh:targetClass :Expression ;
+    sh:targetClass phenop:Expression ;
     sh:property
         [
             sh:path obo:NCIT_C54277 ;

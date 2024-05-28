@@ -5,11 +5,11 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix sio: <http://semanticscience.org/resource/> .
-@prefix : <https://phenopackets.org/> .
+@prefix phenop: <https://phenopackets.org/> .
 
-:InterpretationStatusShape
+phenop:InterpretationStatusShape
     a sh:NodeShape ;
-    sh:targetClass :InterpretationStatus ;
+    sh:targetClass phenop:InterpretationStatus ;
     sh:property
         [
             sh:path sio:SIO_000300 ;

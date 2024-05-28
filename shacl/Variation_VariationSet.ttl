@@ -5,28 +5,28 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix sio: <http://semanticscience.org/resource/> .
-@prefix : <https://phenopackets.org/> .
+@prefix phenop: <https://phenopackets.org/> .
 
-:VariationSetShape
+phenop:VariationSetShape
     a sh:NodeShape ;
-    sh:targetClass :VariationSet ;
+    sh:targetClass phenop:VariationSet ;
     sh:property
         [
             sh:path dcterms:identifier ;
-            sh:class :CURIEIdentifier ;
+            sh:class phenop:CURIEIdentifier ;
             sh:name "identifier" ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
             sh:description "Variation Id." ;
         ],
         [
-            sh:path :member ;
+            sh:path phenop:member ;
             sh:or (
                 [
-                    sh:class :Variation ;
+                    sh:class phenop:Variation ;
                 ]
                 [
-                    sh:class :CURIEIdentifier ;
+                    sh:class phenop:CURIEIdentifier ;
                 ]
             ) ;
             sh:name "member" ;

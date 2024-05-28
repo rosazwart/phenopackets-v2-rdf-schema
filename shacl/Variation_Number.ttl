@@ -5,11 +5,11 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix sio: <http://semanticscience.org/resource/> .
-@prefix : <https://phenopackets.org/> .
+@prefix phenop: <https://phenopackets.org/> .
 
-:IntegerNumberShape
+phenop:IntegerNumberShape
     a sh:NodeShape ;
-    sh:targetClass :IntegerNumber ;
+    sh:targetClass phenop:IntegerNumber ;
     sh:property
         [
             sh:path sio:SIO_000300 ;
