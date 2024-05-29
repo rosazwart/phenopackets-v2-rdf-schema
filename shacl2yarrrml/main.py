@@ -32,13 +32,15 @@ def get_shape(obj: dict, g: rdflib.Graph, node_shape: rdflib.URIRef):
     
     if len(target_class_triples):
         target_class_node = target_class_triples[0][2]
-        _, _, target_class_name = g.namespace_manager.compute_qname(target_class_node)
+        target_class_prefix, _, target_class_name = g.namespace_manager.compute_qname(target_class_node)
        
         obj['mappings'][target_class_name] = {'sources': [{'access': 'FILE.json', 
                                                            'referenceFormulation': 'jsonpath', 
                                                            'iterator': '$.ENTITY[*]'}], 
                                               's': f':{target_class_name.lower()}_$(IDENTIFIER)', 
                                               'po': []}
+        
+        obj['mappings'][target_class_name]['po'].append(f'[a, {target_class_prefix}:{target_class_name}]')
         
         property_triples = find_triples(g=g,
                                         query_subject=node_shape,
@@ -132,4 +134,9 @@ if __name__ == "__main__":
 
     templ_obj = set_up_template(g=shacl_g)
     dump_to_yaml_file(data_obj=templ_obj)
+
+    # When multiple objects have the same value in their
+    # information that is equal to the identifier of
+    # subject, then it will have a cardinality of more
+    # than one. 
     
