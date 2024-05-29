@@ -2,7 +2,7 @@ import os
 import rdflib
 import yaml
 
-from shacl_interpreter import find_triples, is_class_object
+from shacl_interpreter import find_triples, get_class_object, get_all_nodeshapes
 import namespaces as ns
 
 def load_shacl_files(dir_name: str = 'shacl'):
@@ -34,51 +34,71 @@ def get_shape(obj: dict, g: rdflib.Graph, node_shape: rdflib.URIRef):
         target_class_node = target_class_triples[0][2]
         _, _, target_class_name = g.namespace_manager.compute_qname(target_class_node)
        
-        obj['mappings'][target_class_name] = {'sources': [{'access': '', 'referenceFormulation': '', 'iterator': ''}], 
-                                              's': [], 
+        obj['mappings'][target_class_name] = {'sources': [{'access': 'FILE.json', 
+                                                           'referenceFormulation': 'jsonpath', 
+                                                           'iterator': '$.ENTITY[*]'}], 
+                                              's': f':{target_class_name.lower()}_$(IDENTIFIER)', 
                                               'po': []}
+        
+        property_triples = find_triples(g=g,
+                                        query_subject=node_shape,
+                                        query_predicate=ns.SH.property)
+        
+        if len(property_triples):
+            for property_triple in property_triples:
+                s, p, o = property_triple
+
+                property_shape_triples = find_triples(g=g,
+                                                    query_subject=o)
+                
+                object_class = get_class_object(g, property_shape_triples)
+
+                property_obj = {
+                    'p': '',
+                    'o': {}
+                }
+
+                cardinality = ['0', '*']
+                property_name = ''
+
+                for property_shape_triple in property_shape_triples:
+                    s2, p2, o2 = property_shape_triple
+
+                    if p2 == rdflib.URIRef(ns.SH.path):
+                        prefix, _, local_name = g.namespace_manager.compute_qname(o2)
+                        property_obj['p'] = f'{prefix}:{local_name}'
+
+                    elif p2 == rdflib.URIRef(ns.SH.datatype):
+                        prefix, _, local_name = g.namespace_manager.compute_qname(o2)
+                        property_obj['o']['datatype'] = f'{prefix}:{local_name}'
+
+                    elif p2 == rdflib.URIRef(ns.SH.minCount):
+                        cardinality[0] = str(o2)
+
+                    elif p2 == rdflib.URIRef(ns.SH.maxCount):
+                        cardinality[1] = str(o2)
+                    
+                    elif p2 == rdflib.URIRef(ns.SH.name):
+                        property_name = o2.upper() 
+                        if object_class is None:
+                            property_obj['o']['value'] = f'$({property_name})'
+
+                if object_class is None:
+                    property_obj['o']['value'] += f'[{'..'.join(cardinality)}]'
+                else:
+                    property_obj['o']['mapping'] = f'{object_class} [{'..'.join(cardinality)}],{property_name}'
+                    property_obj['o']['condition'] = {}
+                    property_obj['o']['condition']['function'] = 'equal'
+                    property_obj['o']['condition']['parameters'] = [f'[str1, $({object_class} SUBJECT ID), s]',
+                                                                    f'[str2, $({object_class} OBJECT ID), o]']
+
+                obj['mappings'][target_class_name]['po'].append(property_obj)
+        
+        else:
+            obj['mappings'][target_class_name]['po'] = 'MULTIPLE OPTIONS FOR SETS OF PROPERTIES'    # TODO: Improve handler
+
     else:
         raise ValueError(f'Missing target class of shape {node_shape}')
-    
-    property_triples = find_triples(g=g,
-                                    query_subject=node_shape,
-                                    query_predicate=ns.SH.property)
-    
-    for property_triple in property_triples:
-        s, p, o = property_triple
-
-        property_obj = {
-            'p': '',
-            'o': {}
-        }
-
-        property_shape_triples = find_triples(g=g,
-                                              query_subject=o)
-        
-        is_class = is_class_object(property_shape_triples)
-
-        for property_shape_triple in property_shape_triples:
-            print(property_shape_triple)
-
-            
-
-    
-    '''
-
-    for s, p, o in g.triples((node_shape, SH.property, None)):
-
-
-        if g.triples((o, rdflib.URIRef('http://www.w3.org/ns/shacl#class'), None)):
-            print(o)
-
-        for s1, p1, o1 in g.triples((o, None, None)):
-            print(s1, p1, o1)
-
-            #if p1 == rdflib.URIRef(SH.path):
-            #    print(s1, p1, o1)
-
-
-    '''
 
     return obj
 
@@ -98,8 +118,10 @@ def set_up_template(g: rdflib.Graph):
         if prefix in ns.used_prefixes:
             obj['prefixes'][prefix] = str(namespace)
 
-
-    obj = get_shape(obj=obj, g=g, node_shape=rdflib.URIRef(ns.PHENOP.PhenopacketShape))
+    nodeshape_triples = get_all_nodeshapes(g)
+    for nodeshape_triple in nodeshape_triples:
+        s, p, o = nodeshape_triple
+        obj = get_shape(obj=obj, g=g, node_shape=s)
 
     return obj
 

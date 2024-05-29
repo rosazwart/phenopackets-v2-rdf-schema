@@ -9,15 +9,19 @@ def find_triples(g: rdflib.Graph, query_subject = None, query_predicate = None, 
 
     return triple_list
 
-def is_class_object(triples):
-    is_class = False
+def get_class_object(g: rdflib.Graph, triples):
+    object_class_name = None
 
     for triple in triples:
-        predicate = triple[1]
-        if predicate == rdflib.URIRef('http://www.w3.org/ns/shacl#class'):
-            is_class = True
+        s, p, o = triple
+        if p == rdflib.URIRef('http://www.w3.org/ns/shacl#class'):
+            _, _, object_class_name = g.namespace_manager.compute_qname(o)
 
-    return is_class
+        if p == rdflib.URIRef('http://www.w3.org/ns/shacl#or'):
+            object_class_name = 'MULTIPLE OPTIONS FOR MAPPED CLASS' # TODO: Improve handler
+        
+
+    return object_class_name
 
 def get_all_nodeshapes(g: rdflib.Graph):
     return find_triples(g=g,

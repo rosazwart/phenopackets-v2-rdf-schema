@@ -1,0 +1,74 @@
+prefixes:
+  dcterms: http://purl.org/dc/terms/
+  sh: http://www.w3.org/ns/shacl#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  obo: http://purl.obolibrary.org/obo/
+  sio: http://semanticscience.org/resource/
+  phenop: https://phenopackets.org/
+mappings:
+  Phenopacket:
+    sources:
+    - access: 'data.json'
+      referenceFormulation: jsonpath
+      iterator: '$.hamlet_runs[*].metadata'
+    s: phenop:example_$(sample_name)
+    po:
+    - p: dcterms:identifier
+      o:
+        value: $(sample_name)
+        datatype: xsd:string
+    - p: obo:NCIT_C43412
+      o: 
+        mapping: Biosample
+        condition:
+          function: equal
+          parameters: 
+            - [str1, $(sample_name), s]
+            - [str2, $(Run), o]
+  Biosample:
+    sources:
+    - access: 'data.json'
+      referenceFormulation: jsonpath
+      iterator: '$.experiment_designs[*]'
+    s: phenop:biosample_$(Run)
+    po:
+    - p: dcterms:identifier
+      o:
+        value: $(Run)
+        datatype: xsd:string
+  OntologyClass:
+    sources:
+    - access: 'data.json'
+      referenceFormulation: jsonpath
+      iterator: '$.ontology_classes[*]'
+    s: phenop:ontologyclass_$(identifier)
+    po:
+    - p: dcterms:identifier
+      o: 
+        mapping: CURIEIdentifier
+        condition:
+          function: equal
+          parameters: 
+            - [str1, $(identifier), s]
+            - [str2, $(identifier), o]
+    - p: sio:SIO_000179
+      o: 
+        value: $(label)
+        datatype: xsd:string
+  CURIEIdentifier:
+    sources:
+    - access: 'data.json'
+      referenceFormulation: jsonpath
+      iterator: '$.curie_identifiers[*]'
+    s: phenop:curieidentifier_$(identifier)
+    po:
+    - p: sio:SIO_000300
+      o:
+        value: $(identifier)
+        datatype: xsd:string
+    
+        
+        
+        
