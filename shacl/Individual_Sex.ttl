@@ -17,7 +17,7 @@ phenop:SexShape
             sh:minCount 1 ;
             sh:maxCount 1 ;
             sh:datatype xsd:string;
-            sh:in (obo:NCIT_C17998 obo:NCIT_C46113 obo:NCIT_C46112 obo:NCIT_C45908) ;
+            sh:in (obo:NCIT_C17998 obo:NCIT_C205473 obo:NCIT_C205474 obo:NCIT_C45908) ;
             sh:description "An enumeration used to represent the sex of an individual." ;
         ] ;
 .
