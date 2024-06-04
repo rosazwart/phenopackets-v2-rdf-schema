@@ -61,14 +61,23 @@ class Template:
 
         if object_class is None:
             property_map['o']['value'] = f'$({property_dict['name'].upper()} FIELD)'
-            property_map['o'].yaml_add_eol_comment(comment=f'[{property_dict["minCount"]}, {property_dict["maxCount"]}]', key='value')
+
+            mapping_comment = f'[{property_dict["minCount"]}, {property_dict["maxCount"]}]'
+
+            property_map['o'].yaml_add_eol_comment(comment=mapping_comment, key='value')
             
             if property_dict['datatype']:
                 property_map['o']['datatype'] = property_dict['datatype']
 
         else:
-            property_map['o']['mapping'] = object_class
-            property_map['o'].yaml_add_eol_comment(comment=f'[{property_dict["minCount"]}, {property_dict["maxCount"]}]', key='mapping')
+            choice_comment = ''
+            if '|' in object_class:
+                choice_comment = f'CHOOSE ONE {object_class}'
+                property_map['o']['mapping'] = ''
+            else:
+                property_map['o']['mapping'] = object_class
+
+            property_map['o'].yaml_add_eol_comment(comment=f'{choice_comment} [{property_dict["minCount"]}, {property_dict["maxCount"]}]', key='mapping')
 
             property_map['o']['condition'] = CommentedMap()
             property_map['o']['condition']['function'] = 'equal'
