@@ -46,7 +46,7 @@ class Template:
         else:
             raise ValueError(f'Missing target class of shape {node_shape}')
         
-    def add_property(self, property_node: rdflib.URIRef, po_map: CommentedSeq):
+    def add_property(self, property_node: rdflib.URIRef, po_map: CommentedSeq, additional_path_comment = ''):
         property_shape_triples = shacl_interpreter.find_triples(g=self.shacl_g, query_subject=property_node)
 
         property_map = CommentedMap()
@@ -57,7 +57,7 @@ class Template:
         property_dict = shacl_interpreter.get_property_dict(g=self.shacl_g, property_triples=property_shape_triples)
 
         property_map['p'] = property_dict['path']
-        property_map.yaml_add_eol_comment(comment=f'{property_dict['name']}', key='p')
+        property_map.yaml_add_eol_comment(comment=f'{property_dict['name']}{additional_path_comment}', key='p')
 
         if object_class is None:
             property_map['o']['value'] = f'$({property_dict['name'].upper()} FIELD)'
@@ -87,6 +87,9 @@ class Template:
         
         po_map.append(property_map)
 
+    def add_or_property(self, property_node: rdflib.URIRef, po_map: CommentedSeq):
+        print(property_node)
+
     def add_properties(self, node_shape: rdflib.URIRef, po_map: CommentedSeq):
         property_triples = shacl_interpreter.get_properties(g=self.shacl_g, node_shape=node_shape)
 
@@ -96,8 +99,11 @@ class Template:
                 self.add_property(property_node=o, po_map=po_map)
 
         else:
-            po_map.append('')   # TODO:
-            po_map.yaml_add_eol_comment('Multiple options for sets of predicate-objects', len(po_map) - 1)
+            triples = shacl_interpreter.find_triples(g=self.shacl_g, query_subject=node_shape)
+            propery_nodes = shacl_interpreter.get_xone_properties(g=self.shacl_g, triples=triples)
+
+            for property_node in propery_nodes:
+                self.add_property(property_node=property_node, po_map=po_map, additional_path_comment=' (XONE PROPERTY, CHOOSE ONE OF ALL XONE PROPERTIES)')
     
     def add_nodeshape(self, node_shape: rdflib.URIRef):
         target_class_prefix, target_class_name = self.get_target_class(node_shape=node_shape)

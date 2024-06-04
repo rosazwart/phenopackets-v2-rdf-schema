@@ -86,6 +86,46 @@ def get_object_class(g: rdflib.Graph, triples: list):
         
     return object_class_name
 
+def get_xone_property(g: rdflib.Graph, xone_node: rdflib.URIRef):
+    triples = find_triples(g=g, query_subject=xone_node)
+
+    xone_has_ended = False
+    xone_rest_node = None
+    xone_first_node = None
+
+    for triple in triples:
+        s, p, o = triple
+
+        if p == rdflib.URIRef(namespace_provider.RDF.first):
+            xone_first_node = o
+        
+        if p == rdflib.URIRef(namespace_provider.RDF.rest):
+            if o == rdflib.URIRef(namespace_provider.RDF.nil):
+                xone_has_ended = True
+            else:
+                xone_rest_node = o
+
+    if xone_has_ended:
+        property_nodes = []
+    else:
+        property_nodes = get_xone_property(g=g, xone_node=xone_rest_node)
+    
+    first_node_triples = find_triples(g=g, query_subject=xone_first_node)
+    if len(first_node_triples):
+        property_nodes.append(first_node_triples[0][2])
+
+    return property_nodes
+
+def get_xone_properties(g: rdflib.Graph, triples: list):
+    properties = []
+    for triple in triples:
+        s, p, o = triple
+
+        if p == rdflib.URIRef('http://www.w3.org/ns/shacl#xone'):
+            properties = get_xone_property(g=g, xone_node=o)
+            
+    return properties
+
 def get_properties(g: rdflib.Graph, node_shape: rdflib.URIRef):
     return find_triples(g=g,
                         query_subject=node_shape,

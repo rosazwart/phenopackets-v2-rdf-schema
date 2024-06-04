@@ -1591,7 +1591,54 @@ mappings:
     po:
       - p: rdf:type
         o: phenop:TimeElement
-      - ''  # Multiple options for sets of predicate-objects
+      - p: sio:SIO_000417  # time_interval (XONE PROPERTY, CHOOSE ONE OF ALL XONE PROPERTIES)
+        o:
+          mapping: TimeInterval  #  [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C72669  # timestamp (XONE PROPERTY, CHOOSE ONE OF ALL XONE PROPERTIES)
+        o:
+          mapping: Timestamp  #  [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: phenop:ontology_class  # ontology_class (XONE PROPERTY, CHOOSE ONE OF ALL XONE PROPERTIES)
+        o:
+          mapping: OntologyClass  #  [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: phenop:age_range  # age_range (XONE PROPERTY, CHOOSE ONE OF ALL XONE PROPERTIES)
+        o:
+          mapping: AgeRange  #  [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: sio:SIO_001013  # age (XONE PROPERTY, CHOOSE ONE OF ALL XONE PROPERTIES)
+        o:
+          mapping: Age  #  [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C81253  # gestational_age (XONE PROPERTY, CHOOSE ONE OF ALL XONE PROPERTIES)
+        o:
+          mapping: GestationalAge  #  [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
   Treatment:
     sources:
       - access: FILENAME.json
