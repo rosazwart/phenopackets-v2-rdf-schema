@@ -1,0 +1,1990 @@
+prefixes:
+  dcterms: http://purl.org/dc/terms/
+  sh: http://www.w3.org/ns/shacl#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  obo: http://purl.obolibrary.org/obo/
+  sio: http://semanticscience.org/resource/
+  phenop: https://phenopackets.org/
+mappings:
+  Biosample:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:biosample_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:Biosample
+      - p: dcterms:identifier  # identifier
+        o:
+          value: $(IDENTIFIER FIELD)  # [1, 1]
+          datatype: xsd:string
+      - p: phenop:individual_id  # individual_id
+        o:
+          value: $(INDIVIDUAL_ID FIELD)  # [0, 1]
+          datatype: xsd:string
+      - p: phenop:derived_from_id  # derived_from_id
+        o:
+          value: $(DERIVED_FROM_ID FIELD)  # [0, 1]
+          datatype: xsd:string
+      - p: dcterms:description  # description
+        o:
+          value: $(DESCRIPTION FIELD)  # [0, 1]
+          datatype: xsd:string
+      - p: obo:NCIT_C12801  # tissue
+        o:
+          mapping: OntologyClass  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C70713  # sample_type
+        o:
+          mapping: OntologyClass  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: phenop:phenotypic_feature  # phenotypic_feature
+        o:
+          mapping: PhenotypicFeature  # [0, *]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C25209  # measurement
+        o:
+          mapping: Measurement  # [0, *]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C17469  # taxonomy
+        o:
+          mapping: OntologyClass  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C81287  # time_of_collection
+        o:
+          mapping: TimeElement  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: phenop:histological_diagnosis  # histological_diagnosis
+        o:
+          mapping: OntologyClass  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C17609  # tumor_progression
+        o:
+          mapping: OntologyClass  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C18000  # tumor_grade
+        o:
+          mapping: OntologyClass  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: phenop:pathological_stage  # pathological_stage
+        o:
+          mapping: OntologyClass  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: phenop:pathological_tnm_finding  # pathological_tnm_finding
+        o:
+          mapping: OntologyClass  # [0, *]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C19591  # diagnostic_marker
+        o:
+          mapping: OntologyClass  # [0, *]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C79751  # procedure
+        o:
+          mapping: Procedure  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C42883  # file
+        o:
+          mapping: File  # [0, *]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: phenop:material_sample  # material_sample
+        o:
+          mapping: OntologyClass  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: phenop:sample_processing  # sample_processing
+        o:
+          mapping: OntologyClass  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: phenop:sample_storage  # sample_storage
+        o:
+          mapping: OntologyClass  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+  CURIEIdentifier:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:curieidentifier_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:CURIEIdentifier
+      - p: sio:SIO_000300  # has_value
+        o:
+          value: $(HAS_VALUE FIELD)  # [1, 1]
+          datatype: xsd:string
+  Disease:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:disease_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:Disease
+      - p: obo:NCIT_C45559  # term
+        o:
+          mapping: OntologyClass  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C82931  # excluded
+        o:
+          value: $(EXCLUDED FIELD)  # [0, 1]
+          datatype: xsd:boolean
+      - p: obo:HP_0003674  # onset
+        o:
+          mapping: TimeElement  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C25655  # resolution
+        o:
+          mapping: TimeElement  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C28108  # disease_stage
+        o:
+          mapping: OntologyClass  # [0, *]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: phenop:clinical_tnm_finding  # clinical_tnm_finding
+        o:
+          mapping: OntologyClass  # [0, *]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C158874  # primary_site
+        o:
+          mapping: OntologyClass  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C25185  # laterality
+        o:
+          mapping: OntologyClass  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+  DoseInterval:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:doseinterval_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:DoseInterval
+      - p: sio:SIO_000052  # quantity
+        o:
+          mapping: Quantity  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C64493  # schedule_frequency
+        o:
+          mapping: OntologyClass  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C25543  # interval
+        o:
+          mapping: TimeInterval  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+  DrugType:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:drugtype_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:DrugType
+      - p: sio:SIO_000300  # has_value
+        o:
+          value: $(HAS_VALUE FIELD)  # [1, 1]
+          datatype: xsd:string
+  Evidence:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:evidence_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:Evidence
+      - p: obo:ECO_0000000  # evidence_code
+        o:
+          mapping: OntologyClass  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: dcterms:isReferencedBy  # reference
+        o:
+          mapping: ExternalReference  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+  Extension:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:extension_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:Extension
+      - p: sio:SIO_000116  # name
+        o:
+          value: $(NAME FIELD)  # [1, 1]
+          datatype: xsd:string
+      - p: sio:SIO_000300  # has_value
+        o:
+          value: $(HAS_VALUE FIELD)  # [1, 1]
+          datatype: xsd:string
+  ExternalReference:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:externalreference_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:ExternalReference
+      - p: dcterms:identifier  # identifier
+        o:
+          value: $(IDENTIFIER FIELD)  # [0, 1]
+          datatype: xsd:string
+      - p: sio:SIO_000176  # reference
+        o:
+          value: $(REFERENCE FIELD)  # [0, 1]
+          datatype: xsd:string
+      - p: dcterms:description  # description
+        o:
+          value: $(DESCRIPTION FIELD)  # [0, 1]
+          datatype: xsd:string
+  File:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:file_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:File
+      - p: dcterms:source  # uri_source
+        o:
+          value: $(URI_SOURCE FIELD)  # [1, 1]
+          datatype: xsd:string
+  Individual:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:individual_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:Individual
+      - p: dcterms:identifier  # identifier
+        o:
+          value: $(IDENTIFIER FIELD)  # [1, 1]
+          datatype: xsd:string
+      - p: obo:NCIT_C90353  # alternate_identifier
+        o:
+          mapping: CURIEIdentifier  # [0, *]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C94173  # date_of_birth
+        o:
+          mapping: Timestamp  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: phenop:time_at_last_encounter  # time_at_last_encounter
+        o:
+          mapping: TimeElement  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C25717  # vital_status
+        o:
+          mapping: VitalStatus  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C28421  # sex
+        o:
+          mapping: Sex  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:GSSO_000113  # karyotypic_sex
+        o:
+          mapping: KaryotypicSex  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C17357  # gender
+        o:
+          mapping: OntologyClass  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C17469  # taxonomy
+        o:
+          mapping: OntologyClass  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+  KaryotypicSex:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:karyotypicsex_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:KaryotypicSex
+      - p: sio:SIO_000300  # has_value
+        o:
+          value: $(HAS_VALUE FIELD)  # [1, 1]
+          datatype: xsd:string
+  Sex:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:sex_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:Sex
+      - p: sio:SIO_000300  # has_value
+        o:
+          value: $(HAS_VALUE FIELD)  # [1, 1]
+          datatype: xsd:string
+  Status:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:status_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:Status
+      - p: sio:SIO_000300  # has_value
+        o:
+          value: $(HAS_VALUE FIELD)  # [1, 1]
+          datatype: xsd:string
+  VitalStatus:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:vitalstatus_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:VitalStatus
+      - p: sio:SIO_001326  # status_descriptor
+        o:
+          mapping: Status  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: phenop:time_of_death  # time_of_death
+        o:
+          mapping: TimeElement  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: phenop:cause_of_death  # cause_of_death
+        o:
+          mapping: OntologyClass  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: phenop:survival_time_in_days  # survival_time_in_days
+        o:
+          value: $(SURVIVAL_TIME_IN_DAYS FIELD)  # [0, 1]
+          datatype: xsd:integer
+  Interpretation:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:interpretation_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:Interpretation
+      - p: dcterms:identifier  # identifier
+        o:
+          value: $(IDENTIFIER FIELD)  # [1, 1]
+          datatype: xsd:string
+      - p: phenop:progress_status  # progress_status
+        o:
+          mapping: ProgressStatus  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C15220  # diagnosis
+        o:
+          mapping: Diagnosis  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C42581  # summary
+        o:
+          value: $(SUMMARY FIELD)  # [0, 1]
+          datatype: xsd:string
+  AcmgPathogenicityClassification:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:acmgpathogenicityclassification_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:AcmgPathogenicityClassification
+      - p: sio:SIO_000300  # has_value
+        o:
+          value: $(HAS_VALUE FIELD)  # [1, 1]
+          datatype: xsd:string
+  Diagnosis:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:diagnosis_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:Diagnosis
+      - p: obo:MONDO_0000001  # disease
+        o:
+          mapping: OntologyClass  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: phenop:genomic_interpretation  # genomic_interpretation
+        o:
+          mapping: GenomicInterpretation  # [0, *]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+  Expression:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:expression_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:Expression
+      - p: obo:NCIT_C54277  # syntax
+        o:
+          value: $(SYNTAX FIELD)  # [1, 1]
+          datatype: xsd:string
+      - p: sio:SIO_000300  # has_value
+        o:
+          value: $(HAS_VALUE FIELD)  # [1, 1]
+          datatype: xsd:string
+      - p: dcterms:hasVersion  # version
+        o:
+          value: $(VERSION FIELD)  # [0, 1]
+          datatype: xsd:string
+  GeneDescriptor:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:genedescriptor_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:GeneDescriptor
+      - p: dcterms:identifier  # identifier
+        o:
+          value: $(IDENTIFIER FIELD)  # [1, 1]
+          datatype: xsd:string
+      - p: obo:NCIT_C54191  # symbol
+        o:
+          value: $(SYMBOL FIELD)  # [1, 1]
+      - p: dcterms:description  # description
+        o:
+          value: $(DESCRIPTION FIELD)  # [0, 1]
+          datatype: xsd:string
+      - p: obo:NCIT_C90353  # alternate_identifier
+        o:
+          value: $(ALTERNATE_IDENTIFIER FIELD)  # [0, *]
+          datatype: xsd:string
+      - p: obo:NCIT_C43621  # xrefs
+        o:
+          value: $(XREFS FIELD)  # [0, *]
+          datatype: xsd:string
+      - p: phenop:alternate_symbol  # alternate_symbol
+        o:
+          value: $(ALTERNATE_SYMBOL FIELD)  # [0, *]
+          datatype: xsd:string
+  GenomicInterpretation:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:genomicinterpretation_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:GenomicInterpretation
+      - p: dcterms:identifier  # identifier
+        o:
+          value: $(IDENTIFIER FIELD)  # [1, 1]
+          datatype: xsd:string
+      - p: obo:NCIT_C25688  # status
+        o:
+          mapping: InterpretationStatus  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: phenop:call  # call
+        o:
+          mapping: MULTIPLE OPTIONS FOR MAPPED CLASS  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+  InterpretationStatus:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:interpretationstatus_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:InterpretationStatus
+      - p: sio:SIO_000300  # has_value
+        o:
+          value: $(HAS_VALUE FIELD)  # [1, 1]
+          datatype: xsd:string
+  MoleculeContext:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:moleculecontext_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:MoleculeContext
+      - p: sio:SIO_000300  # has_value
+        o:
+          value: $(HAS_VALUE FIELD)  # [1, 1]
+          datatype: xsd:string
+  ProgressStatus:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:progressstatus_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:ProgressStatus
+      - p: sio:SIO_000300  # has_value
+        o:
+          value: $(HAS_VALUE FIELD)  # [1, 1]
+          datatype: xsd:string
+  TherapeuticActionability:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:therapeuticactionability_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:TherapeuticActionability
+      - p: sio:SIO_000300  # has_value
+        o:
+          value: $(HAS_VALUE FIELD)  # [1, 1]
+          datatype: xsd:string
+  VariationDescriptor:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:variationdescriptor_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:VariationDescriptor
+      - p: dcterms:identifier  # identifier
+        o:
+          value: $(IDENTIFIER FIELD)  # [1, 1]
+          datatype: xsd:string
+      - p: obo:NCIT_C25713  # variation
+        o:
+          mapping: Variation  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: sio:SIO_000179  # label
+        o:
+          value: $(LABEL FIELD)  # [0, 1]
+          datatype: xsd:string
+      - p: dcterms:description  # description
+        o:
+          value: $(DESCRIPTION FIELD)  # [0, 1]
+          datatype: xsd:string
+      - p: phenop:gene_context  # gene_context
+        o:
+          mapping: GeneDescriptor  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C80488  # expression
+        o:
+          mapping: Expression  # [0, *]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: phenop:vcf_record  # vcf_record
+        o:
+          mapping: VcfRecord  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C43621  # xrefs
+        o:
+          value: $(XREFS FIELD)  # [0, *]
+          datatype: xsd:string
+      - p: phenop:alternate_labels  # alternate_labels
+        o:
+          value: $(ALTERNATE_LABELS FIELD)  # [0, *]
+          datatype: xsd:string
+      - p: phenop:extension  # extension
+        o:
+          mapping: Extension  # [0, *]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: phenop:molecule_context  # molecule_context
+        o:
+          mapping: MoleculeContext  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: phenop:structural_type  # structural_type
+        o:
+          mapping: OntologyClass  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: phenop:vrs_ref_allele_seq  # vrs_ref_allele_seq
+        o:
+          value: $(VRS_REF_ALLELE_SEQ FIELD)  # [0, 1]
+          datatype: xsd:string
+      - p: obo:GENO_0000133  # allelic_state
+        o:
+          mapping: OntologyClass  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+  VariantInterpretation:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:variantinterpretation_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:VariantInterpretation
+      - p: obo:NCIT_C168798  # acmg_pathogenicity_classification
+        o:
+          mapping: AcmgPathogenicityClassification  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: phenop:therapeutic_actionability  # therapeutic_actionability
+        o:
+          mapping: TherapeuticActionability  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: phenop:variation_descriptor  # variation_descriptor
+        o:
+          mapping: VariationDescriptor  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+  VcfRecord:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:vcfrecord_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:VcfRecord
+      - p: phenop:genome_assembly  # genome_assembly
+        o:
+          value: $(GENOME_ASSEMBLY FIELD)  # [1, 1]
+          datatype: xsd:string
+      - p: phenop:chrom  # chrom
+        o:
+          value: $(CHROM FIELD)  # [1, 1]
+          datatype: xsd:string
+      - p: phenop:pos  # pos
+        o:
+          value: $(POS FIELD)  # [1, 1]
+          datatype: xsd:integer
+      - p: dcterms:identifier  # identifier
+        o:
+          value: $(IDENTIFIER FIELD)  # [0, 1]
+          datatype: xsd:string
+      - p: phenop:ref  # ref
+        o:
+          value: $(REF FIELD)  # [1, 1]
+          datatype: xsd:string
+      - p: phenop:alt  # alt
+        o:
+          value: $(ALT FIELD)  # [1, 1]
+          datatype: xsd:string
+      - p: phenop:qual  # qual
+        o:
+          value: $(QUAL FIELD)  # [0, 1]
+          datatype: xsd:string
+      - p: phenop:filter  # filter
+        o:
+          value: $(FILTER FIELD)  # [0, 1]
+          datatype: xsd:string
+      - p: obo:NCIT_C48191  # info
+        o:
+          value: $(INFO FIELD)  # [0, 1]
+          datatype: xsd:string
+  Measurement:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:measurement_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:Measurement
+      - p: dcterms:description  # description
+        o:
+          value: $(DESCRIPTION FIELD)  # [0, 1]
+          datatype: xsd:string
+      - p: sio:SIO_001007  # assay
+        o:
+          mapping: OntologyClass  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: sio:SIO_000070  # measurement_value
+        o:
+          value: $(MEASUREMENT_VALUE FIELD)  # [1, 1]
+      - p: phenop:time_observed  # time_observed
+        o:
+          mapping: TimeElement  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C79751  # procedure
+        o:
+          mapping: Procedure  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+  ComplexValue:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:complexvalue_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:ComplexValue
+      - p: phenop:typed_quantities  # typed_quantities
+        o:
+          mapping: TypedQuantity  # [1, *]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+  Value:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:value_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:Value
+      - p: sio:SIO_000300  # has_value
+        o:
+          mapping: MULTIPLE OPTIONS FOR MAPPED CLASS  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+  MedicalAction:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:medicalaction_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:MedicalAction
+      - p: sio:SIO_000091  # action_specification
+        o:
+          mapping: MULTIPLE OPTIONS FOR MAPPED CLASS  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C25702  # treatment_target
+        o:
+          mapping: OntologyClass  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C25725  # treatment_intent
+        o:
+          mapping: OntologyClass  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C25755  # response_to_treatment
+        o:
+          mapping: OntologyClass  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C41331  # adverse_event
+        o:
+          mapping: OntologyClass  # [0, *]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: phenop:treatment_termination_reason  # treatment_termination_reason
+        o:
+          mapping: OntologyClass  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+  MetaData:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:metadata_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:MetaData
+      - p: dcterms:created  # created
+        o:
+          value: $(CREATED FIELD)  # [1, 1]
+          datatype: xsd:dateTime
+      - p: dcterms:creator  # created_by
+        o:
+          value: $(CREATED_BY FIELD)  # [1, 1]
+          datatype: xsd:string
+      - p: obo:NCIT_C54269  # submitted_by
+        o:
+          value: $(SUBMITTED_BY FIELD)  # [0, 1]
+          datatype: xsd:string
+      - p: phenop:resource  # resource
+        o:
+          mapping: Resource  # [1, *]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C25710  # update
+        o:
+          mapping: Update  # [0, *]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: phenop:phenopacket_schema_version  # phenopacket_schema_version
+        o:
+          value: $(PHENOPACKET_SCHEMA_VERSION FIELD)  # [1, 1]
+          datatype: xsd:string
+      - p: phenop:external_reference  # external_reference
+        o:
+          mapping: ExternalReference  # [0, *]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+  OntologyClass:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:ontologyclass_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:OntologyClass
+      - p: dcterms:identifier  # curie_identifier
+        o:
+          mapping: CURIEIdentifier  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: sio:SIO_000179  # label
+        o:
+          value: $(LABEL FIELD)  # [1, 1]
+          datatype: xsd:string
+  Phenopacket:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:phenopacket_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:Phenopacket
+      - p: dcterms:identifier  # identifier
+        o:
+          value: $(IDENTIFIER FIELD)  # [1, 1]
+          datatype: xsd:string
+      - p: dcterms:subject  # subject
+        o:
+          mapping: Individual  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: phenop:phenotypic_feature  # phenotypic_feature
+        o:
+          mapping: PhenotypicFeature  # [0, *]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C25209  # measurement
+        o:
+          mapping: Measurement  # [0, *]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C43412  # biosample
+        o:
+          mapping: Biosample  # [0, *]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C41255  # interpretation
+        o:
+          mapping: Interpretation  # [0, *]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C2991  # disease
+        o:
+          mapping: Disease  # [0, *]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:MAXO_0000001  # medical_action
+        o:
+          mapping: MedicalAction  # [0, *]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C42883  # file
+        o:
+          mapping: File  # [0, *]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C52095  # metadata
+        o:
+          mapping: MetaData  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+  PhenotypicFeature:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:phenotypicfeature_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:PhenotypicFeature
+      - p: dcterms:description  # description
+        o:
+          value: $(DESCRIPTION FIELD)  # [0, 1]
+          datatype: xsd:string
+      - p: obo:NCIT_C25284  # type
+        o:
+          mapping: OntologyClass  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C82931  # excluded
+        o:
+          value: $(EXCLUDED FIELD)  # [0, 1]
+          datatype: xsd:boolean
+      - p: obo:NCIT_C25676  # severity
+        o:
+          mapping: OntologyClass  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:MONDO_0021125  # modifier
+        o:
+          mapping: OntologyClass  # [0, *]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:HP_0003674  # onset
+        o:
+          mapping: TimeElement  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C25655  # resolution
+        o:
+          mapping: TimeElement  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:ECO_0000000  # evidence
+        o:
+          mapping: Evidence  # [0, *]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+  Procedure:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:procedure_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:Procedure
+      - p: phenop:procedure_code  # procedure_code
+        o:
+          mapping: OntologyClass  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C13717  # body_site
+        o:
+          mapping: OntologyClass  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: phenop:time_performed  # time_performed
+        o:
+          mapping: TimeElement  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+  Quantity:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:quantity_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:Quantity
+      - p: sio:SIO_000074  # unit
+        o:
+          mapping: OntologyClass  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: sio:SIO_000300  # has_value
+        o:
+          value: $(HAS_VALUE FIELD)  # [1, 1]
+          datatype: xsd:double
+      - p: phenop:reference_range  # reference_range
+        o:
+          mapping: ReferenceRange  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+  TypedQuantity:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:typedquantity_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:TypedQuantity
+      - p: obo:NCIT_C25284  # type
+        o:
+          mapping: OntologyClass  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: sio:SIO_000052  # quantity
+        o:
+          mapping: Quantity  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+  RadiationTherapy:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:radiationtherapy_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:RadiationTherapy
+      - p: obo:NCIT_C41147  # modality
+        o:
+          mapping: OntologyClass  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C13717  # body_site
+        o:
+          mapping: OntologyClass  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C25488  # dosage
+        o:
+          value: $(DOSAGE FIELD)  # [1, 1]
+          datatype: xsd:integer
+      - p: obo:NCIT_C15654  # fractions
+        o:
+          value: $(FRACTIONS FIELD)  # [1, 1]
+          datatype: xsd:integer
+  ReferenceRange:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:referencerange_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:ReferenceRange
+      - p: sio:SIO_000074  # unit
+        o:
+          mapping: OntologyClass  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: phenop:low  # low
+        o:
+          value: $(LOW FIELD)  # [1, 1]
+          datatype: xsd:double
+      - p: phenop:high  # high
+        o:
+          value: $(HIGH FIELD)  # [1, 1]
+          datatype: xsd:double
+  Resource:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:resource_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:Resource
+      - p: dcterms:identifier  # identifier
+        o:
+          value: $(IDENTIFIER FIELD)  # [1, 1]
+          datatype: xsd:string
+      - p: sio:SIO_000116  # name
+        o:
+          value: $(NAME FIELD)  # [1, 1]
+          datatype: xsd:string
+      - p: phenop:namespace_prefix  # namespace_prefix
+        o:
+          value: $(NAMESPACE_PREFIX FIELD)  # [1, 1]
+          datatype: xsd:string
+      - p: sio:SIO_000811  # url
+        o:
+          value: $(URL FIELD)  # [1, 1]
+          datatype: xsd:string
+      - p: dcterms:hasVersion  # version
+        o:
+          value: $(VERSION FIELD)  # [1, 1]
+          datatype: xsd:string
+      - p: phenop:iri_prefix  # iri_prefix
+        o:
+          value: $(IRI_PREFIX FIELD)  # [1, 1]
+          datatype: xsd:string
+  TherapeuticRegimen:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:therapeuticregimen_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:TherapeuticRegimen
+      - p: dcterms:identifier  # identifier
+        o:
+          mapping: MULTIPLE OPTIONS FOR MAPPED CLASS  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: sio:SIO_000669  # start_time
+        o:
+          mapping: Timestamp  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: sio:SIO_000670  # end_time
+        o:
+          mapping: Timestamp  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C25688  # status
+        o:
+          mapping: RegimenStatus  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+  RegimenStatus:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:regimenstatus_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:RegimenStatus
+      - p: sio:SIO_000300  # has_value
+        o:
+          value: $(HAS_VALUE FIELD)  # [1, 1]
+          datatype: xsd:string
+  GestationalAge:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:gestationalage_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:GestationalAge
+      - p: sio:SIO_001354  # weeks
+        o:
+          value: $(WEEKS FIELD)  # [1, 1]
+          datatype: xsd:integer
+      - p: sio:SIO_000430  # days
+        o:
+          value: $(DAYS FIELD)  # [0, 1]
+          datatype: xsd:integer
+  Age:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:age_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:Age
+      - p: phenop:iso8601duration  # iso8601duration
+        o:
+          value: $(ISO8601DURATION FIELD)  # [1, 1]
+          datatype: xsd:string
+  AgeRange:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:agerange_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:AgeRange
+      - p: sio:SIO_000509  # start_point
+        o:
+          mapping: Age  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: sio:SIO_000508  # end_point
+        o:
+          mapping: Age  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+  Timestamp:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:timestamp_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:Timestamp
+      - p: phenop:iso8601datetime  # iso8601datetime
+        o:
+          value: $(ISO8601DATETIME FIELD)  # [1, 1]
+          datatype: xsd:string
+  TimeInterval:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:timeinterval_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:TimeInterval
+      - p: sio:SIO_000669  # start_time
+        o:
+          mapping: Timestamp  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: sio:SIO_000670  # end_time
+        o:
+          mapping: Timestamp  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+  TimeElement:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:timeelement_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:TimeElement
+      - ''  # Multiple options for sets of predicate-objects
+  Treatment:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:treatment_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:Treatment
+      - p: obo:NCIT_C1909  # agent
+        o:
+          mapping: OntologyClass  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C38114  # route_of_administration
+        o:
+          mapping: OntologyClass  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: phenop:dose_intervals  # dose_intervals
+        o:
+          mapping: DoseInterval  # [0, *]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: phenop:drug_type  # drug_type
+        o:
+          mapping: DrugType  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C94394  # cumulative_dose
+        o:
+          mapping: Quantity  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+  Update:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:update_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:Update
+      - p: obo:NCIT_C72669  # timestamp
+        o:
+          mapping: Timestamp  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: dcterms:contributor  # contributor
+        o:
+          value: $(CONTRIBUTOR FIELD)  # [0, 1]
+          datatype: xsd:string
+      - p: obo:NCIT_C25393  # comment
+        o:
+          value: $(COMMENT FIELD)  # [0, 1]
+          datatype: xsd:string
+  Variation:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:variation_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:Variation
+      - p: dcterms:identifier  # identifier
+        o:
+          mapping: CURIEIdentifier  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C25284  # type
+        o:
+          mapping: MULTIPLE OPTIONS FOR MAPPED CLASS  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+  Allele:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:allele_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:Allele
+      - p: dcterms:identifier  # identifier
+        o:
+          mapping: CURIEIdentifier  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C25341  # location
+        o:
+          mapping: MULTIPLE OPTIONS FOR MAPPED CLASS  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C25687  # state
+        o:
+          mapping: MULTIPLE OPTIONS FOR MAPPED CLASS  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+  HumanCytoband:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:humancytoband_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:HumanCytoband
+      - p: sio:SIO_000300  # has_value
+        o:
+          value: $(HAS_VALUE FIELD)  # [1, 1]
+          datatype: xsd:string
+  CytobandInterval:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:cytobandinterval_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:CytobandInterval
+      - p: sio:SIO_000509  # start_point
+        o:
+          mapping: HumanCytobandShape  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: sio:SIO_000508  # end_point
+        o:
+          mapping: HumanCytobandShape  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+  SequenceLocation:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:sequencelocation_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:SequenceLocation
+      - p: dcterms:identifier  # identifier
+        o:
+          mapping: CURIEIdentifier  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:GENO_0000017  # reference_sequence
+        o:
+          mapping: CURIEIdentifier  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C25543  # interval
+        o:
+          mapping: SequenceInterval  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+  ChromosomeLocation:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:chromosomelocation_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:ChromosomeLocation
+      - p: dcterms:identifier  # identifier
+        o:
+          mapping: CURIEIdentifier  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: obo:NCIT_C45293  # species
+        o:
+          mapping: CURIEIdentifier  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: phenop:chr  # chr
+        o:
+          value: $(CHR FIELD)  # [1, 1]
+          datatype: xsd:string
+      - p: obo:NCIT_C25543  # interval
+        o:
+          mapping: CytobandInterval  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+  IntegerNumber:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:integernumber_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:IntegerNumber
+      - p: sio:SIO_000300  # has_value
+        o:
+          value: $(HAS_VALUE FIELD)  # [1, 1]
+          datatype: xsd:integer
+  DefiniteRange:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:definiterange_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:DefiniteRange
+      - p: sio:SIO_001113  # min
+        o:
+          value: $(MIN FIELD)  # [1, 1]
+          datatype: xsd:integer
+      - p: sio:SIO_001114  # max
+        o:
+          value: $(MAX FIELD)  # [1, 1]
+          datatype: xsd:integer
+  IndefiniteRange:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:indefiniterange_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:IndefiniteRange
+      - p: sio:SIO_000300  # has_value
+        o:
+          value: $(HAS_VALUE FIELD)  # [1, 1]
+          datatype: xsd:integer
+      - p: phenop:comparator  # comparator
+        o:
+          value: $(COMPARATOR FIELD)  # [1, 1]
+          datatype: xsd:string
+  LiteralSequenceExpression:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:literalsequenceexpression_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:LiteralSequenceExpression
+      - p: obo:NCIT_C25673  # sequence
+        o:
+          value: $(SEQUENCE FIELD)  # [1, 1]
+          datatype: xsd:string
+  DerivedSequenceExpression:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:derivedsequenceexpression_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:DerivedSequenceExpression
+      - p: obo:NCIT_C25341  # location
+        o:
+          mapping: SequenceLocation  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: phenop:reverse_complement  # reverse_complement
+        o:
+          value: $(REVERSE_COMPLEMENT FIELD)  # [1, 1]
+          datatype: xsd:boolean
+  RepeatedSequenceExpression:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:repeatedsequenceexpression_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:RepeatedSequenceExpression
+      - p: phenop:seq_expr  # seq_expr
+        o:
+          mapping: MULTIPLE OPTIONS FOR MAPPED CLASS  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: sio:SIO_000794  # count
+        o:
+          mapping: MULTIPLE OPTIONS FOR MAPPED CLASS  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+  SequenceInterval:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:sequenceinterval_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:SequenceInterval
+      - p: sio:SIO_000509  # start_point
+        o:
+          mapping: MULTIPLE OPTIONS FOR MAPPED CLASS  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: sio:SIO_000508  # end_point
+        o:
+          mapping: MULTIPLE OPTIONS FOR MAPPED CLASS  # [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+  VariationSet:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+    s: PREFIX:variationset_$(IDENTIFIER)
+    po:
+      - p: rdf:type
+        o: phenop:VariationSet
+      - p: dcterms:identifier  # identifier
+        o:
+          mapping: CURIEIdentifier  # [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+      - p: phenop:member  # member
+        o:
+          mapping: MULTIPLE OPTIONS FOR MAPPED CLASS  # [0, *]
+          condition:
+            function: equal
+            parameters:
+              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
+              - '[str2, $(ID FROM OBJECT MAPPING), o]'

@@ -12,3 +12,9 @@ SIO = rdflib.Namespace('http://semanticscience.org/resource/')
 PHENOP = rdflib.Namespace('https://phenopackets.org/')
 
 used_namespaces = [SH, RDF, RDFS, XSD, DCTERMS, OBO, SIO, PHENOP]
+
+def bind_namespaces(g: rdflib.Graph):
+    for prefix, namespace in zip(used_prefixes, used_namespaces):
+        g.bind(prefix, namespace)
+    
+    return g
