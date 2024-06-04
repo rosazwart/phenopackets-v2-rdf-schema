@@ -1,0 +1,156 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix phenop: <https://phenopackets.org/> .
+
+phenop:phenopacket_new-reference-files rdf:type phenop:Phenopacket ;
+	dcterms:identifier "new-reference-files" ;
+	obo:NCIT_C43412 phenop:biosample_AML-193 ;
+	phenop:phenotypic_feature phenop:phenotypicfeature_SRR8615409_EFO%3A0000330 ;
+	obo:NCIT_C2991 phenop:disease_EFO%3A0000330 ;
+	obo:NCIT_C41255 phenop:interpretation_new-reference-files_0 ;
+	obo:NCIT_C52095 phenop:metadata_new-reference-files .
+
+phenop:biosample_AML-193 rdf:type phenop:Biosample ;
+	dcterms:identifier "AML-193" ;
+	phenop:phenotypic_feature phenop:phenotypicfeature_SRR8615409_EFO%3A0000330 .
+
+phenop:ontologyclass_NCBITaxon%3A9606 rdf:type phenop:OntologyClass ;
+	dcterms:identifier phenop:curieidentifier_NCBITaxon%3A9606 ;
+	sio:SIO_000179 "Homo sapiens" .
+
+phenop:ontologyclass_EFO%3A0000330 rdf:type phenop:OntologyClass ;
+	dcterms:identifier phenop:curieidentifier_EFO%3A0000330 ;
+	sio:SIO_000179 "childhood acute myeloid leukemia" .
+
+phenop:curieidentifier_NCBITaxon%3A9606 rdf:type phenop:CURIEIdentifier ;
+	sio:SIO_000300 "NCBITaxon:9606" .
+
+phenop:curieidentifier_EFO%3A0000330 rdf:type phenop:CURIEIdentifier ;
+	sio:SIO_000300 "EFO:0000330" .
+
+phenop:phenotypicfeature_SRR8615409_EFO%3A0000330 rdf:type phenop:PhenotypicFeature ;
+	obo:NCIT_C25284 phenop:ontologyclass_EFO%3A0000330 .
+
+phenop:resource_NCBITaxon rdf:type phenop:Resource ;
+	dcterms:identifier "NCBITaxon" ;
+	sio:SIO_000116 "NCBI Organismal Classification" ;
+	phenop:namespace_prefix "NCBITaxon" ;
+	sio:SIO_000811 "http://purl.obolibrary.org/obo/" ;
+	dcterms:hasVersion "Version of ontology" ;
+	phenop:iri_prefix "obo" .
+
+phenop:resource_EFO rdf:type phenop:Resource ;
+	dcterms:identifier "EFO" ;
+	sio:SIO_000116 "Experimental Factor Ontology" ;
+	phenop:namespace_prefix "EFO" ;
+	sio:SIO_000811 "http://www.ebi.ac.uk/efo/" ;
+	dcterms:hasVersion "Version of ontology" ;
+	phenop:iri_prefix "efo" .
+
+phenop:metadata_new-reference-files rdf:type phenop:MetaData ;
+	dcterms:created "2024-05-04T09:00:00"^^xsd:dateTime ;
+	dcterms:creator "Leiden University Medical Centre" ;
+	phenop:resource phenop:resource_NCBITaxon, phenop:resource_EFO ;
+	phenop:phenopacket_schema_version "2.0" .
+
+phenop:disease_EFO%3A0000330 rdf:type phenop:Disease ;
+	obo:NCIT_C45559 phenop:ontologyclass_EFO%3A0000330 .
+
+phenop:interpretation_new-reference-files_0 rdf:type phenop:Interpretation ;
+	dcterms:identifier "new-reference-files_0" ;
+	phenop:progress_status phenop:progressstatus_new-reference-files_0 ;
+	obo:NCIT_C15220 phenop:diagnosis_new-reference-files_0 .
+
+phenop:progressstatus_new-reference-files_0 rdf:type phenop:ProgressStatus ;
+	sio:SIO_000300 "UNKNOWN_PROGRESS" .
+
+phenop:diagnosis_new-reference-files_0 rdf:type phenop:Diagnosis ;
+	obo:MONDO_0000001 phenop:ontologyclass_EFO%3A0000330 ;
+	phenop:genomic_interpretation phenop:genomicinterpretation_new-reference-files_0_0, phenop:genomicinterpretation_new-reference-files_0_1 .
+
+phenop:genomicinterpretation_new-reference-files_0_0 rdf:type phenop:GenomicInterpretation ;
+	dcterms:identifier "new-reference-files_0_0" ;
+	obo:NCIT_C25688 phenop:interpretationstatus_new-reference-files_0_0 ;
+	phenop:call phenop:variantinterpretation_new-reference-files_0_0 .
+
+phenop:genomicinterpretation_new-reference-files_0_1 rdf:type phenop:GenomicInterpretation ;
+	dcterms:identifier "new-reference-files_0_1" ;
+	obo:NCIT_C25688 phenop:interpretationstatus_new-reference-files_0_1 ;
+	phenop:call phenop:variantinterpretation_new-reference-files_0_1 .
+
+phenop:interpretationstatus_new-reference-files_0_0 rdf:type phenop:InterpretationStatus ;
+	sio:SIO_000300 "UNKNOWN_STATUS" .
+
+phenop:interpretationstatus_new-reference-files_0_1 rdf:type phenop:InterpretationStatus ;
+	sio:SIO_000300 "UNKNOWN_STATUS" .
+
+phenop:variantinterpretation_new-reference-files_0_0 rdf:type phenop:VariantInterpretation ;
+	obo:NCIT_C168798 phenop:acmgpathogenicityclassification_new-reference-files_0_0 ;
+	phenop:therapeutic_actionability phenop:therapeuticactionability_new-reference-files_0_0 ;
+	phenop:variation_descriptor phenop:variationdescriptor_new-reference-files_0_0 .
+
+phenop:variantinterpretation_new-reference-files_0_1 rdf:type phenop:VariantInterpretation ;
+	obo:NCIT_C168798 phenop:acmgpathogenicityclassification_new-reference-files_0_1 ;
+	phenop:therapeutic_actionability phenop:therapeuticactionability_new-reference-files_0_1 ;
+	phenop:variation_descriptor phenop:variationdescriptor_new-reference-files_0_1 .
+
+phenop:acmgpathogenicityclassification_new-reference-files_0_0 rdf:type phenop:AcmgPathogenicityClassification ;
+	sio:SIO_000300 "NOT_PROVIDED" .
+
+phenop:acmgpathogenicityclassification_new-reference-files_0_1 rdf:type phenop:AcmgPathogenicityClassification ;
+	sio:SIO_000300 "NOT_PROVIDED" .
+
+phenop:therapeuticactionability_new-reference-files_0_0 rdf:type phenop:TherapeuticActionability ;
+	sio:SIO_000300 "UNKNOWN_ACTIONABILITY" .
+
+phenop:therapeuticactionability_new-reference-files_0_1 rdf:type phenop:TherapeuticActionability ;
+	sio:SIO_000300 "UNKNOWN_ACTIONABILITY" .
+
+phenop:variationdescriptor_new-reference-files_0_0 rdf:type phenop:VariationDescriptor ;
+	dcterms:identifier "new-reference-files_0_0" ;
+	phenop:gene_context phenop:genedescriptor_ENSG00000213281 ;
+	phenop:vcf_record phenop:vcfrecord_new-reference-files_0_0 ;
+	phenop:molecule_context phenop:moleculecontext_new-reference-files_0_0 .
+
+phenop:variationdescriptor_new-reference-files_0_1 rdf:type phenop:VariationDescriptor ;
+	dcterms:identifier "new-reference-files_0_1" ;
+	phenop:gene_context phenop:genedescriptor_ENSG00000141510 ;
+	phenop:vcf_record phenop:vcfrecord_new-reference-files_0_1 ;
+	phenop:molecule_context phenop:moleculecontext_new-reference-files_0_1 .
+
+phenop:genedescriptor_ENSG00000213281 rdf:type phenop:GeneDescriptor ;
+	dcterms:identifier "ENSG00000213281" ;
+	obo:NCIT_C54191 "NRAS" .
+
+phenop:genedescriptor_ENSG00000141510 rdf:type phenop:GeneDescriptor ;
+	dcterms:identifier "ENSG00000141510" ;
+	obo:NCIT_C54191 "TP53" .
+
+phenop:vcfrecord_new-reference-files_0_0 rdf:type phenop:VcfRecord ;
+	phenop:genome_assembly "GRCh38" ;
+	phenop:chrom "1" ;
+	phenop:pos "114716123"^^xsd:integer ;
+	dcterms:identifier "new-reference-files_0_0" ;
+	phenop:ref "C" ;
+	phenop:alt "A" .
+
+phenop:vcfrecord_new-reference-files_0_1 rdf:type phenop:VcfRecord ;
+	phenop:genome_assembly "GRCh38" ;
+	phenop:chrom "17" ;
+	phenop:pos "7676154"^^xsd:integer ;
+	dcterms:identifier "new-reference-files_0_1" ;
+	phenop:ref "G" ;
+	phenop:alt "C" .
+
+phenop:moleculecontext_new-reference-files_0_0 rdf:type phenop:MoleculeContext ;
+	sio:SIO_000300 "genomic" .
+
+phenop:moleculecontext_new-reference-files_0_1 rdf:type phenop:MoleculeContext ;
+	sio:SIO_000300 "genomic" .
+

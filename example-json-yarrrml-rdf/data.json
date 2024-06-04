@@ -2,149 +2,125 @@
     "hamlet_runs": [
         {
             "metadata": {
-                "genes_of_interest": [
-                    {
-                        "gene_id": "ENSG00000171456",
-                        "gene_symbol": "ASXL1",
-                        "transcript_ids": [
-                            "ENST00000375687"
-                        ]
-                    },
-                    {
-                        "gene_id": "ENSG00000245848",
-                        "gene_symbol": "CEBPA",
-                        "transcript_ids": [
-                            "ENST00000498907"
-                        ]
-                    },
-                    {
-                        "gene_id": "ENSG00000119772",
-                        "gene_symbol": "DNMT3A",
-                        "transcript_ids": [
-                            "ENST00000321117"
-                        ]
-                    },
-                    {
-                        "gene_id": "ENSG00000122025",
-                        "gene_symbol": "FLT3",
-                        "transcript_ids": [
-                            "ENST00000241453"
-                        ]
-                    },
-                    {
-                        "gene_id": "ENSG00000138413",
-                        "gene_symbol": "IDH1",
-                        "transcript_ids": [
-                            "ENST00000345146"
-                        ]
-                    },
-                    {
-                        "gene_id": "ENSG00000182054",
-                        "gene_symbol": "IDH2",
-                        "transcript_ids": [
-                            "ENST00000330062"
-                        ]
-                    },
-                    {
-                        "gene_id": "ENSG00000157404",
-                        "gene_symbol": "KIT",
-                        "transcript_ids": [
-                            "ENST00000288135"
-                        ]
-                    },
-                    {
-                        "gene_id": "ENSG00000181163",
-                        "gene_symbol": "NPM1",
-                        "transcript_ids": [
-                            "ENST00000517671"
-                        ]
-                    },
-                    {
-                        "gene_id": "ENSG00000213281",
-                        "gene_symbol": "NRAS",
-                        "transcript_ids": [
-                            "ENST00000369535"
-                        ]
-                    },
-                    {
-                        "gene_id": "ENSG00000159216",
-                        "gene_symbol": "RUNX1",
-                        "transcript_ids": [
-                            "ENST00000300305"
-                        ]
-                    },
-                    {
-                        "gene_id": "ENSG00000168769",
-                        "gene_symbol": "TET2",
-                        "transcript_ids": [
-                            "ENST00000380013"
-                        ]
-                    },
-                    {
-                        "gene_id": "ENSG00000141510",
-                        "gene_symbol": "TP53",
-                        "transcript_ids": [
-                            "ENST00000269305"
-                        ]
-                    },
-                    {
-                        "gene_id": "ENSG00000184937",
-                        "gene_symbol": "WT1",
-                        "transcript_ids": [
-                            "ENST00000332351"
-                        ]
-                    },
-                    {
-                        "gene_id": "ENSG00000085276",
-                        "gene_symbol": "MECOM",
-                        "transcript_ids": [
-                            "ENST00000464456",
-                            "ENST00000494292"
-                        ]
-                    }
-                ],
                 "pipeline_version": "v1.0.2-dev-1",
                 "run_name": "new-reference-files",
-                "sample_name": "SRR8615409"
-            }
+                "sample_name": "SRR8615409",
+                "created": "2024-05-04T09:00:00",
+                "created_by": "Leiden University Medical Centre",
+                "phenopacket_schema_version": "2.0"
+            },
+            "interpretations": [
+                {
+                    "run_name": "new-reference-files",
+                    "identifier": "new-reference-files_0",
+                    "progress_status": "UNKNOWN_PROGRESS",
+                    "disease": "EFO:0000330",
+                    "genomic_interpretations": [
+                        {
+                            "interpretation_id": "new-reference-files_0",
+                            "identifier": "new-reference-files_0_0",
+                            "status": "UNKNOWN_STATUS",
+                            "variant_interpretation": {
+                                "variation_descriptor": {
+                                    "vcf_record": {
+                                        "genome_assembly": "GRCh38",
+                                        "chrom": "1",
+                                        "pos": 114716123,
+                                        "ref": "C",
+                                        "alt": "A"
+                                    },
+                                    "gene_context": "ENSG00000213281",
+                                    "molecule_context": "genomic"
+                                },
+                                "acmg_pathog_class": "NOT_PROVIDED",
+                                "therapeutic_action": "UNKNOWN_ACTIONABILITY"
+                            }
+                        },
+                        {
+                            "interpretation_id": "new-reference-files_0",
+                            "identifier": "new-reference-files_0_1",
+                            "status": "UNKNOWN_STATUS",
+                            "variant_interpretation": {
+                                "variation_descriptor": {
+                                    "vcf_record": {
+                                        "genome_assembly": "GRCh38",
+                                        "chrom": "17",
+                                        "pos": 7676154,
+                                        "ref": "G",
+                                        "alt": "C"
+                                    },
+                                    "gene_context": "ENSG00000141510",
+                                    "molecule_context": "genomic"
+                                },
+                                "acmg_pathog_class": "NOT_PROVIDED",
+                                "therapeutic_action": "UNKNOWN_ACTIONABILITY"
+                            }
+                        }
+                    ]
+                }
+            ]
         }
     ],
     "experiment_designs": [
         {
             "Run": "SRR8615409",
-            "Sample Characteristic[organism]": "Homo sapiens",
-            "Sample Characteristic Ontology Term[organism]": "http://purl.obolibrary.org/obo/NCBITaxon_9606",
-            "Sample Characteristic[cell line]": "AML-193",
-            "Sample Characteristic Ontology Term[cell line]": null,
-            "Sample Characteristic[disease]": "childhood acute myeloid leukemia",
-            "Sample Characteristic Ontology Term[disease]": "http://www.ebi.ac.uk/efo/EFO_0000330",
-            "Sample Characteristic[organism part]": "hematopoietic system and lymphoid system",
-            "Sample Characteristic Ontology Term[organism part]": null,
-            "Factor Value[cell line]": "AML-193",
-            "Factor Value Ontology Term[cell line]": null,
-            "Factor Value[disease]": "childhood acute myeloid leukemia",
-            "Factor Value Ontology Term[disease]": "http://www.ebi.ac.uk/efo/EFO_0000330",
+            "Sample Characteristic organism": "Homo sapiens",
+            "Sample Characteristic Ontology Term organism": "NCBITaxon:9606",
+            "Sample Characteristic cell line": "AML-193",
+            "Sample Characteristic Ontology Term cell line": null,
+            "Sample Characteristic disease": "childhood acute myeloid leukemia",
+            "Sample Characteristic Ontology Term disease": "EFO:0000330",
+            "Sample Characteristic organism part": "hematopoietic system and lymphoid system",
+            "Sample Characteristic Ontology Term organism part": null,
             "Analysed": "Yes"
         }
     ],
     "ontology_classes": [
         {
-            "identifier": "NCBITaxon_9606",
+            "identifier": "NCBITaxon:9606",
             "label": "Homo sapiens"
         },
         {
-            "identifier": "EFO_0000330",
+            "identifier": "EFO:0000330",
             "label": "childhood acute myeloid leukemia"
         }
     ],
     "curie_identifiers": [
         {
-            "identifier": "NCBITaxon_9606",
-            "iri_prefix": "http://purl.obolibrary.org/obo/"
+            "identifier": "NCBITaxon:9606",
+            "namespace": "http://purl.obolibrary.org/obo/"
         },
         {
-            "identifier": "EFO_0000330",
-            "iri_prefix": "http://www.ebi.ac.uk/efo/"
+            "identifier": "EFO:0000330",
+            "namespace": "http://www.ebi.ac.uk/efo/"
+        }
+    ],
+    "resources": [
+        {
+            "identifier": "NCBITaxon",
+            "name": "NCBI Organismal Classification",
+            "iri_prefix": "obo",
+            "URL": "http://purl.obolibrary.org/obo/",
+            "version": "Version of ontology",
+            "run_name": "new-reference-files"
+        },
+        {
+            "identifier": "EFO",
+            "name": "Experimental Factor Ontology",
+            "iri_prefix": "efo",
+            "URL": "http://www.ebi.ac.uk/efo/",
+            "version": "Version of ontology",
+            "run_name": "new-reference-files"
+        }
+    ],
+    "gene_descriptors": [
+        {
+            "identifier": "ENSG00000213281",
+            "symbol": "NRAS"
+        },
+        {
+            "identifier": "ENSG00000141510",
+            "symbol": "TP53"
         }
     ]
 }

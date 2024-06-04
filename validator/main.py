@@ -17,9 +17,9 @@ def print_g(g):
     for stmt in g:
         pprint(stmt)
 
-def get_rdf_graph(rdf_file_name: str = 'phenopacketExample.ttl'):
+def get_rdf_graph(rdf_folder_name: str = 'example-rdf', rdf_file_name: str = 'phenopacketExample.ttl'):
     curr_wdir = os.getcwd()
-    rdf_file_path = os.path.join(curr_wdir, 'example-rdf', rdf_file_name)
+    rdf_file_path = os.path.join(curr_wdir, rdf_folder_name, rdf_file_name)
 
     g = Graph()
     g.parse(rdf_file_path)
@@ -44,7 +44,7 @@ def get_shacl_graph(dir_name: str = 'shacl'):
     return g
 
 if __name__ == "__main__":
-    rdf_g = get_rdf_graph()
+    rdf_g = get_rdf_graph(rdf_folder_name='example-json-yarrrml-rdf', rdf_file_name='output.ttl')
     shacl_g = get_shacl_graph()
 
     r = validate(data_graph=rdf_g,
