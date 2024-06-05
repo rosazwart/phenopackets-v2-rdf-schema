@@ -39,136 +39,136 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C70713  # sample_type
         o:
           mapping: OntologyClass  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: phenop:phenotypic_feature  # phenotypic_feature
         o:
           mapping: PhenotypicFeature  #  [0, *]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C25209  # measurement
         o:
           mapping: Measurement  #  [0, *]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C17469  # taxonomy
         o:
           mapping: OntologyClass  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C81287  # time_of_collection
         o:
           mapping: TimeElement  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: phenop:histological_diagnosis  # histological_diagnosis
         o:
           mapping: OntologyClass  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C17609  # tumor_progression
         o:
           mapping: OntologyClass  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C18000  # tumor_grade
         o:
           mapping: OntologyClass  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: phenop:pathological_stage  # pathological_stage
         o:
           mapping: OntologyClass  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: phenop:pathological_tnm_finding  # pathological_tnm_finding
         o:
           mapping: OntologyClass  #  [0, *]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C19591  # diagnostic_marker
         o:
           mapping: OntologyClass  #  [0, *]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C79751  # procedure
         o:
           mapping: Procedure  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C42883  # file
         o:
           mapping: File  #  [0, *]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: phenop:material_sample  # material_sample
         o:
           mapping: OntologyClass  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: phenop:sample_processing  # sample_processing
         o:
           mapping: OntologyClass  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: phenop:sample_storage  # sample_storage
         o:
           mapping: OntologyClass  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
   CURIEIdentifier:
     sources:
       - access: FILENAME.json
@@ -197,8 +197,8 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C82931  # excluded
         o:
           value: $(EXCLUDED FIELD)  # [0, 1]
@@ -209,48 +209,48 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C25655  # resolution
         o:
           mapping: TimeElement  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C28108  # disease_stage
         o:
           mapping: OntologyClass  #  [0, *]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: phenop:clinical_tnm_finding  # clinical_tnm_finding
         o:
           mapping: OntologyClass  #  [0, *]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C158874  # primary_site
         o:
           mapping: OntologyClass  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C25185  # laterality
         o:
           mapping: OntologyClass  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
   DoseInterval:
     sources:
       - access: FILENAME.json
@@ -266,24 +266,24 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C64493  # schedule_frequency
         o:
           mapping: OntologyClass  #  [1, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C25543  # interval
         o:
           mapping: TimeInterval  #  [1, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
   DrugType:
     sources:
       - access: FILENAME.json
@@ -312,16 +312,16 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: dcterms:isReferencedBy  # reference
         o:
           mapping: ExternalReference  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
   Extension:
     sources:
       - access: FILENAME.json
@@ -392,64 +392,64 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C94173  # date_of_birth
         o:
           mapping: Timestamp  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: phenop:time_at_last_encounter  # time_at_last_encounter
         o:
           mapping: TimeElement  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C25717  # vital_status
         o:
           mapping: VitalStatus  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C28421  # sex
         o:
           mapping: Sex  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:GSSO_000113  # karyotypic_sex
         o:
           mapping: KaryotypicSex  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C17357  # gender
         o:
           mapping: OntologyClass  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C17469  # taxonomy
         o:
           mapping: OntologyClass  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
   KaryotypicSex:
     sources:
       - access: FILENAME.json
@@ -504,24 +504,24 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: phenop:time_of_death  # time_of_death
         o:
           mapping: TimeElement  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: phenop:cause_of_death  # cause_of_death
         o:
           mapping: OntologyClass  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: phenop:survival_time_in_days  # survival_time_in_days
         o:
           value: $(SURVIVAL_TIME_IN_DAYS FIELD)  # [0, 1]
@@ -545,16 +545,16 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C15220  # diagnosis
         o:
           mapping: Diagnosis  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C42581  # summary
         o:
           value: $(SUMMARY FIELD)  # [0, 1]
@@ -587,16 +587,16 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: phenop:genomic_interpretation  # genomic_interpretation
         o:
           mapping: GenomicInterpretation  #  [0, *]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
   Expression:
     sources:
       - access: FILENAME.json
@@ -669,16 +669,16 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: phenop:call  # call
         o:
           mapping: ''  # CHOOSE ONE VariantInterpretation|GeneDescriptor [1, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
   InterpretationStatus:
     sources:
       - access: FILENAME.json
@@ -750,8 +750,8 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: sio:SIO_000179  # label
         o:
           value: $(LABEL FIELD)  # [0, 1]
@@ -766,24 +766,24 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C80488  # expression
         o:
           mapping: Expression  #  [0, *]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: phenop:vcf_record  # vcf_record
         o:
           mapping: VcfRecord  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C43621  # xrefs
         o:
           value: $(XREFS FIELD)  # [0, *]
@@ -798,24 +798,24 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: phenop:molecule_context  # molecule_context
         o:
           mapping: MoleculeContext  #  [1, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: phenop:structural_type  # structural_type
         o:
           mapping: OntologyClass  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: phenop:vrs_ref_allele_seq  # vrs_ref_allele_seq
         o:
           value: $(VRS_REF_ALLELE_SEQ FIELD)  # [0, 1]
@@ -826,8 +826,8 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
   VariantInterpretation:
     sources:
       - access: FILENAME.json
@@ -843,24 +843,24 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: phenop:therapeutic_actionability  # therapeutic_actionability
         o:
           mapping: TherapeuticActionability  #  [1, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: phenop:variation_descriptor  # variation_descriptor
         o:
           mapping: VariationDescriptor  #  [1, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
   VcfRecord:
     sources:
       - access: FILENAME.json
@@ -925,8 +925,8 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: sio:SIO_000070  # measurement_value
         o:
           value: $(MEASUREMENT_VALUE FIELD)  # [1, 1]
@@ -936,16 +936,16 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C79751  # procedure
         o:
           mapping: Procedure  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
   ComplexValue:
     sources:
       - access: FILENAME.json
@@ -961,8 +961,8 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
   Value:
     sources:
       - access: FILENAME.json
@@ -978,8 +978,8 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
   MedicalAction:
     sources:
       - access: FILENAME.json
@@ -995,48 +995,48 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C25702  # treatment_target
         o:
           mapping: OntologyClass  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C25725  # treatment_intent
         o:
           mapping: OntologyClass  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C25755  # response_to_treatment
         o:
           mapping: OntologyClass  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C41331  # adverse_event
         o:
           mapping: OntologyClass  #  [0, *]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: phenop:treatment_termination_reason  # treatment_termination_reason
         o:
           mapping: OntologyClass  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
   MetaData:
     sources:
       - access: FILENAME.json
@@ -1064,16 +1064,16 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C25710  # update
         o:
           mapping: Update  #  [0, *]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: phenop:phenopacket_schema_version  # phenopacket_schema_version
         o:
           value: $(PHENOPACKET_SCHEMA_VERSION FIELD)  # [1, 1]
@@ -1084,8 +1084,8 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
   OntologyClass:
     sources:
       - access: FILENAME.json
@@ -1101,8 +1101,8 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: sio:SIO_000179  # label
         o:
           value: $(LABEL FIELD)  # [1, 1]
@@ -1126,72 +1126,72 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: phenop:phenotypic_feature  # phenotypic_feature
         o:
           mapping: PhenotypicFeature  #  [0, *]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C25209  # measurement
         o:
           mapping: Measurement  #  [0, *]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C43412  # biosample
         o:
           mapping: Biosample  #  [0, *]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C41255  # interpretation
         o:
           mapping: Interpretation  #  [0, *]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C2991  # disease
         o:
           mapping: Disease  #  [0, *]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:MAXO_0000001  # medical_action
         o:
           mapping: MedicalAction  #  [0, *]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C42883  # file
         o:
           mapping: File  #  [0, *]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C52095  # metadata
         o:
           mapping: MetaData  #  [1, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
   PhenotypicFeature:
     sources:
       - access: FILENAME.json
@@ -1211,8 +1211,8 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C82931  # excluded
         o:
           value: $(EXCLUDED FIELD)  # [0, 1]
@@ -1223,40 +1223,40 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:MONDO_0021125  # modifier
         o:
           mapping: OntologyClass  #  [0, *]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:HP_0003674  # onset
         o:
           mapping: TimeElement  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C25655  # resolution
         o:
           mapping: TimeElement  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:ECO_0000000  # evidence
         o:
           mapping: Evidence  #  [0, *]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
   Procedure:
     sources:
       - access: FILENAME.json
@@ -1272,24 +1272,24 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C13717  # body_site
         o:
           mapping: OntologyClass  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: phenop:time_performed  # time_performed
         o:
           mapping: TimeElement  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
   Quantity:
     sources:
       - access: FILENAME.json
@@ -1305,8 +1305,8 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: sio:SIO_000300  # has_value
         o:
           value: $(HAS_VALUE FIELD)  # [1, 1]
@@ -1317,8 +1317,8 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
   TypedQuantity:
     sources:
       - access: FILENAME.json
@@ -1334,16 +1334,16 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: sio:SIO_000052  # quantity
         o:
           mapping: Quantity  #  [1, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
   RadiationTherapy:
     sources:
       - access: FILENAME.json
@@ -1359,16 +1359,16 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C13717  # body_site
         o:
           mapping: OntologyClass  #  [1, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C25488  # dosage
         o:
           value: $(DOSAGE FIELD)  # [1, 1]
@@ -1392,8 +1392,8 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: phenop:low  # low
         o:
           value: $(LOW FIELD)  # [1, 1]
@@ -1450,32 +1450,32 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: sio:SIO_000669  # start_time
         o:
           mapping: Timestamp  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: sio:SIO_000670  # end_time
         o:
           mapping: Timestamp  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C25688  # status
         o:
           mapping: RegimenStatus  #  [1, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
   RegimenStatus:
     sources:
       - access: FILENAME.json
@@ -1534,16 +1534,16 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: sio:SIO_000508  # end_point
         o:
           mapping: Age  #  [1, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
   Timestamp:
     sources:
       - access: FILENAME.json
@@ -1572,16 +1572,16 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: sio:SIO_000670  # end_time
         o:
           mapping: Timestamp  #  [1, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
   TimeElement:
     sources:
       - access: FILENAME.json
@@ -1591,54 +1591,54 @@ mappings:
     po:
       - p: rdf:type
         o: phenop:TimeElement
-      - p: sio:SIO_000417  # time_interval (XONE PROPERTY, CHOOSE ONE OF ALL XONE PROPERTIES)
+      - p: sio:SIO_000417  # time_interval (XONE PROPERTY, CHOOSE ONE OF ALL XONE PROPERTIES FOR EACH MAPPING OF THIS CLASS)
         o:
           mapping: TimeInterval  #  [1, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
-      - p: obo:NCIT_C72669  # timestamp (XONE PROPERTY, CHOOSE ONE OF ALL XONE PROPERTIES)
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
+      - p: obo:NCIT_C72669  # timestamp (XONE PROPERTY, CHOOSE ONE OF ALL XONE PROPERTIES FOR EACH MAPPING OF THIS CLASS)
         o:
           mapping: Timestamp  #  [1, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
-      - p: phenop:ontology_class  # ontology_class (XONE PROPERTY, CHOOSE ONE OF ALL XONE PROPERTIES)
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
+      - p: phenop:ontology_class  # ontology_class (XONE PROPERTY, CHOOSE ONE OF ALL XONE PROPERTIES FOR EACH MAPPING OF THIS CLASS)
         o:
           mapping: OntologyClass  #  [1, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
-      - p: phenop:age_range  # age_range (XONE PROPERTY, CHOOSE ONE OF ALL XONE PROPERTIES)
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
+      - p: phenop:age_range  # age_range (XONE PROPERTY, CHOOSE ONE OF ALL XONE PROPERTIES FOR EACH MAPPING OF THIS CLASS)
         o:
           mapping: AgeRange  #  [1, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
-      - p: sio:SIO_001013  # age (XONE PROPERTY, CHOOSE ONE OF ALL XONE PROPERTIES)
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
+      - p: sio:SIO_001013  # age (XONE PROPERTY, CHOOSE ONE OF ALL XONE PROPERTIES FOR EACH MAPPING OF THIS CLASS)
         o:
           mapping: Age  #  [1, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
-      - p: obo:NCIT_C81253  # gestational_age (XONE PROPERTY, CHOOSE ONE OF ALL XONE PROPERTIES)
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
+      - p: obo:NCIT_C81253  # gestational_age (XONE PROPERTY, CHOOSE ONE OF ALL XONE PROPERTIES FOR EACH MAPPING OF THIS CLASS)
         o:
           mapping: GestationalAge  #  [1, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
   Treatment:
     sources:
       - access: FILENAME.json
@@ -1654,40 +1654,40 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C38114  # route_of_administration
         o:
           mapping: OntologyClass  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: phenop:dose_intervals  # dose_intervals
         o:
           mapping: DoseInterval  #  [0, *]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: phenop:drug_type  # drug_type
         o:
           mapping: DrugType  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C94394  # cumulative_dose
         o:
           mapping: Quantity  #  [0, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
   Update:
     sources:
       - access: FILENAME.json
@@ -1703,8 +1703,8 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: dcterms:contributor  # contributor
         o:
           value: $(CONTRIBUTOR FIELD)  # [0, 1]
@@ -1728,16 +1728,16 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C25284  # type
         o:
           mapping: ''  # CHOOSE ONE VariationSet|Allele [1, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
   Allele:
     sources:
       - access: FILENAME.json
@@ -1753,24 +1753,24 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C25341  # location
         o:
           mapping: ''  # CHOOSE ONE ChromosomeLocation|SequenceLocation [1, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C25687  # state
         o:
           mapping: ''  # CHOOSE ONE RepeatedSequenceExpression|DerivedSequenceExpression|LiteralSequenceExpression [1, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
   HumanCytoband:
     sources:
       - access: FILENAME.json
@@ -1799,16 +1799,16 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: sio:SIO_000508  # end_point
         o:
           mapping: HumanCytobandShape  #  [1, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
   SequenceLocation:
     sources:
       - access: FILENAME.json
@@ -1824,24 +1824,24 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:GENO_0000017  # reference_sequence
         o:
           mapping: CURIEIdentifier  #  [1, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C25543  # interval
         o:
           mapping: SequenceInterval  #  [1, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
   ChromosomeLocation:
     sources:
       - access: FILENAME.json
@@ -1857,16 +1857,16 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: obo:NCIT_C45293  # species
         o:
           mapping: CURIEIdentifier  #  [1, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: phenop:chr  # chr
         o:
           value: $(CHR FIELD)  # [1, 1]
@@ -1877,8 +1877,8 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
   IntegerNumber:
     sources:
       - access: FILENAME.json
@@ -1954,8 +1954,8 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: phenop:reverse_complement  # reverse_complement
         o:
           value: $(REVERSE_COMPLEMENT FIELD)  # [1, 1]
@@ -1975,16 +1975,16 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: sio:SIO_000794  # count
         o:
           mapping: ''  # CHOOSE ONE DefiniteRange|IndefiniteRange|IntegerNumber [1, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
   SequenceInterval:
     sources:
       - access: FILENAME.json
@@ -2000,16 +2000,16 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: sio:SIO_000508  # end_point
         o:
           mapping: ''  # CHOOSE ONE DefiniteRange|IndefiniteRange|IntegerNumber [1, 1]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
   VariationSet:
     sources:
       - access: FILENAME.json
@@ -2025,13 +2025,13 @@ mappings:
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]
       - p: phenop:member  # member
         o:
           mapping: ''  # CHOOSE ONE CURIEIdentifier|Variation [0, *]
           condition:
             function: equal
             parameters:
-              - '[str1, $(ID FROM SUBJECT MAPPING), s]'
-              - '[str2, $(ID FROM OBJECT MAPPING), o]'
+              - [str1, $(ID FROM SUBJECT MAPPING), s]
+              - [str2, $(ID FROM OBJECT MAPPING), o]

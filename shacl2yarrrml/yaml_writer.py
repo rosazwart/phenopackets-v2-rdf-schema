@@ -82,13 +82,18 @@ class Template:
             property_map['o']['condition'] = CommentedMap()
             property_map['o']['condition']['function'] = 'equal'
             property_map['o']['condition']['parameters'] = CommentedSeq()
-            property_map['o']['condition']['parameters'].append(f'[str1, $(ID FROM SUBJECT MAPPING), s]')
-            property_map['o']['condition']['parameters'].append(f'[str2, $(ID FROM OBJECT MAPPING), o]')
+
+            triples_values = [('str1', '$(ID FROM SUBJECT MAPPING)', 's'), ('str2', '$(ID FROM OBJECT MAPPING)', 'o')]
+            for triple_values in triples_values:
+                str_map = CommentedSeq()
+
+                for value in triple_values:
+                    str_map.append(value)
+                str_map.fa.set_flow_style()
+
+                property_map['o']['condition']['parameters'].append(str_map)
         
         po_map.append(property_map)
-
-    def add_or_property(self, property_node: rdflib.URIRef, po_map: CommentedSeq):
-        print(property_node)
 
     def add_properties(self, node_shape: rdflib.URIRef, po_map: CommentedSeq):
         property_triples = shacl_interpreter.get_properties(g=self.shacl_g, node_shape=node_shape)
@@ -103,7 +108,7 @@ class Template:
             propery_nodes = shacl_interpreter.get_xone_properties(g=self.shacl_g, triples=triples)
 
             for property_node in propery_nodes:
-                self.add_property(property_node=property_node, po_map=po_map, additional_path_comment=' (XONE PROPERTY, CHOOSE ONE OF ALL XONE PROPERTIES)')
+                self.add_property(property_node=property_node, po_map=po_map, additional_path_comment=' (XONE PROPERTY, CHOOSE ONE OF ALL XONE PROPERTIES FOR EACH MAPPING OF THIS CLASS)')
     
     def add_nodeshape(self, node_shape: rdflib.URIRef):
         target_class_prefix, target_class_name = self.get_target_class(node_shape=node_shape)
