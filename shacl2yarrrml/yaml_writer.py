@@ -132,9 +132,10 @@ class Template:
 
         mapping_map['po'] = CommentedSeq()
 
-        type_po_map = CommentedMap()
-        type_po_map['p'] = 'rdf:type'
-        type_po_map['o'] = f'{target_class_prefix}:{target_class_name}'
+        type_po_map = CommentedSeq()
+        type_po_map.append('a')
+        type_po_map.append(f'{target_class_prefix}:{target_class_name}')
+        type_po_map.fa.set_flow_style()
 
         mapping_map['po'].append(type_po_map)
 

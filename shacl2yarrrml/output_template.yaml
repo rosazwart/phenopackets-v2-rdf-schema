@@ -15,8 +15,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:biosample_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:Biosample
+      - [a, phenop:Biosample]
       - p: dcterms:identifier  # identifier
         o:
           value: $(IDENTIFIER FIELD)  # [1, 1]
@@ -176,8 +175,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:curieidentifier_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:CURIEIdentifier
+      - [a, phenop:CURIEIdentifier]
       - p: sio:SIO_000300  # has_value
         o:
           value: $(HAS_VALUE FIELD)  # [1, 1]
@@ -189,8 +187,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:disease_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:Disease
+      - [a, phenop:Disease]
       - p: obo:NCIT_C45559  # term
         o:
           mapping: OntologyClass  #  [1, 1]
@@ -258,8 +255,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:doseinterval_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:DoseInterval
+      - [a, phenop:DoseInterval]
       - p: sio:SIO_000052  # quantity
         o:
           mapping: Quantity  #  [1, 1]
@@ -291,8 +287,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:drugtype_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:DrugType
+      - [a, phenop:DrugType]
       - p: sio:SIO_000300  # has_value
         o:
           value: $(HAS_VALUE FIELD)  # [1, 1]
@@ -304,8 +299,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:evidence_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:Evidence
+      - [a, phenop:Evidence]
       - p: obo:ECO_0000000  # evidence_code
         o:
           mapping: OntologyClass  #  [1, 1]
@@ -329,8 +323,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:extension_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:Extension
+      - [a, phenop:Extension]
       - p: sio:SIO_000116  # name
         o:
           value: $(NAME FIELD)  # [1, 1]
@@ -346,8 +339,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:externalreference_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:ExternalReference
+      - [a, phenop:ExternalReference]
       - p: dcterms:identifier  # identifier
         o:
           value: $(IDENTIFIER FIELD)  # [0, 1]
@@ -367,8 +359,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:file_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:File
+      - [a, phenop:File]
       - p: dcterms:source  # uri_source
         o:
           value: $(URI_SOURCE FIELD)  # [1, 1]
@@ -380,8 +371,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:individual_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:Individual
+      - [a, phenop:Individual]
       - p: dcterms:identifier  # identifier
         o:
           value: $(IDENTIFIER FIELD)  # [1, 1]
@@ -457,8 +447,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:karyotypicsex_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:KaryotypicSex
+      - [a, phenop:KaryotypicSex]
       - p: sio:SIO_000300  # has_value
         o:
           value: $(HAS_VALUE FIELD)  # [1, 1]
@@ -470,8 +459,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:sex_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:Sex
+      - [a, phenop:Sex]
       - p: sio:SIO_000300  # has_value
         o:
           value: $(HAS_VALUE FIELD)  # [1, 1]
@@ -483,8 +471,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:status_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:Status
+      - [a, phenop:Status]
       - p: sio:SIO_000300  # has_value
         o:
           value: $(HAS_VALUE FIELD)  # [1, 1]
@@ -496,8 +483,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:vitalstatus_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:VitalStatus
+      - [a, phenop:VitalStatus]
       - p: sio:SIO_001326  # status_descriptor
         o:
           mapping: Status  #  [1, 1]
@@ -533,8 +519,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:interpretation_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:Interpretation
+      - [a, phenop:Interpretation]
       - p: dcterms:identifier  # identifier
         o:
           value: $(IDENTIFIER FIELD)  # [1, 1]
@@ -566,8 +551,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:acmgpathogenicityclassification_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:AcmgPathogenicityClassification
+      - [a, phenop:AcmgPathogenicityClassification]
       - p: sio:SIO_000300  # has_value
         o:
           value: $(HAS_VALUE FIELD)  # [1, 1]
@@ -579,8 +563,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:diagnosis_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:Diagnosis
+      - [a, phenop:Diagnosis]
       - p: obo:MONDO_0000001  # disease
         o:
           mapping: OntologyClass  #  [1, 1]
@@ -604,8 +587,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:expression_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:Expression
+      - [a, phenop:Expression]
       - p: obo:NCIT_C54277  # syntax
         o:
           value: $(SYNTAX FIELD)  # [1, 1]
@@ -625,8 +607,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:genedescriptor_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:GeneDescriptor
+      - [a, phenop:GeneDescriptor]
       - p: dcterms:identifier  # identifier
         o:
           value: $(IDENTIFIER FIELD)  # [1, 1]
@@ -657,8 +638,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:genomicinterpretation_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:GenomicInterpretation
+      - [a, phenop:GenomicInterpretation]
       - p: dcterms:identifier  # identifier
         o:
           value: $(IDENTIFIER FIELD)  # [1, 1]
@@ -686,8 +666,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:interpretationstatus_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:InterpretationStatus
+      - [a, phenop:InterpretationStatus]
       - p: sio:SIO_000300  # has_value
         o:
           value: $(HAS_VALUE FIELD)  # [1, 1]
@@ -699,8 +678,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:moleculecontext_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:MoleculeContext
+      - [a, phenop:MoleculeContext]
       - p: sio:SIO_000300  # has_value
         o:
           value: $(HAS_VALUE FIELD)  # [1, 1]
@@ -712,8 +690,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:progressstatus_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:ProgressStatus
+      - [a, phenop:ProgressStatus]
       - p: sio:SIO_000300  # has_value
         o:
           value: $(HAS_VALUE FIELD)  # [1, 1]
@@ -725,8 +702,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:therapeuticactionability_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:TherapeuticActionability
+      - [a, phenop:TherapeuticActionability]
       - p: sio:SIO_000300  # has_value
         o:
           value: $(HAS_VALUE FIELD)  # [1, 1]
@@ -738,8 +714,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:variationdescriptor_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:VariationDescriptor
+      - [a, phenop:VariationDescriptor]
       - p: dcterms:identifier  # identifier
         o:
           value: $(IDENTIFIER FIELD)  # [1, 1]
@@ -835,8 +810,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:variantinterpretation_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:VariantInterpretation
+      - [a, phenop:VariantInterpretation]
       - p: obo:NCIT_C168798  # acmg_pathogenicity_classification
         o:
           mapping: AcmgPathogenicityClassification  #  [1, 1]
@@ -868,8 +842,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:vcfrecord_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:VcfRecord
+      - [a, phenop:VcfRecord]
       - p: phenop:genome_assembly  # genome_assembly
         o:
           value: $(GENOME_ASSEMBLY FIELD)  # [1, 1]
@@ -913,8 +886,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:measurement_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:Measurement
+      - [a, phenop:Measurement]
       - p: dcterms:description  # description
         o:
           value: $(DESCRIPTION FIELD)  # [0, 1]
@@ -953,8 +925,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:complexvalue_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:ComplexValue
+      - [a, phenop:ComplexValue]
       - p: phenop:typed_quantities  # typed_quantities
         o:
           mapping: TypedQuantity  #  [1, *]
@@ -970,8 +941,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:value_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:Value
+      - [a, phenop:Value]
       - p: sio:SIO_000300  # has_value
         o:
           mapping: ''  # CHOOSE ONE OntologyClass|Quantity [1, 1]
@@ -987,8 +957,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:medicalaction_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:MedicalAction
+      - [a, phenop:MedicalAction]
       - p: sio:SIO_000091  # action_specification
         o:
           mapping: ''  # CHOOSE ONE TherapeuticRegimen|RadiationTherapy|Treatment|Procedure [1, 1]
@@ -1044,8 +1013,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:metadata_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:MetaData
+      - [a, phenop:MetaData]
       - p: dcterms:created  # created
         o:
           value: $(CREATED FIELD)  # [1, 1]
@@ -1093,8 +1061,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:ontologyclass_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:OntologyClass
+      - [a, phenop:OntologyClass]
       - p: dcterms:identifier  # curie_identifier
         o:
           mapping: CURIEIdentifier  #  [1, 1]
@@ -1114,8 +1081,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:phenopacket_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:Phenopacket
+      - [a, phenop:Phenopacket]
       - p: dcterms:identifier  # identifier
         o:
           value: $(IDENTIFIER FIELD)  # [1, 1]
@@ -1199,8 +1165,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:phenotypicfeature_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:PhenotypicFeature
+      - [a, phenop:PhenotypicFeature]
       - p: dcterms:description  # description
         o:
           value: $(DESCRIPTION FIELD)  # [0, 1]
@@ -1264,8 +1229,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:procedure_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:Procedure
+      - [a, phenop:Procedure]
       - p: phenop:procedure_code  # procedure_code
         o:
           mapping: OntologyClass  #  [1, 1]
@@ -1297,8 +1261,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:quantity_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:Quantity
+      - [a, phenop:Quantity]
       - p: sio:SIO_000074  # unit
         o:
           mapping: OntologyClass  #  [1, 1]
@@ -1326,8 +1289,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:typedquantity_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:TypedQuantity
+      - [a, phenop:TypedQuantity]
       - p: obo:NCIT_C25284  # type
         o:
           mapping: OntologyClass  #  [1, 1]
@@ -1351,8 +1313,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:radiationtherapy_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:RadiationTherapy
+      - [a, phenop:RadiationTherapy]
       - p: obo:NCIT_C41147  # modality
         o:
           mapping: OntologyClass  #  [1, 1]
@@ -1384,8 +1345,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:referencerange_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:ReferenceRange
+      - [a, phenop:ReferenceRange]
       - p: sio:SIO_000074  # unit
         o:
           mapping: OntologyClass  #  [1, 1]
@@ -1409,8 +1369,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:resource_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:Resource
+      - [a, phenop:Resource]
       - p: dcterms:identifier  # identifier
         o:
           value: $(IDENTIFIER FIELD)  # [1, 1]
@@ -1442,8 +1401,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:therapeuticregimen_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:TherapeuticRegimen
+      - [a, phenop:TherapeuticRegimen]
       - p: dcterms:identifier  # identifier
         o:
           mapping: ''  # CHOOSE ONE ExternalReference|OntologyClass [1, 1]
@@ -1483,8 +1441,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:regimenstatus_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:RegimenStatus
+      - [a, phenop:RegimenStatus]
       - p: sio:SIO_000300  # has_value
         o:
           value: $(HAS_VALUE FIELD)  # [1, 1]
@@ -1496,8 +1453,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:gestationalage_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:GestationalAge
+      - [a, phenop:GestationalAge]
       - p: sio:SIO_001354  # weeks
         o:
           value: $(WEEKS FIELD)  # [1, 1]
@@ -1513,8 +1469,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:age_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:Age
+      - [a, phenop:Age]
       - p: phenop:iso8601duration  # iso8601duration
         o:
           value: $(ISO8601DURATION FIELD)  # [1, 1]
@@ -1526,8 +1481,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:agerange_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:AgeRange
+      - [a, phenop:AgeRange]
       - p: sio:SIO_000509  # start_point
         o:
           mapping: Age  #  [1, 1]
@@ -1551,8 +1505,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:timestamp_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:Timestamp
+      - [a, phenop:Timestamp]
       - p: phenop:iso8601datetime  # iso8601datetime
         o:
           value: $(ISO8601DATETIME FIELD)  # [1, 1]
@@ -1564,8 +1517,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:timeinterval_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:TimeInterval
+      - [a, phenop:TimeInterval]
       - p: sio:SIO_000669  # start_time
         o:
           mapping: Timestamp  #  [1, 1]
@@ -1589,8 +1541,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:timeelement_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:TimeElement
+      - [a, phenop:TimeElement]
       - p: sio:SIO_000417  # time_interval (XONE PROPERTY, CHOOSE ONE OF ALL XONE PROPERTIES FOR EACH MAPPING OF THIS CLASS)
         o:
           mapping: TimeInterval  #  [1, 1]
@@ -1646,8 +1597,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:treatment_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:Treatment
+      - [a, phenop:Treatment]
       - p: obo:NCIT_C1909  # agent
         o:
           mapping: OntologyClass  #  [1, 1]
@@ -1695,8 +1645,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:update_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:Update
+      - [a, phenop:Update]
       - p: obo:NCIT_C72669  # timestamp
         o:
           mapping: Timestamp  #  [1, 1]
@@ -1720,8 +1669,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:variation_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:Variation
+      - [a, phenop:Variation]
       - p: dcterms:identifier  # identifier
         o:
           mapping: CURIEIdentifier  #  [0, 1]
@@ -1745,8 +1693,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:allele_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:Allele
+      - [a, phenop:Allele]
       - p: dcterms:identifier  # identifier
         o:
           mapping: CURIEIdentifier  #  [0, 1]
@@ -1778,8 +1725,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:humancytoband_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:HumanCytoband
+      - [a, phenop:HumanCytoband]
       - p: sio:SIO_000300  # has_value
         o:
           value: $(HAS_VALUE FIELD)  # [1, 1]
@@ -1791,8 +1737,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:cytobandinterval_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:CytobandInterval
+      - [a, phenop:CytobandInterval]
       - p: sio:SIO_000509  # start_point
         o:
           mapping: HumanCytobandShape  #  [1, 1]
@@ -1816,8 +1761,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:sequencelocation_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:SequenceLocation
+      - [a, phenop:SequenceLocation]
       - p: dcterms:identifier  # identifier
         o:
           mapping: CURIEIdentifier  #  [0, 1]
@@ -1849,8 +1793,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:chromosomelocation_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:ChromosomeLocation
+      - [a, phenop:ChromosomeLocation]
       - p: dcterms:identifier  # identifier
         o:
           mapping: CURIEIdentifier  #  [0, 1]
@@ -1886,8 +1829,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:integernumber_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:IntegerNumber
+      - [a, phenop:IntegerNumber]
       - p: sio:SIO_000300  # has_value
         o:
           value: $(HAS_VALUE FIELD)  # [1, 1]
@@ -1899,8 +1841,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:definiterange_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:DefiniteRange
+      - [a, phenop:DefiniteRange]
       - p: sio:SIO_001113  # min
         o:
           value: $(MIN FIELD)  # [1, 1]
@@ -1916,8 +1857,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:indefiniterange_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:IndefiniteRange
+      - [a, phenop:IndefiniteRange]
       - p: sio:SIO_000300  # has_value
         o:
           value: $(HAS_VALUE FIELD)  # [1, 1]
@@ -1933,8 +1873,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:literalsequenceexpression_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:LiteralSequenceExpression
+      - [a, phenop:LiteralSequenceExpression]
       - p: obo:NCIT_C25673  # sequence
         o:
           value: $(SEQUENCE FIELD)  # [1, 1]
@@ -1946,8 +1885,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:derivedsequenceexpression_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:DerivedSequenceExpression
+      - [a, phenop:DerivedSequenceExpression]
       - p: obo:NCIT_C25341  # location
         o:
           mapping: SequenceLocation  #  [1, 1]
@@ -1967,8 +1905,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:repeatedsequenceexpression_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:RepeatedSequenceExpression
+      - [a, phenop:RepeatedSequenceExpression]
       - p: phenop:seq_expr  # seq_expr
         o:
           mapping: ''  # CHOOSE ONE DerivedSequenceExpression|LiteralSequenceExpression [1, 1]
@@ -1992,8 +1929,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:sequenceinterval_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:SequenceInterval
+      - [a, phenop:SequenceInterval]
       - p: sio:SIO_000509  # start_point
         o:
           mapping: ''  # CHOOSE ONE DefiniteRange|IndefiniteRange|IntegerNumber [1, 1]
@@ -2017,8 +1953,7 @@ mappings:
         iterator: $.ITERATOR[*]  # path to field representing all entities
     s: PREFIX:variationset_$(IDENTIFIER)
     po:
-      - p: rdf:type
-        o: phenop:VariationSet
+      - [a, phenop:VariationSet]
       - p: dcterms:identifier  # identifier
         o:
           mapping: CURIEIdentifier  #  [0, 1]
