@@ -7,465 +7,473 @@ prefixes:
   obo: http://purl.obolibrary.org/obo/
   sio: http://semanticscience.org/resource/
   phenop: https://phenopackets.org/
+  ex: https://example.org/
 mappings:
-  Phenopacket:
-    sources:
-    - access: data.json
-      referenceFormulation: jsonpath
-      iterator: $.hamlet_runs[*].metadata
-    s: phenop:phenopacket_$(run_name)
-    po:
-    - [a, phenop:Phenopacket]
-    - p: dcterms:identifier
-      o:
-        value: $(run_name)
-        datatype: xsd:string
-    - p: obo:NCIT_C43412
-      o:
-        mapping: Biosample
-        condition:
-          function: equal
-          parameters:
-          - [str1, $(sample_name), s]
-          - [str2, $(Run), o]
-    - p: phenop:phenotypic_feature
-      o:
-        mapping: PhenotypicFeature
-        condition:
-          function: equal
-          parameters:
-          - [str1, $(sample_name), s]
-          - [str2, $(Run), o]
-    - p: obo:NCIT_C2991
-      o:
-        mapping: Disease
-        condition:
-          function: equal
-          parameters:
-          - [str1, $(sample_name), s]
-          - [str2, $(Run), o]
-    - p: obo:NCIT_C41255
-      o:
-        mapping: Interpretation
-        condition:
-          function: equal
-          parameters:
-          - [str1, $(run_name), s]
-          - [str2, $(run_name), o]
-    - p: obo:NCIT_C52095
-      o:
-        mapping: MetaData
-        condition:
-          function: equal
-          parameters:
-          - [str1, $(run_name), s]
-          - [str2, $(run_name), o]
   Biosample:
     sources:
-    - access: data.json
-      referenceFormulation: jsonpath
-      iterator: $.experiment_designs[*]
-    s: phenop:biosample_$(Sample Characteristic cell line)
+      - access: data.json
+        referenceFormulation: jsonpath
+        iterator: $.experiment_designs[*]  # path to field representing all entities
+    s: ex:biosample_$(Sample Characteristic cell line)
     po:
-    - [a, phenop:Biosample]
-    - p: dcterms:identifier
-      o:
-        value: $(Sample Characteristic cell line)
-        datatype: xsd:string
-    - p: obo:NCIT_C12801
-      o:
-        mapping: OntologyClass
-        condition:
-          function: equal
-          parameters:
-          - [str1, $(Sample Characteristic Ontology Term organism part), s]
-          - [str2, $(identifier), o]
-    - p: phenop:phenotypic_feature
-      o:
-        mapping: PhenotypicFeature
-        condition:
-          function: equal
-          parameters:
-          - [str1, $(Sample Characteristic Ontology Term disease), s]
-          - [str2, $(Sample Characteristic Ontology Term disease), o]
-  OntologyClass:
-    sources:
-    - access: data.json
-      referenceFormulation: jsonpath
-      iterator: $.ontology_classes[*]
-    s: phenop:ontologyclass_$(identifier)
-    po:
-    - [a, phenop:OntologyClass]
-    - p: dcterms:identifier
-      o:
-        mapping: CURIEIdentifier
-        condition:
-          function: equal
-          parameters:
-          - [str1, $(identifier), s]
-          - [str2, $(identifier), o]
-    - p: sio:SIO_000179
-      o:
-        value: $(label)
-        datatype: xsd:string
+      - [a, phenop:Biosample]
+      - p: dcterms:identifier  # identifier
+        o:
+          value: $(Sample Characteristic cell line)  # [1, 1]
+          datatype: xsd:string
+      - p: obo:NCIT_C12801  # tissue
+        o:
+          mapping: OntologyClass  #  [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(Sample Characteristic Ontology Term organism part), s]
+              - [str2, $(identifier), o]
+      - p: phenop:phenotypic_feature  # phenotypic_feature
+        o:
+          mapping: PhenotypicFeature  #  [0, *]
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(Sample Characteristic cell line), s]
+              - [str2, $(Sample Characteristic cell line), o]
+      - p: obo:NCIT_C17469  # taxonomy
+        o:
+          mapping: OntologyClass  #  [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(Sample Characteristic cell line), s]
+              - [str2, $(Sample Characteristic cell line), o]
   CURIEIdentifier:
     sources:
-    - access: data.json
-      referenceFormulation: jsonpath
-      iterator: $.curie_identifiers[*]
-    s: phenop:curieidentifier_$(identifier)
+      - access: data.json
+        referenceFormulation: jsonpath
+        iterator: $.curie_identifiers[*]  # path to field representing all entities
+    s: ex:curieidentifier_$(identifier)
     po:
-    - [a, phenop:CURIEIdentifier]
-    - p: sio:SIO_000300
-      o:
-        value: $(identifier)
-        datatype: xsd:string
-  PhenotypicFeature:
-    sources:
-    - access: data.json
-      referenceFormulation: jsonpath
-      iterator: $.experiment_designs[*]
-    s: phenop:phenotypicfeature_$(Run)_$(Sample Characteristic Ontology Term disease)
-    po:
-    - [a, phenop:PhenotypicFeature]
-    - p: obo:NCIT_C25284
-      o:
-        mapping: OntologyClass
-        condition:
-          function: equal
-          parameters:
-          - [str1, $(Sample Characteristic Ontology Term disease), s]
-          - [str2, $(identifier), o]
-  Resource:
-    sources:
-    - access: data.json
-      referenceFormulation: jsonpath
-      iterator: $.resources[*]
-    s: phenop:resource_$(identifier)
-    po:
-    - [a, phenop:Resource]
-    - p: dcterms:identifier
-      o:
-        value: $(identifier)
-        datatype: xsd:string
-    - p: sio:SIO_000116
-      o:
-        value: $(name)
-        datatype: xsd:string
-    - p: phenop:namespace_prefix
-      o:
-        value: $(identifier)
-        datatype: xsd:string
-    - p: sio:SIO_000811
-      o:
-        value: $(URL)
-        datatype: xsd:string
-    - p: dcterms:hasVersion
-      o:
-        value: $(version)
-        datatype: xsd:string
-    - p: phenop:iri_prefix
-      o:
-        value: $(iri_prefix)
-        datatype: xsd:string
-  MetaData:
-    sources:
-    - access: data.json
-      referenceFormulation: jsonpath
-      iterator: $.hamlet_runs[*].metadata
-    s: phenop:metadata_$(run_name)
-    po:
-    - [a, phenop:MetaData]
-    - p: dcterms:created
-      o:
-        value: $(created)
-        datatype: xsd:dateTime
-    - p: dcterms:creator
-      o:
-        value: $(created_by)
-        datatype: xsd:string
-    - p: phenop:resource
-      o:
-        mapping: Resource
-        condition:
-          function: equal
-          parameters:
-          - [str1, $(run_name), s]
-          - [str2, $(run_name), o]
-    - p: phenop:phenopacket_schema_version
-      o:
-        value: $(phenopacket_schema_version)
-        datatype: xsd:string
+      - [a, phenop:CURIEIdentifier]
+      - p: sio:SIO_000300  # has_value
+        o:
+          value: $(identifier)  # [1, 1]
+          datatype: xsd:string
   Disease:
     sources:
-    - access: data.json
-      referenceFormulation: jsonpath
-      iterator: $.experiment_designs[*]
-    s: phenop:disease_$(Sample Characteristic Ontology Term disease)
+      - access: data.json
+        referenceFormulation: jsonpath
+        iterator: $.experiment_designs[*]  # path to field representing all entities
+    s: ex:disease_$(Sample Characteristic Ontology Term disease)
     po:
-    - [a, phenop:Disease]
-    - p: obo:NCIT_C45559
-      o:
-        mapping: OntologyClass
-        condition:
-          function: equal
-          parameters:
-          - [str1, $(Sample Characteristic Ontology Term disease), s]
-          - [str2, $(identifier), o]
+      - [a, phenop:Disease]
+      - p: obo:NCIT_C45559  # term
+        o:
+          mapping: OntologyClass  #  [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(Sample Characteristic Ontology Term disease), s]
+              - [str2, $(identifier), o]
   Interpretation:
     sources:
-    - access: data.json
-      referenceFormulation: jsonpath
-      iterator: $.hamlet_runs[*].interpretations[*]
-    s: phenop:interpretation_$(identifier)
+      - access: data.json
+        referenceFormulation: jsonpath
+        iterator: $.hamlet_runs[*].interpretations[*]  # path to field representing all entities
+    s: ex:interpretation_$(identifier)
     po:
-    - [a, phenop:Interpretation]
-    - p: dcterms:identifier
-      o:
-        value: $(identifier)
-        datatype: xsd:string
-    - p: phenop:progress_status
-      o:
-        mapping: ProgressStatus
-        condition:
-          function: equal
-          parameters:
-          - [str1, $(identifier), s]
-          - [str2, $(identifier), o]
-    - p: obo:NCIT_C15220
-      o:
-        mapping: Diagnosis
-        condition:
-          function: equal
-          parameters:
-          - [str1, $(identifier), s]
-          - [str2, $(identifier), o]
-  ProgressStatus:
-    sources:
-    - access: data.json
-      referenceFormulation: jsonpath
-      iterator: $.hamlet_runs[*].interpretations[*]
-    s: phenop:progressstatus_$(identifier)
-    po:
-    - [a, phenop:ProgressStatus]
-    - p: sio:SIO_000300
-      o:
-        value: $(progress_status)
-        datatype: xsd:string
-  Diagnosis:
-    sources:
-    - access: data.json
-      referenceFormulation: jsonpath
-      iterator: $.hamlet_runs[*].interpretations[*]
-    s: phenop:diagnosis_$(identifier)
-    po:
-    - [a, phenop:Diagnosis]
-    - p: obo:MONDO_0000001
-      o:
-        mapping: OntologyClass
-        condition:
-          function: equal
-          parameters:
-          - [str1, $(disease), s]
-          - [str2, $(identifier), o]
-    - p: phenop:genomic_interpretation
-      o:
-        mapping: GenomicInterpretation
-        condition:
-          function: equal
-          parameters:
-          - [str1, $(identifier), s]
-          - [str2, $(interpretation_id), o]
-  GenomicInterpretation:
-    sources:
-    - access: data.json
-      referenceFormulation: jsonpath
-      iterator: $.hamlet_runs[*].interpretations[*].genomic_interpretations[*]
-    s: phenop:genomicinterpretation_$(identifier)
-    po:
-    - [a, phenop:GenomicInterpretation]
-    - p: dcterms:identifier
-      o:
-        value: $(identifier)
-        datatype: xsd:string
-    - p: obo:NCIT_C25688
-      o:
-        mapping: InterpretationStatus
-        condition:
-          function: equal
-          parameters:
-          - [str1, $(identifier), s]
-          - [str2, $(identifier), o]
-    - p: phenop:call
-      o:
-        mapping: VariantInterpretation
-        condition:
-          function: equal
-          parameters:
-          - [str1, $(identifier), s]
-          - [str2, $(identifier), o]
-  InterpretationStatus:
-    sources:
-    - access: data.json
-      referenceFormulation: jsonpath
-      iterator: $.hamlet_runs[*].interpretations[*].genomic_interpretations[*]
-    s: phenop:interpretationstatus_$(identifier)
-    po:
-    - [a, phenop:InterpretationStatus]
-    - p: sio:SIO_000300
-      o:
-        value: $(status)
-        datatype: xsd:string
-  VariantInterpretation:
-    sources:
-    - access: data.json
-      referenceFormulation: jsonpath
-      iterator: $.hamlet_runs[*].interpretations[*].genomic_interpretations[*]
-    s: phenop:variantinterpretation_$(identifier)
-    po:
-    - [a, phenop:VariantInterpretation]
-    - p: obo:NCIT_C168798
-      o:
-        mapping: AcmgPathogenicityClassification
-        condition:
-          function: equal
-          parameters:
-          - [str1, $(identifier), s]
-          - [str2, $(identifier), o]
-    - p: phenop:therapeutic_actionability
-      o:
-        mapping: TherapeuticActionability
-        condition:
-          function: equal
-          parameters:
-          - [str1, $(identifier), s]
-          - [str2, $(identifier), o]
-    - p: phenop:variation_descriptor
-      o:
-        mapping: VariationDescriptor
-        condition:
-          function: equal
-          parameters:
-          - [str1, $(identifier), s]
-          - [str2, $(identifier), o]
+      - [a, phenop:Interpretation]
+      - p: dcterms:identifier  # identifier
+        o:
+          value: $(identifier)  # [1, 1]
+          datatype: xsd:string
+      - p: phenop:progress_status  # progress_status
+        o:
+          mapping: ProgressStatus  #  [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(identifier), s]
+              - [str2, $(identifier), o]
+      - p: obo:NCIT_C15220  # diagnosis
+        o:
+          mapping: Diagnosis  #  [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(identifier), s]
+              - [str2, $(identifier), o]
   AcmgPathogenicityClassification:
     sources:
-    - access: data.json
-      referenceFormulation: jsonpath
-      iterator: $.hamlet_runs[*].interpretations[*].genomic_interpretations[*]
-    s: phenop:acmgpathogenicityclassification_$(identifier)
+      - access: data.json
+        referenceFormulation: jsonpath
+        iterator: $.hamlet_runs[*].interpretations[*].genomic_interpretations[*]  # path to field representing all entities
+    s: ex:acmgpathogenicityclassification_$(identifier)
     po:
-    - [a, phenop:AcmgPathogenicityClassification]
-    - p: sio:SIO_000300
-      o:
-        value: $(variant_interpretation.acmg_pathog_class)
-        datatype: xsd:string
-  TherapeuticActionability:
+      - [a, phenop:AcmgPathogenicityClassification]
+      - p: sio:SIO_000300  # has_value
+        o:
+          value: $(variant_interpretation.acmg_pathog_class)  # [1, 1]
+          datatype: xsd:string
+  Diagnosis:
     sources:
-    - access: data.json
-      referenceFormulation: jsonpath
-      iterator: $.hamlet_runs[*].interpretations[*].genomic_interpretations[*]
-    s: phenop:therapeuticactionability_$(identifier)
+      - access: data.json
+        referenceFormulation: jsonpath
+        iterator: $.hamlet_runs[*].interpretations[*]  # path to field representing all entities
+    s: ex:diagnosis_$(identifier)
     po:
-    - [a, phenop:TherapeuticActionability]
-    - p: sio:SIO_000300
-      o:
-        value: $(variant_interpretation.therapeutic_action)
-        datatype: xsd:string
-  VariationDescriptor:
-    sources:
-    - access: data.json
-      referenceFormulation: jsonpath
-      iterator: $.hamlet_runs[*].interpretations[*].genomic_interpretations[*]
-    s: phenop:variationdescriptor_$(identifier)
-    po:
-    - [a, phenop:VariationDescriptor]
-    - p: dcterms:identifier
-      o:
-        value: $(identifier)
-        datatype: xsd:string
-    - p: phenop:gene_context
-      o:
-        mapping: GeneDescriptor
-        condition:
-          function: equal
-          parameters:
-          - [str1, $(variant_interpretation.variation_descriptor.gene_context), s]
-          - [str2, $(identifier), o]
-    - p: phenop:vcf_record
-      o:
-        mapping: VcfRecord
-        condition:
-          function: equal
-          parameters:
-          - [str1, $(identifier), s]
-          - [str2, $(identifier), o]
-    - p: phenop:molecule_context
-      o:
-        mapping: MoleculeContext
-        condition:
-          function: equal
-          parameters:
-          - [str1, $(identifier), s]
-          - [str2, $(identifier), o]
+      - [a, phenop:Diagnosis]
+      - p: obo:MONDO_0000001  # disease
+        o:
+          mapping: OntologyClass  #  [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(disease), s]
+              - [str2, $(identifier), o]
+      - p: phenop:genomic_interpretation  # genomic_interpretation
+        o:
+          mapping: GenomicInterpretation  #  [0, *]
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(identifier), s]
+              - [str2, $(interpretation_id), o]
   GeneDescriptor:
     sources:
-    - access: data.json
-      referenceFormulation: jsonpath
-      iterator: $.gene_descriptors[*]
-    s: phenop:genedescriptor_$(identifier)
+      - access: data.json
+        referenceFormulation: jsonpath
+        iterator: $.gene_descriptors[*]  # path to field representing all entities
+    s: ex:genedescriptor_$(identifier)
     po:
-    - [a, phenop:GeneDescriptor]
-    - p: dcterms:identifier
-      o:
-        value: $(identifier)
-        datatype: xsd:string
-    - p: obo:NCIT_C54191
-      o:
-        value: $(symbol)
-  VcfRecord:
+      - [a, phenop:GeneDescriptor]
+      - p: dcterms:identifier  # identifier
+        o:
+          value: $(identifier)  # [1, 1]
+          datatype: xsd:string
+      - p: obo:NCIT_C54191  # symbol
+        o:
+          value: $(symbol)  # [1, 1]
+  GenomicInterpretation:
     sources:
-    - access: data.json
-      referenceFormulation: jsonpath
-      iterator: $.hamlet_runs[*].interpretations[*].genomic_interpretations[*]
-    s: phenop:vcfrecord_$(identifier)
+      - access: data.json
+        referenceFormulation: jsonpath
+        iterator: $.hamlet_runs[*].interpretations[*].genomic_interpretations[*]  # path to field representing all entities
+    s: ex:genomicinterpretation_$(identifier)
     po:
-    - [a, phenop:VcfRecord]
-    - p: phenop:genome_assembly
-      o:
-        value: $(variant_interpretation.variation_descriptor.vcf_record.genome_assembly)
-        datatype: xsd:string
-    - p: phenop:chrom
-      o:
-        value: $(variant_interpretation.variation_descriptor.vcf_record.chrom)
-        datatype: xsd:string
-    - p: phenop:pos
-      o:
-        value: $(variant_interpretation.variation_descriptor.vcf_record.pos)
-        datatype: xsd:integer
-    - p: dcterms:identifier
-      o:
-        value: $(identifier)
-        datatype: xsd:string
-    - p: phenop:ref
-      o:
-        value: $(variant_interpretation.variation_descriptor.vcf_record.ref)
-        datatype: xsd:string
-    - p: phenop:alt
-      o:
-        value: $(variant_interpretation.variation_descriptor.vcf_record.alt)
-        datatype: xsd:string
+      - [a, phenop:GenomicInterpretation]
+      - p: dcterms:identifier  # identifier
+        o:
+          value: $(identifier)  # [1, 1]
+          datatype: xsd:string
+      - p: obo:NCIT_C25688  # status
+        o:
+          mapping: InterpretationStatus  #  [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(identifier), s]
+              - [str2, $(identifier), o]
+      - p: phenop:call  # call
+        o:
+          mapping: VariantInterpretation  # CHOOSE ONE VariantInterpretation|GeneDescriptor [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(identifier), s]
+              - [str2, $(identifier), o]
+  InterpretationStatus:
+    sources:
+      - access: data.json
+        referenceFormulation: jsonpath
+        iterator: $.hamlet_runs[*].interpretations[*].genomic_interpretations[*]  # path to field representing all entities
+    s: ex:interpretationstatus_$(identifier)
+    po:
+      - [a, phenop:InterpretationStatus]
+      - p: sio:SIO_000300  # has_value
+        o:
+          value: $(status)  # [1, 1]
+          datatype: xsd:string
   MoleculeContext:
     sources:
-    - access: data.json
-      referenceFormulation: jsonpath
-      iterator: $.hamlet_runs[*].interpretations[*].genomic_interpretations[*]
-    s: phenop:moleculecontext_$(identifier)
+      - access: data.json
+        referenceFormulation: jsonpath
+        iterator: $.hamlet_runs[*].interpretations[*].genomic_interpretations[*]  # path to field representing all entities
+    s: ex:moleculecontext_$(identifier)
     po:
-    - [a, phenop:MoleculeContext]
-    - p: sio:SIO_000300
-      o:
-        value: $(variant_interpretation.variation_descriptor.molecule_context)
-        datatype: xsd:string
-        
-        
+      - [a, phenop:MoleculeContext]
+      - p: sio:SIO_000300  # has_value
+        o:
+          value: $(variant_interpretation.variation_descriptor.molecule_context)  # [1, 1]
+          datatype: xsd:string
+  ProgressStatus:
+    sources:
+      - access: data.json
+        referenceFormulation: jsonpath
+        iterator: $.hamlet_runs[*].interpretations[*]  # path to field representing all entities
+    s: ex:progressstatus_$(identifier)
+    po:
+      - [a, phenop:ProgressStatus]
+      - p: sio:SIO_000300  # has_value
+        o:
+          value: $(progress_status)  # [1, 1]
+          datatype: xsd:string
+  TherapeuticActionability:
+    sources:
+      - access: data.json
+        referenceFormulation: jsonpath
+        iterator: $.hamlet_runs[*].interpretations[*].genomic_interpretations[*]  # path to field representing all entities
+    s: ex:therapeuticactionability_$(identifier)
+    po:
+      - [a, phenop:TherapeuticActionability]
+      - p: sio:SIO_000300  # has_value
+        o:
+          value: $(variant_interpretation.therapeutic_action)  # [1, 1]
+          datatype: xsd:string
+  VariationDescriptor:
+    sources:
+      - access: data.json
+        referenceFormulation: jsonpath
+        iterator: $.hamlet_runs[*].interpretations[*].genomic_interpretations[*]  # path to field representing all entities
+    s: ex:variationdescriptor_$(identifier)
+    po:
+      - [a, phenop:VariationDescriptor]
+      - p: dcterms:identifier  # identifier
+        o:
+          value: $(identifier)  # [1, 1]
+          datatype: xsd:string
+      - p: phenop:gene_context  # gene_context
+        o:
+          mapping: GeneDescriptor  #  [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(variant_interpretation.variation_descriptor.gene_context), s]
+              - [str2, $(identifier), o]
+      - p: phenop:vcf_record  # vcf_record
+        o:
+          mapping: VcfRecord  #  [0, 1]
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(identifier), s]
+              - [str2, $(identifier), o]
+      - p: phenop:molecule_context  # molecule_context
+        o:
+          mapping: MoleculeContext  #  [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(identifier), s]
+              - [str2, $(identifier), o]
+  VariantInterpretation:
+    sources:
+      - access: data.json
+        referenceFormulation: jsonpath
+        iterator: $.hamlet_runs[*].interpretations[*].genomic_interpretations[*]  # path to field representing all entities
+    s: ex:variantinterpretation_$(identifier)
+    po:
+      - [a, phenop:VariantInterpretation]
+      - p: obo:NCIT_C168798  # acmg_pathogenicity_classification
+        o:
+          mapping: AcmgPathogenicityClassification  #  [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(identifier), s]
+              - [str2, $(identifier), o]
+      - p: phenop:therapeutic_actionability  # therapeutic_actionability
+        o:
+          mapping: TherapeuticActionability  #  [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(identifier), s]
+              - [str2, $(identifier), o]
+      - p: phenop:variation_descriptor  # variation_descriptor
+        o:
+          mapping: VariationDescriptor  #  [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(identifier), s]
+              - [str2, $(identifier), o]
+  VcfRecord:
+    sources:
+      - access: data.json
+        referenceFormulation: jsonpath
+        iterator: $.hamlet_runs[*].interpretations[*].genomic_interpretations[*]  # path to field representing all entities
+    s: ex:vcfrecord_$(identifier)
+    po:
+      - [a, phenop:VcfRecord]
+      - p: phenop:genome_assembly  # genome_assembly
+        o:
+          value: $(variant_interpretation.variation_descriptor.vcf_record.genome_assembly)  # [1, 1]
+          datatype: xsd:string
+      - p: phenop:chrom  # chrom
+        o:
+          value: $(variant_interpretation.variation_descriptor.vcf_record.chrom)  # [1, 1]
+          datatype: xsd:string
+      - p: phenop:pos  # pos
+        o:
+          value: $(variant_interpretation.variation_descriptor.vcf_record.pos)  # [1, 1]
+          datatype: xsd:integer
+      - p: dcterms:identifier  # identifier
+        o:
+          value: $(identifier)  # [0, 1]
+          datatype: xsd:string
+      - p: phenop:ref  # ref
+        o:
+          value: $(variant_interpretation.variation_descriptor.vcf_record.ref)  # [1, 1]
+          datatype: xsd:string
+      - p: phenop:alt  # alt
+        o:
+          value: $(variant_interpretation.variation_descriptor.vcf_record.alt)  # [1, 1]
+          datatype: xsd:string
+  MetaData:
+    sources:
+      - access: data.json
+        referenceFormulation: jsonpath
+        iterator: $.hamlet_runs[*].metadata  # path to field representing all entities
+    s: ex:metadata_$(run_name)
+    po:
+      - [a, phenop:MetaData]
+      - p: dcterms:created  # created
+        o:
+          value: $(created)  # [1, 1]
+          datatype: xsd:dateTime
+      - p: dcterms:creator  # created_by
+        o:
+          value: $(created_by)  # [1, 1]
+          datatype: xsd:string
+      - p: phenop:resource  # resource
+        o:
+          mapping: Resource  #  [1, *]
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(run_name), s]
+              - [str2, $(run_name), o]
+      - p: phenop:phenopacket_schema_version  # phenopacket_schema_version
+        o:
+          value: $(phenopacket_schema_version)  # [1, 1]
+          datatype: xsd:string
+  OntologyClass:
+    sources:
+      - access: data.json
+        referenceFormulation: jsonpath
+        iterator: $.ontology_classes[*]  # path to field representing all entities
+    s: ex:ontologyclass_$(identifier)
+    po:
+      - [a, phenop:OntologyClass]
+      - p: dcterms:identifier  # curie_identifier
+        o:
+          mapping: CURIEIdentifier  #  [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(identifier), s]
+              - [str2, $(identifier), o]
+      - p: sio:SIO_000179  # label
+        o:
+          value: $(label)  # [1, 1]
+          datatype: xsd:string
+  Phenopacket:
+    sources:
+      - access: data.json
+        referenceFormulation: jsonpath
+        iterator: $.hamlet_runs[*].metadata # path to field representing all entities
+    s: ex:phenopacket_$(run_name)
+    po:
+      - [a, phenop:Phenopacket]
+      - p: dcterms:identifier  # identifier
+        o:
+          value: $(run_name)  # [1, 1]
+          datatype: xsd:string
+      - p: phenop:phenotypic_feature  # phenotypic_feature
+        o:
+          mapping: PhenotypicFeature  #  [0, *]
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(sample_name), s]
+              - [str2, $(Run), o]
+      - p: obo:NCIT_C43412  # biosample
+        o:
+          mapping: Biosample  #  [0, *]
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(sample_name), s]
+              - [str2, $(Run), o]
+      - p: obo:NCIT_C41255  # interpretation
+        o:
+          mapping: Interpretation  #  [0, *]
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(run_name), s]
+              - [str2, $(run_name), o]
+      - p: obo:NCIT_C2991  # disease
+        o:
+          mapping: Disease  #  [0, *]
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(sample_name), s]
+              - [str2, $(Run), o]
+      - p: obo:NCIT_C52095  # metadata
+        o:
+          mapping: MetaData  #  [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(run_name), s]
+              - [str2, $(run_name), o]
+  PhenotypicFeature:
+    sources:
+      - access: data.json
+        referenceFormulation: jsonpath
+        iterator: $.experiment_designs[*]  # path to field representing all entities
+    s: ex:phenotypicfeature_$(Run)_$(Sample Characteristic Ontology Term disease)
+    po:
+      - [a, phenop:PhenotypicFeature]
+      - p: obo:NCIT_C25284  # type
+        o:
+          mapping: OntologyClass  #  [1, 1]
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(Sample Characteristic Ontology Term disease), s]
+              - [str2, $(identifier), o]
+  Resource:
+    sources:
+      - access: data.json
+        referenceFormulation: jsonpath
+        iterator: $.resources[*]  # path to field representing all entities
+    s: ex:resource_$(identifier)
+    po:
+      - [a, phenop:Resource]
+      - p: dcterms:identifier  # identifier
+        o:
+          value: $(identifier)  # [1, 1]
+          datatype: xsd:string
+      - p: sio:SIO_000116  # name
+        o:
+          value: $(name)  # [1, 1]
+          datatype: xsd:string
+      - p: phenop:namespace_prefix  # namespace_prefix
+        o:
+          value: $(identifier)  # [1, 1]
+          datatype: xsd:string
+      - p: sio:SIO_000811  # url
+        o:
+          value: $(URL)  # [1, 1]
+          datatype: xsd:string
+      - p: dcterms:hasVersion  # version
+        o:
+          value: $(version)  # [1, 1]
+          datatype: xsd:string
+      - p: phenop:iri_prefix  # iri_prefix
+        o:
+          value: $(iri_prefix)  # [1, 1]
+          datatype: xsd:string
+
