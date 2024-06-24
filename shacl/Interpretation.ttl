@@ -1,46 +1,71 @@
-@prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix sio: <http://semanticscience.org/resource/> .
-@prefix phenop: <https://phenopackets.org/> .
+@prefix phenop: <http://purl.org/ejp-rd/phenopackets-rdf-schema/v200/shacl/> .
 
-phenop:InterpretationShape
+phenop:progressStatusShape
     a sh:NodeShape ;
-    sh:targetClass phenop:Interpretation ;
+    sh:targetClass obo:NCIT_C25630 ;    # obo:progress
+    sh:property
+		[
+            sh:path rdf:type ;
+            sh:hasValue sio:SIO_000614 ;    # sio:attribute
+        ]
+    ;
+.
+
+phenop:progressStatusValueShape
+    a sh:NodeShape ;
+    sh:node phenop:literalOutputShape ;
     sh:property
         [
-            sh:path dcterms:identifier ;
-            sh:name "identifier" ;
+            sh:path sio:SIO_000628 ;	# sio:refers-to
+            sh:name "sio:refers-to" ;
+            sh:node phenop:progressStatusShape ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
-            sh:datatype xsd:string;
-            sh:description "Arbitrary identifier." ;
         ],
-        [
-            sh:path phenop:progress_status ;
-            sh:class phenop:ProgressStatus ;
-            sh:name "progress_status" ;
+		[
+            sh:path sio:SIO_000300 ;    # sio:has-value
+            sh:name "sio:has-value" ;
+            sh:datatype xsd:string ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
-            sh:description "The current resolution status." ;
+        ]
+    ;
+.
+
+phenop:interpretationShape
+    a sh:NodeShape ;
+    sh:targetClass obo:NCIT_C41255 ;    # obo:interpretation
+    sh:property
+		[
+            sh:path rdf:type ;
+            sh:hasValue sio:SIO_001003 ;    # sio:diagnostic-opinion
         ],
         [
-            sh:path obo:NCIT_C15220 ;
-            sh:class phenop:Diagnosis ;
-            sh:name "diagnosis" ;
-            sh:minCount 0 ;
+            sh:path sio:SIO_000228 ;    # sio:has-role
+            sh:name "sio:has-role" ;
+            sh:node phenop:roleShape ;
+            sh:minCount 1 ;
             sh:maxCount 1 ;
-            sh:description "The diagnosis, if made." ;
         ],
         [
-            sh:path obo:NCIT_C42581 ;
-            sh:name "summary" ;
+            sh:path sio:SIO_000008 ;    # sio:has-attribute
+            sh:name "sio:has-attribute" ;
+            sh:node phenop:progressStatusShape ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+        ],
+        [
+            sh:path sio:SIO_001403 ;    # sio:is-associated-with
+            sh:name "sio:is-associated-with" ;
+            sh:node phenop:diagnosisShape ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
-            sh:datatype xsd:string;
-            sh:description "Additional data about this interpretation." ;
-        ] ;
+        ]
+    ;
 .

@@ -1,81 +1,46 @@
-@prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix sio: <http://semanticscience.org/resource/> .
-@prefix phenop: <https://phenopackets.org/> .
+@prefix phenop: <http://purl.org/ejp-rd/phenopackets-rdf-schema/v200/shacl/> .
 
-phenop:PhenopacketShape
+phenop:phenopacketShape
     a sh:NodeShape ;
-    sh:targetClass phenop:Phenopacket ;
+    sh:targetClass obo:NCIT_C79269 ;    # obo:participant-object
     sh:property
+		[
+            sh:path rdf:type ;
+            sh:hasValue sio:SIO_000015 ;    # sio:information-content-entity
+        ],
         [
-            sh:path dcterms:identifier ;
-            sh:name "identifier" ;
+            sh:path sio:SIO_000228 ;    # sio:has-role
+            sh:name "sio:has-role" ;
+            sh:node phenop:phenopacketRoleShape ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
-            sh:datatype xsd:string ;
-            sh:description "Arbitrary identifier." ;
         ],
         [
-            sh:path dcterms:subject ;
-            sh:class phenop:Individual ;
-            sh:name "subject" ;
-            sh:minCount 0 ;
-            sh:maxCount 1 ;
-            sh:description "The proband." ;
-        ],
-        [
-            sh:path phenop:phenotypic_feature ;
-            sh:class phenop:PhenotypicFeature ;
-            sh:name "phenotypic_feature" ;
-            sh:description "Phenotypic features observed in the proband." ;
-        ],
-        [
-            sh:path obo:NCIT_C25209 ;
-            sh:class phenop:Measurement ;
-            sh:name "measurement" ;
-            sh:description "Measurements performed in the proband." ;
-        ],
-        [
-            sh:path obo:NCIT_C43412 ;
-            sh:class phenop:Biosample ;
-            sh:name "biosample" ;
-            sh:description "Samples (e.g., biopsies)." ;
-        ],
-        [
-            sh:path obo:NCIT_C41255 ;
-            sh:class phenop:Interpretation ;
-            sh:name "interpretation" ;
-            sh:description "Interpretations related to this phenopacket." ;
-        ],
-        [
-            sh:path obo:NCIT_C2991 ;
-            sh:class phenop:Disease ;
-            sh:name "disease" ;
-            sh:description "Disease(s) diagnosed in the proband." ;
-        ],
-        [
-            sh:path obo:MAXO_0000001 ;
-            sh:class phenop:MedicalAction ;
-            sh:name "medical_action" ;
-            sh:description "Medical actions performed." ;
-        ],
-        [
-            sh:path obo:NCIT_C42883 ;
-            sh:class phenop:File ;
-            sh:name "file" ;
-            sh:description "List of files related to the subject, e.g. VCF or other high-throughput sequencing files." ;
-        ],
-        [
-            sh:path obo:NCIT_C52095 ;
-            sh:class phenop:MetaData ;
-            sh:name "metadata" ;
+            sh:path sio:SIO_001403 ;    # sio:is-associated-with
+            sh:name "sio:is-associated-with" ;
             sh:minCount 1 ;
-            sh:maxCount 1 ;
-            sh:description "Information about ontologies and references used in the phenopacket." ;
-        ] ;
-    sh:comment "Anonymous phenotypic description of an individual or biosample with potential genetic findings and/or diagnoses of interest." ;
+        ],
+		[
+          	sh:path sio:SIO_001403 ;    # sio:is-associated-with
+            sh:qualifiedValueShape [ sh:node phenop:phenotypicFeatureShape ] ;
+           	sh:qualifiedMinCount 0 ;
+        ],
+		[
+          	sh:path sio:SIO_001403 ;    # sio:is-associated-with
+            sh:qualifiedValueShape [ sh:node phenop:interpretationShape ] ;
+           	sh:qualifiedMinCount 0 ;
+        ],
+		[
+          	sh:path sio:SIO_001403 ;    # sio:is-associated-with
+            sh:qualifiedValueShape [ sh:node phenop:metadataShape ] ;
+           	sh:qualifiedMinCount 1 ;
+           	sh:qualifiedMaxCount 1 ;
+        ]
+    ;
 .

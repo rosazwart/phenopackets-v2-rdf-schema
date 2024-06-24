@@ -6,8 +6,9 @@
 @prefix sio: <http://semanticscience.org/resource/> .
 @prefix phenop: <http://purl.org/ejp-rd/phenopackets-rdf-schema/v200/shacl/> .
 
-phenop:ontologyClassShape
+phenop:literalOutputShape
 	a sh:NodeShape ;
+	sh:targetClass obo:NCIT_C70856 ;    # TODO: necessary?
     sh:property
 		[
             sh:path rdf:type ;
@@ -17,7 +18,7 @@ phenop:ontologyClassShape
 		[
             sh:path rdf:type ;
             sh:qualifiedValueShape [ 
-                sh:hasValue sio:SIO_000614 ;	# sio:attribute
+                sh:hasValue sio:SIO_000015 ;	# sio:information-content-entity
             ];
            	sh:qualifiedMinCount 1 ;
            	sh:qualifiedMaxCount 1 ;
@@ -25,8 +26,7 @@ phenop:ontologyClassShape
 		[
           	sh:path rdf:type ;    
             sh:qualifiedValueShape [ 
-                sh:nodeKind sh:IRI ;
-                sh:pattern "^http://purl.obolibrary.org/obo/" ;  
+                sh:hasValue obo:NCIT_C70856 ;   # obo:observation-result
             ] ;
            	sh:qualifiedMinCount 1 ;
            	sh:qualifiedMaxCount 1 ;

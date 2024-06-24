@@ -1,76 +1,54 @@
-@prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix sio: <http://semanticscience.org/resource/> .
-@prefix phenop: <https://phenopackets.org/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix phenop: <http://purl.org/ejp-rd/phenopackets-rdf-schema/v200/shacl/> .
 
-phenop:PhenotypicFeatureShape
+phenop:phenotypicFeatureShape
     a sh:NodeShape ;
-    sh:targetClass phenop:PhenotypicFeature ;
-    sh:property
-        [
-            sh:path dcterms:description ;
-            sh:name "description" ;
-            sh:minCount 0 ;
-            sh:maxCount 1 ;
-            sh:datatype xsd:string;
-            sh:description "Human-readable verbiage." ;
+	sh:node phenop:ontologyClassShape ;
+	sh:property
+		[
+          	sh:path dct:identifier ;    
+            sh:name "dct:identifier" ;
+            sh:datatype xsd:string ;
+           	sh:minCount 1 ;
+           	sh:maxCount 1 ;
         ],
-        [
-            sh:path obo:NCIT_C25284 ;
-            sh:class phenop:OntologyClass ;
-            sh:name "type" ;
+		[
+          	sh:path rdfs:label ;    
+            sh:name "rdfs:label" ;
+            sh:datatype xsd:string ;
+           	sh:minCount 1 ;
+           	sh:maxCount 1 ;
+        ],
+		[
+          	sh:path dct:description ;    
+            sh:name "dct:description" ;
+            sh:datatype xsd:string ;
+           	sh:minCount 0 ;
+           	sh:maxCount 1 ;
+        ]
+    ;
+.
+
+phenop:phenotypicFeatureValueShape
+    a sh:NodeShape ;
+    sh:targetClass obo:NCIT_C16977 ;    # obo:phenotype
+    sh:property
+		[
+            sh:path rdf:type ;
+            sh:hasValue sio:SIO_000015 ;    # sio:information-content-entity
+        ],
+		[
+            sh:path sio:SIO_000628 ;	# sio:refers-to
+            sh:name "sio:refers-to" ;
+            sh:node phenop:phenotypicFeatureShape ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
-            sh:description "Term denoting the phenotypic feature." ;
-        ],
-        [
-            sh:path obo:NCIT_C82931 ;
-            sh:name "excluded" ;
-            sh:minCount 0 ;
-            sh:maxCount 1 ;
-            sh:datatype xsd:boolean ;
-            sh:defaultValue false ;
-            sh:description "Phenotype is observed as either present or absent (excluded)." ;
-        ],
-        [
-            sh:path obo:NCIT_C25676 ;
-            sh:class phenop:OntologyClass ;
-            sh:name "severity" ;
-            sh:minCount 0 ;
-            sh:maxCount 1 ;
-            sh:description "Description of the severity of the feature described in type. Use for instance HP:0012823." ;
-        ],
-        [
-            sh:path obo:MONDO_0021125 ;
-            sh:class phenop:OntologyClass ;
-            sh:name "modifier" ;
-            sh:description "For instance one or more terms from HP:0012823." ;
-        ],
-        [
-            sh:path obo:HP_0003674 ;
-            sh:class phenop:TimeElement ;
-            sh:name "onset" ;
-            sh:minCount 0 ;
-            sh:maxCount 1 ;
-            sh:description "Age or time at which the feature was first observed." ;
-        ],
-        [
-            sh:path obo:NCIT_C25655 ;
-            sh:class phenop:TimeElement ;
-            sh:name "resolution" ;
-            sh:minCount 0 ;
-            sh:maxCount 1 ;
-            sh:description "Age or time at which the feature resolved or abated." ;
-        ],
-        [
-            sh:path obo:ECO_0000000 ;
-            sh:class phenop:Evidence ;
-            sh:name "evidence" ;
-            sh:description "The evidence for an assertion of the observation of a type." ;
-        ] ;
-    sh:comment "Describes a phenotype that characterizes the subject of the Phenopacket." ;
+        ]
+    ;
 .

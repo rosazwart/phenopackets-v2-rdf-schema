@@ -1,65 +1,18 @@
-@prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix sio: <http://semanticscience.org/resource/> .
-@prefix phenop: <https://phenopackets.org/> .
+@prefix phenop: <http://purl.org/ejp-rd/phenopackets-rdf-schema/v200/shacl/> .
 
-phenop:MetaDataShape
+phenop:metadataShape
     a sh:NodeShape ;
-    sh:targetClass phenop:MetaData ;
+    sh:targetClass obo:NCIT_C52095 ;    # obo:metadata
     sh:property
-        [
-            sh:path dcterms:created ;
-            sh:name "created" ;
-            sh:minCount 1 ;
-            sh:maxCount 1 ;
-            sh:datatype xsd:dateTime;
-            sh:description "Representation of the time when this object was created." ;
-        ],
-        [
-            sh:path dcterms:creator ;
-            sh:name "created_by" ;
-            sh:minCount 1 ;
-            sh:maxCount 1 ;
-            sh:datatype xsd:string;
-            sh:description "Name of person who created the phenopacket." ;
-        ],
-        [
-            sh:path obo:NCIT_C54269 ;
-            sh:name "submitted_by" ;
-            sh:minCount 0 ;
-            sh:maxCount 1 ;
-            sh:datatype xsd:string;
-            sh:description "Name of person who submitted the phenopacket." ;
-        ],
-        [
-            sh:path phenop:resource ;
-            sh:class phenop:Resource ;
-            sh:name "resource" ;
-            sh:minCount 1 ;
-            sh:description "Ontologies used to create the phenopacket." ;
-        ],
-        [
-            sh:path obo:NCIT_C25710 ;
-            sh:class phenop:Update ;
-            sh:name "update" ;
-            sh:description "List of updates to the phenopacket." ;
-        ],
-        [
-            sh:path phenop:phenopacket_schema_version ;
-            sh:name "phenopacket_schema_version" ;
-            sh:minCount 1 ;
-            sh:maxCount 1 ;
-            sh:datatype xsd:string;
-            sh:description "Schema version of the current phenopacket." ;
-        ],
-        [
-            sh:path phenop:external_reference ;
-            sh:class phenop:ExternalReference ;
-            sh:name "external_reference" ;
-            sh:description "References such as published articles." ;
-        ] ;
+		[
+            sh:path rdf:type ;
+            sh:hasValue sio:SIO_001330 ;    # sio:metadata
+        ]
+    ;
 .
