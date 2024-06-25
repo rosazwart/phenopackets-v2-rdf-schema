@@ -13,6 +13,13 @@ phenop:progressStatusShape
 		[
             sh:path rdf:type ;
             sh:hasValue sio:SIO_000614 ;    # sio:attribute
+        ],
+		[
+          	sh:path [ sh:inversePath sio:SIO_000628 ] ;	# sio:refers-to
+            sh:name "sio:refers-to" ;
+          	sh:node phenop:progressStatusValueShape ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
         ]
     ;
 .
@@ -21,17 +28,11 @@ phenop:progressStatusValueShape
     a sh:NodeShape ;
     sh:node phenop:literalOutputShape ;
     sh:property
-        [
-            sh:path sio:SIO_000628 ;	# sio:refers-to
-            sh:name "sio:refers-to" ;
-            sh:node phenop:progressStatusShape ;
-            sh:minCount 1 ;
-            sh:maxCount 1 ;
-        ],
 		[
             sh:path sio:SIO_000300 ;    # sio:has-value
             sh:name "sio:has-value" ;
             sh:datatype xsd:string ;
+            sh:in ("UNKNOWN_PROGRESS" "IN_PROGRESS" "COMPLETED" "SOLVED" "UNSOLVED") ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
         ]

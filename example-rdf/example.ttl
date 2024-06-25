@@ -4,6 +4,7 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix sio: <http://semanticscience.org/resource/> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix ex: <https://example.org/> .
 @prefix phenop: <http://purl.org/ejp-rd/phenopackets-rdf-schema/v200/shacl/> .
 
@@ -25,6 +26,7 @@ ex:phenopacket-1_metadata rdf:type sio:SIO_001330, obo:NCIT_C52095 ;
 .
 
 ex:phenopacket-1_phenotypic-feature-1 rdf:type sio:SIO_000614, obo:EFO_0000330 ;
+	dct:identifier "phenofeat1" ;
 	rdfs:label "childhood acute myeloid leukemia" ;
 .
 
@@ -32,4 +34,23 @@ ex:phenopacket-1_phenotypic-feature-1_output rdf:type sio:SIO_000015, obo:NCIT_C
 	sio:SIO_000628 ex:phenopacket-1_phenotypic-feature-1 ;
 .
 
+ex:phenopacket-1_interpretation-1 rdf:type sio:SIO_001003, obo:NCIT_C41255 ;
+	sio:SIO_000008 ex:phenopacket-1_progress-status ;
+	sio:SIO_000228 ex:phenopacket-1_interpretation-1_role ;
+.
 
+ex:phenopacket-1_interpretation-1_role rdf:type sio:SIO_000016, obo:NCIT_C48835 ;
+.
+
+ex:phenopacket-1_interpretation-1_id rdf:type sio:SIO_000115, obo:IAO_0020000 ;
+	sio:SIO_000020 ex:phenopacket-1_interpretation-1_role ;
+	sio:SIO_000300 'interpretation1' ;
+.
+
+ex:phenopacket-1_progress-status rdf:type sio:SIO_000614, obo:NCIT_C25630 ;
+.
+
+ex:phenopacket-1_progress-status_output rdf:type sio:SIO_000015, obo:NCIT_C70856 ;
+	sio:SIO_000628 ex:phenopacket-1_progress-status ;
+	sio:SIO_000300 "UNKNOWN_PROGRESS" ;
+.
