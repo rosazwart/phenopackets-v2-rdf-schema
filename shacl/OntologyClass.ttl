@@ -26,7 +26,11 @@ phenop:ontologyClassShape
           	sh:path rdf:type ;    
             sh:qualifiedValueShape [ 
                 sh:nodeKind sh:IRI ;
-                sh:pattern "^http://purl.obolibrary.org/obo/" ;  
+                sh:or (
+                    [ sh:pattern "^http://www.ebi.ac.uk/efo/" ; ]
+                    [ sh:pattern "^http://purl.obolibrary.org/obo/" ; ]
+                    [ sh:pattern "^http://www.orpha.net/ORDO/" ; ]
+                ) ;
             ] ;
            	sh:qualifiedMinCount 1 ;
            	sh:qualifiedMaxCount 1 ;

@@ -7,10 +7,10 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix phenop: <http://purl.org/ejp-rd/phenopackets-rdf-schema/v200/shacl/> .
 
-phenop:phenotypicFeatureShape
+phenop:diseaseShape
     a sh:NodeShape ;
-	sh:node phenop:ontologyClassShape ;
-	sh:property
+    sh:node phenop:ontologyClassShape ;
+    sh:property
 		[
           	sh:path dct:identifier ;    
             sh:name "dct:identifier" ;
@@ -26,25 +26,17 @@ phenop:phenotypicFeatureShape
            	sh:maxCount 1 ;
         ],
 		[
-          	sh:path dct:description ;    
-            sh:name "dct:description" ;
-            sh:datatype xsd:string ;
-           	sh:minCount 0 ;
-           	sh:maxCount 1 ;
-        ],
-		[
           	sh:path [ sh:inversePath sio:SIO_000628 ] ;	# sio:refers-to
             sh:name "sio:refers-to" ;
-          	sh:node phenop:phenotypicFeatureValueShape ;
+          	sh:node phenop:diseaseValueShape ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
         ]
-    ;
 .
 
-phenop:phenotypicFeatureValueShape
+phenop:diseaseValueShape
     a sh:NodeShape ;
-    sh:targetClass obo:NCIT_C16977 ;    # obo:phenotype
+    sh:targetClass obo:NCIT_C2991 ;    # obo:disease-disorder
     sh:property
 		[
             sh:path rdf:type ;
