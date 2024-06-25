@@ -4,7 +4,104 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix sio: <http://semanticscience.org/resource/> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix phenop: <http://purl.org/ejp-rd/phenopackets-rdf-schema/v200/shacl/> .
+
+phenop:versionShape
+    a sh:NodeShape ;
+    sh:targetClass obo:NCIT_C25714 ;    # obo:version
+    sh:property
+		[
+            sh:path rdf:type ;
+            sh:hasValue sio:SIO_000614 ;    # sio:attribute
+        ],
+		[
+          	sh:path [ sh:inversePath sio:SIO_000628 ] ;	# sio:refers-to
+            sh:name "sio:refers-to" ;
+          	sh:node phenop:versionValueShape ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+        ]
+    ;
+.
+
+phenop:versionValueShape
+    a sh:NodeShape ;
+    sh:node phenop:literalOutputShape ;
+    sh:property
+		[
+            sh:path sio:SIO_000300 ;    # sio:has-value
+            sh:name "sio:has-value" ;
+            sh:datatype xsd:string;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+        ]
+    ;
+.
+
+phenop:createdByShape
+    a sh:NodeShape ;
+    sh:targetClass dct:creator ;    # dct:creator
+    sh:property
+		[
+            sh:path rdf:type ;
+            sh:hasValue sio:SIO_000614 ;    # sio:attribute
+        ],
+		[
+          	sh:path [ sh:inversePath sio:SIO_000628 ] ;	# sio:refers-to
+            sh:name "sio:refers-to" ;
+          	sh:node phenop:createdByValueShape ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+        ]
+    ;
+.
+
+phenop:createdByValueShape
+    a sh:NodeShape ;
+    sh:node phenop:literalOutputShape ;
+    sh:property
+		[
+            sh:path sio:SIO_000300 ;    # sio:has-value
+            sh:name "sio:has-value" ;
+            sh:datatype xsd:string;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+        ]
+    ;
+.
+
+phenop:createdShape
+    a sh:NodeShape ;
+    sh:targetClass dct:created ;    # dct:created
+    sh:property
+		[
+            sh:path rdf:type ;
+            sh:hasValue sio:SIO_000614 ;    # sio:attribute
+        ],
+		[
+          	sh:path [ sh:inversePath sio:SIO_000628 ] ;	# sio:refers-to
+            sh:name "sio:refers-to" ;
+          	sh:node phenop:createdValueShape ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+        ]
+    ;
+.
+
+phenop:createdValueShape
+    a sh:NodeShape ;
+    sh:node phenop:literalOutputShape ;
+    sh:property
+		[
+            sh:path sio:SIO_000300 ;    # sio:has-value
+            sh:name "sio:has-value" ;
+            sh:datatype xsd:dateTime;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+        ]
+    ;
+.
 
 phenop:metadataShape
     a sh:NodeShape ;
@@ -13,6 +110,40 @@ phenop:metadataShape
 		[
             sh:path rdf:type ;
             sh:hasValue sio:SIO_001330 ;    # sio:metadata
+        ],
+        [
+            sh:path sio:SIO_000008 ;    # sio:has-attribute
+            sh:name "sio:has-attribute" ;
+            sh:or (
+                [ sh:class dct:created ; ]  # dct:created
+                [ sh:class dct:creator ; ]  # dct:creator
+                [ sh:class obo:NCIT_C25714 ; ]  # obo:version
+            ) ;
+            sh:minCount 3 ;
+        ],
+        [
+            sh:path sio:SIO_000008 ;    # sio:has-attribute
+            sh:qualifiedValueShape [ 
+                sh:class dct:created ;    # dct:created
+            ];
+           	sh:qualifiedMinCount 1 ;
+           	sh:qualifiedMaxCount 1 ;
+        ],
+        [
+            sh:path sio:SIO_000008 ;    # sio:has-attribute
+            sh:qualifiedValueShape [ 
+                sh:class dct:creator ;    # dct:creator
+            ];
+           	sh:qualifiedMinCount 1 ;
+           	sh:qualifiedMaxCount 1 ;
+        ],
+        [
+            sh:path sio:SIO_000008 ;    # sio:has-attribute
+            sh:qualifiedValueShape [ 
+                sh:class obo:NCIT_C25714 ;    # obo:version
+            ];
+           	sh:qualifiedMinCount 1 ;
+           	sh:qualifiedMaxCount 1 ;
         ]
     ;
 .

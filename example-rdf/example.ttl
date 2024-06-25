@@ -23,6 +23,33 @@ ex:phenopacket-1_id rdf:type sio:SIO_000115, obo:IAO_0020000 ;
 .
 
 ex:phenopacket-1_metadata rdf:type sio:SIO_001330, obo:NCIT_C52095 ;
+	sio:SIO_000008 ex:created-1 ;
+	sio:SIO_000008 ex:creator-1 ;
+	sio:SIO_000008 ex:version-1 ;
+.
+
+ex:created-1 rdf:type sio:SIO_000614, dct:created ;
+.
+
+ex:created-1_output rdf:type sio:SIO_000015, obo:NCIT_C70856 ;
+	sio:SIO_000628 ex:created-1 ;
+	sio:SIO_000300 '2024-05-04T09:00:00'^^xsd:dateTime ;
+.
+
+ex:creator-1 rdf:type sio:SIO_000614, dct:creator ;
+.
+
+ex:creator-1_output rdf:type sio:SIO_000015, obo:NCIT_C70856 ;
+	sio:SIO_000628 ex:creator-1 ;
+	sio:SIO_000300 'LUMC' ;
+.
+
+ex:version-1 rdf:type sio:SIO_000614, obo:NCIT_C25714 ;
+.
+
+ex:version-1_output rdf:type sio:SIO_000015, obo:NCIT_C70856 ;
+	sio:SIO_000628 ex:version-1 ;
+	sio:SIO_000300 '2.0' ;
 .
 
 ex:phenopacket-1_phenotypic-feature-1 rdf:type sio:SIO_000614, <http://www.ebi.ac.uk/efo/EFO_0000330> ;

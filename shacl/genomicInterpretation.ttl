@@ -86,7 +86,6 @@ phenop:genomicInterpretationShape
             sh:path sio:SIO_001403 ;
             sh:qualifiedValueShape [ 
                 sh:or (
-                    [ sh:node phenop:individualShape ; ]
                     [ sh:class obo:NCIT_C43412 ; ]   # obo:biosample
                 ) ;
             ];
