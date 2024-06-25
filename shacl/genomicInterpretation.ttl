@@ -1,0 +1,104 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix phenop: <http://purl.org/ejp-rd/phenopackets-rdf-schema/v200/shacl/> .
+
+phenop:interpretationStatusShape
+    a sh:NodeShape ;
+    sh:targetClass obo:NCIT_C164628 ;    # obo:status
+    sh:property
+		[
+            sh:path rdf:type ;
+            sh:hasValue sio:SIO_000614 ;    # sio:attribute
+        ],
+		[
+          	sh:path [ sh:inversePath sio:SIO_000628 ] ;	# sio:refers-to
+            sh:name "sio:refers-to" ;
+          	sh:node phenop:interpretationStatusValueShape ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+        ]
+    ;
+.
+
+phenop:interpretationStatusValueShape
+    a sh:NodeShape ;
+    sh:node phenop:literalOutputShape ;
+    sh:property
+		[
+            sh:path sio:SIO_000300 ;    # sio:has-value
+            sh:name "sio:has-value" ;
+            sh:datatype xsd:string ;
+            sh:in ("UNKNOWN_STATUS" "REJECTED" "CANDIDATE" "CONTRIBUTORY" "CAUSATIVE") ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+        ]
+    ;
+.
+
+phenop:genomicInterpretationShape
+    a sh:NodeShape ;
+    sh:targetClass obo:SO_0001026 ;
+    sh:property
+		[
+            sh:path rdf:type ;
+            sh:minCount 2 ;
+            sh:maxCount 2 ;
+        ],
+		[
+            sh:path rdf:type ;
+            sh:qualifiedValueShape [ 
+                sh:hasValue sio:SIO_000614 ;	# sio:attribute
+            ];
+           	sh:qualifiedMinCount 1 ;
+           	sh:qualifiedMaxCount 1 ;
+        ],
+		[
+            sh:path rdf:type ;
+            sh:qualifiedValueShape [ 
+                sh:hasValue obo:SO_0001026 ;	# obo:genome
+            ];
+           	sh:qualifiedMinCount 1 ;
+           	sh:qualifiedMaxCount 1 ;
+        ],
+		[
+            sh:path sio:SIO_001403 ;    # sio:is-associated-with
+            sh:name "sio:is-associated-with" ;
+            sh:minCount 2 ;
+            sh:maxCount 2 ;
+        ],
+		[
+            sh:path sio:SIO_001403 ;
+            sh:qualifiedValueShape [ 
+                sh:or (
+                    [ sh:class obo:NCIT_C16612 ; ]   # gene descriptor
+                    [ sh:class obo:SO_0001060 ; ]   # variant interpretation
+                ) ;
+            ];
+           	sh:qualifiedMinCount 1 ;
+           	sh:qualifiedMaxCount 1 ;
+        ],
+		[
+            sh:path sio:SIO_001403 ;
+            sh:qualifiedValueShape [ 
+                sh:or (
+                    [ sh:node phenop:individualShape ; ]
+                    [ sh:class obo:NCIT_C43412 ; ]   # obo:biosample
+                ) ;
+            ];
+           	sh:qualifiedMinCount 1 ;
+           	sh:qualifiedMaxCount 1 ;
+        ],
+        [
+            sh:path sio:SIO_000008 ;    # sio:has-attribute
+            sh:name "sio:has-attribute" ;
+            sh:node phenop:interpretationStatusShape ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+        ]
+    ;
+.

@@ -1,0 +1,145 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix phenop: <http://purl.org/ejp-rd/phenopackets-rdf-schema/v200/shacl/> .
+
+# TODO: find better ontology term for molecule context
+phenop:moleculeContextShape 
+    a sh:NodeShape ;
+    sh:targetClass obo:NCIT_C63325 ;    # obo:context
+    sh:property
+		[
+            sh:path rdf:type ;
+            sh:minCount 2 ;
+            sh:maxCount 2 ;
+        ],
+		[
+            sh:path rdf:type ;
+            sh:qualifiedValueShape [ 
+                sh:hasValue sio:SIO_000614 ;    # sio:attribute
+            ];
+           	sh:qualifiedMinCount 1 ;
+           	sh:qualifiedMaxCount 1 ;
+        ],
+		[
+            sh:path rdf:type ;
+            sh:qualifiedValueShape [ 
+                sh:hasValue obo:NCIT_C63325 ;    # obo:context
+            ];
+           	sh:qualifiedMinCount 1 ;
+           	sh:qualifiedMaxCount 1 ;
+        ],
+		[
+          	sh:path [ sh:inversePath sio:SIO_000628 ] ;	# sio:refers-to
+            sh:name "sio:refers-to" ;
+          	sh:node phenop:moleculeContextValueShape ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+        ]
+    ;
+.
+
+phenop:moleculeContextValueShape
+    a sh:NodeShape ;
+    sh:node phenop:literalOutputShape ;
+    sh:property
+		[
+            sh:path sio:SIO_000300 ;    # sio:has-value
+            sh:name "sio:has-value" ;
+            sh:datatype xsd:string ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+        ]
+    ;
+.
+
+phenop:variationDescriptorShape
+    a sh:NodeShape ;
+    sh:targetClass obo:NCIT_C97927 ;    # obo:gene-variant
+    sh:property
+		[
+            sh:path rdf:type ;
+            sh:minCount 2 ;
+            sh:maxCount 2 ;
+        ],
+		[
+            sh:path rdf:type ;
+            sh:qualifiedValueShape [ 
+                sh:hasValue sio:SIO_000015 ;	# sio:information-content-entity
+            ];
+           	sh:qualifiedMinCount 1 ;
+           	sh:qualifiedMaxCount 1 ;
+        ],
+		[
+            sh:path rdf:type ;
+            sh:qualifiedValueShape [ 
+                sh:hasValue obo:NCIT_C97927 ;	# obo:gene-variant
+            ];
+           	sh:qualifiedMinCount 1 ;
+           	sh:qualifiedMaxCount 1 ;
+        ],
+        [
+            sh:path sio:SIO_000228 ;    # sio:has-role
+            sh:name "sio:has-role" ;
+            sh:node phenop:roleShape ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+        ],
+		[
+          	sh:path rdfs:label ;    
+            sh:name "rdfs:label" ;
+            sh:datatype xsd:string ;
+           	sh:minCount 0 ;
+           	sh:maxCount 1 ;
+        ],
+		[
+          	sh:path dct:description ;    
+            sh:name "dct:description" ;
+            sh:datatype xsd:string ;
+           	sh:minCount 0 ;
+           	sh:maxCount 1 ;
+        ],
+		[
+            sh:path sio:SIO_001403 ;    # sio:is-associated-with
+            sh:name "sio:is-associated-with" ;
+            sh:or (
+                [ sh:class obo:NCIT_C16612 ; ]   # gene descriptor
+                [ sh:class obo:NCIT_C172216 ; ]  # vcf record
+            ) ;
+            sh:minCount 0 ;
+        ],
+        [
+            sh:path sio:SIO_001403 ;    # sio:is-associated-with
+            sh:qualifiedValueShape [ 
+                sh:class obo:NCIT_C16612 ;  # gene descriptor
+            ];
+           	sh:qualifiedMinCount 0 ;
+           	sh:qualifiedMaxCount 1 ;
+        ],
+        [
+            sh:path sio:SIO_001403 ;    # sio:is-associated-with
+            sh:qualifiedValueShape [ 
+                sh:class obo:NCIT_C172216 ;  # vcf record
+            ];
+           	sh:qualifiedMinCount 0 ;
+           	sh:qualifiedMaxCount 1 ;
+        ],
+        [
+            sh:path sio:SIO_000008 ;    # sio:has-attribute
+            sh:name "sio:has-attribute" ;
+            sh:minCount 1 ;
+        ],
+        [
+            sh:path sio:SIO_000008 ;    # sio:has-attribute
+            sh:qualifiedValueShape [ 
+                sh:class obo:NCIT_C63325 ;    # obo:context
+            ];
+           	sh:qualifiedMinCount 1 ;
+           	sh:qualifiedMaxCount 1 ;
+        ]
+    ;
+.

@@ -1,0 +1,108 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix phenop: <http://purl.org/ejp-rd/phenopackets-rdf-schema/v200/shacl/> .
+
+phenop:altIdShape
+    a sh:NodeShape ;
+    sh:targetClass obo:NCIT_C90353 ;    # obo:alternate-identifier
+    sh:property
+		[
+            sh:path rdf:type ;
+            sh:hasValue sio:SIO_000115 ;    # sio:identifier
+        ],
+		[
+            sh:path sio:SIO_000300 ;    # sio:has-value
+            sh:name "sio:has-value" ;
+            sh:datatype xsd:string ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+        ]
+    ;
+.
+
+# TODO: add altId link (validation path too deep)
+phenop:geneSymbolShape
+    a sh:NodeShape ;
+    sh:targetClass obo:NCIT_C43568 ;    # obo:gene-symbol
+    sh:property
+		[
+            sh:path rdf:type ;
+            sh:hasValue sio:SIO_001383 ;    # sio:gene-symbol
+        ],
+		[
+            sh:path sio:SIO_000300 ;    # sio:has-value
+            sh:name "sio:has-value" ;
+            sh:datatype xsd:string ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+        ],
+		[
+          	sh:path sio:SIO_000008 ;    # sio:has-attribute
+            sh:class obo:NCIT_C90353 ;  # alternate identifier
+            sh:minCount 0 ;
+        ]
+    ;
+.
+
+phenop:geneDescriptorShape
+    a sh:NodeShape ;
+    sh:targetClass obo:NCIT_C16612 ;
+    sh:property
+		[
+            sh:path rdf:type ;
+            sh:minCount 2 ;
+            sh:maxCount 2 ;
+        ],
+		[
+            sh:path rdf:type ;
+            sh:qualifiedValueShape [ 
+                sh:hasValue sio:SIO_000015 ;	# sio:information-content-entity
+            ];
+           	sh:qualifiedMinCount 1 ;
+           	sh:qualifiedMaxCount 1 ;
+        ],
+		[
+            sh:path rdf:type ;
+            sh:qualifiedValueShape [ 
+                sh:hasValue obo:NCIT_C16612 ;	# obo:gene
+            ];
+           	sh:qualifiedMinCount 1 ;
+           	sh:qualifiedMaxCount 1 ;
+        ],
+        [
+          	sh:path dct:identifier ;    
+            sh:name "dct:identifier" ;
+            sh:datatype xsd:string ;
+           	sh:minCount 1 ;
+           	sh:maxCount 1 ;
+        ],
+        [
+            sh:path sio:SIO_000008 ;    # sio:has-attribute
+            sh:name "sio:has-attribute" ;
+            sh:or (
+                [ sh:class obo:NCIT_C43568 ; ]   # gene symbol
+                [ sh:class obo:NCIT_C90353 ; ]   # alternate identifier
+            ) ;
+            sh:minCount 1 ;
+        ],
+        [
+            sh:path sio:SIO_000008 ;    # sio:has-attribute
+            sh:qualifiedValueShape [ 
+                sh:class obo:NCIT_C43568 ;  # gene symbol
+            ];
+           	sh:qualifiedMinCount 1 ;
+           	sh:qualifiedMaxCount 1 ;
+        ],
+		[
+          	sh:path sio:SIO_000008 ;    # sio:has-attribute
+            sh:qualifiedValueShape [ 
+                sh:class obo:NCIT_C90353 ;  # alternate identifier
+            ] ;
+           	sh:qualifiedMinCount 0 ;
+        ]
+.

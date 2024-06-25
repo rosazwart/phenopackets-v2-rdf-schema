@@ -17,7 +17,7 @@ phenop:phenopacketShape
         [
             sh:path sio:SIO_000228 ;    # sio:has-role
             sh:name "sio:has-role" ;
-            sh:node phenop:phenopacketRoleShape ;
+            sh:node phenop:roleShape ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
         ],
