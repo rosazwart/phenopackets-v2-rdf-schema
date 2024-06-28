@@ -1,0 +1,170 @@
+{
+    "role": {},
+    "phenotypicFeature": [
+        {
+            "phenotypicFeatureValue": {},
+            "ontologyClass": {
+                "rdf:type": "IRI"
+            },
+            "dct:identifier": "STRING",
+            "rdfs:label": "STRING",
+            "dct:description": "STRING"
+        }
+    ],
+    "interpretation": [
+        {
+            "role": {},
+            "progressStatus": {
+                "progressStatusValue": {
+                    "literalOutput": {},
+                    "sio:has-value": "STRING"
+                }
+            },
+            "diagnosis": {
+                "diagnosisValue": {},
+                "genomicInterpretation": [
+                    {
+                        "variantInterpretation": {
+                            "acmgPathogenicityClass": {
+                                "acmgPathogenicityClassValue": {
+                                    "literalOutput": {},
+                                    "sio:has-value": "STRING"
+                                }
+                            },
+                            "therapeuticActionability": {
+                                "therapeuticActionabilityValue": {
+                                    "literalOutput": {},
+                                    "sio:has-value": "STRING"
+                                }
+                            },
+                            "variationDescriptor": {
+                                "role": {},
+                                "vcfRecord": {
+                                    "alternateBase": {
+                                        "alternateBaseValue": {
+                                            "literalOutput": {},
+                                            "sio:has-value": "STRING"
+                                        }
+                                    },
+                                    "referenceBase": {
+                                        "referenceBaseValue": {
+                                            "literalOutput": {},
+                                            "sio:has-value": "STRING"
+                                        }
+                                    },
+                                    "position": {
+                                        "positionValue": {
+                                            "literalOutput": {},
+                                            "sio:has-value": "INTEGER"
+                                        }
+                                    },
+                                    "chromosome": {
+                                        "chromosomeValue": {
+                                            "literalOutput": {},
+                                            "sio:has-value": "STRING"
+                                        }
+                                    },
+                                    "genomeAssembly": {
+                                        "genomeAssemblyValue": {
+                                            "literalOutput": {},
+                                            "sio:has-value": "STRING"
+                                        }
+                                    }
+                                },
+                                "geneDescriptor": {
+                                    "altId": [
+                                        {
+                                            "sio:has-value": "STRING"
+                                        }
+                                    ],
+                                    "geneSymbol": {
+                                        "altId": [
+                                            {
+                                                "sio:has-value": "STRING"
+                                            }
+                                        ],
+                                        "sio:has-value": "STRING"
+                                    },
+                                    "dct:identifier": "STRING"
+                                },
+                                "moleculeContext": {
+                                    "moleculeContextValue": {
+                                        "literalOutput": {},
+                                        "sio:has-value": "STRING"
+                                    }
+                                },
+                                "rdfs:label": "STRING",
+                                "dct:description": "STRING"
+                            }
+                        },
+                        "geneDescriptor": {
+                            "altId": [
+                                {
+                                    "sio:has-value": "STRING"
+                                }
+                            ],
+                            "geneSymbol": {
+                                "altId": [
+                                    {
+                                        "sio:has-value": "STRING"
+                                    }
+                                ],
+                                "sio:has-value": "STRING"
+                            },
+                            "dct:identifier": "STRING"
+                        },
+                        "biosample": {
+                            "role": {},
+                            "taxonomy": {
+                                "taxonomyValue": {},
+                                "ontologyClass": {
+                                    "rdf:type": "IRI"
+                                },
+                                "rdfs:label": "STRING"
+                            }
+                        },
+                        "interpretationStatus": {
+                            "interpretationStatusValue": {
+                                "literalOutput": {},
+                                "sio:has-value": "STRING"
+                            }
+                        }
+                    }
+                ],
+                "disease": {
+                    "diseaseValue": {},
+                    "ontologyClass": {
+                        "rdf:type": "IRI"
+                    },
+                    "dct:identifier": "STRING",
+                    "rdfs:label": "STRING"
+                },
+                "ontologyClass": {
+                    "rdf:type": "IRI"
+                },
+                "dct:identifier": "STRING",
+                "rdfs:label": "STRING"
+            }
+        }
+    ],
+    "metadata": {
+        "version": {
+            "versionValue": {
+                "literalOutput": {},
+                "sio:has-value": "STRING"
+            }
+        },
+        "createdBy": {
+            "createdByValue": {
+                "literalOutput": {},
+                "sio:has-value": "STRING"
+            }
+        },
+        "created": {
+            "createdValue": {
+                "literalOutput": {},
+                "sio:has-value": "DATETIME"
+            }
+        }
+    }
+}
