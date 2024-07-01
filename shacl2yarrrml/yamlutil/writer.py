@@ -4,6 +4,7 @@ import rdflib
 from ruamel.yaml import YAML
 from ruamel.yaml.comments import CommentedMap, CommentedSeq
 
+import util.common as common_util
 import namespace_provider as namespace_provider
 import shaclutil.interpreter as shacl_interpreter
 import jsonutil.writer as json_writer
@@ -82,7 +83,7 @@ class Templater:
 
             _, _, nodeshape_name = self.shacl_interpreter.get_node_values(node=root_node)
 
-            json_writer.store_json_file(file_name=f'{nodeshape_name.replace('Shape', '')}.json',
+            json_writer.store_json_file(file_name=f'{common_util.from_nodeshape_name_to_name(nodeshape_name)}.json',
                                         dict_values=root_dict)
 
 def create_template(input_g: rdflib.Graph):

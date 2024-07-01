@@ -1,4 +1,8 @@
 {
-    "role": {},
+    "_comment": "",
+    "role": {
+        "_comment": "[1, 1]",
+        "dct:identifier": "STRING"
+    },
     "sio:has-value": "STRING"
 }

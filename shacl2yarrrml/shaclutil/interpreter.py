@@ -1,6 +1,6 @@
 import rdflib
 import namespace_provider as namespace_provider
-
+import util.common as common_util
 
 def get_cardinality(mincount_triple: tuple, maxcount_triple: tuple):
     if mincount_triple:
@@ -25,10 +25,11 @@ class AssociatedLiteral:
         self.max_count = max_count
 
 class AssociatedNodeShapeNode:
-    def __init__(self, nodeshape_node: rdflib.URIRef, min_count: int, max_count: int):
+    def __init__(self, nodeshape_node: rdflib.URIRef, min_count: int, max_count: int, comment: str = ''):
         self.node = nodeshape_node
         self.min_count = min_count
         self.max_count = max_count
+        self.comment = comment
 
 class Interpreter:
     def __init__(self, g: rdflib.Graph):
@@ -180,6 +181,23 @@ class Interpreter:
 
         return or_associated_nodeshape_nodes
     
+    def address_or_constraints(self, or_nodeshapes_list: list):
+        or_node_names = []
+        for or_nodeshape in or_nodeshapes_list:
+            _, _, or_nodeshape_name = self.get_node_values(or_nodeshape.node)
+            or_node_names.append(common_util.from_nodeshape_name_to_name(or_nodeshape_name))
+    
+        for or_nodeshape in or_nodeshapes_list:
+            or_nodeshape.comment = f'Provide one of the following: {' OR '.join(or_node_names)}'
+
+    def address_constraints(self, min_count, max_count, nodeshape_node_obj: AssociatedNodeShapeNode):
+        if max_count == -1:
+            max_count_str = '*'
+        else:
+            max_count_str = str(max_count)
+
+        nodeshape_node_obj.comment = f'[{min_count}, {max_count_str}]'
+
     def get_qualified_nodeshapes(self, qualifiedvalue_shape_node: rdflib.URIRef, property_node: rdflib.URIRef):
         nodeshapes_list = []
 
@@ -195,19 +213,28 @@ class Interpreter:
 
         if namespace_provider.SH.node in qualifiedvalue_attributes:
             nodeshape_node = qualifiedvalue_attributes[namespace_provider.SH.node]
-            nodeshapes_list.append(AssociatedNodeShapeNode(nodeshape_node=nodeshape_node, min_count=min_count, max_count=max_count))
+            nodeshape_node_obj = AssociatedNodeShapeNode(nodeshape_node=nodeshape_node, min_count=min_count, max_count=max_count)
+            self.address_constraints(min_count=min_count, max_count=max_count, nodeshape_node_obj=nodeshape_node_obj)
+
+            nodeshapes_list.append(nodeshape_node_obj)
 
         elif rdflib.URIRef('http://www.w3.org/ns/shacl#class') in qualifiedvalue_attributes:
             class_node = qualifiedvalue_attributes[rdflib.URIRef('http://www.w3.org/ns/shacl#class')]
             nodeshape_node = self.from_class_to_nodeshape(class_node=class_node)
 
             if nodeshape_node:
-                nodeshapes_list.append(AssociatedNodeShapeNode(nodeshape_node=nodeshape_node, min_count=min_count, max_count=max_count))
+                nodeshape_node_obj = AssociatedNodeShapeNode(nodeshape_node=nodeshape_node, min_count=min_count, max_count=max_count)
+                self.address_constraints(min_count=min_count, max_count=max_count, nodeshape_node_obj=nodeshape_node_obj)
+                nodeshapes_list.append(nodeshape_node_obj)
 
         elif rdflib.URIRef('http://www.w3.org/ns/shacl#or') in qualifiedvalue_attributes:
             or_root_node = qualifiedvalue_attributes[rdflib.URIRef('http://www.w3.org/ns/shacl#or')]
-            self.get_or_nodeshape_nodes(or_root_node=or_root_node, min_count=min_count, max_count=max_count)
-            nodeshapes_list += self.get_or_nodeshape_nodes(or_root_node=or_root_node, min_count=min_count, max_count=max_count)
+            or_nodeshapes_list = self.get_or_nodeshape_nodes(or_root_node=or_root_node, min_count=min_count, max_count=max_count)
+
+            if min_count == 1 and max_count == 1:
+                self.address_or_constraints(or_nodeshapes_list=or_nodeshapes_list)
+
+            nodeshapes_list += or_nodeshapes_list
 
         return nodeshapes_list
     
@@ -278,11 +305,15 @@ class Interpreter:
             if property_attributes[namespace_provider.SH.path] != namespace_provider.RDF.type:
                 if namespace_provider.SH.node in property_attributes:
                     nodeshape_node = self.get_first_layer_nodeshape(property_attributes=property_attributes)
-                    nodeshape_nodes.append(AssociatedNodeShapeNode(nodeshape_node=nodeshape_node, min_count=min_count, max_count=max_count))
+                    nodeshape_node_obj = AssociatedNodeShapeNode(nodeshape_node=nodeshape_node, min_count=min_count, max_count=max_count)
+                    self.address_constraints(min_count=min_count, max_count=max_count, nodeshape_node_obj=nodeshape_node_obj)
+                    nodeshape_nodes.append(nodeshape_node_obj)
 
                 elif rdflib.URIRef('http://www.w3.org/ns/shacl#class') in property_attributes:
                     nodeshape_node = self.get_first_layer_class(property_attributes=property_attributes)
-                    nodeshape_nodes.append(AssociatedNodeShapeNode(nodeshape_node=nodeshape_node, min_count=min_count, max_count=max_count))
+                    nodeshape_node_obj = AssociatedNodeShapeNode(nodeshape_node=nodeshape_node, min_count=min_count, max_count=max_count)
+                    self.address_constraints(min_count=min_count, max_count=max_count, nodeshape_node_obj=nodeshape_node_obj)
+                    nodeshape_nodes.append(nodeshape_node_obj)
                     
                 elif namespace_provider.SH.qualifiedValueShape in property_attributes:
                     nodeshape_nodes += self.get_qualified_nodeshapes(qualifiedvalue_shape_node=property_attributes[namespace_provider.SH.qualifiedValueShape],
@@ -293,7 +324,12 @@ class Interpreter:
 
                 elif rdflib.URIRef('http://www.w3.org/ns/shacl#or') in property_attributes:
                     or_root_node = property_attributes[rdflib.URIRef('http://www.w3.org/ns/shacl#or')]
-                    nodeshape_nodes += self.get_or_nodeshape_nodes(or_root_node=or_root_node, min_count=min_count, max_count=max_count)
+                    or_nodeshapes_list = self.get_or_nodeshape_nodes(or_root_node=or_root_node, min_count=min_count, max_count=max_count)
+
+                    if min_count == 1 and max_count == 1:
+                        self.address_or_constraints(or_nodeshapes_list=or_nodeshapes_list)
+
+                    nodeshape_nodes += or_nodeshapes_list
             
             else:
                 variable_type_literals = self.get_variable_type(property_attributes=property_attributes)
@@ -320,15 +356,20 @@ class Interpreter:
         inherited_triples = self.find_triples(query_subject=root_node,
                                               query_predicate=namespace_provider.SH.node)
         
+        min_count = 1
+        max_count = 1
+        
         for inherited_triple in inherited_triples:
             _, _, inherited_nodeshape_node = inherited_triple
-            associated_nodeshape_node = AssociatedNodeShapeNode(nodeshape_node=inherited_nodeshape_node, min_count=1, max_count=1)
+            associated_nodeshape_node = AssociatedNodeShapeNode(nodeshape_node=inherited_nodeshape_node, min_count=min_count, max_count=max_count)
+            self.address_constraints(min_count=min_count, max_count=max_count, nodeshape_node_obj=associated_nodeshape_node)
             inherited_nodeshapes.append(associated_nodeshape_node)
         
         return inherited_nodeshapes
 
-    def get_hierarchy(self, root_node: rdflib.URIRef):
+    def get_hierarchy(self, root_node: rdflib.URIRef, comment: str = ''):
         association_dict = {}
+        association_dict['_comment'] = comment
 
         associated_nodeshapes, associated_literals = self.get_associated_shapes(root_node=root_node)
 
@@ -339,9 +380,9 @@ class Interpreter:
                 _, _, nodeshape_name = self.get_node_values(node=associated_nodeshape.node)
 
                 if associated_nodeshape.max_count == -1:
-                    association_dict[nodeshape_name.replace('Shape', '')] = [self.get_hierarchy(root_node=associated_nodeshape.node)]
+                    association_dict[common_util.from_nodeshape_name_to_name(nodeshape_name)] = [self.get_hierarchy(root_node=associated_nodeshape.node, comment=associated_nodeshape.comment)]
                 else:
-                    association_dict[nodeshape_name.replace('Shape', '')] = self.get_hierarchy(root_node=associated_nodeshape.node)
+                    association_dict[common_util.from_nodeshape_name_to_name(nodeshape_name)] = self.get_hierarchy(root_node=associated_nodeshape.node, comment=associated_nodeshape.comment)
 
         for literal in associated_literals:
             literal_name = literal.name

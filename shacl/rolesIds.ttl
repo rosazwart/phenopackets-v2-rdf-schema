@@ -4,6 +4,7 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix sio: <http://semanticscience.org/resource/> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix phenop: <http://purl.org/ejp-rd/phenopackets-rdf-schema/v200/shacl/> .
 
 phenop:idShape
@@ -54,6 +55,13 @@ phenop:roleShape
             ];
            	sh:qualifiedMinCount 1 ;
            	sh:qualifiedMaxCount 1 ;
+        ],
+		[
+          	sh:path dct:identifier ;    
+            sh:name "dct:identifier" ;
+            sh:datatype xsd:string ;
+           	sh:minCount 1 ;
+           	sh:maxCount 1 ;
         ]
     ;
 .

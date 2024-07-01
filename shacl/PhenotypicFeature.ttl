@@ -11,28 +11,28 @@ phenop:phenotypicFeatureShape
     a sh:NodeShape ;
 	  sh:node phenop:ontologyClassShape ;
 	  sh:property
-		    [
+		[
           	sh:path dct:identifier ;    
             sh:name "dct:identifier" ;
             sh:datatype xsd:string ;
            	sh:minCount 1 ;
            	sh:maxCount 1 ;
         ],
-		    [
+		[
           	sh:path rdfs:label ;    
             sh:name "rdfs:label" ;
             sh:datatype xsd:string ;
            	sh:minCount 1 ;
            	sh:maxCount 1 ;
         ],
-		    [
+		[
           	sh:path dct:description ;    
             sh:name "dct:description" ;
             sh:datatype xsd:string ;
            	sh:minCount 0 ;
            	sh:maxCount 1 ;
         ],
-		    [
+		[
           	sh:path [ sh:inversePath sio:SIO_000628 ] ;	# sio:refers-to
             sh:name "sio:refers-to" ;
           	sh:node phenop:phenotypicFeatureValueShape ;
@@ -46,7 +46,7 @@ phenop:phenotypicFeatureValueShape
     a sh:NodeShape ;
     sh:targetClass obo:NCIT_C16977 ;    # obo:phenotype
     sh:property
-		    [
+		[
             sh:path rdf:type ;
             sh:hasValue sio:SIO_000015 ;    # sio:information-content-entity
         ]

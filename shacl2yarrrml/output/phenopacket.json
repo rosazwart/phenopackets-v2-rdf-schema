@@ -1,9 +1,17 @@
 {
-    "role": {},
-    "phenotypicFeature": [
+    "_comment": "",
+    "role": {
+        "_comment": "[1, 1]",
+        "dct:identifier": "STRING"
+    },
+    "phenotypicfeature": [
         {
-            "phenotypicFeatureValue": {},
-            "ontologyClass": {
+            "_comment": "[0, *]",
+            "phenotypicfeaturevalue": {
+                "_comment": "[1, 1]"
+            },
+            "ontologyclass": {
+                "_comment": "[1, 1]",
                 "rdf:type": "IRI"
             },
             "dct:identifier": "STRING",
@@ -13,73 +21,123 @@
     ],
     "interpretation": [
         {
-            "role": {},
-            "progressStatus": {
-                "progressStatusValue": {
-                    "literalOutput": {},
+            "_comment": "[0, *]",
+            "role": {
+                "_comment": "[1, 1]",
+                "dct:identifier": "STRING"
+            },
+            "progressstatus": {
+                "_comment": "[1, 1]",
+                "progressstatusvalue": {
+                    "_comment": "[1, 1]",
+                    "literaloutput": {
+                        "_comment": "[1, 1]"
+                    },
                     "sio:has-value": "STRING"
                 }
             },
             "diagnosis": {
-                "diagnosisValue": {},
-                "genomicInterpretation": [
+                "_comment": "[0, 1]",
+                "diagnosisvalue": {
+                    "_comment": "[1, 1]"
+                },
+                "genomicinterpretation": [
                     {
-                        "variantInterpretation": {
-                            "acmgPathogenicityClass": {
-                                "acmgPathogenicityClassValue": {
-                                    "literalOutput": {},
+                        "_comment": "[0, *]",
+                        "variantinterpretation": {
+                            "_comment": "Provide one of the following: variantinterpretation OR genedescriptor",
+                            "acmgpathogenicityclass": {
+                                "_comment": "[1, 1]",
+                                "acmgpathogenicityclassvalue": {
+                                    "_comment": "[1, 1]",
+                                    "literaloutput": {
+                                        "_comment": "[1, 1]"
+                                    },
                                     "sio:has-value": "STRING"
                                 }
                             },
-                            "therapeuticActionability": {
-                                "therapeuticActionabilityValue": {
-                                    "literalOutput": {},
+                            "therapeuticactionability": {
+                                "_comment": "[1, 1]",
+                                "therapeuticactionabilityvalue": {
+                                    "_comment": "[1, 1]",
+                                    "literaloutput": {
+                                        "_comment": "[1, 1]"
+                                    },
                                     "sio:has-value": "STRING"
                                 }
                             },
-                            "variationDescriptor": {
-                                "role": {},
-                                "vcfRecord": {
-                                    "alternateBase": {
-                                        "alternateBaseValue": {
-                                            "literalOutput": {},
+                            "variationdescriptor": {
+                                "_comment": "[1, 1]",
+                                "role": {
+                                    "_comment": "[1, 1]",
+                                    "dct:identifier": "STRING"
+                                },
+                                "vcfrecord": {
+                                    "_comment": "[0, 1]",
+                                    "alternatebase": {
+                                        "_comment": "[1, 1]",
+                                        "alternatebasevalue": {
+                                            "_comment": "[1, 1]",
+                                            "literaloutput": {
+                                                "_comment": "[1, 1]"
+                                            },
                                             "sio:has-value": "STRING"
                                         }
                                     },
-                                    "referenceBase": {
-                                        "referenceBaseValue": {
-                                            "literalOutput": {},
+                                    "referencebase": {
+                                        "_comment": "[1, 1]",
+                                        "referencebasevalue": {
+                                            "_comment": "[1, 1]",
+                                            "literaloutput": {
+                                                "_comment": "[1, 1]"
+                                            },
                                             "sio:has-value": "STRING"
                                         }
                                     },
                                     "position": {
-                                        "positionValue": {
-                                            "literalOutput": {},
+                                        "_comment": "[1, 1]",
+                                        "positionvalue": {
+                                            "_comment": "[1, 1]",
+                                            "literaloutput": {
+                                                "_comment": "[1, 1]"
+                                            },
                                             "sio:has-value": "INTEGER"
                                         }
                                     },
                                     "chromosome": {
-                                        "chromosomeValue": {
-                                            "literalOutput": {},
+                                        "_comment": "[1, 1]",
+                                        "chromosomevalue": {
+                                            "_comment": "[1, 1]",
+                                            "literaloutput": {
+                                                "_comment": "[1, 1]"
+                                            },
                                             "sio:has-value": "STRING"
                                         }
                                     },
-                                    "genomeAssembly": {
-                                        "genomeAssemblyValue": {
-                                            "literalOutput": {},
+                                    "genomeassembly": {
+                                        "_comment": "[1, 1]",
+                                        "genomeassemblyvalue": {
+                                            "_comment": "[1, 1]",
+                                            "literaloutput": {
+                                                "_comment": "[1, 1]"
+                                            },
                                             "sio:has-value": "STRING"
                                         }
                                     }
                                 },
-                                "geneDescriptor": {
-                                    "altId": [
+                                "genedescriptor": {
+                                    "_comment": "[0, 1]",
+                                    "altid": [
                                         {
+                                            "_comment": "[0, *]",
                                             "sio:has-value": "STRING"
                                         }
                                     ],
-                                    "geneSymbol": {
-                                        "altId": [
+                                    "genesymbol": {
+                                        "_comment": "[1, 1]",
+                                        "altid": [
                                             {
+                                                "_comment": "[0, *]",
                                                 "sio:has-value": "STRING"
                                             }
                                         ],
@@ -87,9 +145,13 @@
                                     },
                                     "dct:identifier": "STRING"
                                 },
-                                "moleculeContext": {
-                                    "moleculeContextValue": {
-                                        "literalOutput": {},
+                                "moleculecontext": {
+                                    "_comment": "[1, 1]",
+                                    "moleculecontextvalue": {
+                                        "_comment": "[1, 1]",
+                                        "literaloutput": {
+                                            "_comment": "[1, 1]"
+                                        },
                                         "sio:has-value": "STRING"
                                     }
                                 },
@@ -97,15 +159,19 @@
                                 "dct:description": "STRING"
                             }
                         },
-                        "geneDescriptor": {
-                            "altId": [
+                        "genedescriptor": {
+                            "_comment": "Provide one of the following: variantinterpretation OR genedescriptor",
+                            "altid": [
                                 {
+                                    "_comment": "[0, *]",
                                     "sio:has-value": "STRING"
                                 }
                             ],
-                            "geneSymbol": {
-                                "altId": [
+                            "genesymbol": {
+                                "_comment": "[1, 1]",
+                                "altid": [
                                     {
+                                        "_comment": "[0, *]",
                                         "sio:has-value": "STRING"
                                     }
                                 ],
@@ -114,32 +180,49 @@
                             "dct:identifier": "STRING"
                         },
                         "biosample": {
-                            "role": {},
+                            "_comment": "Provide one of the following: biosample",
+                            "role": {
+                                "_comment": "[1, 1]",
+                                "dct:identifier": "STRING"
+                            },
                             "taxonomy": {
-                                "taxonomyValue": {},
-                                "ontologyClass": {
+                                "_comment": "[0, 1]",
+                                "taxonomyvalue": {
+                                    "_comment": "[1, 1]"
+                                },
+                                "ontologyclass": {
+                                    "_comment": "[1, 1]",
                                     "rdf:type": "IRI"
                                 },
                                 "rdfs:label": "STRING"
                             }
                         },
-                        "interpretationStatus": {
-                            "interpretationStatusValue": {
-                                "literalOutput": {},
+                        "interpretationstatus": {
+                            "_comment": "[1, 1]",
+                            "interpretationstatusvalue": {
+                                "_comment": "[1, 1]",
+                                "literaloutput": {
+                                    "_comment": "[1, 1]"
+                                },
                                 "sio:has-value": "STRING"
                             }
                         }
                     }
                 ],
                 "disease": {
-                    "diseaseValue": {},
-                    "ontologyClass": {
+                    "_comment": "[1, 1]",
+                    "diseasevalue": {
+                        "_comment": "[1, 1]"
+                    },
+                    "ontologyclass": {
+                        "_comment": "[1, 1]",
                         "rdf:type": "IRI"
                     },
                     "dct:identifier": "STRING",
                     "rdfs:label": "STRING"
                 },
-                "ontologyClass": {
+                "ontologyclass": {
+                    "_comment": "[1, 1]",
                     "rdf:type": "IRI"
                 },
                 "dct:identifier": "STRING",
@@ -148,21 +231,34 @@
         }
     ],
     "metadata": {
+        "_comment": "[1, 1]",
         "version": {
-            "versionValue": {
-                "literalOutput": {},
+            "_comment": "[1, 1]",
+            "versionvalue": {
+                "_comment": "[1, 1]",
+                "literaloutput": {
+                    "_comment": "[1, 1]"
+                },
                 "sio:has-value": "STRING"
             }
         },
-        "createdBy": {
-            "createdByValue": {
-                "literalOutput": {},
+        "createdby": {
+            "_comment": "[1, 1]",
+            "createdbyvalue": {
+                "_comment": "[1, 1]",
+                "literaloutput": {
+                    "_comment": "[1, 1]"
+                },
                 "sio:has-value": "STRING"
             }
         },
         "created": {
-            "createdValue": {
-                "literalOutput": {},
+            "_comment": "[1, 1]",
+            "createdvalue": {
+                "_comment": "[1, 1]",
+                "literaloutput": {
+                    "_comment": "[1, 1]"
+                },
                 "sio:has-value": "DATETIME"
             }
         }
