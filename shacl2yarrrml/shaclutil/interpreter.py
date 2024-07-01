@@ -67,10 +67,16 @@ class Interpreter:
 
     def get_all_nodeshapes(self):
         """
-            Get all nodeshapes found in the SHACL graph.
+            Get all nodeshape nodes found in the SHACL graph.
         """
-        return self.find_triples(query_predicate=rdflib.URIRef(namespace_provider.RDF.type),
-                                 query_object=rdflib.URIRef(namespace_provider.SH.NodeShape))
+        all_nodeshape_nodes = []
+        nodeshape_triples = self.find_triples(query_predicate=rdflib.URIRef(namespace_provider.RDF.type), 
+                                              query_object=rdflib.URIRef(namespace_provider.SH.NodeShape))
+        for nodeshape_triple in nodeshape_triples:
+            s, _, _ = nodeshape_triple
+            all_nodeshape_nodes.append(s)
+
+        return all_nodeshape_nodes
         
     def from_class_to_nodeshape(self, class_node: rdflib.URIRef):
         class_node_triple = self.find_first_triple(query_predicate=namespace_provider.SH.targetClass, query_object=class_node)
@@ -370,13 +376,65 @@ class Interpreter:
         
         return inherited_nodeshapes
     
+    def get_path_qualifiedvalue_type(self, qualifiedvalue_shape_node: rdflib.URIRef):
+        qualifiedvalue_triples = self.find_triples(query_subject=qualifiedvalue_shape_node)
+        qualifiedvalue_attributes = self.get_property_dict(qualifiedvalue_triples)
+
+        if namespace_provider.SH.hasValue in qualifiedvalue_attributes:
+            prefix, _, name = self.get_node_values(qualifiedvalue_attributes[namespace_provider.SH.hasValue])
+            return f'{prefix}:{name}'
+        
+        return None
+    
+    def get_path_nodeshape_types(self, nodeshape_node: rdflib.URIRef):
+        all_types = []
+
+        property_triples = self.find_triples(query_subject=nodeshape_node,
+                                             query_predicate=namespace_provider.SH.property)
+        for property_triple in property_triples:
+            _, _, property_node = property_triple
+
+            property_attr_triples = self.find_triples(query_subject=property_node)
+            property_attributes = self.get_property_dict(property_attr_triples=property_attr_triples)
+            
+            if namespace_provider.SH.path in property_attributes:
+                if property_attributes[namespace_provider.SH.path] == namespace_provider.RDF.type:
+                    if namespace_provider.SH.hasValue in property_attributes:
+                        prefix, _, name = self.get_node_values(property_attributes[namespace_provider.SH.hasValue])
+                        all_types.append(f'{prefix}:{name}')
+                    elif namespace_provider.SH.qualifiedValueShape in property_attributes:
+                        all_types.append(self.get_path_qualifiedvalue_type(qualifiedvalue_shape_node=property_attributes[namespace_provider.SH.qualifiedValueShape]))
+
+        return all_types
+    
+    def get_targetclass_nodeshape_type(self, nodeshape_node: rdflib.URIRef):
+        targetclass_node = self.get_targetclass_node(nodeshape_node=nodeshape_node)
+
+        if targetclass_node:
+            prefix, _, name = self.get_node_values(targetclass_node)
+            return f'{prefix}:{name}'
+        else:
+            return None
+    
+    def get_types_nodeshape(self, nodeshape_node: rdflib.URIRef):
+        all_types = []
+
+        all_types += self.get_path_nodeshape_types(nodeshape_node=nodeshape_node)
+        all_types.append(self.get_targetclass_nodeshape_type(nodeshape_node=nodeshape_node))
+
+        return list(set(all_types))
+    
 class Traverser:
     def __init__(self, g: rdflib.Graph):
         self.shacl_g = g
         self.interpreter = Interpreter(g=g)
 
-    def get_hierarchy(self, root_node: AssociatedNodeShapeNode):
+    def get_hierarchy(self, root_node: AssociatedNodeShapeNode, is_initial_root: bool = False):
         association_dict = {}
+
+        association_dict['index'] = 'INDEX'
+        if not is_initial_root and root_node.max_count == -1:
+            association_dict['parent_index'] = 'PARENTINDEX'
         association_dict['_comment'] = root_node.comment
 
         associated_nodeshapes, associated_literals = self.interpreter.get_associated_shapes(root_node=root_node.node)

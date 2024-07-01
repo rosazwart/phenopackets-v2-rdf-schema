@@ -25,7 +25,6 @@ phenop:altIdShape
     ;
 .
 
-# TODO: add altId link (validation path too deep)
 phenop:geneSymbolShape
     a sh:NodeShape ;
     sh:targetClass obo:NCIT_C43568 ;    # obo:gene-symbol

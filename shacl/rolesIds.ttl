@@ -55,13 +55,6 @@ phenop:roleShape
             ];
            	sh:qualifiedMinCount 1 ;
            	sh:qualifiedMaxCount 1 ;
-        ],
-		[
-          	sh:path dct:identifier ;    
-            sh:name "dct:identifier" ;
-            sh:datatype xsd:string ;
-           	sh:minCount 1 ;
-           	sh:maxCount 1 ;
         ]
     ;
 .

@@ -22,12 +22,7 @@ class Templater:
             json.dump(dict_values, fp, indent=4)
 
     def write_file(self):
-        all_nodeshape_nodes = []
-        nodeshape_triples = self.shacl_interpreter.get_all_nodeshapes()
-        for nodeshape_triple in nodeshape_triples:
-            s, _, _ = nodeshape_triple
-            all_nodeshape_nodes.append(s)
-
+        all_nodeshape_nodes = self.shacl_interpreter.get_all_nodeshapes()
         root_nodes = self.shacl_interpreter.find_root_nodeshape(all_nodeshape_nodes=all_nodeshape_nodes)
 
         for root_node in root_nodes:
@@ -35,7 +30,7 @@ class Templater:
                                                                            min_count=1,
                                                                            max_count=-1,
                                                                            comment='Root')
-            root_dict = self.shacl_traverser.get_hierarchy(root_node=root_nodeshape_obj)
+            root_dict = self.shacl_traverser.get_hierarchy(root_node=root_nodeshape_obj, is_initial_root=True)
 
             _, _, nodeshape_name = self.shacl_interpreter.get_node_values(node=root_node)
 

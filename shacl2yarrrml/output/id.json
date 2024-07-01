@@ -1,10 +1,11 @@
 {
     "id": [
         {
+            "index": "INDEX",
             "_comment": "Root",
             "role": {
-                "_comment": "[1, 1]",
-                "dct:identifier": "STRING"
+                "index": "INDEX",
+                "_comment": "[1, 1]"
             },
             "sio:has-value": "STRING"
         }
