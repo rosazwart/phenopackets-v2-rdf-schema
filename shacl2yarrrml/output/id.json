@@ -1,8 +1,12 @@
 {
-    "_comment": "",
-    "role": {
-        "_comment": "[1, 1]",
-        "dct:identifier": "STRING"
-    },
-    "sio:has-value": "STRING"
+    "id": [
+        {
+            "_comment": "Root",
+            "role": {
+                "_comment": "[1, 1]",
+                "dct:identifier": "STRING"
+            },
+            "sio:has-value": "STRING"
+        }
+    ]
 }

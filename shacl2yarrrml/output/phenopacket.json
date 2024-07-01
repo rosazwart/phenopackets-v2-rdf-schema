@@ -1,82 +1,56 @@
 {
-    "_comment": "",
-    "role": {
-        "_comment": "[1, 1]",
-        "dct:identifier": "STRING"
-    },
-    "phenotypicfeature": [
+    "phenopacket": [
         {
-            "_comment": "[0, *]",
-            "phenotypicfeaturevalue": {
-                "_comment": "[1, 1]"
-            },
-            "ontologyclass": {
-                "_comment": "[1, 1]",
-                "rdf:type": "IRI"
-            },
-            "dct:identifier": "STRING",
-            "rdfs:label": "STRING",
-            "dct:description": "STRING"
-        }
-    ],
-    "interpretation": [
-        {
-            "_comment": "[0, *]",
+            "_comment": "Root",
             "role": {
                 "_comment": "[1, 1]",
                 "dct:identifier": "STRING"
             },
-            "progressstatus": {
-                "_comment": "[1, 1]",
-                "progressstatusvalue": {
-                    "_comment": "[1, 1]",
-                    "literaloutput": {
+            "phenotypicfeature": [
+                {
+                    "_comment": "[0, *]",
+                    "phenotypicfeaturevalue": {
                         "_comment": "[1, 1]"
                     },
-                    "sio:has-value": "STRING"
+                    "ontologyclass": {
+                        "_comment": "[1, 1]",
+                        "rdf:type": "IRI"
+                    },
+                    "dct:identifier": "STRING",
+                    "rdfs:label": "STRING",
+                    "dct:description": "STRING"
                 }
-            },
-            "diagnosis": {
-                "_comment": "[0, 1]",
-                "diagnosisvalue": {
-                    "_comment": "[1, 1]"
-                },
-                "genomicinterpretation": [
-                    {
-                        "_comment": "[0, *]",
-                        "variantinterpretation": {
-                            "_comment": "Provide with cardinality [1, 1] from the following: variantinterpretation OR genedescriptor",
-                            "acmgpathogenicityclass": {
-                                "_comment": "[1, 1]",
-                                "acmgpathogenicityclassvalue": {
-                                    "_comment": "[1, 1]",
-                                    "literaloutput": {
-                                        "_comment": "[1, 1]"
-                                    },
-                                    "sio:has-value": "STRING"
-                                }
+            ],
+            "interpretation": [
+                {
+                    "_comment": "[0, *]",
+                    "role": {
+                        "_comment": "[1, 1]",
+                        "dct:identifier": "STRING"
+                    },
+                    "progressstatus": {
+                        "_comment": "[1, 1]",
+                        "progressstatusvalue": {
+                            "_comment": "[1, 1]",
+                            "literaloutput": {
+                                "_comment": "[1, 1]"
                             },
-                            "therapeuticactionability": {
-                                "_comment": "[1, 1]",
-                                "therapeuticactionabilityvalue": {
-                                    "_comment": "[1, 1]",
-                                    "literaloutput": {
-                                        "_comment": "[1, 1]"
-                                    },
-                                    "sio:has-value": "STRING"
-                                }
-                            },
-                            "variationdescriptor": {
-                                "_comment": "[1, 1]",
-                                "role": {
-                                    "_comment": "[1, 1]",
-                                    "dct:identifier": "STRING"
-                                },
-                                "vcfrecord": {
-                                    "_comment": "[0, 1]",
-                                    "alternatebase": {
+                            "sio:has-value": "STRING"
+                        }
+                    },
+                    "diagnosis": {
+                        "_comment": "[0, 1]",
+                        "diagnosisvalue": {
+                            "_comment": "[1, 1]"
+                        },
+                        "genomicinterpretation": [
+                            {
+                                "_comment": "[0, *]",
+                                "variantinterpretation": {
+                                    "_comment": "Provide with cardinality [1, 1] from the following: variantinterpretation OR genedescriptor",
+                                    "acmgpathogenicityclass": {
                                         "_comment": "[1, 1]",
-                                        "alternatebasevalue": {
+                                        "acmgpathogenicityclassvalue": {
                                             "_comment": "[1, 1]",
                                             "literaloutput": {
                                                 "_comment": "[1, 1]"
@@ -84,9 +58,9 @@
                                             "sio:has-value": "STRING"
                                         }
                                     },
-                                    "referencebase": {
+                                    "therapeuticactionability": {
                                         "_comment": "[1, 1]",
-                                        "referencebasevalue": {
+                                        "therapeuticactionabilityvalue": {
                                             "_comment": "[1, 1]",
                                             "literaloutput": {
                                                 "_comment": "[1, 1]"
@@ -94,39 +68,101 @@
                                             "sio:has-value": "STRING"
                                         }
                                     },
-                                    "position": {
+                                    "variationdescriptor": {
                                         "_comment": "[1, 1]",
-                                        "positionvalue": {
+                                        "role": {
                                             "_comment": "[1, 1]",
-                                            "literaloutput": {
-                                                "_comment": "[1, 1]"
+                                            "dct:identifier": "STRING"
+                                        },
+                                        "vcfrecord": {
+                                            "_comment": "[0, 1]",
+                                            "alternatebase": {
+                                                "_comment": "[1, 1]",
+                                                "alternatebasevalue": {
+                                                    "_comment": "[1, 1]",
+                                                    "literaloutput": {
+                                                        "_comment": "[1, 1]"
+                                                    },
+                                                    "sio:has-value": "STRING"
+                                                }
                                             },
-                                            "sio:has-value": "INTEGER"
-                                        }
-                                    },
-                                    "chromosome": {
-                                        "_comment": "[1, 1]",
-                                        "chromosomevalue": {
+                                            "referencebase": {
+                                                "_comment": "[1, 1]",
+                                                "referencebasevalue": {
+                                                    "_comment": "[1, 1]",
+                                                    "literaloutput": {
+                                                        "_comment": "[1, 1]"
+                                                    },
+                                                    "sio:has-value": "STRING"
+                                                }
+                                            },
+                                            "position": {
+                                                "_comment": "[1, 1]",
+                                                "positionvalue": {
+                                                    "_comment": "[1, 1]",
+                                                    "literaloutput": {
+                                                        "_comment": "[1, 1]"
+                                                    },
+                                                    "sio:has-value": "INTEGER"
+                                                }
+                                            },
+                                            "chromosome": {
+                                                "_comment": "[1, 1]",
+                                                "chromosomevalue": {
+                                                    "_comment": "[1, 1]",
+                                                    "literaloutput": {
+                                                        "_comment": "[1, 1]"
+                                                    },
+                                                    "sio:has-value": "STRING"
+                                                }
+                                            },
+                                            "genomeassembly": {
+                                                "_comment": "[1, 1]",
+                                                "genomeassemblyvalue": {
+                                                    "_comment": "[1, 1]",
+                                                    "literaloutput": {
+                                                        "_comment": "[1, 1]"
+                                                    },
+                                                    "sio:has-value": "STRING"
+                                                }
+                                            }
+                                        },
+                                        "genedescriptor": {
+                                            "_comment": "[0, 1]",
+                                            "altid": [
+                                                {
+                                                    "_comment": "[0, *]",
+                                                    "sio:has-value": "STRING"
+                                                }
+                                            ],
+                                            "genesymbol": {
+                                                "_comment": "[1, 1]",
+                                                "altid": [
+                                                    {
+                                                        "_comment": "[0, *]",
+                                                        "sio:has-value": "STRING"
+                                                    }
+                                                ],
+                                                "sio:has-value": "STRING"
+                                            },
+                                            "dct:identifier": "STRING"
+                                        },
+                                        "moleculecontext": {
                                             "_comment": "[1, 1]",
-                                            "literaloutput": {
-                                                "_comment": "[1, 1]"
-                                            },
-                                            "sio:has-value": "STRING"
-                                        }
-                                    },
-                                    "genomeassembly": {
-                                        "_comment": "[1, 1]",
-                                        "genomeassemblyvalue": {
-                                            "_comment": "[1, 1]",
-                                            "literaloutput": {
-                                                "_comment": "[1, 1]"
-                                            },
-                                            "sio:has-value": "STRING"
-                                        }
+                                            "moleculecontextvalue": {
+                                                "_comment": "[1, 1]",
+                                                "literaloutput": {
+                                                    "_comment": "[1, 1]"
+                                                },
+                                                "sio:has-value": "STRING"
+                                            }
+                                        },
+                                        "rdfs:label": "STRING",
+                                        "dct:description": "STRING"
                                     }
                                 },
                                 "genedescriptor": {
-                                    "_comment": "[0, 1]",
+                                    "_comment": "Provide with cardinality [1, 1] from the following: variantinterpretation OR genedescriptor",
                                     "altid": [
                                         {
                                             "_comment": "[0, *]",
@@ -145,122 +181,90 @@
                                     },
                                     "dct:identifier": "STRING"
                                 },
-                                "moleculecontext": {
+                                "biosample": {
+                                    "_comment": "Provide with cardinality [1, 1] from the following: biosample",
+                                    "role": {
+                                        "_comment": "[1, 1]",
+                                        "dct:identifier": "STRING"
+                                    },
+                                    "taxonomy": {
+                                        "_comment": "[0, 1]",
+                                        "taxonomyvalue": {
+                                            "_comment": "[1, 1]"
+                                        },
+                                        "ontologyclass": {
+                                            "_comment": "[1, 1]",
+                                            "rdf:type": "IRI"
+                                        },
+                                        "rdfs:label": "STRING"
+                                    }
+                                },
+                                "interpretationstatus": {
                                     "_comment": "[1, 1]",
-                                    "moleculecontextvalue": {
+                                    "interpretationstatusvalue": {
                                         "_comment": "[1, 1]",
                                         "literaloutput": {
                                             "_comment": "[1, 1]"
                                         },
                                         "sio:has-value": "STRING"
                                     }
-                                },
-                                "rdfs:label": "STRING",
-                                "dct:description": "STRING"
-                            }
-                        },
-                        "genedescriptor": {
-                            "_comment": "Provide with cardinality [1, 1] from the following: variantinterpretation OR genedescriptor",
-                            "altid": [
-                                {
-                                    "_comment": "[0, *]",
-                                    "sio:has-value": "STRING"
                                 }
-                            ],
-                            "genesymbol": {
-                                "_comment": "[1, 1]",
-                                "altid": [
-                                    {
-                                        "_comment": "[0, *]",
-                                        "sio:has-value": "STRING"
-                                    }
-                                ],
-                                "sio:has-value": "STRING"
-                            },
-                            "dct:identifier": "STRING"
-                        },
-                        "biosample": {
-                            "_comment": "Provide with cardinality [1, 1] from the following: biosample",
-                            "role": {
-                                "_comment": "[1, 1]",
-                                "dct:identifier": "STRING"
-                            },
-                            "taxonomy": {
-                                "_comment": "[0, 1]",
-                                "taxonomyvalue": {
-                                    "_comment": "[1, 1]"
-                                },
-                                "ontologyclass": {
-                                    "_comment": "[1, 1]",
-                                    "rdf:type": "IRI"
-                                },
-                                "rdfs:label": "STRING"
                             }
-                        },
-                        "interpretationstatus": {
+                        ],
+                        "disease": {
                             "_comment": "[1, 1]",
-                            "interpretationstatusvalue": {
+                            "diseasevalue": {
+                                "_comment": "[1, 1]"
+                            },
+                            "ontologyclass": {
                                 "_comment": "[1, 1]",
-                                "literaloutput": {
-                                    "_comment": "[1, 1]"
-                                },
-                                "sio:has-value": "STRING"
-                            }
-                        }
+                                "rdf:type": "IRI"
+                            },
+                            "dct:identifier": "STRING",
+                            "rdfs:label": "STRING"
+                        },
+                        "ontologyclass": {
+                            "_comment": "[1, 1]",
+                            "rdf:type": "IRI"
+                        },
+                        "dct:identifier": "STRING",
+                        "rdfs:label": "STRING"
                     }
-                ],
-                "disease": {
+                }
+            ],
+            "metadata": {
+                "_comment": "[1, 1]",
+                "version": {
                     "_comment": "[1, 1]",
-                    "diseasevalue": {
-                        "_comment": "[1, 1]"
-                    },
-                    "ontologyclass": {
+                    "versionvalue": {
                         "_comment": "[1, 1]",
-                        "rdf:type": "IRI"
-                    },
-                    "dct:identifier": "STRING",
-                    "rdfs:label": "STRING"
+                        "literaloutput": {
+                            "_comment": "[1, 1]"
+                        },
+                        "sio:has-value": "STRING"
+                    }
                 },
-                "ontologyclass": {
+                "createdby": {
                     "_comment": "[1, 1]",
-                    "rdf:type": "IRI"
+                    "createdbyvalue": {
+                        "_comment": "[1, 1]",
+                        "literaloutput": {
+                            "_comment": "[1, 1]"
+                        },
+                        "sio:has-value": "STRING"
+                    }
                 },
-                "dct:identifier": "STRING",
-                "rdfs:label": "STRING"
+                "created": {
+                    "_comment": "[1, 1]",
+                    "createdvalue": {
+                        "_comment": "[1, 1]",
+                        "literaloutput": {
+                            "_comment": "[1, 1]"
+                        },
+                        "sio:has-value": "DATETIME"
+                    }
+                }
             }
         }
-    ],
-    "metadata": {
-        "_comment": "[1, 1]",
-        "version": {
-            "_comment": "[1, 1]",
-            "versionvalue": {
-                "_comment": "[1, 1]",
-                "literaloutput": {
-                    "_comment": "[1, 1]"
-                },
-                "sio:has-value": "STRING"
-            }
-        },
-        "createdby": {
-            "_comment": "[1, 1]",
-            "createdbyvalue": {
-                "_comment": "[1, 1]",
-                "literaloutput": {
-                    "_comment": "[1, 1]"
-                },
-                "sio:has-value": "STRING"
-            }
-        },
-        "created": {
-            "_comment": "[1, 1]",
-            "createdvalue": {
-                "_comment": "[1, 1]",
-                "literaloutput": {
-                    "_comment": "[1, 1]"
-                },
-                "sio:has-value": "DATETIME"
-            }
-        }
-    }
+    ]
 }

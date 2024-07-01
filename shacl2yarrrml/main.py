@@ -11,6 +11,7 @@
 import shaclutil.loader as loader
 import namespace_provider as namespace_provider
 import yamlutil.writer as yaml_writer
+import jsonutil.writer as json_writer
 
 def get_input_value(input_value, default_value):
     if len(input_value) > 0:
@@ -30,4 +31,4 @@ if __name__ == "__main__":
     namespace_provider.bind_namespaces(g=shacl_g)
     
     yaml_writer.create_template(input_g=shacl_g)
-
+    json_writer.create_template(input_g=shacl_g)

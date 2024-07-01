@@ -375,22 +375,22 @@ class Traverser:
         self.shacl_g = g
         self.interpreter = Interpreter(g=g)
 
-    def get_hierarchy(self, root_node: rdflib.URIRef, comment: str = ''):
+    def get_hierarchy(self, root_node: AssociatedNodeShapeNode):
         association_dict = {}
-        association_dict['_comment'] = comment
+        association_dict['_comment'] = root_node.comment
 
-        associated_nodeshapes, associated_literals = self.interpreter.get_associated_shapes(root_node=root_node)
+        associated_nodeshapes, associated_literals = self.interpreter.get_associated_shapes(root_node=root_node.node)
 
-        associated_nodeshapes += self.interpreter.get_inherited_nodeshape(root_node=root_node)
+        associated_nodeshapes += self.interpreter.get_inherited_nodeshape(root_node=root_node.node)
 
         if len(associated_nodeshapes):
             for associated_nodeshape in associated_nodeshapes:
                 _, _, nodeshape_name = self.interpreter.get_node_values(node=associated_nodeshape.node)
 
                 if associated_nodeshape.max_count == -1:
-                    association_dict[common_util.from_nodeshape_name_to_name(nodeshape_name)] = [self.get_hierarchy(root_node=associated_nodeshape.node, comment=associated_nodeshape.comment)]
+                    association_dict[common_util.from_nodeshape_name_to_name(nodeshape_name)] = [self.get_hierarchy(root_node=associated_nodeshape)]
                 else:
-                    association_dict[common_util.from_nodeshape_name_to_name(nodeshape_name)] = self.get_hierarchy(root_node=associated_nodeshape.node, comment=associated_nodeshape.comment)
+                    association_dict[common_util.from_nodeshape_name_to_name(nodeshape_name)] = self.get_hierarchy(root_node=associated_nodeshape)
 
         for literal in associated_literals:
             literal_name = literal.name

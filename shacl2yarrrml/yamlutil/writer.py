@@ -21,7 +21,6 @@ class Templater:
 
         self.shacl_g = g
 
-        self.add_hierarchy()
         self.add_prefixes()
         self.add_mappings()
 
@@ -69,23 +68,6 @@ class Templater:
         for nodeshape_triple in nodeshape_triples:
             nodeshape_node, _, _ = nodeshape_triple
             self.add_nodeshape_mapping(nodeshape_node=nodeshape_node)
-
-    def add_hierarchy(self):
-        all_nodeshape_nodes = []
-        nodeshape_triples = self.shacl_interpreter.get_all_nodeshapes()
-        for nodeshape_triple in nodeshape_triples:
-            s, _, _ = nodeshape_triple
-            all_nodeshape_nodes.append(s)
-
-        root_nodes = self.shacl_interpreter.find_root_nodeshape(all_nodeshape_nodes=all_nodeshape_nodes)
-
-        for root_node in root_nodes:
-            root_dict = self.shacl_traverser.get_hierarchy(root_node=root_node)
-
-            _, _, nodeshape_name = self.shacl_interpreter.get_node_values(node=root_node)
-
-            json_writer.store_json_file(file_name=f'{common_util.from_nodeshape_name_to_name(nodeshape_name)}.json',
-                                        dict_values=root_dict)
 
 def create_template(input_g: rdflib.Graph):
     Templater(g=input_g)
