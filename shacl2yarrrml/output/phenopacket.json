@@ -5,6 +5,7 @@
             "_comment": "Root",
             "role": {
                 "index": "INDEX",
+                "parent_index": "PARENTINDEX",
                 "_comment": "[1, 1]"
             },
             "phenotypicfeature": [
@@ -14,10 +15,12 @@
                     "_comment": "[0, *]",
                     "phenotypicfeaturevalue": {
                         "index": "INDEX",
+                        "parent_index": "PARENTINDEX",
                         "_comment": "[1, 1]"
                     },
                     "ontologyclass": {
                         "index": "INDEX",
+                        "parent_index": "PARENTINDEX",
                         "_comment": "[1, 1]",
                         "rdf:type": "IRI"
                     },
@@ -33,16 +36,20 @@
                     "_comment": "[0, *]",
                     "role": {
                         "index": "INDEX",
+                        "parent_index": "PARENTINDEX",
                         "_comment": "[1, 1]"
                     },
                     "progressstatus": {
                         "index": "INDEX",
+                        "parent_index": "PARENTINDEX",
                         "_comment": "[1, 1]",
                         "progressstatusvalue": {
                             "index": "INDEX",
+                            "parent_index": "PARENTINDEX",
                             "_comment": "[1, 1]",
                             "literaloutput": {
                                 "index": "INDEX",
+                                "parent_index": "PARENTINDEX",
                                 "_comment": "[1, 1]"
                             },
                             "sio:has-value": "STRING"
@@ -50,9 +57,11 @@
                     },
                     "diagnosis": {
                         "index": "INDEX",
+                        "parent_index": "PARENTINDEX",
                         "_comment": "[0, 1]",
                         "diagnosisvalue": {
                             "index": "INDEX",
+                            "parent_index": "PARENTINDEX",
                             "_comment": "[1, 1]"
                         },
                         "genomicinterpretation": [
@@ -62,15 +71,19 @@
                                 "_comment": "[0, *]",
                                 "variantinterpretation": {
                                     "index": "INDEX",
+                                    "parent_index": "PARENTINDEX",
                                     "_comment": "Provide with cardinality [1, 1] from the following: variantinterpretation OR genedescriptor",
                                     "acmgpathogenicityclass": {
                                         "index": "INDEX",
+                                        "parent_index": "PARENTINDEX",
                                         "_comment": "[1, 1]",
                                         "acmgpathogenicityclassvalue": {
                                             "index": "INDEX",
+                                            "parent_index": "PARENTINDEX",
                                             "_comment": "[1, 1]",
                                             "literaloutput": {
                                                 "index": "INDEX",
+                                                "parent_index": "PARENTINDEX",
                                                 "_comment": "[1, 1]"
                                             },
                                             "sio:has-value": "STRING"
@@ -78,12 +91,15 @@
                                     },
                                     "therapeuticactionability": {
                                         "index": "INDEX",
+                                        "parent_index": "PARENTINDEX",
                                         "_comment": "[1, 1]",
                                         "therapeuticactionabilityvalue": {
                                             "index": "INDEX",
+                                            "parent_index": "PARENTINDEX",
                                             "_comment": "[1, 1]",
                                             "literaloutput": {
                                                 "index": "INDEX",
+                                                "parent_index": "PARENTINDEX",
                                                 "_comment": "[1, 1]"
                                             },
                                             "sio:has-value": "STRING"
@@ -91,22 +107,28 @@
                                     },
                                     "variationdescriptor": {
                                         "index": "INDEX",
+                                        "parent_index": "PARENTINDEX",
                                         "_comment": "[1, 1]",
                                         "role": {
                                             "index": "INDEX",
+                                            "parent_index": "PARENTINDEX",
                                             "_comment": "[1, 1]"
                                         },
                                         "vcfrecord": {
                                             "index": "INDEX",
+                                            "parent_index": "PARENTINDEX",
                                             "_comment": "[0, 1]",
                                             "alternatebase": {
                                                 "index": "INDEX",
+                                                "parent_index": "PARENTINDEX",
                                                 "_comment": "[1, 1]",
                                                 "alternatebasevalue": {
                                                     "index": "INDEX",
+                                                    "parent_index": "PARENTINDEX",
                                                     "_comment": "[1, 1]",
                                                     "literaloutput": {
                                                         "index": "INDEX",
+                                                        "parent_index": "PARENTINDEX",
                                                         "_comment": "[1, 1]"
                                                     },
                                                     "sio:has-value": "STRING"
@@ -114,12 +136,15 @@
                                             },
                                             "referencebase": {
                                                 "index": "INDEX",
+                                                "parent_index": "PARENTINDEX",
                                                 "_comment": "[1, 1]",
                                                 "referencebasevalue": {
                                                     "index": "INDEX",
+                                                    "parent_index": "PARENTINDEX",
                                                     "_comment": "[1, 1]",
                                                     "literaloutput": {
                                                         "index": "INDEX",
+                                                        "parent_index": "PARENTINDEX",
                                                         "_comment": "[1, 1]"
                                                     },
                                                     "sio:has-value": "STRING"
@@ -127,12 +152,15 @@
                                             },
                                             "position": {
                                                 "index": "INDEX",
+                                                "parent_index": "PARENTINDEX",
                                                 "_comment": "[1, 1]",
                                                 "positionvalue": {
                                                     "index": "INDEX",
+                                                    "parent_index": "PARENTINDEX",
                                                     "_comment": "[1, 1]",
                                                     "literaloutput": {
                                                         "index": "INDEX",
+                                                        "parent_index": "PARENTINDEX",
                                                         "_comment": "[1, 1]"
                                                     },
                                                     "sio:has-value": "INTEGER"
@@ -140,12 +168,15 @@
                                             },
                                             "chromosome": {
                                                 "index": "INDEX",
+                                                "parent_index": "PARENTINDEX",
                                                 "_comment": "[1, 1]",
                                                 "chromosomevalue": {
                                                     "index": "INDEX",
+                                                    "parent_index": "PARENTINDEX",
                                                     "_comment": "[1, 1]",
                                                     "literaloutput": {
                                                         "index": "INDEX",
+                                                        "parent_index": "PARENTINDEX",
                                                         "_comment": "[1, 1]"
                                                     },
                                                     "sio:has-value": "STRING"
@@ -153,12 +184,15 @@
                                             },
                                             "genomeassembly": {
                                                 "index": "INDEX",
+                                                "parent_index": "PARENTINDEX",
                                                 "_comment": "[1, 1]",
                                                 "genomeassemblyvalue": {
                                                     "index": "INDEX",
+                                                    "parent_index": "PARENTINDEX",
                                                     "_comment": "[1, 1]",
                                                     "literaloutput": {
                                                         "index": "INDEX",
+                                                        "parent_index": "PARENTINDEX",
                                                         "_comment": "[1, 1]"
                                                     },
                                                     "sio:has-value": "STRING"
@@ -167,6 +201,7 @@
                                         },
                                         "genedescriptor": {
                                             "index": "INDEX",
+                                            "parent_index": "PARENTINDEX",
                                             "_comment": "[0, 1]",
                                             "altid": [
                                                 {
@@ -178,6 +213,7 @@
                                             ],
                                             "genesymbol": {
                                                 "index": "INDEX",
+                                                "parent_index": "PARENTINDEX",
                                                 "_comment": "[1, 1]",
                                                 "altid": [
                                                     {
@@ -193,12 +229,15 @@
                                         },
                                         "moleculecontext": {
                                             "index": "INDEX",
+                                            "parent_index": "PARENTINDEX",
                                             "_comment": "[1, 1]",
                                             "moleculecontextvalue": {
                                                 "index": "INDEX",
+                                                "parent_index": "PARENTINDEX",
                                                 "_comment": "[1, 1]",
                                                 "literaloutput": {
                                                     "index": "INDEX",
+                                                    "parent_index": "PARENTINDEX",
                                                     "_comment": "[1, 1]"
                                                 },
                                                 "sio:has-value": "STRING"
@@ -210,6 +249,7 @@
                                 },
                                 "genedescriptor": {
                                     "index": "INDEX",
+                                    "parent_index": "PARENTINDEX",
                                     "_comment": "Provide with cardinality [1, 1] from the following: variantinterpretation OR genedescriptor",
                                     "altid": [
                                         {
@@ -221,6 +261,7 @@
                                     ],
                                     "genesymbol": {
                                         "index": "INDEX",
+                                        "parent_index": "PARENTINDEX",
                                         "_comment": "[1, 1]",
                                         "altid": [
                                             {
@@ -236,20 +277,25 @@
                                 },
                                 "biosample": {
                                     "index": "INDEX",
+                                    "parent_index": "PARENTINDEX",
                                     "_comment": "Provide with cardinality [1, 1] from the following: biosample",
                                     "role": {
                                         "index": "INDEX",
+                                        "parent_index": "PARENTINDEX",
                                         "_comment": "[1, 1]"
                                     },
                                     "taxonomy": {
                                         "index": "INDEX",
+                                        "parent_index": "PARENTINDEX",
                                         "_comment": "[0, 1]",
                                         "taxonomyvalue": {
                                             "index": "INDEX",
+                                            "parent_index": "PARENTINDEX",
                                             "_comment": "[1, 1]"
                                         },
                                         "ontologyclass": {
                                             "index": "INDEX",
+                                            "parent_index": "PARENTINDEX",
                                             "_comment": "[1, 1]",
                                             "rdf:type": "IRI"
                                         },
@@ -258,12 +304,15 @@
                                 },
                                 "interpretationstatus": {
                                     "index": "INDEX",
+                                    "parent_index": "PARENTINDEX",
                                     "_comment": "[1, 1]",
                                     "interpretationstatusvalue": {
                                         "index": "INDEX",
+                                        "parent_index": "PARENTINDEX",
                                         "_comment": "[1, 1]",
                                         "literaloutput": {
                                             "index": "INDEX",
+                                            "parent_index": "PARENTINDEX",
                                             "_comment": "[1, 1]"
                                         },
                                         "sio:has-value": "STRING"
@@ -273,13 +322,16 @@
                         ],
                         "disease": {
                             "index": "INDEX",
+                            "parent_index": "PARENTINDEX",
                             "_comment": "[1, 1]",
                             "diseasevalue": {
                                 "index": "INDEX",
+                                "parent_index": "PARENTINDEX",
                                 "_comment": "[1, 1]"
                             },
                             "ontologyclass": {
                                 "index": "INDEX",
+                                "parent_index": "PARENTINDEX",
                                 "_comment": "[1, 1]",
                                 "rdf:type": "IRI"
                             },
@@ -288,6 +340,7 @@
                         },
                         "ontologyclass": {
                             "index": "INDEX",
+                            "parent_index": "PARENTINDEX",
                             "_comment": "[1, 1]",
                             "rdf:type": "IRI"
                         },
@@ -298,15 +351,19 @@
             ],
             "metadata": {
                 "index": "INDEX",
+                "parent_index": "PARENTINDEX",
                 "_comment": "[1, 1]",
                 "version": {
                     "index": "INDEX",
+                    "parent_index": "PARENTINDEX",
                     "_comment": "[1, 1]",
                     "versionvalue": {
                         "index": "INDEX",
+                        "parent_index": "PARENTINDEX",
                         "_comment": "[1, 1]",
                         "literaloutput": {
                             "index": "INDEX",
+                            "parent_index": "PARENTINDEX",
                             "_comment": "[1, 1]"
                         },
                         "sio:has-value": "STRING"
@@ -314,12 +371,15 @@
                 },
                 "createdby": {
                     "index": "INDEX",
+                    "parent_index": "PARENTINDEX",
                     "_comment": "[1, 1]",
                     "createdbyvalue": {
                         "index": "INDEX",
+                        "parent_index": "PARENTINDEX",
                         "_comment": "[1, 1]",
                         "literaloutput": {
                             "index": "INDEX",
+                            "parent_index": "PARENTINDEX",
                             "_comment": "[1, 1]"
                         },
                         "sio:has-value": "STRING"
@@ -327,12 +387,15 @@
                 },
                 "created": {
                     "index": "INDEX",
+                    "parent_index": "PARENTINDEX",
                     "_comment": "[1, 1]",
                     "createdvalue": {
                         "index": "INDEX",
+                        "parent_index": "PARENTINDEX",
                         "_comment": "[1, 1]",
                         "literaloutput": {
                             "index": "INDEX",
+                            "parent_index": "PARENTINDEX",
                             "_comment": "[1, 1]"
                         },
                         "sio:has-value": "DATETIME"

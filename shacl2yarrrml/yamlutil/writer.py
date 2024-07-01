@@ -50,9 +50,46 @@ class Templater:
         sources_info_map['referenceFormulation'] = 'jsonpath'
         sources_info_map['iterator'] = f'$.{'.'.join(path)}'
 
-        sources_info_map.yaml_add_eol_comment(comment='path to field representing all entities', key='iterator')
+        #sources_info_map.yaml_add_eol_comment(comment='path to field representing all entities', key='iterator')
 
         mapping['sources'].append(sources_info_map)
+
+    def add_type_mapping(self, mapping_map: CommentedMap, nodeshape_node_obj: shacl_interpreter.AssociatedNodeShapeNode):
+        types = self.shacl_interpreter.get_types_nodeshape(nodeshape_node=nodeshape_node_obj.node)
+        for nodeshape_type in types:
+            if nodeshape_type:
+                type_po_map = CommentedSeq()
+                type_po_map.append('a')
+                type_po_map.append(nodeshape_type)
+                type_po_map.fa.set_flow_style()
+
+                mapping_map['po'].append(type_po_map)
+
+    def add_path_mapping(self, mapping_map: CommentedMap, nodeshape_node_obj: shacl_interpreter.AssociatedNodeShapeNode):
+        property_paths = self.shacl_interpreter.get_paths(root_node=nodeshape_node_obj.node)
+
+        for property_path in property_paths:
+            property_map = CommentedMap()
+            property_map['p'] = property_path.path
+            property_map['o'] = CommentedMap()
+
+            property_map['o']['mapping'] = f'{property_path.target_nodeshape}Mapping' 
+
+            property_map['o']['condition'] = CommentedMap()
+            property_map['o']['condition']['function'] = 'equal'
+            property_map['o']['condition']['parameters'] = CommentedSeq()
+
+            triples_values = [('str1', '$(index)', 's'), ('str2', '$(parent_index)', 'o')]
+            for triple_values in triples_values:
+                str_map = CommentedSeq()
+
+                for value in triple_values:
+                    str_map.append(value)
+                str_map.fa.set_flow_style()
+
+                property_map['o']['condition']['parameters'].append(str_map)
+
+            mapping_map['po'].append(property_map)
 
     def add_root_nodeshape_mapping(self, root_node_name: str, nodeshape_node_obj: shacl_interpreter.AssociatedNodeShapeNode, node_name: str, path: list):
         if nodeshape_node_obj.max_count == -1:
@@ -66,17 +103,10 @@ class Templater:
         self.add_source_mapping(mapping=mapping_map, filename=f'{root_node_name}.json', path=path)
 
         mapping_map['s'] = f'ex:{node_name}_$(index)'
+
         mapping_map['po'] = CommentedSeq()
-
-        types = self.shacl_interpreter.get_types_nodeshape(nodeshape_node=nodeshape_node_obj.node)
-        for nodeshape_type in types:
-            if nodeshape_type:
-                type_po_map = CommentedSeq()
-                type_po_map.append('a')
-                type_po_map.append(nodeshape_type)
-                type_po_map.fa.set_flow_style()
-
-                mapping_map['po'].append(type_po_map)
+        self.add_type_mapping(mapping_map=mapping_map, nodeshape_node_obj=nodeshape_node_obj)
+        self.add_path_mapping(mapping_map=mapping_map, nodeshape_node_obj=nodeshape_node_obj)
 
         self.data['mappings'][nodeshape_mapping_name] = mapping_map
 

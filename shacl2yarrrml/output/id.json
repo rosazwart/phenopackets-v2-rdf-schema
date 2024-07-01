@@ -5,6 +5,7 @@
             "_comment": "Root",
             "role": {
                 "index": "INDEX",
+                "parent_index": "PARENTINDEX",
                 "_comment": "[1, 1]"
             },
             "sio:has-value": "STRING"

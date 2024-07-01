@@ -12,16 +12,24 @@ mappings:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
-        iterator: $.phenopacket[*]  # path to field representing all entities
+        iterator: $.phenopacket[*]
     s: ex:phenopacket_$(index)
     po:
       - [a, sio:SIO_000015]
       - [a, obo:NCIT_C79269]
+      - p: sio:SIO_000228
+        o:
+          mapping: roleShapeMapping
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(index), s]
+              - [str2, $(parent_index), o]
   roleShapeMapping:
     sources:
       - access: id.json
         referenceFormulation: jsonpath
-        iterator: $.id[*].role  # path to field representing all entities
+        iterator: $.id[*].role
     s: ex:role_$(index)
     po:
       - [a, obo:NCIT_C48835]
@@ -30,14 +38,15 @@ mappings:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
-        iterator: $.phenopacket[*].phenotypicfeature[*]  # path to field representing all entities
+        iterator: $.phenopacket[*].phenotypicfeature[*]
     s: ex:phenotypicfeature_$(index)
-    po: []
+    po:
+      - [a, sio:SIO_000614]
   phenotypicFeatureValueShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
-        iterator: $.phenopacket[*].phenotypicfeature[*].phenotypicfeaturevalue  # path to field representing all entities
+        iterator: $.phenopacket[*].phenotypicfeature[*].phenotypicfeaturevalue
     s: ex:phenotypicfeaturevalue_$(index)
     po:
       - [a, sio:SIO_000015]
@@ -46,114 +55,161 @@ mappings:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
-        iterator: $.phenopacket[*].interpretation[*]  # path to field representing all entities
+        iterator: $.phenopacket[*].interpretation[*]
     s: ex:interpretation_$(index)
     po:
-      - [a, obo:NCIT_C41255]
       - [a, sio:SIO_001003]
+      - [a, obo:NCIT_C41255]
+      - p: sio:SIO_000228
+        o:
+          mapping: roleShapeMapping
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(index), s]
+              - [str2, $(parent_index), o]
+      - p: sio:SIO_000008
+        o:
+          mapping: progressStatusShapeMapping
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(index), s]
+              - [str2, $(parent_index), o]
+      - p: sio:SIO_001403
+        o:
+          mapping: diagnosisShapeMapping
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(index), s]
+              - [str2, $(parent_index), o]
   progressStatusShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
-        iterator: $.phenopacket[*].interpretation[*].progressstatus  # path to field representing all entities
+        iterator: $.phenopacket[*].interpretation[*].progressstatus
     s: ex:progressstatus_$(index)
     po:
-      - [a, sio:SIO_000614]
       - [a, obo:NCIT_C25630]
+      - [a, sio:SIO_000614]
   progressStatusValueShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
-        iterator: $.phenopacket[*].interpretation[*].progressstatus.progressstatusvalue  # path to field representing all entities
+        iterator: $.phenopacket[*].interpretation[*].progressstatus.progressstatusvalue
     s: ex:progressstatusvalue_$(index)
-    po: []
+    po:
+      - [a, sio:SIO_000015]
+      - [a, obo:NCIT_C70856]
   diagnosisShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
-        iterator: $.phenopacket[*].interpretation[*].diagnosis  # path to field representing all entities
+        iterator: $.phenopacket[*].interpretation[*].diagnosis
     s: ex:diagnosis_$(index)
-    po: []
+    po:
+      - [a, sio:SIO_000614]
   diagnosisValueShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
-        iterator: $.phenopacket[*].interpretation[*].diagnosis.diagnosisvalue  # path to field representing all entities
+        iterator: $.phenopacket[*].interpretation[*].diagnosis.diagnosisvalue
     s: ex:diagnosisvalue_$(index)
     po:
-      - [a, obo:NCIT_C154625]
       - [a, sio:SIO_000015]
+      - [a, obo:NCIT_C154625]
   genomicInterpretationShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
-        iterator: $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*]  # path to field representing all entities
+        iterator: $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*]
     s: ex:genomicinterpretation_$(index)
     po:
-      - [a, sio:SIO_000614]
       - [a, obo:SO_0001026]
+      - [a, sio:SIO_000614]
+      - p: sio:SIO_000008
+        o:
+          mapping: interpretationStatusShapeMapping
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(index), s]
+              - [str2, $(parent_index), o]
   variantInterpretationShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation  # path to field representing all entities
+          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation
     s: ex:variantinterpretation_$(index)
     po:
-      - [a, sio:SIO_000614]
       - [a, obo:SO_0001060]
+      - [a, sio:SIO_000614]
   acmgPathogenicityClassShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.acmgpathogenicityclass  # path to field representing all entities
+          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.acmgpathogenicityclass
     s: ex:acmgpathogenicityclass_$(index)
     po:
-      - [a, sio:SIO_000614]
       - [a, obo:NCIT_C168798]
+      - [a, sio:SIO_000614]
   acmgPathogenicityClassValueShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.acmgpathogenicityclass.acmgpathogenicityclassvalue  # path to field representing all entities
+          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.acmgpathogenicityclass.acmgpathogenicityclassvalue
     s: ex:acmgpathogenicityclassvalue_$(index)
-    po: []
+    po:
+      - [a, sio:SIO_000015]
+      - [a, obo:NCIT_C70856]
   therapeuticActionabilityShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.therapeuticactionability  # path to field representing all entities
+          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.therapeuticactionability
     s: ex:therapeuticactionability_$(index)
     po:
-      - [a, sio:SIO_000614]
       - [a, obo:NCIT_C25404]
+      - [a, sio:SIO_000614]
   therapeuticActionabilityValueShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.therapeuticactionability.therapeuticactionabilityvalue  # path to field representing all entities
+          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.therapeuticactionability.therapeuticactionabilityvalue
     s: ex:therapeuticactionabilityvalue_$(index)
-    po: []
+    po:
+      - [a, sio:SIO_000015]
+      - [a, obo:NCIT_C70856]
   variationDescriptorShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor  # path to field representing all entities
+          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor
     s: ex:variationdescriptor_$(index)
     po:
       - [a, sio:SIO_000015]
       - [a, obo:NCIT_C97927]
+      - p: sio:SIO_000228
+        o:
+          mapping: roleShapeMapping
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(index), s]
+              - [str2, $(parent_index), o]
   vcfRecordShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord  # path to field representing all entities
+          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord
     s: ex:vcfrecord_$(index)
     po:
       - [a, sio:SIO_000015]
@@ -163,97 +219,107 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.alternatebase  # path to field representing all entities
+          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.alternatebase
     s: ex:alternatebase_$(index)
     po:
-      - [a, sio:SIO_000614]
       - [a, obo:NCIT_C25415]
+      - [a, sio:SIO_000614]
   alternateBaseValueShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.alternatebase.alternatebasevalue  # path to field representing all entities
+          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.alternatebase.alternatebasevalue
     s: ex:alternatebasevalue_$(index)
-    po: []
+    po:
+      - [a, sio:SIO_000015]
+      - [a, obo:NCIT_C70856]
   referenceBaseShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.referencebase  # path to field representing all entities
+          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.referencebase
     s: ex:referencebase_$(index)
     po:
-      - [a, sio:SIO_000614]
       - [a, obo:NCIT_C164388]
+      - [a, sio:SIO_000614]
   referenceBaseValueShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.referencebase.referencebasevalue  # path to field representing all entities
+          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.referencebase.referencebasevalue
     s: ex:referencebasevalue_$(index)
-    po: []
+    po:
+      - [a, sio:SIO_000015]
+      - [a, obo:NCIT_C70856]
   positionShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.position  # path to field representing all entities
+          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.position
     s: ex:position_$(index)
     po:
-      - [a, sio:SIO_000614]
       - [a, obo:NCIT_C104788]
+      - [a, sio:SIO_000614]
   positionValueShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.position.positionvalue  # path to field representing all entities
+          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.position.positionvalue
     s: ex:positionvalue_$(index)
-    po: []
+    po:
+      - [a, sio:SIO_000015]
+      - [a, obo:NCIT_C70856]
   chromosomeShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.chromosome  # path to field representing all entities
+          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.chromosome
     s: ex:chromosome_$(index)
     po:
-      - [a, sio:SIO_000614]
       - [a, obo:NCIT_C164716]
+      - [a, sio:SIO_000614]
   chromosomeValueShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.chromosome.chromosomevalue  # path to field representing all entities
+          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.chromosome.chromosomevalue
     s: ex:chromosomevalue_$(index)
-    po: []
+    po:
+      - [a, sio:SIO_000015]
+      - [a, obo:NCIT_C70856]
   genomeAssemblyShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.genomeassembly  # path to field representing all entities
+          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.genomeassembly
     s: ex:genomeassembly_$(index)
     po:
-      - [a, sio:SIO_000614]
       - [a, obo:NCIT_C164815]
+      - [a, sio:SIO_000614]
   genomeAssemblyValueShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.genomeassembly.genomeassemblyvalue  # path to field representing all entities
+          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.genomeassembly.genomeassemblyvalue
     s: ex:genomeassemblyvalue_$(index)
-    po: []
+    po:
+      - [a, sio:SIO_000015]
+      - [a, obo:NCIT_C70856]
   geneDescriptorShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].genedescriptor  # path to field representing all entities
+          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].genedescriptor
     s: ex:genedescriptor_$(index)
     po:
       - [a, sio:SIO_000015]
@@ -263,62 +329,81 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].genedescriptor.altid[*]  # path to field representing all entities
+          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].genedescriptor.altid[*]
     s: ex:altid_$(index)
     po:
-      - [a, obo:NCIT_C90353]
       - [a, sio:SIO_000115]
+      - [a, obo:NCIT_C90353]
   geneSymbolShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].genedescriptor.genesymbol  # path to field representing all entities
+          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].genedescriptor.genesymbol
     s: ex:genesymbol_$(index)
     po:
-      - [a, sio:SIO_001383]
       - [a, obo:NCIT_C43568]
+      - [a, sio:SIO_001383]
   moleculeContextShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.moleculecontext  # path to field representing all entities
+          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.moleculecontext
     s: ex:moleculecontext_$(index)
     po:
-      - [a, sio:SIO_000614]
       - [a, obo:NCIT_C63325]
+      - [a, sio:SIO_000614]
   moleculeContextValueShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.moleculecontext.moleculecontextvalue  # path to field representing all entities
+          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.moleculecontext.moleculecontextvalue
     s: ex:moleculecontextvalue_$(index)
-    po: []
+    po:
+      - [a, sio:SIO_000015]
+      - [a, obo:NCIT_C70856]
   biosampleShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
-        iterator: $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].biosample  # path to field representing all entities
+        iterator: $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].biosample
     s: ex:biosample_$(index)
     po:
       - [a, obo:NCIT_C43412]
       - [a, sio:SIO_010412]
+      - p: sio:SIO_000228
+        o:
+          mapping: roleShapeMapping
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(index), s]
+              - [str2, $(parent_index), o]
+      - p: sio:SIO_000008
+        o:
+          mapping: taxonomyShapeMapping
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(index), s]
+              - [str2, $(parent_index), o]
   taxonomyShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].biosample.taxonomy  # path to field representing all entities
+          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].biosample.taxonomy
     s: ex:taxonomy_$(index)
-    po: []
+    po:
+      - [a, sio:SIO_000614]
   taxonomyValueShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].biosample.taxonomy.taxonomyvalue  # path to field representing all entities
+          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].biosample.taxonomy.taxonomyvalue
     s: ex:taxonomyvalue_$(index)
     po:
       - [a, sio:SIO_000015]
@@ -328,31 +413,34 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].interpretationstatus  # path to field representing all entities
+          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].interpretationstatus
     s: ex:interpretationstatus_$(index)
     po:
-      - [a, sio:SIO_000614]
       - [a, obo:NCIT_C164628]
+      - [a, sio:SIO_000614]
   interpretationStatusValueShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].interpretationstatus.interpretationstatusvalue  # path to field representing all entities
+          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].interpretationstatus.interpretationstatusvalue
     s: ex:interpretationstatusvalue_$(index)
-    po: []
+    po:
+      - [a, sio:SIO_000015]
+      - [a, obo:NCIT_C70856]
   diseaseShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
-        iterator: $.phenopacket[*].interpretation[*].diagnosis.disease  # path to field representing all entities
+        iterator: $.phenopacket[*].interpretation[*].diagnosis.disease
     s: ex:disease_$(index)
-    po: []
+    po:
+      - [a, sio:SIO_000614]
   diseaseValueShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
-        iterator: $.phenopacket[*].interpretation[*].diagnosis.disease.diseasevalue  # path to field representing all entities
+        iterator: $.phenopacket[*].interpretation[*].diagnosis.disease.diseasevalue
     s: ex:diseasevalue_$(index)
     po:
       - [a, sio:SIO_000015]
@@ -361,7 +449,7 @@ mappings:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
-        iterator: $.phenopacket[*].metadata  # path to field representing all entities
+        iterator: $.phenopacket[*].metadata
     s: ex:metadata_$(index)
     po:
       - [a, sio:SIO_001330]
@@ -370,56 +458,70 @@ mappings:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
-        iterator: $.phenopacket[*].metadata.version  # path to field representing all entities
+        iterator: $.phenopacket[*].metadata.version
     s: ex:version_$(index)
     po:
-      - [a, sio:SIO_000614]
       - [a, obo:NCIT_C25714]
+      - [a, sio:SIO_000614]
   versionValueShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
-        iterator: $.phenopacket[*].metadata.version.versionvalue  # path to field representing all entities
+        iterator: $.phenopacket[*].metadata.version.versionvalue
     s: ex:versionvalue_$(index)
-    po: []
+    po:
+      - [a, sio:SIO_000015]
+      - [a, obo:NCIT_C70856]
   createdByShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
-        iterator: $.phenopacket[*].metadata.createdby  # path to field representing all entities
+        iterator: $.phenopacket[*].metadata.createdby
     s: ex:createdby_$(index)
     po:
-      - [a, sio:SIO_000614]
       - [a, dct:creator]
+      - [a, sio:SIO_000614]
   createdByValueShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
-        iterator: $.phenopacket[*].metadata.createdby.createdbyvalue  # path to field representing all entities
+        iterator: $.phenopacket[*].metadata.createdby.createdbyvalue
     s: ex:createdbyvalue_$(index)
-    po: []
+    po:
+      - [a, sio:SIO_000015]
+      - [a, obo:NCIT_C70856]
   createdShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
-        iterator: $.phenopacket[*].metadata.created  # path to field representing all entities
+        iterator: $.phenopacket[*].metadata.created
     s: ex:created_$(index)
     po:
-      - [a, sio:SIO_000614]
       - [a, dct:created]
+      - [a, sio:SIO_000614]
   createdValueShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
-        iterator: $.phenopacket[*].metadata.created.createdvalue  # path to field representing all entities
+        iterator: $.phenopacket[*].metadata.created.createdvalue
     s: ex:createdvalue_$(index)
-    po: []
+    po:
+      - [a, sio:SIO_000015]
+      - [a, obo:NCIT_C70856]
   idShapeMapping:
     sources:
       - access: id.json
         referenceFormulation: jsonpath
-        iterator: $.id[*]  # path to field representing all entities
+        iterator: $.id[*]
     s: ex:id_$(index)
     po:
-      - [a, obo:IAO_0020000]
       - [a, sio:SIO_000115]
+      - [a, obo:IAO_0020000]
+      - p: sio:SIO_000020
+        o:
+          mapping: roleShapeMapping
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(index), s]
+              - [str2, $(parent_index), o]

@@ -1,4 +1,6 @@
 import rdflib
+from copy import deepcopy
+
 import namespace_provider as namespace_provider
 import util.common as common_util
 
@@ -30,6 +32,14 @@ class AssociatedNodeShapeNode:
         self.min_count = min_count
         self.max_count = max_count
         self.comment = comment
+
+class AssociatedProperty:
+    def __init__(self, path: str, target_nodeshape: str, target_nodeshape_node: rdflib.URIRef, min_count: int, max_count: int):
+        self.path = path
+        self.target_nodeshape = target_nodeshape
+        self.target_nodeshape_node = target_nodeshape_node
+        self.min_count = min_count
+        self.max_count = max_count
 
 class Interpreter:
     def __init__(self, g: rdflib.Graph):
@@ -269,7 +279,6 @@ class Interpreter:
     
     def get_first_layer_nodeshape(self, property_attributes):
         nodeshape_node = property_attributes[namespace_provider.SH.node]
-
         return nodeshape_node
     
     def get_literal_node(self, property_attributes):
@@ -299,9 +308,7 @@ class Interpreter:
         
         return literals
     
-    def get_property_attributes(self, property_triple: tuple):
-        _, _, property_node = property_triple
-
+    def get_property_targets(self, property_node: rdflib.URIRef):
         property_attr_triples = self.find_triples(query_subject=property_node)
         property_attributes = self.get_property_dict(property_attr_triples=property_attr_triples)
 
@@ -353,12 +360,37 @@ class Interpreter:
         associated_nodeshapes = []
         associated_literals = []
         for property_triple in property_triples:
-            nodeshape_nodes, literals = self.get_property_attributes(property_triple=property_triple)
+            _, _, property_node = property_triple
+            nodeshape_nodes, literals = self.get_property_targets(property_node=property_node)
             associated_nodeshapes += nodeshape_nodes
             associated_literals += literals
 
         return associated_nodeshapes, associated_literals
     
+    def get_paths(self, root_node: rdflib.URIRef):
+        property_paths = []
+
+        property_triples = self.find_triples(query_subject=root_node,
+                                             query_predicate=namespace_provider.SH.property)
+        
+        for property_triple in property_triples: 
+            _, _, property_node = property_triple
+            property_attr_triples = self.find_triples(query_subject=property_node)
+            property_attributes = self.get_property_dict(property_attr_triples=property_attr_triples)
+
+            if rdflib.URIRef(namespace_provider.SH.node) in property_attributes:
+                path_node = property_attributes[rdflib.URIRef(namespace_provider.SH.path)]
+                if not self.find_triples(query_subject=path_node):  # TODO: inverse paths excluded
+                    path_prefix, _, path_name = self.get_node_values(path_node)
+                    target_nodeshape_node = self.get_first_layer_nodeshape(property_attributes=property_attributes)
+                    _, _, target_nodeshape_name = self.get_node_values(target_nodeshape_node)
+                    
+                    property_obj = AssociatedProperty(path=f'{path_prefix}:{path_name}', target_nodeshape=target_nodeshape_name,
+                                                      target_nodeshape_node=target_nodeshape_node, min_count=1, max_count=1)
+                    property_paths.append(property_obj)
+                
+        return property_paths
+
     def get_inherited_nodeshape(self, root_node: rdflib.URIRef):
         inherited_nodeshapes = []
 
@@ -415,12 +447,16 @@ class Interpreter:
             return f'{prefix}:{name}'
         else:
             return None
-    
+
     def get_types_nodeshape(self, nodeshape_node: rdflib.URIRef):
         all_types = []
 
         all_types += self.get_path_nodeshape_types(nodeshape_node=nodeshape_node)
         all_types.append(self.get_targetclass_nodeshape_type(nodeshape_node=nodeshape_node))
+        
+        inherited_nodeshapes = self.get_inherited_nodeshape(root_node=nodeshape_node)
+        for inherited_nodeshape in inherited_nodeshapes:
+            all_types += self.get_types_nodeshape(nodeshape_node=inherited_nodeshape.node)
 
         return list(set(all_types))
     
@@ -433,7 +469,7 @@ class Traverser:
         association_dict = {}
 
         association_dict['index'] = 'INDEX'
-        if not is_initial_root and root_node.max_count == -1:
+        if not is_initial_root:
             association_dict['parent_index'] = 'PARENTINDEX'
         association_dict['_comment'] = root_node.comment
 
