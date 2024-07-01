@@ -45,7 +45,7 @@
                     {
                         "_comment": "[0, *]",
                         "variantinterpretation": {
-                            "_comment": "Provide one of the following: variantinterpretation OR genedescriptor",
+                            "_comment": "Provide with cardinality [1, 1] from the following: variantinterpretation OR genedescriptor",
                             "acmgpathogenicityclass": {
                                 "_comment": "[1, 1]",
                                 "acmgpathogenicityclassvalue": {
@@ -160,7 +160,7 @@
                             }
                         },
                         "genedescriptor": {
-                            "_comment": "Provide one of the following: variantinterpretation OR genedescriptor",
+                            "_comment": "Provide with cardinality [1, 1] from the following: variantinterpretation OR genedescriptor",
                             "altid": [
                                 {
                                     "_comment": "[0, *]",
@@ -180,7 +180,7 @@
                             "dct:identifier": "STRING"
                         },
                         "biosample": {
-                            "_comment": "Provide one of the following: biosample",
+                            "_comment": "Provide with cardinality [1, 1] from the following: biosample",
                             "role": {
                                 "_comment": "[1, 1]",
                                 "dct:identifier": "STRING"

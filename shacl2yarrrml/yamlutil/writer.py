@@ -12,6 +12,7 @@ import jsonutil.writer as json_writer
 class Templater:
     def __init__(self, g: rdflib.Graph):
         self.shacl_interpreter = shacl_interpreter.Interpreter(g=g)
+        self.shacl_traverser = shacl_interpreter.Traverser(g=g)
 
         self.data = CommentedMap()
 
@@ -22,7 +23,7 @@ class Templater:
 
         self.add_hierarchy()
         self.add_prefixes()
-        #self.add_mappings()
+        self.add_mappings()
 
         self.to_yaml('output/output_template.yaml')
 
@@ -53,7 +54,7 @@ class Templater:
 
         mapping['sources'].append(sources_info_map)
 
-    def add_nodeshape(self, nodeshape_node: rdflib.URIRef):
+    def add_nodeshape_mapping(self, nodeshape_node: rdflib.URIRef):
         _, _, nodeshape_name = self.shacl_interpreter.get_node_values(node=nodeshape_node)
         nodeshape_mapping_name = f'{nodeshape_name}Mapping'
 
@@ -66,8 +67,8 @@ class Templater:
     def add_mappings(self):
         nodeshape_triples = self.shacl_interpreter.get_all_nodeshapes()
         for nodeshape_triple in nodeshape_triples:
-            s, p, o = nodeshape_triple
-            self.add_nodeshape(nodeshape_node=s)
+            nodeshape_node, _, _ = nodeshape_triple
+            self.add_nodeshape_mapping(nodeshape_node=nodeshape_node)
 
     def add_hierarchy(self):
         all_nodeshape_nodes = []
@@ -79,7 +80,7 @@ class Templater:
         root_nodes = self.shacl_interpreter.find_root_nodeshape(all_nodeshape_nodes=all_nodeshape_nodes)
 
         for root_node in root_nodes:
-            root_dict = self.shacl_interpreter.get_hierarchy(root_node=root_node)
+            root_dict = self.shacl_traverser.get_hierarchy(root_node=root_node)
 
             _, _, nodeshape_name = self.shacl_interpreter.get_node_values(node=root_node)
 

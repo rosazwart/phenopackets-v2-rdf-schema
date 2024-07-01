@@ -66,6 +66,9 @@ class Interpreter:
                                  query_object=nodeshape_node)
 
     def get_all_nodeshapes(self):
+        """
+            Get all nodeshapes found in the SHACL graph.
+        """
         return self.find_triples(query_predicate=rdflib.URIRef(namespace_provider.RDF.type),
                                  query_object=rdflib.URIRef(namespace_provider.SH.NodeShape))
         
@@ -181,16 +184,16 @@ class Interpreter:
 
         return or_associated_nodeshape_nodes
     
-    def address_or_constraints(self, or_nodeshapes_list: list):
+    def address_or_constraints(self, min_count: int, max_count: int, or_nodeshapes_list: list):
         or_node_names = []
         for or_nodeshape in or_nodeshapes_list:
             _, _, or_nodeshape_name = self.get_node_values(or_nodeshape.node)
             or_node_names.append(common_util.from_nodeshape_name_to_name(or_nodeshape_name))
     
         for or_nodeshape in or_nodeshapes_list:
-            or_nodeshape.comment = f'Provide one of the following: {' OR '.join(or_node_names)}'
+            or_nodeshape.comment = f'Provide with cardinality [{min_count}, {max_count}] from the following: {' OR '.join(or_node_names)}'
 
-    def address_constraints(self, min_count, max_count, nodeshape_node_obj: AssociatedNodeShapeNode):
+    def address_constraints(self, min_count: int, max_count: int, nodeshape_node_obj: AssociatedNodeShapeNode):
         if max_count == -1:
             max_count_str = '*'
         else:
@@ -231,8 +234,8 @@ class Interpreter:
             or_root_node = qualifiedvalue_attributes[rdflib.URIRef('http://www.w3.org/ns/shacl#or')]
             or_nodeshapes_list = self.get_or_nodeshape_nodes(or_root_node=or_root_node, min_count=min_count, max_count=max_count)
 
-            if min_count == 1 and max_count == 1:
-                self.address_or_constraints(or_nodeshapes_list=or_nodeshapes_list)
+            if max_count == 1:
+                self.address_or_constraints(min_count=min_count, max_count=max_count, or_nodeshapes_list=or_nodeshapes_list)
 
             nodeshapes_list += or_nodeshapes_list
 
@@ -269,7 +272,7 @@ class Interpreter:
 
         return AssociatedLiteral(name=literal_name,
                                  literal_type=literal_type,
-                                 min_count=1, max_count=1)  # TODO: fixed
+                                 min_count=1, max_count=1)
     
     def get_variable_type(self, property_attributes: dict):
         literals = []
@@ -326,8 +329,8 @@ class Interpreter:
                     or_root_node = property_attributes[rdflib.URIRef('http://www.w3.org/ns/shacl#or')]
                     or_nodeshapes_list = self.get_or_nodeshape_nodes(or_root_node=or_root_node, min_count=min_count, max_count=max_count)
 
-                    if min_count == 1 and max_count == 1:
-                        self.address_or_constraints(or_nodeshapes_list=or_nodeshapes_list)
+                    if max_count == 1:
+                        self.address_or_constraints(min_count=min_count, max_count=max_count, or_nodeshapes_list=or_nodeshapes_list)
 
                     nodeshape_nodes += or_nodeshapes_list
             
@@ -366,18 +369,23 @@ class Interpreter:
             inherited_nodeshapes.append(associated_nodeshape_node)
         
         return inherited_nodeshapes
+    
+class Traverser:
+    def __init__(self, g: rdflib.Graph):
+        self.shacl_g = g
+        self.interpreter = Interpreter(g=g)
 
     def get_hierarchy(self, root_node: rdflib.URIRef, comment: str = ''):
         association_dict = {}
         association_dict['_comment'] = comment
 
-        associated_nodeshapes, associated_literals = self.get_associated_shapes(root_node=root_node)
+        associated_nodeshapes, associated_literals = self.interpreter.get_associated_shapes(root_node=root_node)
 
-        associated_nodeshapes += self.get_inherited_nodeshape(root_node=root_node)
+        associated_nodeshapes += self.interpreter.get_inherited_nodeshape(root_node=root_node)
 
         if len(associated_nodeshapes):
             for associated_nodeshape in associated_nodeshapes:
-                _, _, nodeshape_name = self.get_node_values(node=associated_nodeshape.node)
+                _, _, nodeshape_name = self.interpreter.get_node_values(node=associated_nodeshape.node)
 
                 if associated_nodeshape.max_count == -1:
                     association_dict[common_util.from_nodeshape_name_to_name(nodeshape_name)] = [self.get_hierarchy(root_node=associated_nodeshape.node, comment=associated_nodeshape.comment)]
@@ -390,5 +398,4 @@ class Interpreter:
             association_dict[literal_name] = literal_type.upper()
 
         return association_dict
-
-
+    

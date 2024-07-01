@@ -7,4 +7,249 @@ prefixes:
   sio: http://semanticscience.org/resource/
   dct: http://purl.org/dc/terms/
   phenop: http://purl.org/ejp-rd/phenopackets-rdf-schema/v200/shacl/
-mappings: {}
+mappings:
+  taxonomyShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  taxonomyValueShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  biosampleShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  diagnosisShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  diagnosisValueShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  diseaseShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  diseaseValueShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  altIdShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  geneSymbolShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  geneDescriptorShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  interpretationStatusShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  interpretationStatusValueShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  genomicInterpretationShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  progressStatusShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  progressStatusValueShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  interpretationShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  literalOutputShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  versionShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  versionValueShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  createdByShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  createdByValueShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  createdShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  createdValueShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  metadataShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  ontologyClassShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  phenopacketShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  phenotypicFeatureShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  phenotypicFeatureValueShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  idShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  roleShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  therapeuticActionabilityShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  therapeuticActionabilityValueShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  acmgPathogenicityClassShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  acmgPathogenicityClassValueShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  variantInterpretationShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  moleculeContextShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  moleculeContextValueShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  variationDescriptorShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  alternateBaseShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  alternateBaseValueShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  referenceBaseShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  referenceBaseValueShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  positionShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  positionValueShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  chromosomeShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  chromosomeValueShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  genomeAssemblyShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  genomeAssemblyValueShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
+  vcfRecordShapeMapping:
+    sources:
+      - access: FILENAME.json
+        referenceFormulation: jsonpath
+        iterator: $.ITERATOR[*]  # path to field representing all entities
