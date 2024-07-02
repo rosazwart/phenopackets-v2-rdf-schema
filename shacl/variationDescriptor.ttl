@@ -7,10 +7,9 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix phenop: <http://purl.org/ejp-rd/phenopackets-rdf-schema/v200/shacl/> .
 
-# TODO: find better ontology term for molecule context
 phenop:moleculeContextShape 
     a sh:NodeShape ;
-    sh:targetClass obo:NCIT_C63325 ;    # obo:context
+    sh:targetClass obo:NCIT_C63816 ;    # obo:molecule
     sh:property
 		[
             sh:path rdf:type ;
@@ -51,6 +50,7 @@ phenop:moleculeContextValueShape
             sh:path sio:SIO_000300 ;    # sio:has-value
             sh:name "sio:has-value" ;
             sh:datatype xsd:string ;
+            sh:in ("unspecified_molecule_context" "genomic" "transcript" "protein") ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
         ]
@@ -136,7 +136,7 @@ phenop:variationDescriptorShape
         [
             sh:path sio:SIO_000008 ;    # sio:has-attribute
             sh:qualifiedValueShape [ 
-                sh:class obo:NCIT_C63325 ;    # obo:context
+                sh:class obo:NCIT_C63816 ;    # obo:molecule
             ];
            	sh:qualifiedMinCount 1 ;
            	sh:qualifiedMaxCount 1 ;

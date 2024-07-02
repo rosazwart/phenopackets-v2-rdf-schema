@@ -56,8 +56,8 @@ mappings:
         iterator: $.id[*].role
     s: ex:role_$(index)
     po:
-      - [a, obo:NCIT_C48835]
       - [a, sio:SIO_000016]
+      - [a, obo:NCIT_C48835]
   phenotypicFeatureShapeMapping:
     sources:
       - access: phenopacket.json
@@ -422,7 +422,7 @@ mappings:
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord
     s: ex:vcfrecord_$(index)
     po:
-      - [a, sio:SIO_000015]
+      - [a, sio:SIO_000396]
       - [a, obo:NCIT_C172216]
       - p: sio:SIO_000008  # sio:has-attribute
         o:
@@ -450,7 +450,7 @@ mappings:
               - [str2, $(parent_index), o]
       - p: sio:SIO_000008  # sio:has-attribute
         o:
-          mapping: referenceBaseShapeMapping
+          mapping: referenceShapeMapping
           condition:
             function: equal
             parameters:
@@ -458,84 +458,40 @@ mappings:
               - [str2, $(parent_index), o]
       - p: sio:SIO_000008  # sio:has-attribute
         o:
-          mapping: alternateBaseShapeMapping
+          mapping: alternateShapeMapping
           condition:
             function: equal
             parameters:
               - [str1, $(index), s]
               - [str2, $(parent_index), o]
-  alternateBaseShapeMapping:
+  alternateShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.alternatebase
-    s: ex:alternatebase_$(index)
+          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.alternate
+    s: ex:alternate_$(index)
     po:
       - [a, obo:NCIT_C25415]
       - [a, sio:SIO_000614]
-  alternateBaseValueShapeMapping:
-    sources:
-      - access: phenopacket.json
-        referenceFormulation: jsonpath
-        iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.alternatebase.alternatebasevalue
-    s: ex:alternatebasevalue_$(index)
-    po:
-      - [a, sio:SIO_000015]
-      - [a, obo:NCIT_C70856]
-      - p: sio:SIO_000300
-        o:
-          value: $(sio:has-value)
-          datatype: xsd:string
       - p: rdfs:label
         o:
-          value: $(literaloutput.rdfs:label)
+          value: $(rdfs:label)
           datatype: xsd:string
-      - p: sio:SIO_000628
-        o:
-          mapping: alternateBaseShapeMapping
-          condition:
-            function: equal
-            parameters:
-              - [str1, $(parent_index), s]
-              - [str2, $(index), o]
-  referenceBaseShapeMapping:
+  referenceShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.referencebase
-    s: ex:referencebase_$(index)
+          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.reference
+    s: ex:reference_$(index)
     po:
-      - [a, obo:NCIT_C164388]
+      - [a, obo:NCIT_C48294]
       - [a, sio:SIO_000614]
-  referenceBaseValueShapeMapping:
-    sources:
-      - access: phenopacket.json
-        referenceFormulation: jsonpath
-        iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.referencebase.referencebasevalue
-    s: ex:referencebasevalue_$(index)
-    po:
-      - [a, sio:SIO_000015]
-      - [a, obo:NCIT_C70856]
-      - p: sio:SIO_000300
-        o:
-          value: $(sio:has-value)
-          datatype: xsd:string
       - p: rdfs:label
         o:
-          value: $(literaloutput.rdfs:label)
+          value: $(rdfs:label)
           datatype: xsd:string
-      - p: sio:SIO_000628
-        o:
-          mapping: referenceBaseShapeMapping
-          condition:
-            function: equal
-            parameters:
-              - [str1, $(parent_index), s]
-              - [str2, $(index), o]
   positionShapeMapping:
     sources:
       - access: phenopacket.json
@@ -544,34 +500,12 @@ mappings:
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.position
     s: ex:position_$(index)
     po:
-      - [a, obo:NCIT_C104788]
+      - [a, obo:NCIT_C93628]
       - [a, sio:SIO_000614]
-  positionValueShapeMapping:
-    sources:
-      - access: phenopacket.json
-        referenceFormulation: jsonpath
-        iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.position.positionvalue
-    s: ex:positionvalue_$(index)
-    po:
-      - [a, sio:SIO_000015]
-      - [a, obo:NCIT_C70856]
-      - p: sio:SIO_000300
-        o:
-          value: $(sio:has-value)
-          datatype: xsd:integer
       - p: rdfs:label
         o:
-          value: $(literaloutput.rdfs:label)
+          value: $(rdfs:label)
           datatype: xsd:string
-      - p: sio:SIO_000628
-        o:
-          mapping: positionShapeMapping
-          condition:
-            function: equal
-            parameters:
-              - [str1, $(parent_index), s]
-              - [str2, $(index), o]
   chromosomeShapeMapping:
     sources:
       - access: phenopacket.json
@@ -580,34 +514,12 @@ mappings:
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.chromosome
     s: ex:chromosome_$(index)
     po:
-      - [a, obo:NCIT_C164716]
+      - [a, obo:NCIT_C13202]
       - [a, sio:SIO_000614]
-  chromosomeValueShapeMapping:
-    sources:
-      - access: phenopacket.json
-        referenceFormulation: jsonpath
-        iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.chromosome.chromosomevalue
-    s: ex:chromosomevalue_$(index)
-    po:
-      - [a, sio:SIO_000015]
-      - [a, obo:NCIT_C70856]
-      - p: sio:SIO_000300
+      - p: dct:identifier
         o:
-          value: $(sio:has-value)
+          value: $(dct:identifier)
           datatype: xsd:string
-      - p: rdfs:label
-        o:
-          value: $(literaloutput.rdfs:label)
-          datatype: xsd:string
-      - p: sio:SIO_000628
-        o:
-          mapping: chromosomeShapeMapping
-          condition:
-            function: equal
-            parameters:
-              - [str1, $(parent_index), s]
-              - [str2, $(index), o]
   genomeAssemblyShapeMapping:
     sources:
       - access: phenopacket.json
@@ -616,34 +528,12 @@ mappings:
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.genomeassembly
     s: ex:genomeassembly_$(index)
     po:
-      - [a, obo:NCIT_C164815]
+      - [a, obo:NCIT_C73517]
       - [a, sio:SIO_000614]
-  genomeAssemblyValueShapeMapping:
-    sources:
-      - access: phenopacket.json
-        referenceFormulation: jsonpath
-        iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.genomeassembly.genomeassemblyvalue
-    s: ex:genomeassemblyvalue_$(index)
-    po:
-      - [a, sio:SIO_000015]
-      - [a, obo:NCIT_C70856]
-      - p: sio:SIO_000300
+      - p: dct:identifier
         o:
-          value: $(sio:has-value)
+          value: $(dct:identifier)
           datatype: xsd:string
-      - p: rdfs:label
-        o:
-          value: $(literaloutput.rdfs:label)
-          datatype: xsd:string
-      - p: sio:SIO_000628
-        o:
-          mapping: genomeAssemblyShapeMapping
-          condition:
-            function: equal
-            parameters:
-              - [str1, $(parent_index), s]
-              - [str2, $(index), o]
   geneDescriptorShapeMapping:
     sources:
       - access: phenopacket.json
@@ -696,8 +586,8 @@ mappings:
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].genedescriptor.genesymbol
     s: ex:genesymbol_$(index)
     po:
-      - [a, sio:SIO_001383]
       - [a, obo:NCIT_C43568]
+      - [a, sio:SIO_001383]
       - p: sio:SIO_000300
         o:
           value: $(sio:has-value)
@@ -719,6 +609,7 @@ mappings:
     s: ex:moleculecontext_$(index)
     po:
       - [a, obo:NCIT_C63325]
+      - [a, obo:NCIT_C63816]
       - [a, sio:SIO_000614]
   moleculeContextValueShapeMapping:
     sources:

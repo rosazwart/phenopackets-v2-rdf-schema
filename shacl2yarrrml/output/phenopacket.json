@@ -121,90 +121,35 @@
                                             "index": "INDEX",
                                             "parent_index": "PARENTINDEX",
                                             "_comment": "[0, 1]",
-                                            "alternatebase": {
+                                            "alternate": {
                                                 "index": "INDEX",
                                                 "parent_index": "PARENTINDEX",
                                                 "_comment": "[1, 1]",
-                                                "alternatebasevalue": {
-                                                    "index": "INDEX",
-                                                    "parent_index": "PARENTINDEX",
-                                                    "_comment": "[1, 1]",
-                                                    "literaloutput": {
-                                                        "index": "INDEX",
-                                                        "parent_index": "PARENTINDEX",
-                                                        "_comment": "[1, 1]",
-                                                        "rdfs:label": "STRING"
-                                                    },
-                                                    "sio:has-value": "STRING"
-                                                }
+                                                "rdfs:label": "STRING"
                                             },
-                                            "referencebase": {
+                                            "reference": {
                                                 "index": "INDEX",
                                                 "parent_index": "PARENTINDEX",
                                                 "_comment": "[1, 1]",
-                                                "referencebasevalue": {
-                                                    "index": "INDEX",
-                                                    "parent_index": "PARENTINDEX",
-                                                    "_comment": "[1, 1]",
-                                                    "literaloutput": {
-                                                        "index": "INDEX",
-                                                        "parent_index": "PARENTINDEX",
-                                                        "_comment": "[1, 1]",
-                                                        "rdfs:label": "STRING"
-                                                    },
-                                                    "sio:has-value": "STRING"
-                                                }
+                                                "rdfs:label": "STRING"
                                             },
                                             "position": {
                                                 "index": "INDEX",
                                                 "parent_index": "PARENTINDEX",
                                                 "_comment": "[1, 1]",
-                                                "positionvalue": {
-                                                    "index": "INDEX",
-                                                    "parent_index": "PARENTINDEX",
-                                                    "_comment": "[1, 1]",
-                                                    "literaloutput": {
-                                                        "index": "INDEX",
-                                                        "parent_index": "PARENTINDEX",
-                                                        "_comment": "[1, 1]",
-                                                        "rdfs:label": "STRING"
-                                                    },
-                                                    "sio:has-value": "INTEGER"
-                                                }
+                                                "rdfs:label": "STRING"
                                             },
                                             "chromosome": {
                                                 "index": "INDEX",
                                                 "parent_index": "PARENTINDEX",
                                                 "_comment": "[1, 1]",
-                                                "chromosomevalue": {
-                                                    "index": "INDEX",
-                                                    "parent_index": "PARENTINDEX",
-                                                    "_comment": "[1, 1]",
-                                                    "literaloutput": {
-                                                        "index": "INDEX",
-                                                        "parent_index": "PARENTINDEX",
-                                                        "_comment": "[1, 1]",
-                                                        "rdfs:label": "STRING"
-                                                    },
-                                                    "sio:has-value": "STRING"
-                                                }
+                                                "dct:identifier": "STRING"
                                             },
                                             "genomeassembly": {
                                                 "index": "INDEX",
                                                 "parent_index": "PARENTINDEX",
                                                 "_comment": "[1, 1]",
-                                                "genomeassemblyvalue": {
-                                                    "index": "INDEX",
-                                                    "parent_index": "PARENTINDEX",
-                                                    "_comment": "[1, 1]",
-                                                    "literaloutput": {
-                                                        "index": "INDEX",
-                                                        "parent_index": "PARENTINDEX",
-                                                        "_comment": "[1, 1]",
-                                                        "rdfs:label": "STRING"
-                                                    },
-                                                    "sio:has-value": "STRING"
-                                                }
+                                                "dct:identifier": "STRING"
                                             }
                                         },
                                         "genedescriptor": {

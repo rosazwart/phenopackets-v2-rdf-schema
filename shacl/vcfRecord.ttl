@@ -7,7 +7,7 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix phenop: <http://purl.org/ejp-rd/phenopackets-rdf-schema/v200/shacl/> .
 
-phenop:alternateBaseShape
+phenop:alternateShape
     a sh:NodeShape ;
     sh:targetClass obo:NCIT_C25415 ;    # obo:alternative
     sh:property
@@ -16,158 +16,87 @@ phenop:alternateBaseShape
             sh:hasValue sio:SIO_000614 ;    # sio:attribute
         ],
 		[
-          	sh:path [ sh:inversePath sio:SIO_000628 ] ;	# sio:refers-to
-            sh:name "sio:refers-to" ;
-          	sh:node phenop:alternateBaseValueShape ;
-            sh:minCount 1 ;
-            sh:maxCount 1 ;
+          	sh:path rdfs:label ;    
+            sh:name "rdfs:label" ;
+            sh:datatype xsd:string ;
+           	sh:minCount 1 ;
+           	sh:maxCount 1 ;
         ]
     ;
 .
 
-phenop:alternateBaseValueShape
+phenop:referenceShape
     a sh:NodeShape ;
-    sh:node phenop:literalOutputShape ;
-    sh:property
-		[
-            sh:path sio:SIO_000300 ;    # sio:has-value
-            sh:name "sio:has-value" ;
-            sh:datatype xsd:string;
-            sh:minCount 1 ;
-            sh:maxCount 1 ;
-        ]
-    ;
-.
-
-phenop:referenceBaseShape
-    a sh:NodeShape ;
-    sh:targetClass obo:NCIT_C164388 ;    # obo:genetic-reference-sequence
+    sh:targetClass obo:NCIT_C48294 ;    # obo:reference
     sh:property
 		[
             sh:path rdf:type ;
             sh:hasValue sio:SIO_000614 ;    # sio:attribute
         ],
 		[
-          	sh:path [ sh:inversePath sio:SIO_000628 ] ;	# sio:refers-to
-            sh:name "sio:refers-to" ;
-          	sh:node phenop:referenceBaseValueShape ;
-            sh:minCount 1 ;
-            sh:maxCount 1 ;
-        ]
-    ;
-.
-
-phenop:referenceBaseValueShape
-    a sh:NodeShape ;
-    sh:node phenop:literalOutputShape ;
-    sh:property
-		[
-            sh:path sio:SIO_000300 ;    # sio:has-value
-            sh:name "sio:has-value" ;
-            sh:datatype xsd:string;
-            sh:minCount 1 ;
-            sh:maxCount 1 ;
+          	sh:path rdfs:label ;    
+            sh:name "rdfs:label" ;
+            sh:datatype xsd:string ;
+           	sh:minCount 1 ;
+           	sh:maxCount 1 ;
         ]
     ;
 .
 
 phenop:positionShape
     a sh:NodeShape ;
-    sh:targetClass obo:NCIT_C104788 ;    # obo:position
+    sh:targetClass obo:NCIT_C93628 ;    # obo:position-number
     sh:property
 		[
             sh:path rdf:type ;
             sh:hasValue sio:SIO_000614 ;    # sio:attribute
         ],
 		[
-          	sh:path [ sh:inversePath sio:SIO_000628 ] ;	# sio:refers-to
-            sh:name "sio:refers-to" ;
-          	sh:node phenop:positionValueShape ;
-            sh:minCount 1 ;
-            sh:maxCount 1 ;
-        ]
-    ;
-.
-
-phenop:positionValueShape
-    a sh:NodeShape ;
-    sh:node phenop:literalOutputShape ;
-    sh:property
-		[
-            sh:path sio:SIO_000300 ;    # sio:has-value
-            sh:name "sio:has-value" ;
-            sh:datatype xsd:integer;
-            sh:minCount 1 ;
-            sh:maxCount 1 ;
+          	sh:path rdfs:label ;    
+            sh:name "rdfs:label" ;
+            sh:datatype xsd:string ;
+           	sh:minCount 1 ;
+           	sh:maxCount 1 ;
         ]
     ;
 .
 
 phenop:chromosomeShape
     a sh:NodeShape ;
-    sh:targetClass obo:NCIT_C164716 ;    # obo:chromosome-name
+    sh:targetClass obo:NCIT_C13202 ;    # obo:chromosome
     sh:property
 		[
             sh:path rdf:type ;
             sh:hasValue sio:SIO_000614 ;    # sio:attribute
         ],
 		[
-          	sh:path [ sh:inversePath sio:SIO_000628 ] ;	# sio:refers-to
-            sh:name "sio:refers-to" ;
-          	sh:node phenop:chromosomeValueShape ;
-            sh:minCount 1 ;
-            sh:maxCount 1 ;
-        ]
-    ;
-.
-
-phenop:chromosomeValueShape
-    a sh:NodeShape ;
-    sh:node phenop:literalOutputShape ;
-    sh:property
-		[
-            sh:path sio:SIO_000300 ;    # sio:has-value
-            sh:name "sio:has-value" ;
+          	sh:path dct:identifier ;    
+            sh:name "dct:identifier" ;
             sh:datatype xsd:string ;
-            sh:minCount 1 ;
-            sh:maxCount 1 ;
+           	sh:minCount 1 ;
+           	sh:maxCount 1 ;
         ]
     ;
 .
 
 phenop:genomeAssemblyShape
     a sh:NodeShape ;
-    sh:targetClass obo:NCIT_C164815 ;    # obo:reference-genome-assembly-version  
+    sh:targetClass obo:NCIT_C73517 ;    # obo:genome-assembly-sequence 
     sh:property
 		[
             sh:path rdf:type ;
             sh:hasValue sio:SIO_000614 ;    # sio:attribute
         ],
 		[
-          	sh:path [ sh:inversePath sio:SIO_000628 ] ;	# sio:refers-to
-            sh:name "sio:refers-to" ;
-          	sh:node phenop:genomeAssemblyValueShape ;
-            sh:minCount 1 ;
-            sh:maxCount 1 ;
-        ]
-    ;
-.
-
-phenop:genomeAssemblyValueShape
-    a sh:NodeShape ;
-    sh:node phenop:literalOutputShape ;
-    sh:property
-		[
-            sh:path sio:SIO_000300 ;    # sio:has-value
-            sh:name "sio:has-value" ;
+          	sh:path dct:identifier ;    
+            sh:name "dct:identifier" ;
             sh:datatype xsd:string ;
-            sh:minCount 1 ;
-            sh:maxCount 1 ;
+           	sh:minCount 1 ;
+           	sh:maxCount 1 ;
         ]
     ;
 .
 
-# TODO: find better ontology term for vcf record
 phenop:vcfRecordShape
     a sh:NodeShape ;
     sh:targetClass obo:NCIT_C172216 ;
@@ -180,7 +109,7 @@ phenop:vcfRecordShape
 		[
             sh:path rdf:type ;
             sh:qualifiedValueShape [ 
-                sh:hasValue sio:SIO_000015 ;	# sio:information-content-entity
+                sh:hasValue sio:SIO_000396 ;	# sio:file
             ];
            	sh:qualifiedMinCount 1 ;
            	sh:qualifiedMaxCount 1 ;
@@ -197,10 +126,10 @@ phenop:vcfRecordShape
             sh:path sio:SIO_000008 ;    # sio:has-attribute
             sh:name "sio:has-attribute" ;
             sh:or (
-                [ sh:class obo:NCIT_C164815 ; ] # obo:reference-genome-assembly-version 
-                [ sh:class obo:NCIT_C164716 ; ] # obo:chromosome-name
-                [ sh:class obo:NCIT_C104788 ; ] # obo:position
-                [ sh:class obo:NCIT_C164388 ; ] # obo:genetic-reference-sequence
+                [ sh:class obo:NCIT_C73517 ; ] # obo:genome-assembly-sequence
+                [ sh:class obo:NCIT_C13202 ; ] # obo:chromosome
+                [ sh:class obo:NCIT_C93628 ; ] # obo:position-number
+                [ sh:class obo:NCIT_C48294 ; ] # obo:reference
                 [ sh:class obo:NCIT_C25415 ; ]  # obo:alternative
             ) ;
             sh:minCount 5 ;
@@ -208,7 +137,7 @@ phenop:vcfRecordShape
         [
             sh:path sio:SIO_000008 ;    # sio:has-attribute
             sh:qualifiedValueShape [ 
-                sh:class obo:NCIT_C164815 ;    # obo:reference-genome-assembly-version
+                sh:class obo:NCIT_C73517 ;    # obo:genome-assembly-sequence
             ];
            	sh:qualifiedMinCount 1 ;
            	sh:qualifiedMaxCount 1 ;
@@ -216,7 +145,7 @@ phenop:vcfRecordShape
         [
             sh:path sio:SIO_000008 ;    # sio:has-attribute
             sh:qualifiedValueShape [ 
-                sh:class obo:NCIT_C164716 ;    # obo:chromosome-name
+                sh:class obo:NCIT_C13202 ;    # obo:chromosome
             ];
            	sh:qualifiedMinCount 1 ;
            	sh:qualifiedMaxCount 1 ;
@@ -224,7 +153,7 @@ phenop:vcfRecordShape
         [
             sh:path sio:SIO_000008 ;    # sio:has-attribute
             sh:qualifiedValueShape [ 
-                sh:class obo:NCIT_C104788 ;    # obo:position
+                sh:class obo:NCIT_C93628 ;    # obo:position-number
             ];
            	sh:qualifiedMinCount 1 ;
            	sh:qualifiedMaxCount 1 ;
@@ -232,7 +161,7 @@ phenop:vcfRecordShape
         [
             sh:path sio:SIO_000008 ;    # sio:has-attribute
             sh:qualifiedValueShape [ 
-                sh:class obo:NCIT_C164388 ;    # obo:genetic-reference-sequence
+                sh:class obo:NCIT_C48294 ;    # obo:reference
             ];
            	sh:qualifiedMinCount 1 ;
            	sh:qualifiedMaxCount 1 ;
