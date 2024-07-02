@@ -34,12 +34,19 @@ class AssociatedNodeShapeNode:
         self.comment = comment
 
 class AssociatedProperty:
-    def __init__(self, path: str, target_nodeshape: str, target_nodeshape_node: rdflib.URIRef, min_count: int, max_count: int):
+    def __init__(self, path: str, path_name: str, target_nodeshape: str, target_nodeshape_node: rdflib.URIRef, inverse: bool = False):
         self.path = path
+        self.path_name = path_name
         self.target_nodeshape = target_nodeshape
         self.target_nodeshape_node = target_nodeshape_node
-        self.min_count = min_count
-        self.max_count = max_count
+        self.inverse = inverse
+
+class AssociatedPropertyLiteral:
+    def __init__(self, path: str, path_name: str, literal_type: rdflib.URIRef | None, relative_path: list = []):
+        self.path = path
+        self.path_name = path_name
+        self.literal_type = literal_type
+        self.relative_path = relative_path
 
 class Interpreter:
     def __init__(self, g: rdflib.Graph):
@@ -367,29 +374,230 @@ class Interpreter:
 
         return associated_nodeshapes, associated_literals
     
-    def get_paths(self, root_node: rdflib.URIRef):
-        property_paths = []
+    def get_path_name(self, path):
+        path_triples = self.find_triples(query_object=path)
+        for path_triple in path_triples:
+            property_node, _, _ = path_triple
+            property_triples = self.find_triples(query_subject=property_node)
+            property_attributes = self.get_property_dict(property_attr_triples=property_triples)
 
-        property_triples = self.find_triples(query_subject=root_node,
-                                             query_predicate=namespace_provider.SH.property)
+            if rdflib.term.URIRef(namespace_provider.SH.name) in property_attributes:
+                return property_attributes[rdflib.term.URIRef(namespace_provider.SH.name)]
+
+        return ''
         
+    def get_associated_literal(self, path: rdflib.URIRef, literal_type: rdflib.URIRef):
+        path_prefix, _, path_name = self.get_node_values(path)
+        type_prefix, _, type_name = self.get_node_values(literal_type)
+        
+        return AssociatedPropertyLiteral(path=f'{path_prefix}:{path_name}', path_name=self.get_path_name(path=path),
+                                         literal_type=f'{type_prefix}:{type_name}')
+
+    def get_associated_property(self, target_nodeshape_node: rdflib.URIRef, path: rdflib.URIRef, inverse: bool =False):
+        path_prefix, _, path_name = self.get_node_values(path)
+
+        if target_nodeshape_node:
+            _, _, target_nodeshape_name = self.get_node_values(target_nodeshape_node)
+
+            property_obj = AssociatedProperty(path=f'{path_prefix}:{path_name}', path_name=self.get_path_name(path=path), 
+                                              target_nodeshape=target_nodeshape_name,
+                                              target_nodeshape_node=target_nodeshape_node, inverse=inverse)
+            return property_obj
+        
+        else:
+            return None
+        
+    def get_direct_target_path(self, property_triples, path):
+        property_objs = []
+        literal_objs = []
+
         for property_triple in property_triples: 
             _, _, property_node = property_triple
             property_attr_triples = self.find_triples(query_subject=property_node)
             property_attributes = self.get_property_dict(property_attr_triples=property_attr_triples)
 
-            if rdflib.URIRef(namespace_provider.SH.node) in property_attributes:
-                path_node = property_attributes[rdflib.URIRef(namespace_provider.SH.path)]
-                if not self.find_triples(query_subject=path_node):  # TODO: inverse paths excluded
-                    path_prefix, _, path_name = self.get_node_values(path_node)
-                    target_nodeshape_node = self.get_first_layer_nodeshape(property_attributes=property_attributes)
-                    _, _, target_nodeshape_name = self.get_node_values(target_nodeshape_node)
-                    
-                    property_obj = AssociatedProperty(path=f'{path_prefix}:{path_name}', target_nodeshape=target_nodeshape_name,
-                                                      target_nodeshape_node=target_nodeshape_node, min_count=1, max_count=1)
-                    property_paths.append(property_obj)
+            if property_attributes[rdflib.URIRef(namespace_provider.SH.path)] == path:
+                target_nodeshape_node = None
+
+                if rdflib.URIRef('http://www.w3.org/ns/shacl#or') in property_attributes:
+                    or_root_node = property_attributes[rdflib.URIRef('http://www.w3.org/ns/shacl#or')]
+                    or_nodeshape_nodes = self.get_nested_nodes(root_node=or_root_node)
+
+                    for or_nodeshape_node in or_nodeshape_nodes:
+                        associated_property_obj = self.get_associated_property(target_nodeshape_node=or_nodeshape_node, path=path)
+                        if associated_property_obj:
+                            property_objs.append(associated_property_obj)
+                else:
+                    if rdflib.URIRef(namespace_provider.SH.node) in property_attributes:    # paths with sh:node as target
+                        target_nodeshape_node = self.get_first_layer_nodeshape(property_attributes=property_attributes)
+
+                    elif rdflib.URIRef('http://www.w3.org/ns/shacl#class') in property_attributes:
+                        target_nodeshape_node = self.get_first_layer_class(property_attributes=property_attributes)
+
+                    elif rdflib.URIRef(namespace_provider.SH.datatype) in property_attributes:
+                        datatype_node = property_attributes[rdflib.URIRef(namespace_provider.SH.datatype)]
+                        associated_literal_obj = self.get_associated_literal(path=path, literal_type=datatype_node)
+                        if associated_literal_obj:
+                            literal_objs.append(associated_literal_obj)
+
+                    associated_property_obj = self.get_associated_property(target_nodeshape_node=target_nodeshape_node, path=path)
+                    if associated_property_obj:
+                        property_objs.append(associated_property_obj)
                 
-        return property_paths
+        return property_objs, literal_objs  
+    
+    def get_qualified_target_paths(self, property_triples, path):
+        property_objs = []
+
+        for property_triple in property_triples: 
+            _, _, property_node = property_triple
+            property_attr_triples = self.find_triples(query_subject=property_node)
+            property_attributes = self.get_property_dict(property_attr_triples=property_attr_triples)
+
+            if property_attributes[rdflib.URIRef(namespace_provider.SH.path)] == path and rdflib.URIRef(namespace_provider.SH.qualifiedValueShape) in property_attributes:
+                target_nodeshape_node = None
+                
+                qualifiedvalue_triples = self.find_triples(query_subject=property_attributes[rdflib.URIRef(namespace_provider.SH.qualifiedValueShape)])
+                qualifiedvalue_attributes = self.get_property_dict(qualifiedvalue_triples)
+
+                if rdflib.URIRef('http://www.w3.org/ns/shacl#or') in qualifiedvalue_attributes:
+                    or_root_node = qualifiedvalue_attributes[rdflib.URIRef('http://www.w3.org/ns/shacl#or')]
+                    or_nodeshape_nodes = self.get_nested_nodes(root_node=or_root_node)
+
+                    for or_nodeshape_node in or_nodeshape_nodes:
+                        associated_property_obj = self.get_associated_property(target_nodeshape_node=or_nodeshape_node, path=path)
+                        if associated_property_obj:
+                            property_objs.append(associated_property_obj)
+                else:
+                    if rdflib.URIRef(namespace_provider.SH.node) in qualifiedvalue_attributes:    # paths with sh:node as target
+                        target_nodeshape_node = self.get_first_layer_nodeshape(property_attributes=qualifiedvalue_attributes)
+                    
+                    elif rdflib.URIRef('http://www.w3.org/ns/shacl#class') in qualifiedvalue_attributes:
+                        target_nodeshape_node = self.get_first_layer_class(property_attributes=qualifiedvalue_attributes)
+
+                associated_property_obj = self.get_associated_property(target_nodeshape_node=target_nodeshape_node, path=path)
+                if associated_property_obj:
+                    property_objs.append(associated_property_obj)
+
+        return property_objs
+    
+    def get_inverse_paths(self, root_node: rdflib.URIRef):
+        property_objs = []
+
+        inverse_path_triples = self.find_triples(query_predicate=rdflib.URIRef(namespace_provider.SH.inversePath))
+        for inverse_path_triple in inverse_path_triples:
+            blank_path_node, _, inverse_path = inverse_path_triple
+
+            blank_path_triples = self.find_triples(query_object=blank_path_node)
+            for blank_path_triple in blank_path_triples:
+                property_node, _, _ = blank_path_triple
+                property_attr_triples = self.find_triples(query_subject=property_node)
+                property_attributes = self.get_property_dict(property_attr_triples=property_attr_triples)
+
+                if rdflib.URIRef(namespace_provider.SH.node) in property_attributes:    # paths with sh:node as target
+                    target_nodeshape_node = self.get_first_layer_nodeshape(property_attributes=property_attributes)
+
+                elif rdflib.URIRef('http://www.w3.org/ns/shacl#class') in property_attributes:
+                    target_nodeshape_node = self.get_first_layer_class(property_attributes=property_attributes)
+
+                else:
+                    target_nodeshape_node = None
+                
+                if target_nodeshape_node == root_node:
+                    nodeshape_triple = self.find_first_triple(query_object=property_node)
+                    if nodeshape_triple:
+                        target_nodeshape_node, _, _ = nodeshape_triple
+
+                        associated_property_obj = self.get_associated_property(target_nodeshape_node=target_nodeshape_node, path=inverse_path, inverse=True)
+                        if associated_property_obj:
+                            property_objs.append(associated_property_obj)
+
+        return property_objs
+    
+    def get_inherited_paths(self, root_node: rdflib.URIRef):
+        property_paths = []
+        literal_paths = []
+
+        inherited_nodeshapes = self.get_inherited_nodeshape(root_node=root_node)
+
+        for inherited_nodeshape in inherited_nodeshapes:
+            inherited_nodeshape_node = inherited_nodeshape.node
+            _, _, inherited_nodeshape_name = self.get_node_values(node=inherited_nodeshape_node)
+
+            inherited_property_paths, inherited_literal_paths = self.get_paths(root_node=inherited_nodeshape_node)
+
+            for inherited_literal_path in inherited_literal_paths:
+                inherited_literal_path.relative_path = [common_util.from_nodeshape_name_to_name(inherited_nodeshape_name)]   # TODO: only works with inheritance of first order
+
+            property_paths += inherited_property_paths
+            literal_paths += inherited_literal_paths
+
+        return property_paths, literal_paths
+
+    def get_paths(self, root_node: rdflib.URIRef):
+        property_paths = []
+        literal_paths = []
+
+        property_triples = self.find_triples(query_subject=root_node,
+                                             query_predicate=namespace_provider.SH.property)
+        
+        paths_dict = {}
+
+        for property_triple in property_triples: 
+            _, _, property_node = property_triple
+            property_attr_triples = self.find_triples(query_subject=property_node)
+            property_attributes = self.get_property_dict(property_attr_triples=property_attr_triples)
+
+            if rdflib.URIRef(namespace_provider.SH.path) in property_attributes:
+                path = property_attributes[rdflib.URIRef(namespace_provider.SH.path)]
+                if path == rdflib.URIRef(namespace_provider.RDF.type) and rdflib.URIRef(namespace_provider.SH.qualifiedValueShape) in property_attributes:
+                    qualifiedvalue_node = property_attributes[rdflib.URIRef(namespace_provider.SH.qualifiedValueShape)]
+                    qualified_attr_triples = self.find_triples(query_subject=qualifiedvalue_node)
+                    
+                    for qualified_attr_triple in qualified_attr_triples:
+                        _, p, o = qualified_attr_triple
+                        if p == rdflib.URIRef(namespace_provider.SH.nodeKind):
+                            path_prefix, _, path_name = self.get_node_values(path)
+                            value_prefix, _, value_name = self.get_node_values(o)
+
+                            literal_obj = AssociatedPropertyLiteral(path=f'{path_prefix}:{path_name}', path_name=f'{value_prefix}:{value_name}', literal_type=None)
+                            literal_paths.append(literal_obj)
+
+        for property_triple in property_triples: 
+            _, _, property_node = property_triple
+            property_attr_triples = self.find_triples(query_subject=property_node)
+            property_attributes = self.get_property_dict(property_attr_triples=property_attr_triples)
+
+            if rdflib.URIRef(namespace_provider.SH.path) in property_attributes:
+                path = property_attributes[rdflib.URIRef(namespace_provider.SH.path)]
+
+                if path != rdflib.URIRef(namespace_provider.RDF.type):
+                    if rdflib.URIRef(namespace_provider.SH.qualifiedValueShape) in property_attributes:
+                        common_util.add_to_dict_of_counters(dict_values=paths_dict, 
+                                                            key=path, add_number=1)
+                    else:
+                        common_util.add_to_dict_of_counters(dict_values=paths_dict, 
+                                                            key=path, add_number=0)
+                    
+        for path in paths_dict:
+            if not self.find_triples(query_subject=path):  # TODO: inverse paths excluded
+                qualifiedvalue_shape_counter = paths_dict[path]
+
+                if qualifiedvalue_shape_counter == 0:
+                    property_obj_list, literal_obj_list = self.get_direct_target_path(property_triples=property_triples, path=path)
+                    literal_paths += literal_obj_list
+                else:
+                    property_obj_list = self.get_qualified_target_paths(property_triples=property_triples, path=path)
+                
+                property_paths += property_obj_list
+
+        property_paths += self.get_inverse_paths(root_node=root_node)
+
+        inherited_property_paths, inherited_literal_paths = self.get_inherited_paths(root_node=root_node)
+        property_paths += inherited_property_paths
+        literal_paths += inherited_literal_paths
+                
+        return property_paths, literal_paths
 
     def get_inherited_nodeshape(self, root_node: rdflib.URIRef):
         inherited_nodeshapes = []

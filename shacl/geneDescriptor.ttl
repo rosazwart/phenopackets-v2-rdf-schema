@@ -42,6 +42,7 @@ phenop:geneSymbolShape
         ],
 		[
           	sh:path sio:SIO_000008 ;    # sio:has-attribute
+            sh:name "sio:has-attribute" ;
             sh:class obo:NCIT_C90353 ;  # alternate identifier
             sh:minCount 0 ;
         ]

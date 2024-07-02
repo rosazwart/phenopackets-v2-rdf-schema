@@ -123,7 +123,7 @@ phenop:variantInterpretationShape
         ],
         [
             sh:path sio:SIO_001403 ;    # sio:is-associated-with
-            sh:name "sio:has-attribute" ;
+            sh:name "sio:is-associated-with" ;
             sh:class obo:NCIT_C97927 ;  # variation descriptor
             sh:minCount 1 ;
             sh:maxCount 1 ;

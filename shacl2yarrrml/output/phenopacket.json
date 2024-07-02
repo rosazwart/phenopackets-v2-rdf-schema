@@ -50,7 +50,8 @@
                             "literaloutput": {
                                 "index": "INDEX",
                                 "parent_index": "PARENTINDEX",
-                                "_comment": "[1, 1]"
+                                "_comment": "[1, 1]",
+                                "rdfs:label": "STRING"
                             },
                             "sio:has-value": "STRING"
                         }
@@ -84,7 +85,8 @@
                                             "literaloutput": {
                                                 "index": "INDEX",
                                                 "parent_index": "PARENTINDEX",
-                                                "_comment": "[1, 1]"
+                                                "_comment": "[1, 1]",
+                                                "rdfs:label": "STRING"
                                             },
                                             "sio:has-value": "STRING"
                                         }
@@ -100,7 +102,8 @@
                                             "literaloutput": {
                                                 "index": "INDEX",
                                                 "parent_index": "PARENTINDEX",
-                                                "_comment": "[1, 1]"
+                                                "_comment": "[1, 1]",
+                                                "rdfs:label": "STRING"
                                             },
                                             "sio:has-value": "STRING"
                                         }
@@ -129,7 +132,8 @@
                                                     "literaloutput": {
                                                         "index": "INDEX",
                                                         "parent_index": "PARENTINDEX",
-                                                        "_comment": "[1, 1]"
+                                                        "_comment": "[1, 1]",
+                                                        "rdfs:label": "STRING"
                                                     },
                                                     "sio:has-value": "STRING"
                                                 }
@@ -145,7 +149,8 @@
                                                     "literaloutput": {
                                                         "index": "INDEX",
                                                         "parent_index": "PARENTINDEX",
-                                                        "_comment": "[1, 1]"
+                                                        "_comment": "[1, 1]",
+                                                        "rdfs:label": "STRING"
                                                     },
                                                     "sio:has-value": "STRING"
                                                 }
@@ -161,7 +166,8 @@
                                                     "literaloutput": {
                                                         "index": "INDEX",
                                                         "parent_index": "PARENTINDEX",
-                                                        "_comment": "[1, 1]"
+                                                        "_comment": "[1, 1]",
+                                                        "rdfs:label": "STRING"
                                                     },
                                                     "sio:has-value": "INTEGER"
                                                 }
@@ -177,7 +183,8 @@
                                                     "literaloutput": {
                                                         "index": "INDEX",
                                                         "parent_index": "PARENTINDEX",
-                                                        "_comment": "[1, 1]"
+                                                        "_comment": "[1, 1]",
+                                                        "rdfs:label": "STRING"
                                                     },
                                                     "sio:has-value": "STRING"
                                                 }
@@ -193,7 +200,8 @@
                                                     "literaloutput": {
                                                         "index": "INDEX",
                                                         "parent_index": "PARENTINDEX",
-                                                        "_comment": "[1, 1]"
+                                                        "_comment": "[1, 1]",
+                                                        "rdfs:label": "STRING"
                                                     },
                                                     "sio:has-value": "STRING"
                                                 }
@@ -238,7 +246,8 @@
                                                 "literaloutput": {
                                                     "index": "INDEX",
                                                     "parent_index": "PARENTINDEX",
-                                                    "_comment": "[1, 1]"
+                                                    "_comment": "[1, 1]",
+                                                    "rdfs:label": "STRING"
                                                 },
                                                 "sio:has-value": "STRING"
                                             }
@@ -313,7 +322,8 @@
                                         "literaloutput": {
                                             "index": "INDEX",
                                             "parent_index": "PARENTINDEX",
-                                            "_comment": "[1, 1]"
+                                            "_comment": "[1, 1]",
+                                            "rdfs:label": "STRING"
                                         },
                                         "sio:has-value": "STRING"
                                     }
@@ -364,7 +374,8 @@
                         "literaloutput": {
                             "index": "INDEX",
                             "parent_index": "PARENTINDEX",
-                            "_comment": "[1, 1]"
+                            "_comment": "[1, 1]",
+                            "rdfs:label": "STRING"
                         },
                         "sio:has-value": "STRING"
                     }
@@ -380,7 +391,8 @@
                         "literaloutput": {
                             "index": "INDEX",
                             "parent_index": "PARENTINDEX",
-                            "_comment": "[1, 1]"
+                            "_comment": "[1, 1]",
+                            "rdfs:label": "STRING"
                         },
                         "sio:has-value": "STRING"
                     }
@@ -396,7 +408,8 @@
                         "literaloutput": {
                             "index": "INDEX",
                             "parent_index": "PARENTINDEX",
-                            "_comment": "[1, 1]"
+                            "_comment": "[1, 1]",
+                            "rdfs:label": "STRING"
                         },
                         "sio:has-value": "DATETIME"
                     }

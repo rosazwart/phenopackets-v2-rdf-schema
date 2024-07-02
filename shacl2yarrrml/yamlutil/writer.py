@@ -66,11 +66,28 @@ class Templater:
                 mapping_map['po'].append(type_po_map)
 
     def add_path_mapping(self, mapping_map: CommentedMap, nodeshape_node_obj: shacl_interpreter.AssociatedNodeShapeNode):
-        property_paths = self.shacl_interpreter.get_paths(root_node=nodeshape_node_obj.node)
+        property_paths, literal_paths = self.shacl_interpreter.get_paths(root_node=nodeshape_node_obj.node)
+
+        for literal_path in literal_paths:
+            property_map = CommentedMap()
+            property_map['p'] = literal_path.path
+
+            property_map['o'] = CommentedMap()
+            var_path = literal_path.relative_path + [literal_path.path_name]
+            property_map['o']['value'] = f'$({'.'.join(var_path)})'
+
+            if literal_path.literal_type:
+                property_map['o']['datatype'] = literal_path.literal_type
+
+            mapping_map['po'].append(property_map)
 
         for property_path in property_paths:
             property_map = CommentedMap()
             property_map['p'] = property_path.path
+
+            if property_path.path_name:
+                property_map.yaml_add_eol_comment(comment=f'{property_path.path_name}', key='p')
+
             property_map['o'] = CommentedMap()
 
             property_map['o']['mapping'] = f'{property_path.target_nodeshape}Mapping' 
@@ -79,7 +96,11 @@ class Templater:
             property_map['o']['condition']['function'] = 'equal'
             property_map['o']['condition']['parameters'] = CommentedSeq()
 
-            triples_values = [('str1', '$(index)', 's'), ('str2', '$(parent_index)', 'o')]
+            if property_path.inverse:
+                triples_values = [('str1', '$(parent_index)', 's'), ('str2', '$(index)', 'o')]
+            else:
+                triples_values = [('str1', '$(index)', 's'), ('str2', '$(parent_index)', 'o')]
+
             for triple_values in triples_values:
                 str_map = CommentedSeq()
 
@@ -125,7 +146,6 @@ class Templater:
         root_nodes = self.shacl_interpreter.find_root_nodeshape(all_nodeshape_nodes=all_nodeshape_nodes)
 
         for root_node in root_nodes:
-            print('ROOT NODE:', root_node)
             _, _, root_nodeshape_name = self.shacl_interpreter.get_node_values(node=root_node)
             root_node_name = common_util.from_nodeshape_name_to_name(root_nodeshape_name)
 
