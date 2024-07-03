@@ -50,8 +50,7 @@
                             "literaloutput": {
                                 "index": "INDEX",
                                 "parent_index": "PARENTINDEX",
-                                "_comment": "[1, 1]",
-                                "rdfs:label": "STRING"
+                                "_comment": "[1, 1]"
                             },
                             "sio:has-value": "STRING"
                         }
@@ -85,8 +84,7 @@
                                             "literaloutput": {
                                                 "index": "INDEX",
                                                 "parent_index": "PARENTINDEX",
-                                                "_comment": "[1, 1]",
-                                                "rdfs:label": "STRING"
+                                                "_comment": "[1, 1]"
                                             },
                                             "sio:has-value": "STRING"
                                         }
@@ -102,8 +100,7 @@
                                             "literaloutput": {
                                                 "index": "INDEX",
                                                 "parent_index": "PARENTINDEX",
-                                                "_comment": "[1, 1]",
-                                                "rdfs:label": "STRING"
+                                                "_comment": "[1, 1]"
                                             },
                                             "sio:has-value": "STRING"
                                         }
@@ -191,8 +188,7 @@
                                                 "literaloutput": {
                                                     "index": "INDEX",
                                                     "parent_index": "PARENTINDEX",
-                                                    "_comment": "[1, 1]",
-                                                    "rdfs:label": "STRING"
+                                                    "_comment": "[1, 1]"
                                                 },
                                                 "sio:has-value": "STRING"
                                             }
@@ -267,8 +263,7 @@
                                         "literaloutput": {
                                             "index": "INDEX",
                                             "parent_index": "PARENTINDEX",
-                                            "_comment": "[1, 1]",
-                                            "rdfs:label": "STRING"
+                                            "_comment": "[1, 1]"
                                         },
                                         "sio:has-value": "STRING"
                                     }
@@ -319,8 +314,7 @@
                         "literaloutput": {
                             "index": "INDEX",
                             "parent_index": "PARENTINDEX",
-                            "_comment": "[1, 1]",
-                            "rdfs:label": "STRING"
+                            "_comment": "[1, 1]"
                         },
                         "sio:has-value": "STRING"
                     }
@@ -336,8 +330,7 @@
                         "literaloutput": {
                             "index": "INDEX",
                             "parent_index": "PARENTINDEX",
-                            "_comment": "[1, 1]",
-                            "rdfs:label": "STRING"
+                            "_comment": "[1, 1]"
                         },
                         "sio:has-value": "STRING"
                     }
@@ -353,8 +346,7 @@
                         "literaloutput": {
                             "index": "INDEX",
                             "parent_index": "PARENTINDEX",
-                            "_comment": "[1, 1]",
-                            "rdfs:label": "STRING"
+                            "_comment": "[1, 1]"
                         },
                         "sio:has-value": "DATETIME"
                     }

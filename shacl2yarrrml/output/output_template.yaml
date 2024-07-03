@@ -15,8 +15,8 @@ mappings:
         iterator: $.phenopacket[*]
     s: ex:phenopacket_$(index)
     po:
-      - [a, sio:SIO_000015]
       - [a, obo:NCIT_C79269]
+      - [a, sio:SIO_000015]
       - p: sio:SIO_000228  # sio:has-role
         o:
           mapping: roleShapeMapping
@@ -88,8 +88,8 @@ mappings:
         iterator: $.phenopacket[*].phenotypicfeature[*].phenotypicfeaturevalue
     s: ex:phenotypicfeaturevalue_$(index)
     po:
-      - [a, sio:SIO_000015]
       - [a, obo:NCIT_C16977]
+      - [a, sio:SIO_000015]
       - p: sio:SIO_000628
         o:
           mapping: phenotypicFeatureShapeMapping
@@ -147,15 +147,11 @@ mappings:
         iterator: $.phenopacket[*].interpretation[*].progressstatus.progressstatusvalue
     s: ex:progressstatusvalue_$(index)
     po:
-      - [a, sio:SIO_000015]
       - [a, obo:NCIT_C70856]
+      - [a, sio:SIO_000015]
       - p: sio:SIO_000300
         o:
           value: $(sio:has-value)
-          datatype: xsd:string
-      - p: rdfs:label
-        o:
-          value: $(literaloutput.rdfs:label)
           datatype: xsd:string
       - p: sio:SIO_000628
         o:
@@ -207,8 +203,8 @@ mappings:
         iterator: $.phenopacket[*].interpretation[*].diagnosis.diagnosisvalue
     s: ex:diagnosisvalue_$(index)
     po:
-      - [a, sio:SIO_000015]
       - [a, obo:NCIT_C154625]
+      - [a, sio:SIO_000015]
       - p: sio:SIO_000628
         o:
           mapping: diagnosisShapeMapping
@@ -300,8 +296,8 @@ mappings:
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.acmgpathogenicityclass
     s: ex:acmgpathogenicityclass_$(index)
     po:
-      - [a, obo:NCIT_C168798]
       - [a, sio:SIO_000614]
+      - [a, obo:NCIT_C168798]
   acmgPathogenicityClassValueShapeMapping:
     sources:
       - access: phenopacket.json
@@ -310,15 +306,11 @@ mappings:
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.acmgpathogenicityclass.acmgpathogenicityclassvalue
     s: ex:acmgpathogenicityclassvalue_$(index)
     po:
-      - [a, sio:SIO_000015]
       - [a, obo:NCIT_C70856]
+      - [a, sio:SIO_000015]
       - p: sio:SIO_000300
         o:
           value: $(sio:has-value)
-          datatype: xsd:string
-      - p: rdfs:label
-        o:
-          value: $(literaloutput.rdfs:label)
           datatype: xsd:string
       - p: sio:SIO_000628
         o:
@@ -336,8 +328,8 @@ mappings:
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.therapeuticactionability
     s: ex:therapeuticactionability_$(index)
     po:
-      - [a, obo:NCIT_C25404]
       - [a, sio:SIO_000614]
+      - [a, obo:NCIT_C25404]
   therapeuticActionabilityValueShapeMapping:
     sources:
       - access: phenopacket.json
@@ -346,15 +338,11 @@ mappings:
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.therapeuticactionability.therapeuticactionabilityvalue
     s: ex:therapeuticactionabilityvalue_$(index)
     po:
-      - [a, sio:SIO_000015]
       - [a, obo:NCIT_C70856]
+      - [a, sio:SIO_000015]
       - p: sio:SIO_000300
         o:
           value: $(sio:has-value)
-          datatype: xsd:string
-      - p: rdfs:label
-        o:
-          value: $(literaloutput.rdfs:label)
           datatype: xsd:string
       - p: sio:SIO_000628
         o:
@@ -372,8 +360,8 @@ mappings:
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor
     s: ex:variationdescriptor_$(index)
     po:
-      - [a, sio:SIO_000015]
       - [a, obo:NCIT_C97927]
+      - [a, sio:SIO_000015]
       - p: rdfs:label
         o:
           value: $(rdfs:label)
@@ -500,8 +488,8 @@ mappings:
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.position
     s: ex:position_$(index)
     po:
-      - [a, obo:NCIT_C93628]
       - [a, sio:SIO_000614]
+      - [a, obo:NCIT_C93628]
       - p: rdfs:label
         o:
           value: $(rdfs:label)
@@ -542,8 +530,8 @@ mappings:
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].genedescriptor
     s: ex:genedescriptor_$(index)
     po:
-      - [a, sio:SIO_000015]
       - [a, obo:NCIT_C16612]
+      - [a, sio:SIO_000015]
       - p: dct:identifier
         o:
           value: $(dct:identifier)
@@ -572,8 +560,8 @@ mappings:
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].genedescriptor.altid[*]
     s: ex:altid_$(index)
     po:
-      - [a, sio:SIO_000115]
       - [a, obo:NCIT_C90353]
+      - [a, sio:SIO_000115]
       - p: sio:SIO_000300
         o:
           value: $(sio:has-value)
@@ -586,8 +574,8 @@ mappings:
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].genedescriptor.genesymbol
     s: ex:genesymbol_$(index)
     po:
-      - [a, obo:NCIT_C43568]
       - [a, sio:SIO_001383]
+      - [a, obo:NCIT_C43568]
       - p: sio:SIO_000300
         o:
           value: $(sio:has-value)
@@ -608,9 +596,9 @@ mappings:
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.moleculecontext
     s: ex:moleculecontext_$(index)
     po:
-      - [a, obo:NCIT_C63325]
       - [a, obo:NCIT_C63816]
       - [a, sio:SIO_000614]
+      - [a, obo:NCIT_C63325]
   moleculeContextValueShapeMapping:
     sources:
       - access: phenopacket.json
@@ -619,15 +607,11 @@ mappings:
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.moleculecontext.moleculecontextvalue
     s: ex:moleculecontextvalue_$(index)
     po:
-      - [a, sio:SIO_000015]
       - [a, obo:NCIT_C70856]
+      - [a, sio:SIO_000015]
       - p: sio:SIO_000300
         o:
           value: $(sio:has-value)
-          datatype: xsd:string
-      - p: rdfs:label
-        o:
-          value: $(literaloutput.rdfs:label)
           datatype: xsd:string
       - p: sio:SIO_000628
         o:
@@ -704,8 +688,8 @@ mappings:
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].interpretationstatus
     s: ex:interpretationstatus_$(index)
     po:
-      - [a, obo:NCIT_C164628]
       - [a, sio:SIO_000614]
+      - [a, obo:NCIT_C164628]
   interpretationStatusValueShapeMapping:
     sources:
       - access: phenopacket.json
@@ -714,15 +698,11 @@ mappings:
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].interpretationstatus.interpretationstatusvalue
     s: ex:interpretationstatusvalue_$(index)
     po:
-      - [a, sio:SIO_000015]
       - [a, obo:NCIT_C70856]
+      - [a, sio:SIO_000015]
       - p: sio:SIO_000300
         o:
           value: $(sio:has-value)
-          datatype: xsd:string
-      - p: rdfs:label
-        o:
-          value: $(literaloutput.rdfs:label)
           datatype: xsd:string
       - p: sio:SIO_000628
         o:
@@ -758,8 +738,8 @@ mappings:
         iterator: $.phenopacket[*].interpretation[*].diagnosis.disease.diseasevalue
     s: ex:diseasevalue_$(index)
     po:
-      - [a, sio:SIO_000015]
       - [a, obo:NCIT_C2991]
+      - [a, sio:SIO_000015]
       - p: sio:SIO_000628
         o:
           mapping: diseaseShapeMapping
@@ -817,15 +797,11 @@ mappings:
         iterator: $.phenopacket[*].metadata.version.versionvalue
     s: ex:versionvalue_$(index)
     po:
-      - [a, sio:SIO_000015]
       - [a, obo:NCIT_C70856]
+      - [a, sio:SIO_000015]
       - p: sio:SIO_000300
         o:
           value: $(sio:has-value)
-          datatype: xsd:string
-      - p: rdfs:label
-        o:
-          value: $(literaloutput.rdfs:label)
           datatype: xsd:string
       - p: sio:SIO_000628
         o:
@@ -842,8 +818,8 @@ mappings:
         iterator: $.phenopacket[*].metadata.createdby
     s: ex:createdby_$(index)
     po:
-      - [a, dct:creator]
       - [a, sio:SIO_000614]
+      - [a, dct:creator]
   createdByValueShapeMapping:
     sources:
       - access: phenopacket.json
@@ -851,15 +827,11 @@ mappings:
         iterator: $.phenopacket[*].metadata.createdby.createdbyvalue
     s: ex:createdbyvalue_$(index)
     po:
-      - [a, sio:SIO_000015]
       - [a, obo:NCIT_C70856]
+      - [a, sio:SIO_000015]
       - p: sio:SIO_000300
         o:
           value: $(sio:has-value)
-          datatype: xsd:string
-      - p: rdfs:label
-        o:
-          value: $(literaloutput.rdfs:label)
           datatype: xsd:string
       - p: sio:SIO_000628
         o:
@@ -885,16 +857,12 @@ mappings:
         iterator: $.phenopacket[*].metadata.created.createdvalue
     s: ex:createdvalue_$(index)
     po:
-      - [a, sio:SIO_000015]
       - [a, obo:NCIT_C70856]
+      - [a, sio:SIO_000015]
       - p: sio:SIO_000300
         o:
           value: $(sio:has-value)
           datatype: xsd:dateTime
-      - p: rdfs:label
-        o:
-          value: $(literaloutput.rdfs:label)
-          datatype: xsd:string
       - p: sio:SIO_000628
         o:
           mapping: createdShapeMapping
@@ -910,8 +878,8 @@ mappings:
         iterator: $.id[*]
     s: ex:id_$(index)
     po:
-      - [a, sio:SIO_000115]
       - [a, obo:IAO_0020000]
+      - [a, sio:SIO_000115]
       - p: sio:SIO_000300
         o:
           value: $(sio:has-value)
