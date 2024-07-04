@@ -161,8 +161,6 @@ class Templater:
         if nodeshape.max_count == -1:
             new_path[-1] = f'{new_path[-1]}[*]'
 
-        print('Add mapping for', curr_nodeshape_name, 'in path', path, f'with cardinality [{curr_nodeshape.min_count}, {curr_nodeshape.max_count}]')
-
         mapping_map = CommentedMap()
 
         self.add_source_mapping(mapping=mapping_map, filename=f'{root_node_name}.json', path=new_path)
