@@ -156,6 +156,27 @@ class Interpreter:
         self.shacl_g = g
         self.basic_interpr = BasicInterpreter(g=g)
 
+    def comment_or_constraints(self, min_count: int, max_count: int, or_nodeshapes_list: list):
+        """
+        """
+        or_nodeshape_names = []
+        for or_nodeshape in or_nodeshapes_list:
+            _, _, or_nodeshape_name = self.basic_interpr.extract_values(node=or_nodeshape.node)
+            or_nodeshape_names.append(common_util.from_nodeshape_name_to_name(or_nodeshape_name))
+
+        for or_nodeshape in or_nodeshapes_list:
+            or_nodeshape.comment = f'Provide with cardinality [{min_count}, {max_count}] from the following: {' OR '.join(or_nodeshape_names)}'
+
+    def comment_constraints(self, nodeshape: shacl_objects.NodeShapeNode):
+        """
+        """
+        if nodeshape.max_count == -1:
+            max_count_str = '*'
+        else:
+            max_count_str = str(nodeshape.max_count)
+
+        nodeshape.comment = f'[{nodeshape.min_count}, {max_count_str}]'
+
     def get_all_nodeshapes(self) -> List[rdflib.URIRef]:
         """
             Get all nodeshape nodes found in the complete SHACL graph.
@@ -214,7 +235,9 @@ class Interpreter:
 
         if rdflib.URIRef('http://www.w3.org/ns/shacl#or') in qualifiedvalue_dict:
             or_node = qualifiedvalue_dict[rdflib.URIRef('http://www.w3.org/ns/shacl#or')]
-            nodeshape_node_list += self.basic_interpr.get_target_nodeshape_nodes_from_or_node(or_node=or_node, min_count=min_count, max_count=max_count, path=path, property_path_name=property_path_name)
+            or_nodes = self.basic_interpr.get_target_nodeshape_nodes_from_or_node(or_node=or_node, min_count=min_count, max_count=max_count, path=path, property_path_name=property_path_name)
+            nodeshape_node_list += or_nodes
+            self.comment_or_constraints(min_count=min_count, max_count=max_count, or_nodeshapes_list=or_nodes)
         else:
             if namespace_provider.SH.node in qualifiedvalue_dict:
                 target_nodeshape_node = qualifiedvalue_dict[namespace_provider.SH.node]
@@ -224,7 +247,9 @@ class Interpreter:
                 target_nodeshape_node = self.basic_interpr.get_nodeshape_node_from_class_node(target_class_node)
 
             if target_nodeshape_node:
-                nodeshape_node_list.append(shacl_objects.NodeShapeNode(node=target_nodeshape_node, property_path=property_path_name, path=path, min_count=min_count, max_count=max_count))
+                nodeshape_obj = shacl_objects.NodeShapeNode(node=target_nodeshape_node, property_path=property_path_name, path=path, min_count=min_count, max_count=max_count)
+                self.comment_constraints(nodeshape=nodeshape_obj)
+                nodeshape_node_list.append(nodeshape_obj)
         
         return nodeshape_node_list
         
@@ -256,12 +281,16 @@ class Interpreter:
 
                     elif namespace_provider.SH.node in prop_dict:
                         target_nodeshape_node = prop_dict[namespace_provider.SH.node]
-                        target_nodeshape_nodes.append(shacl_objects.NodeShapeNode(node=target_nodeshape_node, property_path=property_path_name, path=path, min_count=min_count, max_count=max_count))
+                        target_nodeshape_obj = shacl_objects.NodeShapeNode(node=target_nodeshape_node, property_path=property_path_name, path=path, min_count=min_count, max_count=max_count)
+                        self.comment_constraints(nodeshape=target_nodeshape_obj)
+                        target_nodeshape_nodes.append(target_nodeshape_obj)
 
                     elif rdflib.URIRef('http://www.w3.org/ns/shacl#class') in prop_dict:
                         target_class_node = prop_dict[rdflib.URIRef('http://www.w3.org/ns/shacl#class')]
                         target_nodeshape_node = self.basic_interpr.get_nodeshape_node_from_class_node(target_class_node)
-                        target_nodeshape_nodes.append(shacl_objects.NodeShapeNode(node=target_nodeshape_node, property_path=property_path_name, path=path, min_count=min_count, max_count=max_count))
+                        target_nodeshape_obj = shacl_objects.NodeShapeNode(node=target_nodeshape_node, property_path=property_path_name, path=path, min_count=min_count, max_count=max_count)
+                        self.comment_constraints(nodeshape=target_nodeshape_obj)
+                        target_nodeshape_nodes.append(target_nodeshape_obj)
 
         return target_nodeshape_nodes
         
@@ -327,7 +356,9 @@ class Interpreter:
 
         for inherited_triple in inherited_triples:
             _, _, inherited_nodeshape_node = inherited_triple
-            inherited_nodeshapes.append(shacl_objects.NodeShapeNode(node=inherited_nodeshape_node))
+            inherited_nodeshape_obj = shacl_objects.NodeShapeNode(node=inherited_nodeshape_node)
+            self.comment_constraints(nodeshape=inherited_nodeshape_obj)
+            inherited_nodeshapes.append(inherited_nodeshape_obj)
         
         return inherited_nodeshapes
     
@@ -367,7 +398,7 @@ class Interpreter:
 
         return associated_types
     
-    def get_associated_literals(self, from_node: rdflib.URIRef, rel_path: list):
+    def get_associated_literals(self, from_node: rdflib.URIRef, rel_path: list, include_inherited: bool = True):
         """
         """
         from_node_property_triples = self.basic_interpr.find_triples(query_subject=from_node, query_predicate=namespace_provider.SH.property)
@@ -400,13 +431,14 @@ class Interpreter:
                 if namespace_provider.SH.nodeKind in qualifiedvalue_attr:
                     nodekind_node = qualifiedvalue_attr[namespace_provider.SH.nodeKind]
                     nodekind_prefix, _, nodekind_name = self.basic_interpr.extract_values(nodekind_node)
-                    associated_literals.append(shacl_objects.LiteralNode(path_name=f'{path_prefix}:{path_name}', rel_path=rel_path, literal_name=f'{nodekind_prefix}:{nodekind_name}'))
+                    associated_literals.append(shacl_objects.LiteralNode(path_name=f'{path_prefix}:{path_name}', rel_path=rel_path, literal_name=f'{path_prefix}:{path_name}', literal_type=nodekind_name, nodekind_name=f'{nodekind_prefix}:{nodekind_name}'))
         
-        for inherited_nodeshape in self.get_inherited_nodeshapes(from_node):
-            _, _, inherited_nodeshape_name = self.basic_interpr.extract_values(inherited_nodeshape.node)
-            new_path = deepcopy(rel_path)
-            new_path.append(common_util.from_nodeshape_name_to_name(inherited_nodeshape_name))
-            associated_literals += self.get_associated_literals(inherited_nodeshape.node, rel_path=new_path)
+        if include_inherited:
+            for inherited_nodeshape in self.get_inherited_nodeshapes(from_node):
+                _, _, inherited_nodeshape_name = self.basic_interpr.extract_values(inherited_nodeshape.node)
+                new_path = deepcopy(rel_path)
+                new_path.append(common_util.from_nodeshape_name_to_name(inherited_nodeshape_name))
+                associated_literals += self.get_associated_literals(inherited_nodeshape.node, rel_path=new_path, include_inherited=include_inherited)
 
         return associated_literals
     

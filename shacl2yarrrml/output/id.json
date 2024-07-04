@@ -2,7 +2,7 @@
     "id": [
         {
             "index": "INDEX",
-            "_comment": "Root",
+            "_comment": "",
             "role": {
                 "index": "INDEX",
                 "parent_index": "PARENTINDEX",

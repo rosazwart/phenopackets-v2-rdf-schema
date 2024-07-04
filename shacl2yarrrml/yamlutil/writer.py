@@ -66,12 +66,16 @@ class Templater:
 
             value_rel_path = []
             value_rel_path += associated_literal.rel_path
-            value_name = associated_literal.literal_name.replace(':', '_')
+
+            if associated_literal.nodekind_name:
+                value_name = associated_literal.nodekind_name.replace(':', '_')
+            else:
+                value_name = associated_literal.literal_name.replace(':', '_')
             value_rel_path.append(value_name)
 
             property_map['o']['value'] = f'$({'.'.join(value_rel_path)})'
 
-            if associated_literal.literal_type:
+            if associated_literal.literal_type != 'IRI':
                 property_map['o']['datatype'] = associated_literal.literal_type
 
             mapping_map['po'].append(property_map)

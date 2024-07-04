@@ -2,7 +2,7 @@
     "phenopacket": [
         {
             "index": "INDEX",
-            "_comment": "Root",
+            "_comment": "",
             "role": {
                 "index": "INDEX",
                 "parent_index": "PARENTINDEX",
@@ -64,6 +64,24 @@
                             "parent_index": "PARENTINDEX",
                             "_comment": "[1, 1]"
                         },
+                        "disease": {
+                            "index": "INDEX",
+                            "parent_index": "PARENTINDEX",
+                            "_comment": "[1, 1]",
+                            "diseasevalue": {
+                                "index": "INDEX",
+                                "parent_index": "PARENTINDEX",
+                                "_comment": "[1, 1]"
+                            },
+                            "ontologyclass": {
+                                "index": "INDEX",
+                                "parent_index": "PARENTINDEX",
+                                "_comment": "[1, 1]",
+                                "rdf:type": "IRI"
+                            },
+                            "dct:identifier": "STRING",
+                            "rdfs:label": "STRING"
+                        },
                         "genomicinterpretation": [
                             {
                                 "index": "INDEX",
@@ -114,53 +132,10 @@
                                             "parent_index": "PARENTINDEX",
                                             "_comment": "[1, 1]"
                                         },
-                                        "vcfrecord": {
-                                            "index": "INDEX",
-                                            "parent_index": "PARENTINDEX",
-                                            "_comment": "[0, 1]",
-                                            "alternate": {
-                                                "index": "INDEX",
-                                                "parent_index": "PARENTINDEX",
-                                                "_comment": "[1, 1]",
-                                                "rdfs:label": "STRING"
-                                            },
-                                            "reference": {
-                                                "index": "INDEX",
-                                                "parent_index": "PARENTINDEX",
-                                                "_comment": "[1, 1]",
-                                                "rdfs:label": "STRING"
-                                            },
-                                            "position": {
-                                                "index": "INDEX",
-                                                "parent_index": "PARENTINDEX",
-                                                "_comment": "[1, 1]",
-                                                "rdfs:label": "STRING"
-                                            },
-                                            "chromosome": {
-                                                "index": "INDEX",
-                                                "parent_index": "PARENTINDEX",
-                                                "_comment": "[1, 1]",
-                                                "dct:identifier": "STRING"
-                                            },
-                                            "genomeassembly": {
-                                                "index": "INDEX",
-                                                "parent_index": "PARENTINDEX",
-                                                "_comment": "[1, 1]",
-                                                "dct:identifier": "STRING"
-                                            }
-                                        },
                                         "genedescriptor": {
                                             "index": "INDEX",
                                             "parent_index": "PARENTINDEX",
                                             "_comment": "[0, 1]",
-                                            "altid": [
-                                                {
-                                                    "index": "INDEX",
-                                                    "parent_index": "PARENTINDEX",
-                                                    "_comment": "[0, *]",
-                                                    "sio:has-value": "STRING"
-                                                }
-                                            ],
                                             "genesymbol": {
                                                 "index": "INDEX",
                                                 "parent_index": "PARENTINDEX",
@@ -175,7 +150,50 @@
                                                 ],
                                                 "sio:has-value": "STRING"
                                             },
+                                            "altid": [
+                                                {
+                                                    "index": "INDEX",
+                                                    "parent_index": "PARENTINDEX",
+                                                    "_comment": "[0, *]",
+                                                    "sio:has-value": "STRING"
+                                                }
+                                            ],
                                             "dct:identifier": "STRING"
+                                        },
+                                        "vcfrecord": {
+                                            "index": "INDEX",
+                                            "parent_index": "PARENTINDEX",
+                                            "_comment": "[0, 1]",
+                                            "genomeassembly": {
+                                                "index": "INDEX",
+                                                "parent_index": "PARENTINDEX",
+                                                "_comment": "[1, 1]",
+                                                "dct:identifier": "STRING"
+                                            },
+                                            "chromosome": {
+                                                "index": "INDEX",
+                                                "parent_index": "PARENTINDEX",
+                                                "_comment": "[1, 1]",
+                                                "dct:identifier": "STRING"
+                                            },
+                                            "position": {
+                                                "index": "INDEX",
+                                                "parent_index": "PARENTINDEX",
+                                                "_comment": "[1, 1]",
+                                                "rdfs:label": "STRING"
+                                            },
+                                            "reference": {
+                                                "index": "INDEX",
+                                                "parent_index": "PARENTINDEX",
+                                                "_comment": "[1, 1]",
+                                                "rdfs:label": "STRING"
+                                            },
+                                            "alternate": {
+                                                "index": "INDEX",
+                                                "parent_index": "PARENTINDEX",
+                                                "_comment": "[1, 1]",
+                                                "rdfs:label": "STRING"
+                                            }
                                         },
                                         "moleculecontext": {
                                             "index": "INDEX",
@@ -201,14 +219,6 @@
                                     "index": "INDEX",
                                     "parent_index": "PARENTINDEX",
                                     "_comment": "Provide with cardinality [1, 1] from the following: variantinterpretation OR genedescriptor",
-                                    "altid": [
-                                        {
-                                            "index": "INDEX",
-                                            "parent_index": "PARENTINDEX",
-                                            "_comment": "[0, *]",
-                                            "sio:has-value": "STRING"
-                                        }
-                                    ],
                                     "genesymbol": {
                                         "index": "INDEX",
                                         "parent_index": "PARENTINDEX",
@@ -223,6 +233,14 @@
                                         ],
                                         "sio:has-value": "STRING"
                                     },
+                                    "altid": [
+                                        {
+                                            "index": "INDEX",
+                                            "parent_index": "PARENTINDEX",
+                                            "_comment": "[0, *]",
+                                            "sio:has-value": "STRING"
+                                        }
+                                    ],
                                     "dct:identifier": "STRING"
                                 },
                                 "biosample": {
@@ -270,24 +288,6 @@
                                 }
                             }
                         ],
-                        "disease": {
-                            "index": "INDEX",
-                            "parent_index": "PARENTINDEX",
-                            "_comment": "[1, 1]",
-                            "diseasevalue": {
-                                "index": "INDEX",
-                                "parent_index": "PARENTINDEX",
-                                "_comment": "[1, 1]"
-                            },
-                            "ontologyclass": {
-                                "index": "INDEX",
-                                "parent_index": "PARENTINDEX",
-                                "_comment": "[1, 1]",
-                                "rdf:type": "IRI"
-                            },
-                            "dct:identifier": "STRING",
-                            "rdfs:label": "STRING"
-                        },
                         "ontologyclass": {
                             "index": "INDEX",
                             "parent_index": "PARENTINDEX",
@@ -303,11 +303,11 @@
                 "index": "INDEX",
                 "parent_index": "PARENTINDEX",
                 "_comment": "[1, 1]",
-                "version": {
+                "created": {
                     "index": "INDEX",
                     "parent_index": "PARENTINDEX",
                     "_comment": "[1, 1]",
-                    "versionvalue": {
+                    "createdvalue": {
                         "index": "INDEX",
                         "parent_index": "PARENTINDEX",
                         "_comment": "[1, 1]",
@@ -316,7 +316,7 @@
                             "parent_index": "PARENTINDEX",
                             "_comment": "[1, 1]"
                         },
-                        "sio:has-value": "STRING"
+                        "sio:has-value": "DATETIME"
                     }
                 },
                 "createdby": {
@@ -335,11 +335,11 @@
                         "sio:has-value": "STRING"
                     }
                 },
-                "created": {
+                "version": {
                     "index": "INDEX",
                     "parent_index": "PARENTINDEX",
                     "_comment": "[1, 1]",
-                    "createdvalue": {
+                    "versionvalue": {
                         "index": "INDEX",
                         "parent_index": "PARENTINDEX",
                         "_comment": "[1, 1]",
@@ -348,7 +348,7 @@
                             "parent_index": "PARENTINDEX",
                             "_comment": "[1, 1]"
                         },
-                        "sio:has-value": "DATETIME"
+                        "sio:has-value": "STRING"
                     }
                 }
             }
