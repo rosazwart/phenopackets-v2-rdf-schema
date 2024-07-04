@@ -8,24 +8,27 @@ from ruamel.yaml.comments import CommentedMap, CommentedSeq
 import util.common as common_util
 import namespace_provider as namespace_provider
 import shaclutil.interpreter as shacl_interpreter
-import jsonutil.writer as json_writer
+import shaclutil.objects as shacl_objects
 
 class Templater:
     def __init__(self, g: rdflib.Graph):
+        self.shacl_g = g
+
         self.shacl_interpreter = shacl_interpreter.Interpreter(g=g)
-        self.shacl_traverser = shacl_interpreter.Traverser(g=g)
 
         self.data = CommentedMap()
-
         self.data['prefixes'] = CommentedMap()
         self.data['mappings'] = CommentedMap()
 
-        self.shacl_g = g
-
         self.add_prefixes()
-        self.template_root_nodes()
+        self.generate_templates_root_nodes()
 
-        self.to_yaml('output/output_template.yaml')
+        self.to_yaml('output/template.yaml')
+    
+    def add_prefixes(self):
+        for prefix, namespace in self.shacl_g.namespaces():
+            if prefix in namespace_provider.used_prefixes:
+                self.data['prefixes'][prefix] = str(namespace)
 
     def to_yaml(self, file_path):
         yaml = YAML()
@@ -36,12 +39,10 @@ class Templater:
 
         with open(file_path, 'w') as f:
             yaml.dump(self.data, f)
-    
-    def add_prefixes(self):
-        for prefix, namespace in self.shacl_g.namespaces():
-            if prefix in namespace_provider.used_prefixes:
-                self.data['prefixes'][prefix] = str(namespace)
 
+    def get_mapping_name(self, nodeshape_name: str):
+        return f'{nodeshape_name}Mapping'
+    
     def add_source_mapping(self, mapping: CommentedMap, filename: str, path: list):
         mapping['sources'] = CommentedSeq()
 
@@ -50,57 +51,60 @@ class Templater:
         sources_info_map['referenceFormulation'] = 'jsonpath'
         sources_info_map['iterator'] = f'$.{'.'.join(path)}'
 
-        #sources_info_map.yaml_add_eol_comment(comment='path to field representing all entities', key='iterator')
-
         mapping['sources'].append(sources_info_map)
 
-    def add_type_mapping(self, mapping_map: CommentedMap, nodeshape_node_obj: shacl_interpreter.AssociatedNodeShapeNode):
-        types = self.shacl_interpreter.get_types_nodeshape(nodeshape_node=nodeshape_node_obj.node)
-        for nodeshape_type in types:
-            if nodeshape_type:
-                type_po_map = CommentedSeq()
-                type_po_map.append('a')
-                type_po_map.append(nodeshape_type)
-                type_po_map.fa.set_flow_style()
-
-                mapping_map['po'].append(type_po_map)
-
-    def add_path_mapping(self, mapping_map: CommentedMap, nodeshape_node_obj: shacl_interpreter.AssociatedNodeShapeNode):
-        property_paths, literal_paths = self.shacl_interpreter.get_paths(root_node=nodeshape_node_obj.node)
-
-        for literal_path in literal_paths:
+    def add_literal_mapping(self, mapping_map: CommentedMap, nodeshape: shacl_objects.NodeShapeNode):
+        """
+        """
+        associated_literals = self.shacl_interpreter.get_associated_literals(from_node=nodeshape.node, rel_path=[])
+        for associated_literal in associated_literals:
             property_map = CommentedMap()
-            property_map['p'] = literal_path.path
+
+            property_map['p'] = associated_literal.path_name
 
             property_map['o'] = CommentedMap()
-            var_path = literal_path.relative_path + [literal_path.path_name]
-            property_map['o']['value'] = f'$({'.'.join(var_path)})'
 
-            if literal_path.literal_type:
-                property_map['o']['datatype'] = literal_path.literal_type
+            value_rel_path = []
+            value_rel_path += associated_literal.rel_path
+            value_name = associated_literal.literal_name.replace(':', '_')
+            value_rel_path.append(value_name)
+
+            property_map['o']['value'] = f'$({'.'.join(value_rel_path)})'
+
+            if associated_literal.literal_type:
+                property_map['o']['datatype'] = associated_literal.literal_type
 
             mapping_map['po'].append(property_map)
 
-        for property_path in property_paths:
-            property_map = CommentedMap()
-            property_map['p'] = property_path.path
+    def add_type_mapping(self, mapping_map: CommentedMap, nodeshape: shacl_objects.NodeShapeNode):
+        """
+        """
+        associated_types = self.shacl_interpreter.get_associated_types(from_node=nodeshape.node)
+        for associated_type in associated_types:
+            type_mapping = CommentedSeq()
+            type_mapping.append('a')
+            type_mapping.append(associated_type.type_name)
+            type_mapping.fa.set_flow_style()
 
-            if property_path.path_name:
-                property_map.yaml_add_eol_comment(comment=f'{property_path.path_name}', key='p')
+            mapping_map['po'].append(type_mapping)
 
-            property_map['o'] = CommentedMap()
+    def add_path_mapping(self, mapping_map: CommentedMap, associated_nodeshape: shacl_objects.NodeShapeNode):
+        """
+        """
+        if associated_nodeshape.property_path:
+            path_map = CommentedMap()
 
-            property_map['o']['mapping'] = f'{property_path.target_nodeshape}Mapping' 
+            path_map['p'] = associated_nodeshape.property_path
 
-            property_map['o']['condition'] = CommentedMap()
-            property_map['o']['condition']['function'] = 'equal'
-            property_map['o']['condition']['parameters'] = CommentedSeq()
+            path_map['o'] = CommentedMap()
+            _, _, shape_mapping_name = self.shacl_interpreter.basic_interpr.extract_values(associated_nodeshape.node)
+            path_map['o']['mapping'] = f'{shape_mapping_name}Mapping'
 
-            if property_path.inverse:
-                triples_values = [('str1', '$(parent_index)', 's'), ('str2', '$(index)', 'o')]
-            else:
-                triples_values = [('str1', '$(index)', 's'), ('str2', '$(parent_index)', 'o')]
+            path_map['o']['condition'] = CommentedMap()
+            path_map['o']['condition']['function'] = 'equal'
+            path_map['o']['condition']['parameters'] = CommentedSeq()
 
+            triples_values = [('str1', '$(index)', 's'), ('str2', '$(parent_index)', 'o')]
             for triple_values in triples_values:
                 str_map = CommentedSeq()
 
@@ -108,51 +112,84 @@ class Templater:
                     str_map.append(value)
                 str_map.fa.set_flow_style()
 
-                property_map['o']['condition']['parameters'].append(str_map)
+                path_map['o']['condition']['parameters'].append(str_map)
 
-            mapping_map['po'].append(property_map)
+            mapping_map['po'].append(path_map)
+    
+    def add_inverse_path_mapping(self, mapping_map: CommentedMap, nodeshape: shacl_objects.NodeShapeNode):
+        """
+        """
+        inverse_associated_nodeshapes = self.shacl_interpreter.get_inverse_associated_nodeshapes(from_node=nodeshape.node, path=[])
+        for inverse_associated_nodeshape in inverse_associated_nodeshapes:
+            if inverse_associated_nodeshape.property_path:
+                path_map = CommentedMap()
 
-    def add_root_nodeshape_mapping(self, root_node_name: str, nodeshape_node_obj: shacl_interpreter.AssociatedNodeShapeNode, node_name: str, path: list):
-        if nodeshape_node_obj.max_count == -1:
-            path[-1] = f'{path[-1]}[*]'
+                path_map['p'] = inverse_associated_nodeshape.property_path
 
-        _, _, nodeshape_name = self.shacl_interpreter.get_node_values(node=nodeshape_node_obj.node)
-        nodeshape_mapping_name = f'{nodeshape_name}Mapping'
+                path_map['o'] = CommentedMap()
+                _, _, shape_mapping_name = self.shacl_interpreter.basic_interpr.extract_values(inverse_associated_nodeshape.node)
+                path_map['o']['mapping'] = f'{shape_mapping_name}Mapping'
+
+                path_map['o']['condition'] = CommentedMap()
+                path_map['o']['condition']['function'] = 'equal'
+                path_map['o']['condition']['parameters'] = CommentedSeq()
+
+                triples_values = [('str1', '$(parent_index)', 's'), ('str2', '$(index)', 'o')]
+                for triple_values in triples_values:
+                    str_map = CommentedSeq()
+
+                    for value in triple_values:
+                        str_map.append(value)
+                    str_map.fa.set_flow_style()
+
+                    path_map['o']['condition']['parameters'].append(str_map)
+
+                mapping_map['po'].append(path_map)
+
+    def add_nodeshape_mapping(self, root_node_name: str, nodeshape: shacl_objects.NodeShapeNode, path: list):
+        curr_nodeshape = deepcopy(nodeshape)
+        new_path = deepcopy(path)
+
+        _, _, curr_nodeshape_name = self.shacl_interpreter.basic_interpr.extract_values(node=curr_nodeshape.node)
+        node_name = common_util.from_nodeshape_name_to_name(curr_nodeshape_name)
+        new_path.append(node_name)
+
+        if nodeshape.max_count == -1:
+            new_path[-1] = f'{new_path[-1]}[*]'
+
+        print('Add mapping for', curr_nodeshape_name, 'in path', path, f'with cardinality [{curr_nodeshape.min_count}, {curr_nodeshape.max_count}]')
 
         mapping_map = CommentedMap()
 
-        self.add_source_mapping(mapping=mapping_map, filename=f'{root_node_name}.json', path=path)
+        self.add_source_mapping(mapping=mapping_map, filename=f'{root_node_name}.json', path=new_path)
 
         mapping_map['s'] = f'ex:{node_name}_$(index)'
-
         mapping_map['po'] = CommentedSeq()
-        self.add_type_mapping(mapping_map=mapping_map, nodeshape_node_obj=nodeshape_node_obj)
-        self.add_path_mapping(mapping_map=mapping_map, nodeshape_node_obj=nodeshape_node_obj)
 
-        self.data['mappings'][nodeshape_mapping_name] = mapping_map
+        self.add_type_mapping(mapping_map=mapping_map, nodeshape=curr_nodeshape)
+        self.add_literal_mapping(mapping_map=mapping_map, nodeshape=curr_nodeshape)
+        self.add_inverse_path_mapping(mapping_map=mapping_map, nodeshape=curr_nodeshape)
+    	
+        mapping_shape_name = self.get_mapping_name(curr_nodeshape_name)
+        if len(path) and mapping_shape_name in self.data['mappings']:
+            mapping_shape_name = f'{path[-1].replace('[*]', '')}{mapping_shape_name}'
+        else:
+            mapping_shape_name = mapping_shape_name
+        self.data['mappings'][mapping_shape_name] = mapping_map
 
-        associated_nodeshapes, associated_literals = self.shacl_interpreter.get_associated_shapes(root_node=nodeshape_node_obj.node);
+        associated_nodeshapes = self.shacl_interpreter.get_associated_nodeshapes(from_node=curr_nodeshape.node, path=path)
 
         for associated_nodeshape in associated_nodeshapes:
-            _, _, associated_nodeshape_name = self.shacl_interpreter.get_node_values(node=associated_nodeshape.node)
-            associated_node_name = common_util.from_nodeshape_name_to_name(associated_nodeshape_name)
-            next_path = deepcopy(path)
-            next_path.append(associated_node_name)
-            self.add_root_nodeshape_mapping(root_node_name=root_node_name, nodeshape_node_obj=associated_nodeshape, node_name=associated_node_name,
-                                            path=next_path)
+            self.add_path_mapping(mapping_map=mapping_map, associated_nodeshape=associated_nodeshape)
+            self.add_nodeshape_mapping(root_node_name=root_node_name, nodeshape=associated_nodeshape, path=new_path)
 
-    def template_root_nodes(self):
-        all_nodeshape_nodes = self.shacl_interpreter.get_all_nodeshapes()
-        root_nodes = self.shacl_interpreter.find_root_nodeshape(all_nodeshape_nodes=all_nodeshape_nodes)
+    def generate_templates_root_nodes(self):
+        root_nodeshape_nodes = self.shacl_interpreter.get_root_nodeshapes()
 
-        for root_node in root_nodes:
-            _, _, root_nodeshape_name = self.shacl_interpreter.get_node_values(node=root_node)
-            root_node_name = common_util.from_nodeshape_name_to_name(root_nodeshape_name)
-
-            root_node_obj = shacl_interpreter.AssociatedNodeShapeNode(nodeshape_node=root_node, min_count=1, max_count=-1)
-
-            self.add_root_nodeshape_mapping(root_node_name=root_node_name, nodeshape_node_obj=root_node_obj, node_name=root_node_name,
-                                            path=[root_node_name])
+        for root_nodeshape_node in root_nodeshape_nodes:
+            root_nodeshape = shacl_objects.NodeShapeNode(node=root_nodeshape_node, path=(), min_count=1, max_count=-1)
+            _, _, root_node_name = self.shacl_interpreter.basic_interpr.extract_values(root_nodeshape.node)
+            self.add_nodeshape_mapping(root_node_name=root_node_name.replace('Shape', ''), nodeshape=root_nodeshape, path=[])
 
 def create_template(input_g: rdflib.Graph):
     Templater(g=input_g)

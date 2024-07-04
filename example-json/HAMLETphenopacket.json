@@ -1,0 +1,389 @@
+{
+    "phenopacket": [
+        {
+            "index": "phenopacket|1",
+            "role": {
+                "index": "phenopacket|1|role|1",
+                "parent_index": "phenopacket|1"
+            },
+            "phenotypicfeature": [
+                {
+                    "index": "phenopacket|1|phenotypicfeature|1",
+                    "parent_index": "phenopacket|1",
+                    "phenotypicfeaturevalue": {
+                        "index": "phenopacket|1|phenotypicfeature|1|phenotypicfeaturevalue|1",
+                        "parent_index": "phenopacket|1|phenotypicfeature|1"
+                    },
+                    "ontologyclass": {
+                        "index": "phenopacket|1|phenotypicfeature|1|ontologyclass|1",
+                        "parent_index": "phenopacket|1|phenotypicfeature|1",
+                        "rdf:type": "http://www.ebi.ac.uk/efo/EFO_0000330"
+                    },
+                    "dct:identifier": "EFO_0000330",
+                    "rdfs:label": "childhood acute myeloid leukemia",
+                    "dct:description": "childhood acute myeloid leukemia"
+                }
+            ],
+            "interpretation": [
+                {
+                    "index": "phenopacket|1|interpretation|1",
+                    "parent_index": "phenopacket|1",
+                    "role": {
+                        "index": "phenopacket|1|interpretation|1|role|1",
+                        "parent_index": "phenopacket|1|interpretation|1"
+                    },
+                    "progressstatus": {
+                        "index": "phenopacket|1|interpretation|1|progressstatus|1",
+                        "parent_index": "phenopacket|1|interpretation|1",
+                        "progressstatusvalue": {
+                            "index": "phenopacket|1|interpretation|1|progressstatus|1|progressstatusvalue|1",
+                            "parent_index": "phenopacket|1|interpretation|1|progressstatus|1",
+                            "literaloutput": {
+                                "index": "phenopacket|1|interpretation|1|progressstatus|1|progressstatusvalue|1|literaloutput|1",
+                                "parent_index": "phenopacket|1|interpretation|1|progressstatus|1|progressstatusvalue|1"
+                            },
+                            "sio:has-value": "UNKNOWN_PROGRESS"
+                        }
+                    },
+                    "diagnosis": {
+                        "index": "phenopacket|1|interpretation|1|diagnosis|1",
+                        "parent_index": "phenopacket|1|interpretation|1",
+                        "diagnosisvalue": {
+                            "index": "phenopacket|1|interpretation|1|diagnosisvalue|1",
+                            "parent_index": "phenopacket|1|interpretation|1|diagnosis|1"
+                        },
+                        "genomicinterpretation": [
+                            {
+                                "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1",
+                                "parent_index": "phenopacket|1|interpretation|1|diagnosis|1",
+                                "variantinterpretation": {
+                                    "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1",
+                                    "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1",
+                                    "acmgpathogenicityclass": {
+                                        "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1|acmgpathogenicity|1",
+                                        "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1",
+                                        "acmgpathogenicityclassvalue": {
+                                            "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1|acmgpathogenicity|1|acmgpathogenicityvalue|1",
+                                            "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1|acmgpathogenicity|1",
+                                            "literaloutput": {
+                                                "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1|acmgpathogenicity|1|acmgpathogenicityvalue|1|literaloutput|1",
+                                                "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1|acmgpathogenicity|1|acmgpathogenicityvalue|1"
+                                            },
+                                            "sio:has-value": "NOT_PROVIDED"
+                                        }
+                                    },
+                                    "therapeuticactionability": {
+                                        "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1|therapaction|1",
+                                        "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1",
+                                        "therapeuticactionabilityvalue": {
+                                            "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1|therapaction|1|therapactionvalue|1",
+                                            "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1|therapaction|1",
+                                            "literaloutput": {
+                                                "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1|therapaction|1|therapactionvalue|1|literaloutput|1",
+                                                "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1|therapaction|1|therapactionvalue|1"
+                                            },
+                                            "sio:has-value": "UNKNOWN_ACTIONABILITY"
+                                        }
+                                    },
+                                    "variationdescriptor": {
+                                        "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1|variationdescr|1",
+                                        "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1",
+                                        "role": {
+                                            "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1|variationdescr|1|role|1",
+                                            "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1|variationdescr|1"
+                                        },
+                                        "vcfrecord": {
+                                            "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1|variationdescr|1|vcfrecord|1",
+                                            "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1|variationdescr|1",
+                                            "alternate": {
+                                                "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1|variationdescr|1|vcfrecord|1|alternate|1",
+                                                "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1|variationdescr|1|vcfrecord|1",
+                                                "rdfs:label": "A"
+                                            },
+                                            "reference": {
+                                                "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1|variationdescr|1|vcfrecord|1|reference|1",
+                                                "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1|variationdescr|1|vcfrecord|1",
+                                                "rdfs:label": "C"
+                                            },
+                                            "position": {
+                                                "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1|variationdescr|1|vcfrecord|1|position|1",
+                                                "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1|variationdescr|1|vcfrecord|1",
+                                                "rdfs:label": 114716123
+                                            },
+                                            "chromosome": {
+                                                "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1|variationdescr|1|vcfrecord|1|chromosome|1",
+                                                "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1|variationdescr|1|vcfrecord|1",
+                                                "dct:identifier": "1"
+                                            },
+                                            "genomeassembly": {
+                                                "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1|variationdescr|1|vcfrecord|1|genomeassembly|1",
+                                                "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1|variationdescr|1|vcfrecord|1",
+                                                "dct:identifier": "GRCh38"
+                                            }
+                                        },
+                                        "genedescriptor": {
+                                            "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1|variationdescr|1|genedescr|1",
+                                            "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1|variationdescr|1",
+                                            "altid": [],
+                                            "genesymbol": {
+                                                "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1|variationdescr|1|genedescr|1|genesymbol|1",
+                                                "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1|variationdescr|1|genedescr|1",
+                                                "sio:has-value": "NRAS"
+                                            },
+                                            "dct:identifier": "ENSG00000213281"
+                                        },
+                                        "moleculecontext": {
+                                            "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1|variationdescr|1|moleculecontext|1",
+                                            "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1|variationdescr|1",
+                                            "moleculecontextvalue": {
+                                                "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1|variationdescr|1|moleculecontext|1|moleculecontextvalue|1",
+                                                "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1|variationdescr|1|moleculecontext|1",
+                                                "literaloutput": {
+                                                    "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1|variationdescr|1|moleculecontext|1|moleculecontextvalue|1|literaloutput|1",
+                                                    "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1|variationdescr|1|moleculecontext|1|moleculecontextvalue|1"
+                                                },
+                                                "sio:has-value": "genomic"
+                                            }
+                                        },
+                                        "rdfs:label": "new-reference-files_interpr1_genomicinterpr1_vardescr"
+                                    }
+                                },
+                                "biosample": {
+                                    "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|biosample|1",
+                                    "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1",
+                                    "role": {
+                                        "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|biosample|1|role|1",
+                                        "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|biosample|1"
+                                    },
+                                    "taxonomy": {
+                                        "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|biosample|1|taxonomy|1",
+                                        "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|biosample|1",
+                                        "taxonomyvalue": {
+                                            "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|biosample|1|taxonomy|1|taxonomyvalue|1",
+                                            "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|biosample|1|taxonomy|1"
+                                        },
+                                        "ontologyclass": {
+                                            "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|biosample|1|taxonomy|1|ontologyclass|1",
+                                            "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|biosample|1|taxonomy|1",
+                                            "rdf:type": "http://purl.obolibrary.org/obo/NCBITaxon_9606"
+                                        },
+                                        "rdfs:label": "Homo sapiens"
+                                    }
+                                },
+                                "interpretationstatus": {
+                                    "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|interpretationstatus|1",
+                                    "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1",
+                                    "interpretationstatusvalue": {
+                                        "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|interpretationstatus|1|interpretationstatusvalue|1",
+                                        "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|interpretationstatus|1",
+                                        "literaloutput": {
+                                            "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|interpretationstatus|1|interpretationstatusvalue|1|literaloutput|1",
+                                            "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|interpretationstatus|1|interpretationstatusvalue|1"
+                                        },
+                                        "sio:has-value": "UNKNOWN STATUS"
+                                    }
+                                }
+                            },
+                            {
+                                "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2",
+                                "parent_index": "phenopacket|1|interpretation|1|diagnosis|1",
+                                "variantinterpretation": {
+                                    "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1",
+                                    "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2",
+                                    "acmgpathogenicityclass": {
+                                        "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1|acmgpathogenicity|1",
+                                        "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1",
+                                        "acmgpathogenicityclassvalue": {
+                                            "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1|acmgpathogenicity|1|acmgpathogenicityvalue|1",
+                                            "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1|acmgpathogenicity|1",
+                                            "literaloutput": {
+                                                "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1|acmgpathogenicity|1|acmgpathogenicityvalue|1|literaloutput|1",
+                                                "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1|acmgpathogenicity|1|acmgpathogenicityvalue|1"
+                                            },
+                                            "sio:has-value": "NOT_PROVIDED"
+                                        }
+                                    },
+                                    "therapeuticactionability": {
+                                        "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1|therapaction|1",
+                                        "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1",
+                                        "therapeuticactionabilityvalue": {
+                                            "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1|therapaction|1|therapactionvalue|1",
+                                            "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1|therapaction|1",
+                                            "literaloutput": {
+                                                "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1|therapaction|1|therapactionvalue|1|literaloutput|1",
+                                                "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1|therapaction|1|therapactionvalue|1"
+                                            },
+                                            "sio:has-value": "UNKNOWN_ACTIONABILITY"
+                                        }
+                                    },
+                                    "variationdescriptor": {
+                                        "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1|variationdescr|1",
+                                        "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1",
+                                        "role": {
+                                            "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1|variationdescr|1|role|1",
+                                            "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1|variationdescr|1"
+                                        },
+                                        "vcfrecord": {
+                                            "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1|variationdescr|1|vcfrecord|1",
+                                            "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1|variationdescr|1",
+                                            "alternate": {
+                                                "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1|variationdescr|1|vcfrecord|1|alternate|1",
+                                                "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1|variationdescr|1|vcfrecord|1",
+                                                "rdfs:label": "C"
+                                            },
+                                            "reference": {
+                                                "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1|variationdescr|1|vcfrecord|1|reference|1",
+                                                "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1|variationdescr|1|vcfrecord|1",
+                                                "rdfs:label": "G"
+                                            },
+                                            "position": {
+                                                "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1|variationdescr|1|vcfrecord|1|position|1",
+                                                "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1|variationdescr|1|vcfrecord|1",
+                                                "rdfs:label": 7676154
+                                            },
+                                            "chromosome": {
+                                                "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1|variationdescr|1|vcfrecord|1|chromosome|1",
+                                                "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1|variationdescr|1|vcfrecord|1",
+                                                "dct:identifier": "17"
+                                            },
+                                            "genomeassembly": {
+                                                "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1|variationdescr|1|vcfrecord|1|genomeassembly|1",
+                                                "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1|variationdescr|1|vcfrecord|1",
+                                                "dct:identifier": "GRCh38"
+                                            }
+                                        },
+                                        "genedescriptor": {
+                                            "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1|variationdescr|1|genedescr|1",
+                                            "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1|variationdescr|1",
+                                            "altid": [],
+                                            "genesymbol": {
+                                                "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1|variationdescr|1|genedescr|1|genesymbol|1",
+                                                "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1|variationdescr|1|genedescr|1",
+                                                "sio:has-value": "TP53"
+                                            },
+                                            "dct:identifier": "ENSG00000141510"
+                                        },
+                                        "moleculecontext": {
+                                            "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1|variationdescr|1|moleculecontext|1",
+                                            "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1|variationdescr|1",
+                                            "moleculecontextvalue": {
+                                                "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1|variationdescr|1|moleculecontext|1|moleculecontextvalue|1",
+                                                "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1|variationdescr|1|moleculecontext|1",
+                                                "literaloutput": {
+                                                    "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1|variationdescr|1|moleculecontext|1|moleculecontextvalue|1|literaloutput|1",
+                                                    "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1|variationdescr|1|moleculecontext|1|moleculecontextvalue|1"
+                                                },
+                                                "sio:has-value": "genomic"
+                                            }
+                                        },
+                                        "rdfs:label": "new-reference-files_interpr1_genomicinterpr2_vardescr"
+                                    }
+                                },
+                                "biosample": {
+                                    "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|biosample|1",
+                                    "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2",
+                                    "role": {
+                                        "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|biosample|1|role|1",
+                                        "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|biosample|1"
+                                    },
+                                    "taxonomy": {
+                                        "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|biosample|1|taxonomy|1",
+                                        "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|biosample|1",
+                                        "taxonomyvalue": {
+                                            "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|biosample|1|taxonomy|1|taxonomyvalue|1",
+                                            "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|biosample|1|taxonomy|1"
+                                        },
+                                        "ontologyclass": {
+                                            "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|biosample|1|taxonomy|1|ontologyclass|1",
+                                            "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|biosample|1|taxonomy|1",
+                                            "rdf:type": "http://purl.obolibrary.org/obo/NCBITaxon_9606"
+                                        },
+                                        "rdfs:label": "Homo sapiens"
+                                    }
+                                },
+                                "interpretationstatus": {
+                                    "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|interpretationstatus|1",
+                                    "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2",
+                                    "interpretationstatusvalue": {
+                                        "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|interpretationstatus|1|interpretationstatusvalue|1",
+                                        "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|interpretationstatus|1",
+                                        "literaloutput": {
+                                            "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|interpretationstatus|1|interpretationstatusvalue|1|literaloutput|1",
+                                            "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|interpretationstatus|1|interpretationstatusvalue|1"
+                                        },
+                                        "sio:has-value": "UNKNOWN STATUS"
+                                    }
+                                }
+                            }
+                        ],
+                        "disease": {
+                            "index": "phenopacket|1|interpretation|1|diagnosis|1|disease|1",
+                            "parent_index": "phenopacket|1|interpretation|1|diagnosis|1",
+                            "diseasevalue": {
+                                "index": "phenopacket|1|interpretation|1|diagnosis|1|diseasevalue|1",
+                                "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|disease|1"
+                            },
+                            "ontologyclass": {
+                                "index": "phenopacket|1|interpretation|1|diagnosis|1|ontologyclass|1",
+                                "parent_index": "phenopacket|1|interpretation|1|diagnosis|1|disease|1",
+                                "rdf:type": "http://www.ebi.ac.uk/efo/EFO_0000330"
+                            },
+                            "dct:identifier": "EFO_0000330",
+                            "rdfs:label": "childhood acute myeloid leukemia"
+                        },
+                        "ontologyclass": {
+                            "index": "phenopacket|1|interpretation|1|diagnosis|1|ontologyclass|1",
+                            "parent_index": "phenopacket|1|interpretation|1|diagnosis|1",
+                            "rdf:type": "http://purl.obolibrary.org/obo/NCIT_C25610"
+                        },
+                        "dct:identifier": "diagnosis1_EFO_0000330",
+                        "rdfs:label": "childhood acute myeloid leukemia diagnosed"
+                    }
+                }
+            ],
+            "metadata": {
+                "index": "phenopacket|1|metadata|1",
+                "parent_index": "phenopacket|1",
+                "version": {
+                    "index": "phenopacket|1|metadata|1|version|1",
+                    "parent_index": "phenopacket|1|metadata|1",
+                    "versionvalue": {
+                        "index": "phenopacket|1|metadata|1|version|1|versionvalue|1",
+                        "parent_index": "phenopacket|1|metadata|1|version|1",
+                        "literaloutput": {
+                            "index": "phenopacket|1|metadata|1|version|1|versionvalue|1|literaloutput|1",
+                            "parent_index": "phenopacket|1|metadata|1|version|1|versionvalue|1"
+                        },
+                        "sio:has-value": "2.0"
+                    }
+                },
+                "createdby": {
+                    "index": "phenopacket|1|metadata|1|createdby|1",
+                    "parent_index": "phenopacket|1|metadata|1",
+                    "createdbyvalue": {
+                        "index": "phenopacket|1|metadata|1|createdby|1|createdbyvalue|1",
+                        "parent_index": "phenopacket|1|metadata|1|createdby|1",
+                        "literaloutput": {
+                            "index": "phenopacket|1|metadata|1|createdby|1|createdbyvalue|1|literaloutput|1",
+                            "parent_index": "phenopacket|1|metadata|1|createdby|1|createdbyvalue|1"
+                        },
+                        "sio:has-value": "Leiden University Medical Centre"
+                    }
+                },
+                "created": {
+                    "index": "phenopacket|1|metadata|1|created|1",
+                    "parent_index": "phenopacket|1|metadata|1",
+                    "createdvalue": {
+                        "index": "phenopacket|1|metadata|1|created|1|createdvalue|1",
+                        "parent_index": "phenopacket|1|metadata|1|created|1",
+                        "literaloutput": {
+                            "index": "phenopacket|1|metadata|1|created|1|createdvalue|1|literaloutput|1",
+                            "parent_index": "phenopacket|1|metadata|1|created|1|createdvalue|1"
+                        },
+                        "sio:has-value": "2024-05-04T09:00:00"
+                    }
+                }
+            }
+        }
+    ]
+}

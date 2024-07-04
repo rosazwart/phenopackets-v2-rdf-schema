@@ -1,0 +1,52 @@
+{
+    "id": [
+        {
+            "index": "id|1",
+            "role": {
+                "index": "phenopacket|1|role|1",
+                "parent_index": "id|1"
+            },
+            "sio:has-value": "new-reference-files"
+        },
+        {
+            "index": "id|2",
+            "role": {
+                "index": "phenopacket|1|interpretation|1|role|1",
+                "parent_index": "id|2"
+            },
+            "sio:has-value": "new-reference-files_interpr1"
+        },
+        {
+            "index": "id|3",
+            "role": {
+                "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|variantinterpretation|1|variationdescr|1|role|1",
+                "parent_index": "id|3"
+            },
+            "sio:has-value": "new-reference-files_interpr1_genomicinterpr1_vardescr"
+        },
+        {
+            "index": "id|4",
+            "role": {
+                "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|1|biosample|1|role|1",
+                "parent_index": "id|4"
+            },
+            "sio:has-value": "new-reference-files_interpr1_genomicinterpr1_biosampleSRR8615409"
+        },
+        {
+            "index": "id|5",
+            "role": {
+                "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|variantinterpretation|1|variationdescr|1|role|1",
+                "parent_index": "id|5"
+            },
+            "sio:has-value": "new-reference-files_interpr1_genomicinterpr2_vardescr"
+        },
+        {
+            "index": "id|6",
+            "role": {
+                "index": "phenopacket|1|interpretation|1|diagnosis|1|genomicinterpretation|2|biosample|1|role|1",
+                "parent_index": "id|6"
+            },
+            "sio:has-value": "new-reference-files_interpr1_genomicinterpr2_biosampleSRR8615409"
+        }
+    ]
+}

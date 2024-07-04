@@ -30,5 +30,5 @@ if __name__ == "__main__":
                                             dir_name=get_input_value(shacl_folder_name, default_shacl_folder_name))
     namespace_provider.bind_namespaces(g=shacl_g)
     
+    #json_writer.create_template(input_g=shacl_g)
     yaml_writer.create_template(input_g=shacl_g)
-    json_writer.create_template(input_g=shacl_g)
