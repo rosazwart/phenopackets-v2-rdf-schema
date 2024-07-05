@@ -8,9 +8,10 @@ DCTERMS = rdflib.Namespace('http://purl.org/dc/terms/')
 OBO = rdflib.Namespace('http://purl.obolibrary.org/obo/')
 SIO = rdflib.Namespace('http://semanticscience.org/resource/')
 PHENOP = rdflib.Namespace('http://purl.org/ejp-rd/phenopackets-rdf-schema/v200/shacl/')
+EX = rdflib.Namespace('https://example.org/')
 
-used_prefixes = ['sh', 'rdf', 'rdfs', 'xsd', 'dct', 'obo', 'sio', 'phenop']
-used_namespaces = [SH, RDF, RDFS, XSD, DCTERMS, OBO, SIO, PHENOP]
+used_prefixes = ['sh', 'rdf', 'rdfs', 'xsd', 'dct', 'obo', 'sio', 'phenop', 'ex']
+used_namespaces = [SH, RDF, RDFS, XSD, DCTERMS, OBO, SIO, PHENOP, EX]
 
 def bind_namespaces(g: rdflib.Graph):
     for prefix, namespace in zip(used_prefixes, used_namespaces):
