@@ -10,7 +10,7 @@ For representing predicates related to metadata, the terms defined in the [DCMI 
 
 To avoid manually converting JSON data to an RDF knowledge graph complying to the GA4GH Phenopackets schema from scratch, a workflow has been set up that facilitates this action as shown below. The workflow consists of multiple steps that will be discussed in the next subsections.
 
-![Worfklow](https://github.com/rosazwart/phenopackets-v2-rdf-schema/blob/main/workflowJSONtoRDF.jpg)
+![Worfklow](https://github.com/rosazwart/phenopackets-v2-rdf-schema/blob/main/overviewworkflow.jpg)
 
 ## 1. Modelling Phenopackets Schema
 
