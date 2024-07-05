@@ -92,6 +92,15 @@ class Templater:
 
             mapping_map['po'].append(type_mapping)
 
+    def get_shape_mapping_name(self, shape_mapping_name: str, path: list):
+        """"""
+        if len(path):
+            if len(path) == 1:
+                shape_mapping_name = f'{path[-1].replace('[*]', '')}{shape_mapping_name}'
+            else:
+                shape_mapping_name = f'{path[-2].replace('[*]', '')}{path[-1].replace('[*]', '')}{shape_mapping_name}'
+        return shape_mapping_name
+
     def add_path_mapping(self, mapping_map: CommentedMap, associated_nodeshape: shacl_objects.NodeShapeNode):
         """
         """
@@ -103,9 +112,7 @@ class Templater:
             path_map['o'] = CommentedMap()
 
             _, _, shape_mapping_name = self.shacl_interpreter.basic_interpr.extract_values(associated_nodeshape.node)
-            
-            if len(associated_nodeshape.path):
-                shape_mapping_name = f'{associated_nodeshape.path[-1].replace('[*]', '')}{shape_mapping_name}'
+            shape_mapping_name = self.get_shape_mapping_name(shape_mapping_name, path=associated_nodeshape.path)
 
             path_map['o']['mapping'] = f'{shape_mapping_name}Mapping'
 
@@ -137,9 +144,7 @@ class Templater:
 
                 path_map['o'] = CommentedMap()
                 _, _, shape_mapping_name = self.shacl_interpreter.basic_interpr.extract_values(inverse_associated_nodeshape.node)
-
-                if len(inverse_associated_nodeshape.path):
-                    shape_mapping_name = f'{inverse_associated_nodeshape.path[-1].replace('[*]', '')}{shape_mapping_name}'
+                shape_mapping_name = self.get_shape_mapping_name(shape_mapping_name, path=inverse_associated_nodeshape.path)
 
                 path_map['o']['mapping'] = f'{shape_mapping_name}Mapping'
 
@@ -182,10 +187,8 @@ class Templater:
         self.add_inverse_path_mapping(mapping_map=mapping_map, nodeshape=curr_nodeshape)
     	
         mapping_shape_name = self.get_mapping_name(curr_nodeshape_name)
-        if len(path):
-            mapping_shape_name = f'{path[-1].replace('[*]', '')}{mapping_shape_name}'
-        else:
-            mapping_shape_name = mapping_shape_name
+        mapping_shape_name = self.get_shape_mapping_name(mapping_shape_name, path=path)
+        
         self.data['mappings'][mapping_shape_name] = mapping_map
 
         associated_nodeshapes = self.shacl_interpreter.get_associated_nodeshapes(from_node=curr_nodeshape.node, path=new_path)

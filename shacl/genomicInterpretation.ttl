@@ -95,7 +95,7 @@ phenop:genomicInterpretationShape
         [
             sh:path sio:SIO_000008 ;    # sio:has-attribute
             sh:name "sio:has-attribute" ;
-            sh:node phenop:interpretationStatusShape ;
+            sh:class obo:NCIT_C164628 ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
         ]

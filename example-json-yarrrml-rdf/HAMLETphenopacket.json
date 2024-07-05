@@ -180,7 +180,7 @@
                                             "index": "phenopacket1interpretation1diagnosis1genomicinterpretation1interpretationstatus1interpretationstatusvalue1literaloutput1",
                                             "parent_index": "phenopacket1interpretation1diagnosis1genomicinterpretation1interpretationstatus1interpretationstatusvalue1"
                                         },
-                                        "sio_has-value": "UNKNOWN STATUS"
+                                        "sio_has-value": "UNKNOWN_STATUS"
                                     }
                                 }
                             },
@@ -311,7 +311,7 @@
                                             "index": "phenopacket1interpretation1diagnosis1genomicinterpretation2interpretationstatus1interpretationstatusvalue1literaloutput1",
                                             "parent_index": "phenopacket1interpretation1diagnosis1genomicinterpretation2interpretationstatus1interpretationstatusvalue1"
                                         },
-                                        "sio_has-value": "UNKNOWN STATUS"
+                                        "sio_has-value": "UNKNOWN_STATUS"
                                     }
                                 }
                             }
