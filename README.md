@@ -22,7 +22,7 @@ A script has been developed that generates a YARRRML file containing the maximum
 
 ## 3. Aligning data to JSON file
 
-The JSON file(s) that show(s) the structure that the YARRRML file will accept and convert correctly to RDF. This structure is mainly built upon indexes that link one data field to another. This allows for robustness of the RDF conversion whatever SHACL structure has been given.
+The JSON file(s) that show(s) the structure that the YARRRML file will accept and convert correctly to RDF. This structure is mainly built upon indexes that link one data field to another. This allows for robustness of the RDF conversion whatever SHACL structure has been given. Each datafield in the generated JSON file(s) contains a comment to show the user whether the datafield is needed in order to comply to the data model represented by the SHACL files.
 
 ## 4. RML Mapping
 
