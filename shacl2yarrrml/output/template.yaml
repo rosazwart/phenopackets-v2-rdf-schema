@@ -19,7 +19,7 @@ mappings:
       - [a, obo:NCIT_C79269]
       - p: sio:SIO_000228
         o:
-          mapping: roleShapeMapping
+          mapping: phenopacketroleShapeMapping
           condition:
             function: equal
             parameters:
@@ -27,7 +27,7 @@ mappings:
               - [str2, $(parent_index), o]
       - p: sio:SIO_001403
         o:
-          mapping: phenotypicFeatureShapeMapping
+          mapping: phenopacketphenotypicFeatureShapeMapping
           condition:
             function: equal
             parameters:
@@ -35,7 +35,7 @@ mappings:
               - [str2, $(parent_index), o]
       - p: sio:SIO_001403
         o:
-          mapping: interpretationShapeMapping
+          mapping: phenopacketinterpretationShapeMapping
           condition:
             function: equal
             parameters:
@@ -43,13 +43,13 @@ mappings:
               - [str2, $(parent_index), o]
       - p: sio:SIO_001403
         o:
-          mapping: metadataShapeMapping
+          mapping: phenopacketmetadataShapeMapping
           condition:
             function: equal
             parameters:
               - [str1, $(index), s]
               - [str2, $(parent_index), o]
-  roleShapeMapping:
+  phenopacketroleShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -58,7 +58,7 @@ mappings:
     po:
       - [a, sio:SIO_000016]
       - [a, obo:NCIT_C48835]
-  phenotypicFeatureShapeMapping:
+  phenopacketphenotypicFeatureShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -81,7 +81,7 @@ mappings:
       - p: rdf:type
         o:
           value: $(ontologyclass.sh_IRI)
-  phenotypicFeatureValueShapeMapping:
+  phenotypicfeaturephenotypicFeatureValueShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -92,13 +92,13 @@ mappings:
       - [a, obo:NCIT_C16977]
       - p: sio:SIO_000628
         o:
-          mapping: phenotypicFeatureShapeMapping
+          mapping: phenopacketphenotypicFeatureShapeMapping
           condition:
             function: equal
             parameters:
               - [str1, $(parent_index), s]
               - [str2, $(index), o]
-  interpretationShapeMapping:
+  phenopacketinterpretationShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -109,7 +109,7 @@ mappings:
       - [a, obo:NCIT_C41255]
       - p: sio:SIO_000228
         o:
-          mapping: roleShapeMapping
+          mapping: interpretationroleShapeMapping
           condition:
             function: equal
             parameters:
@@ -117,7 +117,7 @@ mappings:
               - [str2, $(parent_index), o]
       - p: sio:SIO_000008
         o:
-          mapping: progressStatusShapeMapping
+          mapping: interpretationprogressStatusShapeMapping
           condition:
             function: equal
             parameters:
@@ -125,7 +125,7 @@ mappings:
               - [str2, $(parent_index), o]
       - p: sio:SIO_001403
         o:
-          mapping: diagnosisShapeMapping
+          mapping: interpretationdiagnosisShapeMapping
           condition:
             function: equal
             parameters:
@@ -140,7 +140,7 @@ mappings:
     po:
       - [a, sio:SIO_000016]
       - [a, obo:NCIT_C48835]
-  progressStatusShapeMapping:
+  interpretationprogressStatusShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -149,7 +149,7 @@ mappings:
     po:
       - [a, sio:SIO_000614]
       - [a, obo:NCIT_C25630]
-  progressStatusValueShapeMapping:
+  progressstatusprogressStatusValueShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -165,13 +165,13 @@ mappings:
           datatype: string
       - p: sio:SIO_000628
         o:
-          mapping: progressStatusShapeMapping
+          mapping: interpretationprogressStatusShapeMapping
           condition:
             function: equal
             parameters:
               - [str1, $(parent_index), s]
               - [str2, $(index), o]
-  diagnosisShapeMapping:
+  interpretationdiagnosisShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -192,7 +192,7 @@ mappings:
           value: $(ontologyclass.sh_IRI)
       - p: sio:SIO_001403
         o:
-          mapping: diseaseShapeMapping
+          mapping: diagnosisdiseaseShapeMapping
           condition:
             function: equal
             parameters:
@@ -200,13 +200,13 @@ mappings:
               - [str2, $(parent_index), o]
       - p: sio:SIO_001403
         o:
-          mapping: genomicInterpretationShapeMapping
+          mapping: diagnosisgenomicInterpretationShapeMapping
           condition:
             function: equal
             parameters:
               - [str1, $(index), s]
               - [str2, $(parent_index), o]
-  diagnosisValueShapeMapping:
+  diagnosisdiagnosisValueShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -217,13 +217,13 @@ mappings:
       - [a, obo:NCIT_C154625]
       - p: sio:SIO_000628
         o:
-          mapping: diagnosisShapeMapping
+          mapping: interpretationdiagnosisShapeMapping
           condition:
             function: equal
             parameters:
               - [str1, $(parent_index), s]
               - [str2, $(index), o]
-  diseaseShapeMapping:
+  diagnosisdiseaseShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -242,7 +242,7 @@ mappings:
       - p: rdf:type
         o:
           value: $(ontologyclass.sh_IRI)
-  diseaseValueShapeMapping:
+  diseasediseaseValueShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -253,13 +253,13 @@ mappings:
       - [a, obo:NCIT_C2991]
       - p: sio:SIO_000628
         o:
-          mapping: diseaseShapeMapping
+          mapping: diagnosisdiseaseShapeMapping
           condition:
             function: equal
             parameters:
               - [str1, $(parent_index), s]
               - [str2, $(index), o]
-  genomicInterpretationShapeMapping:
+  diagnosisgenomicInterpretationShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -271,7 +271,7 @@ mappings:
       - [a, obo:SO_0001026]
       - p: sio:SIO_001403
         o:
-          mapping: variantInterpretationShapeMapping
+          mapping: genomicinterpretationvariantInterpretationShapeMapping
           condition:
             function: equal
             parameters:
@@ -279,7 +279,7 @@ mappings:
               - [str2, $(parent_index), o]
       - p: sio:SIO_001403
         o:
-          mapping: geneDescriptorShapeMapping
+          mapping: genomicinterpretationgeneDescriptorShapeMapping
           condition:
             function: equal
             parameters:
@@ -287,7 +287,7 @@ mappings:
               - [str2, $(parent_index), o]
       - p: sio:SIO_001403
         o:
-          mapping: biosampleShapeMapping
+          mapping: genomicinterpretationbiosampleShapeMapping
           condition:
             function: equal
             parameters:
@@ -295,13 +295,13 @@ mappings:
               - [str2, $(parent_index), o]
       - p: sio:SIO_000008
         o:
-          mapping: interpretationStatusShapeMapping
+          mapping: genomicinterpretationinterpretationStatusShapeMapping
           condition:
             function: equal
             parameters:
               - [str1, $(index), s]
               - [str2, $(parent_index), o]
-  variantInterpretationShapeMapping:
+  genomicinterpretationvariantInterpretationShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -314,7 +314,7 @@ mappings:
       - [a, obo:SO_0001060]
       - p: sio:SIO_000008
         o:
-          mapping: acmgPathogenicityClassShapeMapping
+          mapping: variantinterpretationacmgPathogenicityClassShapeMapping
           condition:
             function: equal
             parameters:
@@ -322,7 +322,7 @@ mappings:
               - [str2, $(parent_index), o]
       - p: sio:SIO_000008
         o:
-          mapping: therapeuticActionabilityShapeMapping
+          mapping: variantinterpretationtherapeuticActionabilityShapeMapping
           condition:
             function: equal
             parameters:
@@ -330,13 +330,13 @@ mappings:
               - [str2, $(parent_index), o]
       - p: sio:SIO_001403
         o:
-          mapping: variationDescriptorShapeMapping
+          mapping: variantinterpretationvariationDescriptorShapeMapping
           condition:
             function: equal
             parameters:
               - [str1, $(index), s]
               - [str2, $(parent_index), o]
-  acmgPathogenicityClassShapeMapping:
+  variantinterpretationacmgPathogenicityClassShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -346,7 +346,7 @@ mappings:
     po:
       - [a, sio:SIO_000614]
       - [a, obo:NCIT_C168798]
-  acmgPathogenicityClassValueShapeMapping:
+  acmgpathogenicityclassacmgPathogenicityClassValueShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -363,13 +363,13 @@ mappings:
           datatype: string
       - p: sio:SIO_000628
         o:
-          mapping: acmgPathogenicityClassShapeMapping
+          mapping: variantinterpretationacmgPathogenicityClassShapeMapping
           condition:
             function: equal
             parameters:
               - [str1, $(parent_index), s]
               - [str2, $(index), o]
-  therapeuticActionabilityShapeMapping:
+  variantinterpretationtherapeuticActionabilityShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -379,7 +379,7 @@ mappings:
     po:
       - [a, sio:SIO_000614]
       - [a, obo:NCIT_C25404]
-  therapeuticActionabilityValueShapeMapping:
+  therapeuticactionabilitytherapeuticActionabilityValueShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -396,13 +396,13 @@ mappings:
           datatype: string
       - p: sio:SIO_000628
         o:
-          mapping: therapeuticActionabilityShapeMapping
+          mapping: variantinterpretationtherapeuticActionabilityShapeMapping
           condition:
             function: equal
             parameters:
               - [str1, $(parent_index), s]
               - [str2, $(index), o]
-  variationDescriptorShapeMapping:
+  variantinterpretationvariationDescriptorShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -423,7 +423,7 @@ mappings:
           datatype: string
       - p: sio:SIO_000228
         o:
-          mapping: roleShapeMapping
+          mapping: variationdescriptorroleShapeMapping
           condition:
             function: equal
             parameters:
@@ -431,7 +431,7 @@ mappings:
               - [str2, $(parent_index), o]
       - p: sio:SIO_001403
         o:
-          mapping: geneDescriptorShapeMapping
+          mapping: variationdescriptorgeneDescriptorShapeMapping
           condition:
             function: equal
             parameters:
@@ -439,7 +439,7 @@ mappings:
               - [str2, $(parent_index), o]
       - p: sio:SIO_001403
         o:
-          mapping: vcfRecordShapeMapping
+          mapping: variationdescriptorvcfRecordShapeMapping
           condition:
             function: equal
             parameters:
@@ -447,7 +447,7 @@ mappings:
               - [str2, $(parent_index), o]
       - p: sio:SIO_000008
         o:
-          mapping: moleculeContextShapeMapping
+          mapping: variationdescriptormoleculeContextShapeMapping
           condition:
             function: equal
             parameters:
@@ -463,7 +463,7 @@ mappings:
     po:
       - [a, sio:SIO_000016]
       - [a, obo:NCIT_C48835]
-  geneDescriptorShapeMapping:
+  variationdescriptorgeneDescriptorShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -480,7 +480,7 @@ mappings:
           datatype: string
       - p: sio:SIO_000008
         o:
-          mapping: geneSymbolShapeMapping
+          mapping: genedescriptorgeneSymbolShapeMapping
           condition:
             function: equal
             parameters:
@@ -488,18 +488,18 @@ mappings:
               - [str2, $(parent_index), o]
       - p: sio:SIO_000008
         o:
-          mapping: altIdShapeMapping
+          mapping: genedescriptoraltIdShapeMapping
           condition:
             function: equal
             parameters:
               - [str1, $(index), s]
               - [str2, $(parent_index), o]
-  geneSymbolShapeMapping:
+  genedescriptorgeneSymbolShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.genedescriptor.genesymbol
+          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].genedescriptor.genesymbol
     s: ex:genesymbol_$(index)
     po:
       - [a, sio:SIO_001383]
@@ -510,18 +510,18 @@ mappings:
           datatype: string
       - p: sio:SIO_000008
         o:
-          mapping: altIdShapeMapping
+          mapping: genesymbolaltIdShapeMapping
           condition:
             function: equal
             parameters:
               - [str1, $(index), s]
               - [str2, $(parent_index), o]
-  altIdShapeMapping:
+  genesymbolaltIdShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.genedescriptor.genesymbol.altid[*]
+          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].genedescriptor.genesymbol.altid[*]
     s: ex:altid_$(index)
     po:
       - [a, sio:SIO_000115]
@@ -544,7 +544,7 @@ mappings:
         o:
           value: $(sio_has-value)
           datatype: string
-  vcfRecordShapeMapping:
+  variationdescriptorvcfRecordShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -557,7 +557,7 @@ mappings:
       - [a, obo:NCIT_C172216]
       - p: sio:SIO_000008
         o:
-          mapping: genomeAssemblyShapeMapping
+          mapping: vcfrecordgenomeAssemblyShapeMapping
           condition:
             function: equal
             parameters:
@@ -565,7 +565,7 @@ mappings:
               - [str2, $(parent_index), o]
       - p: sio:SIO_000008
         o:
-          mapping: chromosomeShapeMapping
+          mapping: vcfrecordchromosomeShapeMapping
           condition:
             function: equal
             parameters:
@@ -573,7 +573,7 @@ mappings:
               - [str2, $(parent_index), o]
       - p: sio:SIO_000008
         o:
-          mapping: positionShapeMapping
+          mapping: vcfrecordpositionShapeMapping
           condition:
             function: equal
             parameters:
@@ -581,7 +581,7 @@ mappings:
               - [str2, $(parent_index), o]
       - p: sio:SIO_000008
         o:
-          mapping: referenceShapeMapping
+          mapping: vcfrecordreferenceShapeMapping
           condition:
             function: equal
             parameters:
@@ -589,13 +589,13 @@ mappings:
               - [str2, $(parent_index), o]
       - p: sio:SIO_000008
         o:
-          mapping: alternateShapeMapping
+          mapping: vcfrecordalternateShapeMapping
           condition:
             function: equal
             parameters:
               - [str1, $(index), s]
               - [str2, $(parent_index), o]
-  genomeAssemblyShapeMapping:
+  vcfrecordgenomeAssemblyShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -609,7 +609,7 @@ mappings:
         o:
           value: $(dct_identifier)
           datatype: string
-  chromosomeShapeMapping:
+  vcfrecordchromosomeShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -623,7 +623,7 @@ mappings:
         o:
           value: $(dct_identifier)
           datatype: string
-  positionShapeMapping:
+  vcfrecordpositionShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -637,7 +637,7 @@ mappings:
         o:
           value: $(rdfs_label)
           datatype: string
-  referenceShapeMapping:
+  vcfrecordreferenceShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -651,7 +651,7 @@ mappings:
         o:
           value: $(rdfs_label)
           datatype: string
-  alternateShapeMapping:
+  vcfrecordalternateShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -665,7 +665,7 @@ mappings:
         o:
           value: $(rdfs_label)
           datatype: string
-  moleculeContextShapeMapping:
+  variationdescriptormoleculeContextShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -676,7 +676,7 @@ mappings:
       - [a, sio:SIO_000614]
       - [a, obo:NCIT_C63325]
       - [a, obo:NCIT_C63816]
-  moleculeContextValueShapeMapping:
+  moleculecontextmoleculeContextValueShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -693,7 +693,7 @@ mappings:
           datatype: string
       - p: sio:SIO_000628
         o:
-          mapping: moleculeContextShapeMapping
+          mapping: variationdescriptormoleculeContextShapeMapping
           condition:
             function: equal
             parameters:
@@ -716,7 +716,7 @@ mappings:
           datatype: string
       - p: sio:SIO_000008
         o:
-          mapping: geneSymbolShapeMapping
+          mapping: genedescriptorgeneSymbolShapeMapping
           condition:
             function: equal
             parameters:
@@ -724,49 +724,13 @@ mappings:
               - [str2, $(parent_index), o]
       - p: sio:SIO_000008
         o:
-          mapping: altIdShapeMapping
+          mapping: genedescriptoraltIdShapeMapping
           condition:
             function: equal
             parameters:
               - [str1, $(index), s]
               - [str2, $(parent_index), o]
-  genedescriptorgeneSymbolShapeMapping:
-    sources:
-      - access: phenopacket.json
-        referenceFormulation: jsonpath
-        iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].genedescriptor.genesymbol
-    s: ex:genesymbol_$(index)
-    po:
-      - [a, sio:SIO_001383]
-      - [a, obo:NCIT_C43568]
-      - p: sio:SIO_000300
-        o:
-          value: $(sio_has-value)
-          datatype: string
-      - p: sio:SIO_000008
-        o:
-          mapping: altIdShapeMapping
-          condition:
-            function: equal
-            parameters:
-              - [str1, $(index), s]
-              - [str2, $(parent_index), o]
-  genesymbolaltIdShapeMapping:
-    sources:
-      - access: phenopacket.json
-        referenceFormulation: jsonpath
-        iterator: 
-          $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].genedescriptor.genesymbol.altid[*]
-    s: ex:altid_$(index)
-    po:
-      - [a, sio:SIO_000115]
-      - [a, obo:NCIT_C90353]
-      - p: sio:SIO_000300
-        o:
-          value: $(sio_has-value)
-          datatype: string
-  biosampleShapeMapping:
+  genomicinterpretationbiosampleShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -778,7 +742,7 @@ mappings:
       - [a, obo:NCIT_C43412]
       - p: sio:SIO_000228
         o:
-          mapping: roleShapeMapping
+          mapping: biosampleroleShapeMapping
           condition:
             function: equal
             parameters:
@@ -786,7 +750,7 @@ mappings:
               - [str2, $(parent_index), o]
       - p: sio:SIO_000008
         o:
-          mapping: taxonomyShapeMapping
+          mapping: biosampletaxonomyShapeMapping
           condition:
             function: equal
             parameters:
@@ -802,7 +766,7 @@ mappings:
     po:
       - [a, sio:SIO_000016]
       - [a, obo:NCIT_C48835]
-  taxonomyShapeMapping:
+  biosampletaxonomyShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -818,7 +782,7 @@ mappings:
       - p: rdf:type
         o:
           value: $(ontologyclass.sh_IRI)
-  taxonomyValueShapeMapping:
+  taxonomytaxonomyValueShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -830,13 +794,13 @@ mappings:
       - [a, obo:NCIT_C17469]
       - p: sio:SIO_000628
         o:
-          mapping: taxonomyShapeMapping
+          mapping: biosampletaxonomyShapeMapping
           condition:
             function: equal
             parameters:
               - [str1, $(parent_index), s]
               - [str2, $(index), o]
-  interpretationStatusShapeMapping:
+  genomicinterpretationinterpretationStatusShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -846,7 +810,7 @@ mappings:
     po:
       - [a, sio:SIO_000614]
       - [a, obo:NCIT_C164628]
-  interpretationStatusValueShapeMapping:
+  interpretationstatusinterpretationStatusValueShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -863,13 +827,13 @@ mappings:
           datatype: string
       - p: sio:SIO_000628
         o:
-          mapping: interpretationStatusShapeMapping
+          mapping: genomicinterpretationinterpretationStatusShapeMapping
           condition:
             function: equal
             parameters:
               - [str1, $(parent_index), s]
               - [str2, $(index), o]
-  metadataShapeMapping:
+  phenopacketmetadataShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -880,7 +844,7 @@ mappings:
       - [a, obo:NCIT_C52095]
       - p: sio:SIO_000008
         o:
-          mapping: createdShapeMapping
+          mapping: metadatacreatedShapeMapping
           condition:
             function: equal
             parameters:
@@ -888,7 +852,7 @@ mappings:
               - [str2, $(parent_index), o]
       - p: sio:SIO_000008
         o:
-          mapping: createdByShapeMapping
+          mapping: metadatacreatedByShapeMapping
           condition:
             function: equal
             parameters:
@@ -896,13 +860,13 @@ mappings:
               - [str2, $(parent_index), o]
       - p: sio:SIO_000008
         o:
-          mapping: versionShapeMapping
+          mapping: metadataversionShapeMapping
           condition:
             function: equal
             parameters:
               - [str1, $(index), s]
               - [str2, $(parent_index), o]
-  createdShapeMapping:
+  metadatacreatedShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -911,7 +875,7 @@ mappings:
     po:
       - [a, sio:SIO_000614]
       - [a, dct:created]
-  createdValueShapeMapping:
+  createdcreatedValueShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -927,13 +891,13 @@ mappings:
           datatype: dateTime
       - p: sio:SIO_000628
         o:
-          mapping: createdShapeMapping
+          mapping: metadatacreatedShapeMapping
           condition:
             function: equal
             parameters:
               - [str1, $(parent_index), s]
               - [str2, $(index), o]
-  createdByShapeMapping:
+  metadatacreatedByShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -942,7 +906,7 @@ mappings:
     po:
       - [a, sio:SIO_000614]
       - [a, dct:creator]
-  createdByValueShapeMapping:
+  createdbycreatedByValueShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -958,13 +922,13 @@ mappings:
           datatype: string
       - p: sio:SIO_000628
         o:
-          mapping: createdByShapeMapping
+          mapping: metadatacreatedByShapeMapping
           condition:
             function: equal
             parameters:
               - [str1, $(parent_index), s]
               - [str2, $(index), o]
-  versionShapeMapping:
+  metadataversionShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -973,7 +937,7 @@ mappings:
     po:
       - [a, sio:SIO_000614]
       - [a, obo:NCIT_C25714]
-  versionValueShapeMapping:
+  versionversionValueShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
@@ -989,7 +953,7 @@ mappings:
           datatype: string
       - p: sio:SIO_000628
         o:
-          mapping: versionShapeMapping
+          mapping: metadataversionShapeMapping
           condition:
             function: equal
             parameters:
@@ -1010,7 +974,7 @@ mappings:
           datatype: string
       - p: sio:SIO_000020
         o:
-          mapping: roleShapeMapping
+          mapping: idroleShapeMapping
           condition:
             function: equal
             parameters:
