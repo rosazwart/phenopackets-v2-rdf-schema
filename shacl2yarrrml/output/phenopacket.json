@@ -24,9 +24,9 @@
                         "_comment": "[1, 1]",
                         "rdf:type": "IRI"
                     },
-                    "dct:identifier": "STRING",
-                    "rdfs:label": "STRING",
-                    "dct:description": "STRING"
+                    "dct:identifier": "XSD:STRING",
+                    "rdfs:label": "XSD:STRING",
+                    "dct:description": "XSD:STRING"
                 }
             ],
             "interpretation": [
@@ -52,7 +52,7 @@
                                 "parent_index": "PARENTINDEX",
                                 "_comment": "[1, 1]"
                             },
-                            "sio:has-value": "STRING"
+                            "sio:has-value": "XSD:STRING"
                         }
                     },
                     "diagnosis": {
@@ -79,8 +79,8 @@
                                 "_comment": "[1, 1]",
                                 "rdf:type": "IRI"
                             },
-                            "dct:identifier": "STRING",
-                            "rdfs:label": "STRING"
+                            "dct:identifier": "XSD:STRING",
+                            "rdfs:label": "XSD:STRING"
                         },
                         "genomicinterpretation": [
                             {
@@ -104,7 +104,7 @@
                                                 "parent_index": "PARENTINDEX",
                                                 "_comment": "[1, 1]"
                                             },
-                                            "sio:has-value": "STRING"
+                                            "sio:has-value": "XSD:STRING"
                                         }
                                     },
                                     "therapeuticactionability": {
@@ -120,7 +120,7 @@
                                                 "parent_index": "PARENTINDEX",
                                                 "_comment": "[1, 1]"
                                             },
-                                            "sio:has-value": "STRING"
+                                            "sio:has-value": "XSD:STRING"
                                         }
                                     },
                                     "variationdescriptor": {
@@ -145,20 +145,20 @@
                                                         "index": "INDEX",
                                                         "parent_index": "PARENTINDEX",
                                                         "_comment": "[0, *]",
-                                                        "sio:has-value": "STRING"
+                                                        "sio:has-value": "XSD:STRING"
                                                     }
                                                 ],
-                                                "sio:has-value": "STRING"
+                                                "sio:has-value": "XSD:STRING"
                                             },
                                             "altid": [
                                                 {
                                                     "index": "INDEX",
                                                     "parent_index": "PARENTINDEX",
                                                     "_comment": "[0, *]",
-                                                    "sio:has-value": "STRING"
+                                                    "sio:has-value": "XSD:STRING"
                                                 }
                                             ],
-                                            "dct:identifier": "STRING"
+                                            "dct:identifier": "XSD:STRING"
                                         },
                                         "vcfrecord": {
                                             "index": "INDEX",
@@ -168,31 +168,31 @@
                                                 "index": "INDEX",
                                                 "parent_index": "PARENTINDEX",
                                                 "_comment": "[1, 1]",
-                                                "dct:identifier": "STRING"
+                                                "dct:identifier": "XSD:STRING"
                                             },
                                             "chromosome": {
                                                 "index": "INDEX",
                                                 "parent_index": "PARENTINDEX",
                                                 "_comment": "[1, 1]",
-                                                "dct:identifier": "STRING"
+                                                "dct:identifier": "XSD:STRING"
                                             },
                                             "position": {
                                                 "index": "INDEX",
                                                 "parent_index": "PARENTINDEX",
                                                 "_comment": "[1, 1]",
-                                                "rdfs:label": "STRING"
+                                                "rdfs:label": "XSD:STRING"
                                             },
                                             "reference": {
                                                 "index": "INDEX",
                                                 "parent_index": "PARENTINDEX",
                                                 "_comment": "[1, 1]",
-                                                "rdfs:label": "STRING"
+                                                "rdfs:label": "XSD:STRING"
                                             },
                                             "alternate": {
                                                 "index": "INDEX",
                                                 "parent_index": "PARENTINDEX",
                                                 "_comment": "[1, 1]",
-                                                "rdfs:label": "STRING"
+                                                "rdfs:label": "XSD:STRING"
                                             }
                                         },
                                         "moleculecontext": {
@@ -208,11 +208,11 @@
                                                     "parent_index": "PARENTINDEX",
                                                     "_comment": "[1, 1]"
                                                 },
-                                                "sio:has-value": "STRING"
+                                                "sio:has-value": "XSD:STRING"
                                             }
                                         },
-                                        "rdfs:label": "STRING",
-                                        "dct:description": "STRING"
+                                        "rdfs:label": "XSD:STRING",
+                                        "dct:description": "XSD:STRING"
                                     }
                                 },
                                 "genedescriptor": {
@@ -228,20 +228,20 @@
                                                 "index": "INDEX",
                                                 "parent_index": "PARENTINDEX",
                                                 "_comment": "[0, *]",
-                                                "sio:has-value": "STRING"
+                                                "sio:has-value": "XSD:STRING"
                                             }
                                         ],
-                                        "sio:has-value": "STRING"
+                                        "sio:has-value": "XSD:STRING"
                                     },
                                     "altid": [
                                         {
                                             "index": "INDEX",
                                             "parent_index": "PARENTINDEX",
                                             "_comment": "[0, *]",
-                                            "sio:has-value": "STRING"
+                                            "sio:has-value": "XSD:STRING"
                                         }
                                     ],
-                                    "dct:identifier": "STRING"
+                                    "dct:identifier": "XSD:STRING"
                                 },
                                 "biosample": {
                                     "index": "INDEX",
@@ -267,7 +267,7 @@
                                             "_comment": "[1, 1]",
                                             "rdf:type": "IRI"
                                         },
-                                        "rdfs:label": "STRING"
+                                        "rdfs:label": "XSD:STRING"
                                     }
                                 },
                                 "interpretationstatus": {
@@ -283,7 +283,7 @@
                                             "parent_index": "PARENTINDEX",
                                             "_comment": "[1, 1]"
                                         },
-                                        "sio:has-value": "STRING"
+                                        "sio:has-value": "XSD:STRING"
                                     }
                                 }
                             }
@@ -294,8 +294,8 @@
                             "_comment": "[1, 1]",
                             "rdf:type": "IRI"
                         },
-                        "dct:identifier": "STRING",
-                        "rdfs:label": "STRING"
+                        "dct:identifier": "XSD:STRING",
+                        "rdfs:label": "XSD:STRING"
                     }
                 }
             ],
@@ -316,7 +316,7 @@
                             "parent_index": "PARENTINDEX",
                             "_comment": "[1, 1]"
                         },
-                        "sio:has-value": "DATETIME"
+                        "sio:has-value": "XSD:DATETIME"
                     }
                 },
                 "createdby": {
@@ -332,7 +332,7 @@
                             "parent_index": "PARENTINDEX",
                             "_comment": "[1, 1]"
                         },
-                        "sio:has-value": "STRING"
+                        "sio:has-value": "XSD:STRING"
                     }
                 },
                 "version": {
@@ -348,7 +348,7 @@
                             "parent_index": "PARENTINDEX",
                             "_comment": "[1, 1]"
                         },
-                        "sio:has-value": "STRING"
+                        "sio:has-value": "XSD:STRING"
                     }
                 }
             }

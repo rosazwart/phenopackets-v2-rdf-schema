@@ -8,7 +8,7 @@
                 "parent_index": "PARENTINDEX",
                 "_comment": "[1, 1]"
             },
-            "sio:has-value": "STRING"
+            "sio:has-value": "XSD:STRING"
         }
     ]
 }

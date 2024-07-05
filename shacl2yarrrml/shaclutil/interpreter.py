@@ -414,14 +414,14 @@ class Interpreter:
             
             if namespace_provider.SH.datatype in prop_attr:
                 literal_datatype_node = prop_attr[namespace_provider.SH.datatype]
-                _, _, literal_type = self.basic_interpr.extract_values(literal_datatype_node)
+                literal_prefix, _, literal_type = self.basic_interpr.extract_values(literal_datatype_node)
 
                 if namespace_provider.SH.name in prop_attr:
                     literal_name = str(prop_attr[namespace_provider.SH.name])
                 else:
                     raise Exception(f'Literal node {path}, {literal_type} does not have a given name')
                 
-                associated_literals.append(shacl_objects.LiteralNode(path_name=f'{path_prefix}:{path_name}', rel_path=rel_path, literal_name=literal_name, literal_type=literal_type))
+                associated_literals.append(shacl_objects.LiteralNode(path_name=f'{path_prefix}:{path_name}', rel_path=rel_path, literal_name=literal_name, literal_type=f'{literal_prefix}:{literal_type}'))
 
             elif path == namespace_provider.RDF.type and namespace_provider.SH.qualifiedValueShape in prop_attr:
                 qualifiedvalue_node = prop_attr[namespace_provider.SH.qualifiedValueShape]
