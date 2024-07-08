@@ -112,14 +112,33 @@ class Aligner:
         
         curr_dict['literaloutput'] = literal_ent
 
+    def add_empty_value(self, curr_dict: dict, curr_hash_path: list, attr_name: str):
+        """
+        """
+        hash_path = curr_hash_path + [f'{attr_name}value', 1]
+        curr_dict[f'{attr_name}value'] = {}
+        self.add_index(index_dict=curr_dict[f'{attr_name}value'], curr_hash_path=hash_path, parent_index_dict=curr_dict)
+
+    def add_literal_output_value(self, curr_dict: dict, curr_hash_path: list, attr_name: str, attr_value: str):
+        """
+        """
+        hash_path = curr_hash_path + [f'{attr_name}value', 1]
+        curr_dict[f'{attr_name}value'] = {}
+
+        self.add_index(index_dict=curr_dict[f'{attr_name}value'], curr_hash_path=hash_path, parent_index_dict=curr_dict)
+        self.add_literal_output(curr_dict=curr_dict[f'{attr_name}value'], curr_hash_path=hash_path)
+        curr_dict[f'{attr_name}value']['sio_has-value'] = attr_value
+
     def add_subject(self, curr_dict: dict, curr_hash_path: list):
         """
         """
+        subj_data = self.origin_phenop_data['subject']
+
         hash_path = curr_hash_path + ['individual', 1]
         subj_ent = {}
 
         self.add_index(index_dict=subj_ent, curr_hash_path=hash_path, parent_index_dict=curr_dict)
-        self.add_role_id(curr_dict=subj_ent, curr_hash_path=hash_path, id_value=self.origin_phenop_data['subject']['id'])
+        self.add_role_id(curr_dict=subj_ent, curr_hash_path=hash_path, id_value=subj_data['id'])
 
         # Add Sex
 
@@ -127,11 +146,9 @@ class Aligner:
         subj_ent['sex'] = {}
         self.add_index(index_dict=subj_ent['sex'], curr_hash_path=sub_hash_path, parent_index_dict=subj_ent)
         
-        sub_sub_hash_path = sub_hash_path + ['sexvalue', 1]
-        subj_ent['sex']['sexvalue'] = {}
-        self.add_index(index_dict=subj_ent['sex']['sexvalue'], curr_hash_path=sub_sub_hash_path, parent_index_dict=subj_ent['sex'])
+        self.add_empty_value(curr_dict=subj_ent['sex'], curr_hash_path=sub_hash_path, attr_name='sex')
 
-        label_value = self.origin_phenop_data['subject']['sex'].upper()
+        label_value = subj_data['sex'].upper()
         label_value, iri_value = self.get_iri_value(label_value=label_value)
         
         self.add_ontologyclass(curr_dict=subj_ent['sex'], curr_hash_path=sub_hash_path, iri_value=iri_value)
@@ -139,16 +156,17 @@ class Aligner:
         subj_ent['sex']['rdfs_label'] = label_value
 
         # Add Age
+        # TODO: check other possible age structures
 
-        sub_hash_path = hash_path + ['age', 1]
-        subj_ent['age'] = {}
-        self.add_index(index_dict=subj_ent['age'], curr_hash_path=sub_hash_path, parent_index_dict=subj_ent)
+        if 'timeAtLastEncounter' in subj_data:
+            if 'age' in subj_data['timeAtLastEncounter']:
+                if 'iso8601duration' in subj_data['timeAtLastEncounter']['age']:
+                    sub_hash_path = hash_path + ['age', 1]
+                    subj_ent['age'] = {}
+                    self.add_index(index_dict=subj_ent['age'], curr_hash_path=sub_hash_path, parent_index_dict=subj_ent)
 
-        sub_sub_hash_path = sub_hash_path + ['agevalue', 1]
-        subj_ent['age']['agevalue'] = {}
-        self.add_index(index_dict=subj_ent['age']['agevalue'], curr_hash_path=sub_sub_hash_path, parent_index_dict=subj_ent['age'])
-        self.add_literal_output(curr_dict=subj_ent['age']['agevalue'], curr_hash_path=sub_sub_hash_path)
-        subj_ent['age']['agevalue']['sio_has-value'] = self.origin_phenop_data['subject']['timeAtLastEncounter']['age']['iso8601duration']
+                    age_value = subj_data['timeAtLastEncounter']['age']['iso8601duration']
+                    self.add_literal_output_value(curr_dict=subj_ent['age'], curr_hash_path=sub_hash_path, attr_name='age', attr_value=age_value)
 
         curr_dict['individual'] = subj_ent
 
@@ -165,23 +183,13 @@ class Aligner:
             phenofeat_ent = {}
 
             self.add_index(index_dict=phenofeat_ent, curr_hash_path=hash_path, parent_index_dict=curr_dict)
-
-            sub_hash_path = hash_path + ['phenotypicfeaturevalue', 1]
-            phenofeat_ent['phenotypicfeaturevalue'] = {}
-            self.add_index(index_dict=phenofeat_ent['phenotypicfeaturevalue'], curr_hash_path=sub_hash_path, parent_index_dict=phenofeat_ent)
+            self.add_empty_value(curr_dict=phenofeat_ent, curr_hash_path=hash_path, attr_name='phenotypicfeature')
 
             if 'excluded' in phenofeat_data:
                 sub_hash_path = hash_path + ['excluded', 1]
                 phenofeat_ent['excluded'] = {}
                 self.add_index(index_dict=phenofeat_ent['excluded'], curr_hash_path=sub_hash_path, parent_index_dict=phenofeat_ent)
-
-                sub_sub_hash_path = sub_hash_path + ['excludedvalue', 1]
-                phenofeat_ent['excluded']['excludedvalue'] = {}
-                self.add_index(index_dict=phenofeat_ent['excluded']['excludedvalue'], curr_hash_path=sub_sub_hash_path, parent_index_dict=phenofeat_ent['excluded'])
-
-                self.add_literal_output(curr_dict=phenofeat_ent['excluded']['excludedvalue'], curr_hash_path=sub_sub_hash_path)
-                
-                phenofeat_ent['excluded']['excludedvalue']['sio_has-value'] = phenofeat_data['excluded']
+                self.add_literal_output_value(curr_dict=phenofeat_ent['excluded'], curr_hash_path=sub_hash_path, attr_name='excluded', attr_value=phenofeat_data['excluded'])
             
             self.add_ontologyclass(curr_dict=phenofeat_ent, curr_hash_path=hash_path, iri_value=iri_constants.get_iri(id_value=phenofeat_data['type']['id']))
 
@@ -199,14 +207,7 @@ class Aligner:
         status_ent = {}
 
         self.add_index(index_dict=status_ent, curr_hash_path=hash_path, parent_index_dict=curr_dict)
-
-        sub_hash_path = hash_path + ['progressstatusvalue', 1]
-        status_ent['progressstatusvalue'] = {}
-
-        self.add_index(index_dict=status_ent['progressstatusvalue'], curr_hash_path=sub_hash_path, parent_index_dict=status_ent)
-        self.add_literal_output(curr_dict=status_ent['progressstatusvalue'], curr_hash_path=sub_hash_path)
-
-        status_ent['progressstatusvalue']['sio_has-value'] = status_value
+        self.add_literal_output_value(curr_dict=status_ent, curr_hash_path=hash_path, attr_name='progressstatus', attr_value=status_value)
 
         curr_dict['progressstatus'] = status_ent
 
@@ -217,11 +218,7 @@ class Aligner:
         disease_ent = {}
 
         self.add_index(index_dict=disease_ent, curr_hash_path=hash_path, parent_index_dict=curr_dict)
-
-        sub_hash_path = hash_path + ['diseasevalue', 1]
-        disease_ent['diseasevalue'] = {}
-
-        self.add_index(index_dict=disease_ent['diseasevalue'], curr_hash_path=sub_hash_path, parent_index_dict=disease_ent)
+        self.add_empty_value(curr_dict=disease_ent, curr_hash_path=hash_path, attr_name='disease')
 
         self.add_ontologyclass(curr_dict=disease_ent, curr_hash_path=hash_path, iri_value=iri_constants.get_iri(id_value))
 
@@ -233,42 +230,30 @@ class Aligner:
     def add_acmg_class(self, curr_dict: dict, curr_hash_path: list, class_value: str | None):
         """
         """
+        if class_value is None:
+            class_value = 'NOT_PROVIDED'
+
         hash_path = curr_hash_path + ['acmgpathogenicityclass', 1]
         acmg_ent = {}
 
         self.add_index(index_dict=acmg_ent, curr_hash_path=hash_path, parent_index_dict=curr_dict)
 
-        sub_hash_path = hash_path + ['acmgpathogenicityclassvalue', 1]
-        acmg_ent['acmgpathogenicityclassvalue'] = {}
-
-        self.add_index(index_dict=acmg_ent['acmgpathogenicityclassvalue'], curr_hash_path=sub_hash_path, parent_index_dict=acmg_ent)
-        self.add_literal_output(curr_dict=acmg_ent['acmgpathogenicityclassvalue'], curr_hash_path=sub_hash_path)
-
-        if class_value is None:
-            class_value = 'NOT_PROVIDED'
-
-        acmg_ent['acmgpathogenicityclassvalue']['sio_has-value'] = class_value.upper()
+        self.add_literal_output_value(curr_dict=acmg_ent, curr_hash_path=hash_path, attr_name='acmgpathogenicityclass', attr_value=class_value.upper())
 
         curr_dict['acmgpathogenicityclass'] = acmg_ent
 
     def add_therapeutic_action(self, curr_dict: dict, curr_hash_path: list, class_value: str | None):
         """
         """
+        if class_value is None:
+            class_value = 'UNKNOWN_ACTIONABILITY'
+
         hash_path = curr_hash_path + ['therapeuticactionability', 1]
         therap_ent = {}
 
         self.add_index(index_dict=therap_ent, curr_hash_path=hash_path, parent_index_dict=curr_dict)
 
-        sub_hash_path = hash_path + ['therapeuticactionabilityvalue', 1]
-        therap_ent['therapeuticactionabilityvalue'] = {}
-
-        self.add_index(index_dict=therap_ent['therapeuticactionabilityvalue'], curr_hash_path=sub_hash_path, parent_index_dict=therap_ent)
-        self.add_literal_output(curr_dict=therap_ent['therapeuticactionabilityvalue'], curr_hash_path=sub_hash_path)
-
-        if class_value is None:
-            class_value = 'UNKNOWN_ACTIONABILITY'
-
-        therap_ent['therapeuticactionabilityvalue']['sio_has-value'] = class_value.upper()
+        self.add_literal_output_value(curr_dict=therap_ent, curr_hash_path=hash_path, attr_name='therapeuticactionability', attr_value=class_value.upper())
 
         curr_dict['therapeuticactionability'] = therap_ent
 
@@ -285,12 +270,12 @@ class Aligner:
 
         self.add_index(index_dict=gene_descr_ent['genesymbol'], curr_hash_path=sub_hash_path, parent_index_dict=gene_descr_ent)
 
-        # TODO:
+        # TODO: check how to extract and add
         gene_descr_ent['genesymbol']['altid'] = []
 
         gene_descr_ent['genesymbol']['sio_has-value'] = gene_descr_data['symbol']
 
-        # TODO:
+        # TODO: check how to extract and add
         gene_descr_ent['altid'] = []
 
         gene_descr_ent['dct_identifier'] = gene_descr_data['valueId']
@@ -335,7 +320,7 @@ class Aligner:
 
             self.add_index(index_dict=expr_ent, curr_hash_path=hash_path, parent_index_dict=curr_dict)
 
-            expr_ent['sh_IRI'] = iri_constants.iri_mapper['UNKNOWN']    # TODO:
+            expr_ent['sh_IRI'] = iri_constants.iri_mapper['UNKNOWN']    # TODO: what kind of IRI needed here?
             expr_ent['rdfs_label'] = expr_data['value']
             expr_ent['sio_has-value'] = expr_data['value']
             expr_ent['dct_hasVersion'] = expr_data['syntax']
@@ -352,14 +337,7 @@ class Aligner:
 
         self.add_index(index_dict=mol_cont_ent, curr_hash_path=hash_path, parent_index_dict=curr_dict)
 
-        sub_hash_path = hash_path + ['moleculecontextvalue', 1]
-        mol_cont_ent['moleculecontextvalue'] = {}
-
-        self.add_index(index_dict=mol_cont_ent['moleculecontextvalue'], curr_hash_path=sub_hash_path, parent_index_dict=mol_cont_ent)
-
-        self.add_literal_output(curr_dict=mol_cont_ent['moleculecontextvalue'], curr_hash_path=sub_hash_path)
-
-        mol_cont_ent['moleculecontextvalue']['sio_has-value'] = mol_context
+        self.add_literal_output_value(curr_dict=mol_cont_ent, curr_hash_path=hash_path, attr_name='moleculecontext', attr_value=mol_context)
 
         curr_dict['moleculecontext'] = mol_cont_ent
 
@@ -409,12 +387,7 @@ class Aligner:
 
         self.add_index(index_dict=interpr_status_ent, curr_hash_path=hash_path, parent_index_dict=curr_dict)
 
-        sub_hash_path = hash_path + ['interpretationstatusvalue', 1]
-        interpr_status_ent['interpretationstatusvalue'] = {}
-        self.add_index(index_dict=interpr_status_ent['interpretationstatusvalue'], curr_hash_path=sub_hash_path, parent_index_dict=interpr_status_ent)
-        self.add_literal_output(curr_dict=interpr_status_ent['interpretationstatusvalue'], curr_hash_path=sub_hash_path)
-
-        interpr_status_ent['interpretationstatusvalue']['sio_has-value'] = status_value
+        self.add_literal_output_value(curr_dict=interpr_status_ent, curr_hash_path=hash_path, attr_name='interpretationstatus', attr_value=status_value)
 
         curr_dict['interpretationstatus'] = interpr_status_ent
 
@@ -448,11 +421,15 @@ class Aligner:
 
                 self.add_var_descr(curr_dict=genomic_interpr_ent['variantinterpretation'], curr_hash_path=sub_hash_path, var_descr_data=var_interpr_data['variationDescriptor'])
 
-            # TODO: if genedescriptor in genomic interpretation
+            else:
+                # TODO: if genedescriptor in genomic interpretation
+                print('Add genedescriptor as child of genomicInterpretation')
 
             if genomic_interpr_data['subjectOrBiosampleId'] == self.origin_phenop_data['subject']['id']:
                 self.add_subject(curr_dict=genomic_interpr_ent, curr_hash_path=hash_path)
-            # TODO: if id referring to biosample 
+            else:
+                # TODO: if id referring to biosample 
+                print('Add biosample as child of genomicInterpretation')
 
             self.add_interpr_status(curr_dict=genomic_interpr_ent, curr_hash_path=hash_path, status_value=genomic_interpr_data['interpretationStatus'])
 
@@ -468,11 +445,7 @@ class Aligner:
             diagnosis_ent = {}
 
             self.add_index(index_dict=diagnosis_ent, curr_hash_path=hash_path, parent_index_dict=curr_dict)
-
-            sub_hash_path = hash_path + ['diagnosisvalue', 1]
-            diagnosis_ent['diagnosisvalue'] = {}
-
-            self.add_index(index_dict=diagnosis_ent['diagnosisvalue'], curr_hash_path=sub_hash_path, parent_index_dict=diagnosis_ent)
+            self.add_empty_value(curr_dict=diagnosis_ent, curr_hash_path=hash_path, attr_name='diagnosis')
 
             self.add_disease(curr_dict=diagnosis_ent, curr_hash_path=hash_path, 
                              id_value=interpr_data['diagnosis']['disease']['id'],
@@ -480,7 +453,7 @@ class Aligner:
             
             self.add_genomic_interpr(curr_dict=diagnosis_ent, curr_hash_path=hash_path, diagnosis_data=interpr_data['diagnosis'])
 
-            # TODO: what kinds of IRIs and how to acquire them
+            # TODO: what kinds of IRIs and how to acquire them?
             self.add_ontologyclass(curr_dict=diagnosis_ent, curr_hash_path=hash_path, iri_value=iri_constants.iri_mapper['UNKNOWN'])
             
             diagnosis_ent['dct_identifier'] = f'diagnosis {index_nr}'
@@ -501,7 +474,6 @@ class Aligner:
             interpr_ent = {}
 
             self.add_index(index_dict=interpr_ent, curr_hash_path=hash_path, parent_index_dict=curr_dict)
-
             self.add_role_id(curr_dict=interpr_ent, curr_hash_path=hash_path, id_value=f'{interpr_data['id']}_{index_nr}')
 
             self.add_progressstatus(curr_dict=interpr_ent, curr_hash_path=hash_path, status_value=interpr_data['progressStatus'])
@@ -519,13 +491,7 @@ class Aligner:
 
         self.add_index(index_dict=attr_ent, curr_hash_path=hash_path, parent_index_dict=curr_dict)
 
-        sub_hash_path = hash_path + [f'{attr_name}value', 1]
-        attr_ent[f'{attr_name}value'] = {}
-
-        self.add_index(index_dict=attr_ent[f'{attr_name}value'], curr_hash_path=sub_hash_path, parent_index_dict=attr_ent)
-        self.add_literal_output(curr_dict=attr_ent[f'{attr_name}value'], curr_hash_path=sub_hash_path)
-
-        attr_ent[f'{attr_name}value']['sio_has-value'] = metadata_data[origin_attr]
+        self.add_literal_output_value(curr_dict=attr_ent, curr_hash_path=hash_path, attr_name=attr_name, attr_value=metadata_data[origin_attr])
 
         curr_dict[attr_name] = attr_ent
 
@@ -539,6 +505,7 @@ class Aligner:
 
         attr_list = ['created', 'createdby', 'version']
         origin_attr_list = ['created', 'createdBy', 'phenopacketSchemaVersion']
+
         for attr_name, origin_attr in zip(attr_list, origin_attr_list):
             self.add_metadata_attr(curr_dict=metadata_ent, curr_hash_path=hash_path, metadata_data=self.origin_phenop_data['metaData'], attr_name=attr_name, origin_attr=origin_attr)
 
@@ -576,6 +543,7 @@ class Aligner:
 if __name__ == "__main__":
     all_phenopacket_json_filenames = json_loader.get_all_json_filenames()
     for json_filename in all_phenopacket_json_filenames:
+        print(f'Align {json_filename}...')
         phenopacket_data = json_loader.load_hamlet_json_file(json_filename)
         json_aligner = Aligner(phenopacket_name=json_filename.replace('.json', ''),
                                origin_phenop_data=phenopacket_data)
