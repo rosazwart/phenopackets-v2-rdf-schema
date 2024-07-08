@@ -24,6 +24,8 @@ A script has been developed that generates a YARRRML file containing the maximum
 
 The JSON file(s) that show(s) the structure that the YARRRML file will accept and convert correctly to RDF. This structure is mainly built upon indexes that link one data field to another. This allows for robustness of the RDF conversion whatever SHACL structure has been given. Each datafield in the generated JSON file(s) contains a comment to show the user whether the datafield is needed in order to comply to the data model represented by the SHACL files.
 
+In folder [`jsonaligner`](https://github.com/rosazwart/phenopackets-v2-rdf-schema/tree/main/jsonaligner) a script can be found that aligns JSON data following the phenopacket version 2 structure to the JSON data structure that is compatible with the generated YARRRML.
+
 ## 4. RML Mapping
 
 There exist multiple ways to map the given JSON data to the correctly structured knowledge graph with the filled in YARRRML. One option is installing the [yarrrml-parser](https://github.com/rmlio/yarrrml-parser) that translates YARRRML to the RML format. Next, use [RMLMapper](https://github.com/RMLio/rmlmapper-java) to generate the RDF knowledge graph. The second and easier option is using the browser-based IDE [Matey](https://rml.io/yarrrml/matey/) that contains the functionalities of loading data sources, writing YARRRML rules and generating RDF triples.
