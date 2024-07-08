@@ -1,0 +1,44 @@
+{
+    "id": [
+        {
+            "index": "id1",
+            "role": {
+                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9role1",
+                "parent_index": "id1"
+            },
+            "sio_has-value": "PMID_26467218_individual_8_Cirstea_et_al__14"
+        },
+        {
+            "index": "id2",
+            "role": {
+                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9individual1role1",
+                "parent_index": "id2"
+            },
+            "sio_has-value": "individual 8-Cirstea et al. [14]"
+        },
+        {
+            "index": "id3",
+            "role": {
+                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1role1",
+                "parent_index": "id3"
+            },
+            "sio_has-value": "individual 8-Cirstea et al. [14]_1"
+        },
+        {
+            "index": "id4",
+            "role": {
+                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1role1",
+                "parent_index": "id4"
+            },
+            "sio_has-value": "var_WQXNikGsSkYQPaOnvKZQbBJHy"
+        },
+        {
+            "index": "id5",
+            "role": {
+                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1individual1role1",
+                "parent_index": "id5"
+            },
+            "sio_has-value": "individual 8-Cirstea et al. [14]"
+        }
+    ]
+}

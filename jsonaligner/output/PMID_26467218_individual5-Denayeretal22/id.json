@@ -1,0 +1,44 @@
+{
+    "id": [
+        {
+            "index": "id1",
+            "role": {
+                "index": "phenopacketb12919bd-9161-4d67-9671-f6526c2671carole1",
+                "parent_index": "id1"
+            },
+            "sio_has-value": "PMID_26467218_individual_5_Denayer_et_al__22"
+        },
+        {
+            "index": "id2",
+            "role": {
+                "index": "phenopacketb12919bd-9161-4d67-9671-f6526c2671caindividual1role1",
+                "parent_index": "id2"
+            },
+            "sio_has-value": "individual 5-Denayer et al. [22]"
+        },
+        {
+            "index": "id3",
+            "role": {
+                "index": "phenopacketb12919bd-9161-4d67-9671-f6526c2671cainterpretation1role1",
+                "parent_index": "id3"
+            },
+            "sio_has-value": "individual 5-Denayer et al. [22]_1"
+        },
+        {
+            "index": "id4",
+            "role": {
+                "index": "phenopacketb12919bd-9161-4d67-9671-f6526c2671cainterpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1role1",
+                "parent_index": "id4"
+            },
+            "sio_has-value": "var_iwhwDAPCrXLGWWVOyhZFRbfcT"
+        },
+        {
+            "index": "id5",
+            "role": {
+                "index": "phenopacketb12919bd-9161-4d67-9671-f6526c2671cainterpretation1diagnosis1genomicinterpretation1individual1role1",
+                "parent_index": "id5"
+            },
+            "sio_has-value": "individual 5-Denayer et al. [22]"
+        }
+    ]
+}

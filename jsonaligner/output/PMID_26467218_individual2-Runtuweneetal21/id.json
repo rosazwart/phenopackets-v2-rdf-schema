@@ -1,0 +1,44 @@
+{
+    "id": [
+        {
+            "index": "id1",
+            "role": {
+                "index": "phenopacketa5ef5675-ed33-4c13-8ef4-7fb8650af676role1",
+                "parent_index": "id1"
+            },
+            "sio_has-value": "PMID_26467218_individual_2_Runtuwene_et_al__21"
+        },
+        {
+            "index": "id2",
+            "role": {
+                "index": "phenopacketa5ef5675-ed33-4c13-8ef4-7fb8650af676individual1role1",
+                "parent_index": "id2"
+            },
+            "sio_has-value": "individual 2-Runtuwene et al. [21]"
+        },
+        {
+            "index": "id3",
+            "role": {
+                "index": "phenopacketa5ef5675-ed33-4c13-8ef4-7fb8650af676interpretation1role1",
+                "parent_index": "id3"
+            },
+            "sio_has-value": "individual 2-Runtuwene et al. [21]_1"
+        },
+        {
+            "index": "id4",
+            "role": {
+                "index": "phenopacketa5ef5675-ed33-4c13-8ef4-7fb8650af676interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1role1",
+                "parent_index": "id4"
+            },
+            "sio_has-value": "var_rjwLAoBIuqHOyTxPmicWaULQt"
+        },
+        {
+            "index": "id5",
+            "role": {
+                "index": "phenopacketa5ef5675-ed33-4c13-8ef4-7fb8650af676interpretation1diagnosis1genomicinterpretation1individual1role1",
+                "parent_index": "id5"
+            },
+            "sio_has-value": "individual 2-Runtuwene et al. [21]"
+        }
+    ]
+}

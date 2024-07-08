@@ -1,0 +1,891 @@
+{
+    "phenopacket": [
+        {
+            "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9",
+            "role": {
+                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9role1",
+                "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9"
+            },
+            "individual": {
+                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9individual1",
+                "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9",
+                "role": {
+                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9individual1role1",
+                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9individual1"
+                },
+                "sex": {
+                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9individual1sex1",
+                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9individual1",
+                    "sexvalue": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9individual1sex1sexvalue1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9individual1sex1"
+                    },
+                    "ontologyclass": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9individual1sex1ontologyclass1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9individual1sex1",
+                        "sh_IRI": "http://purl.obolibrary.org/obo/NCIT_C46113"
+                    },
+                    "rdfs_label": "FEMALE"
+                },
+                "age": {
+                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9individual1age1",
+                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9individual1",
+                    "agevalue": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9individual1age1agevalue1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9individual1age1",
+                        "literaloutput": {
+                            "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9individual1age1agevalue1literaloutput1",
+                            "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9individual1age1agevalue1"
+                        },
+                        "sio_has-value": "P3Y3M"
+                    }
+                }
+            },
+            "phenotypicfeature": [
+                {
+                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature1",
+                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9",
+                    "phenotypicfeaturevalue": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature1phenotypicfeaturevalue1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature1"
+                    },
+                    "ontologyclass": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature1ontologyclass1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature1",
+                        "sh_IRI": "http://purl.obolibrary.org/obo/HP_0000348"
+                    },
+                    "dct_identifier": "HP:0000348",
+                    "rdfs_label": "High forehead"
+                },
+                {
+                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature2",
+                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9",
+                    "phenotypicfeaturevalue": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature2phenotypicfeaturevalue1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature2"
+                    },
+                    "ontologyclass": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature2ontologyclass1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature2",
+                        "sh_IRI": "http://purl.obolibrary.org/obo/HP_0000494"
+                    },
+                    "dct_identifier": "HP:0000494",
+                    "rdfs_label": "Downslanted palpebral fissures"
+                },
+                {
+                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature3",
+                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9",
+                    "phenotypicfeaturevalue": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature3phenotypicfeaturevalue1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature3"
+                    },
+                    "ontologyclass": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature3ontologyclass1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature3",
+                        "sh_IRI": "http://purl.obolibrary.org/obo/HP_0000465"
+                    },
+                    "dct_identifier": "HP:0000465",
+                    "rdfs_label": "Webbed neck"
+                },
+                {
+                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature4",
+                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9",
+                    "phenotypicfeaturevalue": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature4phenotypicfeaturevalue1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature4"
+                    },
+                    "ontologyclass": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature4ontologyclass1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature4",
+                        "sh_IRI": "http://purl.obolibrary.org/obo/HP_0000316"
+                    },
+                    "dct_identifier": "HP:0000316",
+                    "rdfs_label": "Hypertelorism"
+                },
+                {
+                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature5",
+                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9",
+                    "phenotypicfeaturevalue": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature5phenotypicfeaturevalue1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature5"
+                    },
+                    "ontologyclass": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature5ontologyclass1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature5",
+                        "sh_IRI": "http://purl.obolibrary.org/obo/HP_0000508"
+                    },
+                    "dct_identifier": "HP:0000508",
+                    "rdfs_label": "Ptosis"
+                },
+                {
+                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature6",
+                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9",
+                    "phenotypicfeaturevalue": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature6phenotypicfeaturevalue1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature6"
+                    },
+                    "ontologyclass": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature6ontologyclass1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature6",
+                        "sh_IRI": "http://purl.obolibrary.org/obo/HP_0032152"
+                    },
+                    "dct_identifier": "HP:0032152",
+                    "rdfs_label": "Keratosis pilaris"
+                },
+                {
+                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature7",
+                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9",
+                    "phenotypicfeaturevalue": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature7phenotypicfeaturevalue1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature7"
+                    },
+                    "ontologyclass": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature7ontologyclass1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature7",
+                        "sh_IRI": "http://purl.obolibrary.org/obo/HP_0001195"
+                    },
+                    "dct_identifier": "HP:0001195",
+                    "rdfs_label": "Single umbilical artery"
+                },
+                {
+                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature8",
+                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9",
+                    "phenotypicfeaturevalue": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature8phenotypicfeaturevalue1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature8"
+                    },
+                    "ontologyclass": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature8ontologyclass1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature8",
+                        "sh_IRI": "http://purl.obolibrary.org/obo/HP_0001639"
+                    },
+                    "dct_identifier": "HP:0001639",
+                    "rdfs_label": "Hypertrophic cardiomyopathy"
+                },
+                {
+                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature9",
+                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9",
+                    "phenotypicfeaturevalue": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature9phenotypicfeaturevalue1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature9"
+                    },
+                    "ontologyclass": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature9ontologyclass1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature9",
+                        "sh_IRI": "http://purl.obolibrary.org/obo/HP_0001642"
+                    },
+                    "dct_identifier": "HP:0001642",
+                    "rdfs_label": "Pulmonic stenosis"
+                },
+                {
+                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature10",
+                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9",
+                    "phenotypicfeaturevalue": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature10phenotypicfeaturevalue1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature10"
+                    },
+                    "ontologyclass": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature10ontologyclass1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature10",
+                        "sh_IRI": "http://purl.obolibrary.org/obo/HP_0001270"
+                    },
+                    "dct_identifier": "HP:0001270",
+                    "rdfs_label": "Motor delay"
+                },
+                {
+                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature11",
+                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9",
+                    "phenotypicfeaturevalue": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature11phenotypicfeaturevalue1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature11"
+                    },
+                    "ontologyclass": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature11ontologyclass1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature11",
+                        "sh_IRI": "http://purl.obolibrary.org/obo/HP_0000369"
+                    },
+                    "dct_identifier": "HP:0000369",
+                    "rdfs_label": "Low-set ears"
+                },
+                {
+                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature12",
+                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9",
+                    "phenotypicfeaturevalue": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature12phenotypicfeaturevalue1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature12"
+                    },
+                    "ontologyclass": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature12ontologyclass1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature12",
+                        "sh_IRI": "http://purl.obolibrary.org/obo/HP_0000358"
+                    },
+                    "dct_identifier": "HP:0000358",
+                    "rdfs_label": "Posteriorly rotated ears"
+                },
+                {
+                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature13",
+                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9",
+                    "phenotypicfeaturevalue": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature13phenotypicfeaturevalue1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature13"
+                    },
+                    "ontologyclass": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature13ontologyclass1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature13",
+                        "sh_IRI": "http://purl.obolibrary.org/obo/HP_0000767"
+                    },
+                    "dct_identifier": "HP:0000767",
+                    "rdfs_label": "Pectus excavatum"
+                },
+                {
+                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature14",
+                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9",
+                    "phenotypicfeaturevalue": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature14phenotypicfeaturevalue1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature14"
+                    },
+                    "ontologyclass": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature14ontologyclass1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature14",
+                        "sh_IRI": "http://purl.obolibrary.org/obo/HP_0004322"
+                    },
+                    "dct_identifier": "HP:0004322",
+                    "rdfs_label": "Short stature"
+                },
+                {
+                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature15",
+                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9",
+                    "phenotypicfeaturevalue": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature15phenotypicfeaturevalue1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature15"
+                    },
+                    "excluded": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature15excluded1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature15",
+                        "excludedvalue": {
+                            "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature15excluded1excludedvalue1",
+                            "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature15excluded1",
+                            "literaloutput": {
+                                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature15excluded1excludedvalue1literaloutput1",
+                                "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature15excluded1excludedvalue1"
+                            },
+                            "sio_has-value": true
+                        }
+                    },
+                    "ontologyclass": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature15ontologyclass1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature15",
+                        "sh_IRI": "http://purl.obolibrary.org/obo/HP_0000256"
+                    },
+                    "dct_identifier": "HP:0000256",
+                    "rdfs_label": "Macrocephaly"
+                },
+                {
+                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature16",
+                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9",
+                    "phenotypicfeaturevalue": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature16phenotypicfeaturevalue1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature16"
+                    },
+                    "excluded": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature16excluded1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature16",
+                        "excludedvalue": {
+                            "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature16excluded1excludedvalue1",
+                            "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature16excluded1",
+                            "literaloutput": {
+                                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature16excluded1excludedvalue1literaloutput1",
+                                "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature16excluded1excludedvalue1"
+                            },
+                            "sio_has-value": true
+                        }
+                    },
+                    "ontologyclass": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature16ontologyclass1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature16",
+                        "sh_IRI": "http://purl.obolibrary.org/obo/HP_0002212"
+                    },
+                    "dct_identifier": "HP:0002212",
+                    "rdfs_label": "Curly hair"
+                },
+                {
+                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature17",
+                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9",
+                    "phenotypicfeaturevalue": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature17phenotypicfeaturevalue1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature17"
+                    },
+                    "excluded": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature17excluded1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature17",
+                        "excludedvalue": {
+                            "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature17excluded1excludedvalue1",
+                            "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature17excluded1",
+                            "literaloutput": {
+                                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature17excluded1excludedvalue1literaloutput1",
+                                "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature17excluded1excludedvalue1"
+                            },
+                            "sio_has-value": true
+                        }
+                    },
+                    "ontologyclass": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature17ontologyclass1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature17",
+                        "sh_IRI": "http://purl.obolibrary.org/obo/HP_0000957"
+                    },
+                    "dct_identifier": "HP:0000957",
+                    "rdfs_label": "Cafe-au-lait spot"
+                },
+                {
+                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature18",
+                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9",
+                    "phenotypicfeaturevalue": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature18phenotypicfeaturevalue1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature18"
+                    },
+                    "excluded": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature18excluded1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature18",
+                        "excludedvalue": {
+                            "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature18excluded1excludedvalue1",
+                            "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature18excluded1",
+                            "literaloutput": {
+                                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature18excluded1excludedvalue1literaloutput1",
+                                "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature18excluded1excludedvalue1"
+                            },
+                            "sio_has-value": true
+                        }
+                    },
+                    "ontologyclass": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature18ontologyclass1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature18",
+                        "sh_IRI": "http://purl.obolibrary.org/obo/HP_0000978"
+                    },
+                    "dct_identifier": "HP:0000978",
+                    "rdfs_label": "Bruising susceptibility"
+                },
+                {
+                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature19",
+                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9",
+                    "phenotypicfeaturevalue": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature19phenotypicfeaturevalue1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature19"
+                    },
+                    "excluded": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature19excluded1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature19",
+                        "excludedvalue": {
+                            "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature19excluded1excludedvalue1",
+                            "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature19excluded1",
+                            "literaloutput": {
+                                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature19excluded1excludedvalue1literaloutput1",
+                                "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature19excluded1excludedvalue1"
+                            },
+                            "sio_has-value": true
+                        }
+                    },
+                    "ontologyclass": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature19ontologyclass1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature19",
+                        "sh_IRI": "http://purl.obolibrary.org/obo/HP_0001561"
+                    },
+                    "dct_identifier": "HP:0001561",
+                    "rdfs_label": "Polyhydramnios"
+                },
+                {
+                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature20",
+                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9",
+                    "phenotypicfeaturevalue": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature20phenotypicfeaturevalue1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature20"
+                    },
+                    "excluded": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature20excluded1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature20",
+                        "excludedvalue": {
+                            "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature20excluded1excludedvalue1",
+                            "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature20excluded1",
+                            "literaloutput": {
+                                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature20excluded1excludedvalue1literaloutput1",
+                                "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature20excluded1excludedvalue1"
+                            },
+                            "sio_has-value": true
+                        }
+                    },
+                    "ontologyclass": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature20ontologyclass1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature20",
+                        "sh_IRI": "http://purl.obolibrary.org/obo/HP_0001680"
+                    },
+                    "dct_identifier": "HP:0001680",
+                    "rdfs_label": "Coarctation of aorta"
+                },
+                {
+                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature21",
+                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9",
+                    "phenotypicfeaturevalue": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature21phenotypicfeaturevalue1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature21"
+                    },
+                    "excluded": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature21excluded1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature21",
+                        "excludedvalue": {
+                            "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature21excluded1excludedvalue1",
+                            "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature21excluded1",
+                            "literaloutput": {
+                                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature21excluded1excludedvalue1literaloutput1",
+                                "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature21excluded1excludedvalue1"
+                            },
+                            "sio_has-value": true
+                        }
+                    },
+                    "ontologyclass": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature21ontologyclass1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature21",
+                        "sh_IRI": "http://purl.obolibrary.org/obo/HP_0001655"
+                    },
+                    "dct_identifier": "HP:0001655",
+                    "rdfs_label": "Patent foramen ovale"
+                },
+                {
+                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature22",
+                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9",
+                    "phenotypicfeaturevalue": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature22phenotypicfeaturevalue1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature22"
+                    },
+                    "excluded": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature22excluded1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature22",
+                        "excludedvalue": {
+                            "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature22excluded1excludedvalue1",
+                            "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature22excluded1",
+                            "literaloutput": {
+                                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature22excluded1excludedvalue1literaloutput1",
+                                "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature22excluded1excludedvalue1"
+                            },
+                            "sio_has-value": true
+                        }
+                    },
+                    "ontologyclass": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature22ontologyclass1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature22",
+                        "sh_IRI": "http://purl.obolibrary.org/obo/HP_0006699"
+                    },
+                    "dct_identifier": "HP:0006699",
+                    "rdfs_label": "Premature atrial contractions"
+                },
+                {
+                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature23",
+                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9",
+                    "phenotypicfeaturevalue": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature23phenotypicfeaturevalue1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature23"
+                    },
+                    "excluded": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature23excluded1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature23",
+                        "excludedvalue": {
+                            "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature23excluded1excludedvalue1",
+                            "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature23excluded1",
+                            "literaloutput": {
+                                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature23excluded1excludedvalue1literaloutput1",
+                                "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature23excluded1excludedvalue1"
+                            },
+                            "sio_has-value": true
+                        }
+                    },
+                    "ontologyclass": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature23ontologyclass1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature23",
+                        "sh_IRI": "http://purl.obolibrary.org/obo/HP_0000545"
+                    },
+                    "dct_identifier": "HP:0000545",
+                    "rdfs_label": "Myopia"
+                },
+                {
+                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature24",
+                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9",
+                    "phenotypicfeaturevalue": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature24phenotypicfeaturevalue1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature24"
+                    },
+                    "excluded": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature24excluded1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature24",
+                        "excludedvalue": {
+                            "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature24excluded1excludedvalue1",
+                            "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature24excluded1",
+                            "literaloutput": {
+                                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature24excluded1excludedvalue1literaloutput1",
+                                "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature24excluded1excludedvalue1"
+                            },
+                            "sio_has-value": true
+                        }
+                    },
+                    "ontologyclass": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature24ontologyclass1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature24",
+                        "sh_IRI": "http://purl.obolibrary.org/obo/HP_0000486"
+                    },
+                    "dct_identifier": "HP:0000486",
+                    "rdfs_label": "Strabismus"
+                },
+                {
+                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature25",
+                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9",
+                    "phenotypicfeaturevalue": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature25phenotypicfeaturevalue1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature25"
+                    },
+                    "excluded": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature25excluded1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature25",
+                        "excludedvalue": {
+                            "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature25excluded1excludedvalue1",
+                            "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature25excluded1",
+                            "literaloutput": {
+                                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature25excluded1excludedvalue1literaloutput1",
+                                "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature25excluded1excludedvalue1"
+                            },
+                            "sio_has-value": true
+                        }
+                    },
+                    "ontologyclass": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature25ontologyclass1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature25",
+                        "sh_IRI": "http://purl.obolibrary.org/obo/HP_0000483"
+                    },
+                    "dct_identifier": "HP:0000483",
+                    "rdfs_label": "Astigmatism"
+                },
+                {
+                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature26",
+                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9",
+                    "phenotypicfeaturevalue": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature26phenotypicfeaturevalue1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature26"
+                    },
+                    "excluded": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature26excluded1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature26",
+                        "excludedvalue": {
+                            "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature26excluded1excludedvalue1",
+                            "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature26excluded1",
+                            "literaloutput": {
+                                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature26excluded1excludedvalue1literaloutput1",
+                                "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature26excluded1excludedvalue1"
+                            },
+                            "sio_has-value": true
+                        }
+                    },
+                    "ontologyclass": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature26ontologyclass1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature26",
+                        "sh_IRI": "http://purl.obolibrary.org/obo/HP_0000563"
+                    },
+                    "dct_identifier": "HP:0000563",
+                    "rdfs_label": "Keratoconus"
+                },
+                {
+                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature27",
+                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9",
+                    "phenotypicfeaturevalue": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature27phenotypicfeaturevalue1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature27"
+                    },
+                    "excluded": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature27excluded1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature27",
+                        "excludedvalue": {
+                            "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature27excluded1excludedvalue1",
+                            "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature27excluded1",
+                            "literaloutput": {
+                                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature27excluded1excludedvalue1literaloutput1",
+                                "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature27excluded1excludedvalue1"
+                            },
+                            "sio_has-value": true
+                        }
+                    },
+                    "ontologyclass": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature27ontologyclass1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9phenotypicfeature27",
+                        "sh_IRI": "http://purl.obolibrary.org/obo/HP_0012209"
+                    },
+                    "dct_identifier": "HP:0012209",
+                    "rdfs_label": "Juvenile myelomonocytic leukemia"
+                }
+            ],
+            "interpretation": [
+                {
+                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1",
+                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9",
+                    "role": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1role1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1"
+                    },
+                    "progressstatus": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1progressstatus1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1",
+                        "progressstatusvalue": {
+                            "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1progressstatus1progressstatusvalue1",
+                            "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1progressstatus1",
+                            "literaloutput": {
+                                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1progressstatus1progressstatusvalue1literaloutput1",
+                                "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1progressstatus1progressstatusvalue1"
+                            },
+                            "sio_has-value": "SOLVED"
+                        }
+                    },
+                    "diagnosis": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1",
+                        "diagnosisvalue": {
+                            "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1diagnosisvalue1",
+                            "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1"
+                        },
+                        "disease": {
+                            "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1disease1",
+                            "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1",
+                            "diseasevalue": {
+                                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1disease1diseasevalue1",
+                                "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1disease1"
+                            },
+                            "ontologyclass": {
+                                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1disease1ontologyclass1",
+                                "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1disease1",
+                                "sh_IRI": "https://omim.org/entry/613224"
+                            },
+                            "dct_identifier": "OMIM:613224",
+                            "rdfs_label": "Noonan syndrome 6"
+                        },
+                        "genomicinterpretation": [
+                            {
+                                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1",
+                                "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1",
+                                "variantinterpretation": {
+                                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1",
+                                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1",
+                                    "acmgpathogenicityclass": {
+                                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1acmgpathogenicityclass1",
+                                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1",
+                                        "acmgpathogenicityclassvalue": {
+                                            "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1acmgpathogenicityclass1acmgpathogenicityclassvalue1",
+                                            "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1acmgpathogenicityclass1",
+                                            "literaloutput": {
+                                                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1acmgpathogenicityclass1acmgpathogenicityclassvalue1literaloutput1",
+                                                "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1acmgpathogenicityclass1acmgpathogenicityclassvalue1"
+                                            },
+                                            "sio_has-value": "NOT_PROVIDED"
+                                        }
+                                    },
+                                    "therapeuticactionability": {
+                                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1therapeuticactionability1",
+                                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1",
+                                        "therapeuticactionabilityvalue": {
+                                            "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1therapeuticactionability1therapeuticactionabilityvalue1",
+                                            "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1therapeuticactionability1",
+                                            "literaloutput": {
+                                                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1therapeuticactionability1therapeuticactionabilityvalue1literaloutput1",
+                                                "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1therapeuticactionability1therapeuticactionabilityvalue1"
+                                            },
+                                            "sio_has-value": "UNKNOWN_ACTIONABILITY"
+                                        }
+                                    },
+                                    "variationdescriptor": {
+                                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1",
+                                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1",
+                                        "role": {
+                                            "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1role1",
+                                            "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1"
+                                        },
+                                        "genedescriptor": {
+                                            "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1genedescriptor1",
+                                            "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1",
+                                            "genesymbol": {
+                                                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1genesymbol1",
+                                                "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1genedescriptor1",
+                                                "altid": [],
+                                                "sio_has-value": "NRAS"
+                                            },
+                                            "altid": [],
+                                            "dct_identifier": "HGNC:7989"
+                                        },
+                                        "vcfrecord": {
+                                            "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1vcfrecord1",
+                                            "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1",
+                                            "genomeassembly": {
+                                                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1vcfrecord1genomeassembly1",
+                                                "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1vcfrecord1",
+                                                "dct_identifier": "hg38"
+                                            },
+                                            "chromosome": {
+                                                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1vcfrecord1chromosome1",
+                                                "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1vcfrecord1",
+                                                "dct_identifier": "chr1"
+                                            },
+                                            "position": {
+                                                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1vcfrecord1position1",
+                                                "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1vcfrecord1",
+                                                "rdfs_label": 114713911
+                                            },
+                                            "reference": {
+                                                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1vcfrecord1reference1",
+                                                "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1vcfrecord1",
+                                                "rdfs_label": "C"
+                                            },
+                                            "alternate": {
+                                                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1vcfrecord1alternate1",
+                                                "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1vcfrecord1",
+                                                "rdfs_label": "T"
+                                            }
+                                        },
+                                        "expression": [
+                                            {
+                                                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1expression1",
+                                                "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1",
+                                                "sh_IRI": "http://purl.obolibrary.org/obo/NCIT_C17998",
+                                                "rdfs_label": "NM_002524.5:c.179G>A",
+                                                "sio_has-value": "NM_002524.5:c.179G>A",
+                                                "dct_hasVersion": "hgvs.c"
+                                            },
+                                            {
+                                                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1expression2",
+                                                "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1",
+                                                "sh_IRI": "http://purl.obolibrary.org/obo/NCIT_C17998",
+                                                "rdfs_label": "NC_000001.11:g.114713911C>T",
+                                                "sio_has-value": "NC_000001.11:g.114713911C>T",
+                                                "dct_hasVersion": "hgvs.g"
+                                            }
+                                        ],
+                                        "moleculecontext": {
+                                            "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1moleculecontext1",
+                                            "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1",
+                                            "moleculecontextvalue": {
+                                                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1moleculecontext1moleculecontextvalue1",
+                                                "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1moleculecontext1",
+                                                "literaloutput": {
+                                                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1moleculecontext1moleculecontextvalue1literaloutput1",
+                                                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1moleculecontext1moleculecontextvalue1"
+                                                },
+                                                "sio_has-value": "genomic"
+                                            }
+                                        },
+                                        "allelicstate": {
+                                            "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1allelicstate1",
+                                            "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1",
+                                            "ontologyclass": {
+                                                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1allelicstate1ontologyclass1",
+                                                "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1allelicstate1",
+                                                "sh_IRI": "http://purl.obolibrary.org/obo/GENO_0000135"
+                                            }
+                                        }
+                                    }
+                                },
+                                "individual": {
+                                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1individual1",
+                                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1",
+                                    "role": {
+                                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1individual1role1",
+                                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1individual1"
+                                    },
+                                    "sex": {
+                                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1individual1sex1",
+                                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1individual1",
+                                        "sexvalue": {
+                                            "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1individual1sex1sexvalue1",
+                                            "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1individual1sex1"
+                                        },
+                                        "ontologyclass": {
+                                            "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1individual1sex1ontologyclass1",
+                                            "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1individual1sex1",
+                                            "sh_IRI": "http://purl.obolibrary.org/obo/NCIT_C46113"
+                                        },
+                                        "rdfs_label": "FEMALE"
+                                    },
+                                    "age": {
+                                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1individual1age1",
+                                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1individual1",
+                                        "agevalue": {
+                                            "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1individual1age1agevalue1",
+                                            "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1individual1age1",
+                                            "literaloutput": {
+                                                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1individual1age1agevalue1literaloutput1",
+                                                "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1individual1age1agevalue1"
+                                            },
+                                            "sio_has-value": "P3Y3M"
+                                        }
+                                    }
+                                },
+                                "interpretationstatus": {
+                                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1interpretationstatus1",
+                                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1",
+                                    "interpretationstatusvalue": {
+                                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1interpretationstatus1interpretationstatusvalue1",
+                                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1interpretationstatus1",
+                                        "literaloutput": {
+                                            "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1interpretationstatus1interpretationstatusvalue1literaloutput1",
+                                            "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1genomicinterpretation1interpretationstatus1interpretationstatusvalue1"
+                                        },
+                                        "sio_has-value": "CAUSATIVE"
+                                    }
+                                }
+                            }
+                        ],
+                        "ontologyclass": {
+                            "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1ontologyclass1",
+                            "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9interpretation1diagnosis1",
+                            "sh_IRI": "http://purl.obolibrary.org/obo/NCIT_C17998"
+                        },
+                        "dct_identifier": "diagnosis 1",
+                        "rdfs_label": "Noonan syndrome 6 diagnosis"
+                    }
+                }
+            ],
+            "metadata": {
+                "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9metadata1",
+                "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9",
+                "created": {
+                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9metadata1created1",
+                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9metadata1",
+                    "createdvalue": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9metadata1created1createdvalue1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9metadata1created1",
+                        "literaloutput": {
+                            "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9metadata1created1createdvalue1literaloutput1",
+                            "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9metadata1created1createdvalue1"
+                        },
+                        "sio_has-value": "2024-05-20T20:56:12.565466165Z"
+                    }
+                },
+                "createdby": {
+                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9metadata1createdby1",
+                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9metadata1",
+                    "createdbyvalue": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9metadata1createdby1createdbyvalue1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9metadata1createdby1",
+                        "literaloutput": {
+                            "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9metadata1createdby1createdbyvalue1literaloutput1",
+                            "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9metadata1createdby1createdbyvalue1"
+                        },
+                        "sio_has-value": "ORCID:0000-0002-0736-9199"
+                    }
+                },
+                "version": {
+                    "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9metadata1version1",
+                    "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9metadata1",
+                    "versionvalue": {
+                        "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9metadata1version1versionvalue1",
+                        "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9metadata1version1",
+                        "literaloutput": {
+                            "index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9metadata1version1versionvalue1literaloutput1",
+                            "parent_index": "phenopacket47de3c95-f293-42ab-8232-5f69dc6642c9metadata1version1versionvalue1"
+                        },
+                        "sio_has-value": "2.0"
+                    }
+                }
+            }
+        }
+    ]
+}

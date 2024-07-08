@@ -1,4 +1,4 @@
-import json
+import uuid
 import hashlib
 
 import jsonutil.loader as json_loader
@@ -18,6 +18,11 @@ def get_hash(values_to_hash: list):
 
     #return hash_collection.hexdigest()
     return ''.join(str_values_to_hash)
+
+def get_unique_id():
+    """
+    """
+    return uuid.uuid4()
 
 class IdCollector:
     def __init__(self):
@@ -44,8 +49,8 @@ class Aligner:
 
         self.origin_phenop_data = origin_phenop_data
 
-        self.store_json_file(filename=f'phenopacket.json', dict_values=self.align_data())
-        self.store_json_file(filename=f'id.json', dict_values=self.id_collector.all_ids_dict)
+        self.store_json_file(foldername=phenopacket_name, filename=f'phenopacket.json', dict_values=self.align_data())
+        self.store_json_file(foldername=phenopacket_name, filename=f'id.json', dict_values=self.id_collector.all_ids_dict)
 
     def get_literal_value(self, dict_values: dict, literal_name: str):
         """
@@ -546,7 +551,7 @@ class Aligner:
             'phenopacket': []
         }
 
-        hash_path = ['phenopacket', 1]
+        hash_path = ['phenopacket', get_unique_id()]
         phenop_ent = {}
 
         self.add_index(index_dict=phenop_ent, curr_hash_path=hash_path)
@@ -565,8 +570,8 @@ class Aligner:
 
         return phenop_data
 
-    def store_json_file(self, filename: str, dict_values: dict):
-        json_loader.store_json_file(filename, dict_values)
+    def store_json_file(self, foldername: str, filename: str, dict_values: dict):
+        json_loader.store_json_file(foldername, filename, dict_values)
 
 if __name__ == "__main__":
     all_phenopacket_json_filenames = json_loader.get_all_json_filenames()

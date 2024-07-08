@@ -21,9 +21,14 @@ def load_hamlet_json_file(filename: str):
     with open(file_path) as json_data:
         return json.load(json_data)
     
-def store_json_file(filename: str, dict_values: dict):
+def store_json_file(foldername: str, filename: str, dict_values: dict):
     curr_wdir = os.getcwd()    
-    file_path = os.path.join(curr_wdir, 'jsonaligner', 'output', filename)
+
+    folder_path = os.path.join(curr_wdir, 'jsonaligner', 'output', foldername)
+    if not os.path.exists(folder_path):
+        os.makedirs(folder_path)
+
+    file_path = os.path.join(curr_wdir, 'jsonaligner', 'output', folder_path, filename)
 
     with open(file_path, 'w') as fp:
         json.dump(dict_values, fp, indent=4)

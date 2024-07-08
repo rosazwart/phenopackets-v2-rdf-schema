@@ -1,0 +1,44 @@
+{
+    "id": [
+        {
+            "index": "id1",
+            "role": {
+                "index": "phenopacketdbf61687-4334-409e-bcf0-90eb966db868role1",
+                "parent_index": "id1"
+            },
+            "sio_has-value": "PMID_26467218_individual_12_F_Present_study"
+        },
+        {
+            "index": "id2",
+            "role": {
+                "index": "phenopacketdbf61687-4334-409e-bcf0-90eb966db868individual1role1",
+                "parent_index": "id2"
+            },
+            "sio_has-value": "individual 12\u00a0F-Present study"
+        },
+        {
+            "index": "id3",
+            "role": {
+                "index": "phenopacketdbf61687-4334-409e-bcf0-90eb966db868interpretation1role1",
+                "parent_index": "id3"
+            },
+            "sio_has-value": "individual 12\u00a0F-Present study_1"
+        },
+        {
+            "index": "id4",
+            "role": {
+                "index": "phenopacketdbf61687-4334-409e-bcf0-90eb966db868interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1role1",
+                "parent_index": "id4"
+            },
+            "sio_has-value": "var_WQXNikGsSkYQPaOnvKZQbBJHy"
+        },
+        {
+            "index": "id5",
+            "role": {
+                "index": "phenopacketdbf61687-4334-409e-bcf0-90eb966db868interpretation1diagnosis1genomicinterpretation1individual1role1",
+                "parent_index": "id5"
+            },
+            "sio_has-value": "individual 12\u00a0F-Present study"
+        }
+    ]
+}
