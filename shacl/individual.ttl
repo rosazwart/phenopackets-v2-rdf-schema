@@ -1,0 +1,105 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix phenop: <http://purl.org/ejp-rd/phenopackets-rdf-schema/v200/shacl/> .
+
+phenop:ageShape
+    a sh:NodeShape ;
+    sh:targetClass obo:NCIT_C192262 ;    # obo:age-at-report-of-patient-encounter
+    sh:property
+		[
+            sh:path rdf:type ;
+            sh:hasValue sio:SIO_000614 ;    # sio:attribute
+        ],
+		[
+          	sh:path [ sh:inversePath sio:SIO_000628 ] ;	# sio:refers-to
+            sh:name "sio:refers-to" ;
+          	sh:node phenop:ageValueShape ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+        ]
+    ;
+.
+
+phenop:ageValueShape
+    a sh:NodeShape ;
+    sh:node phenop:literalOutputShape ;
+    sh:property
+		[
+            sh:path sio:SIO_000300 ;    # sio:has-value
+            sh:name "sio:has-value" ;
+            sh:datatype xsd:string ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+        ]
+    ;
+.
+
+phenop:sexShape
+    a sh:NodeShape ;
+	sh:node phenop:ontologyClassShape ;
+    sh:property
+		[
+          	sh:path rdfs:label ;    
+            sh:name "rdfs:label" ;
+            sh:datatype xsd:string ;
+           	sh:minCount 1 ;
+           	sh:maxCount 1 ;
+        ],
+		[
+          	sh:path [ sh:inversePath sio:SIO_000628 ] ;	# sio:refers-to
+            sh:name "sio:refers-to" ;
+          	sh:node phenop:sexValueShape ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+        ]
+.
+
+phenop:sexValueShape
+    a sh:NodeShape ;
+    sh:targetClass obo:NCIT_C160908 ;    # obo:sex-code
+    sh:property
+		[
+            sh:path rdf:type ;
+            sh:hasValue sio:SIO_000015 ;    # sio:information-content-entity
+        ]
+    ;
+.
+
+phenop:individualShape
+    a sh:NodeShape ;
+    sh:targetClass obo:NCIT_C41189 ;    # obo:study-subject
+    sh:property
+		[
+            sh:path rdf:type ;
+            sh:hasValue sio:SIO_010375 ;	# sio:multicellular-organism 
+        ],
+        [
+            sh:path sio:SIO_000228 ;    # sio:has-role
+            sh:name "sio:has-role" ;
+            sh:node phenop:roleShape ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+        ],
+        [
+            sh:path sio:SIO_000008 ;    # sio:has-attribute
+            sh:name "sio:has-attribute" ;
+            sh:minCount 0 ;
+        ],
+		[
+          	sh:path sio:SIO_000008 ;    # sio:has-attribute
+            sh:qualifiedValueShape [ sh:node phenop:sexShape ] ;
+           	sh:qualifiedMinCount 0 ;
+           	sh:qualifiedMaxCount 1 ;
+        ],
+		[
+          	sh:path sio:SIO_000008 ;    # sio:has-attribute
+            sh:qualifiedValueShape [ sh:class obo:NCIT_C192262 ] ;  # obo:age-at-report-of-patient-encounter
+           	sh:qualifiedMinCount 0 ;
+           	sh:qualifiedMaxCount 1 ;
+        ]
+	;
+.

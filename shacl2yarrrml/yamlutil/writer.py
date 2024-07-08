@@ -97,8 +97,10 @@ class Templater:
         if len(path):
             if len(path) == 1:
                 shape_mapping_name = f'{path[-1].replace('[*]', '')}{shape_mapping_name}'
-            else:
+            elif len(path) == 2:
                 shape_mapping_name = f'{path[-2].replace('[*]', '')}{path[-1].replace('[*]', '')}{shape_mapping_name}'
+            else:
+                shape_mapping_name = f'{path[-3].replace('[*]', '')}{path[-2].replace('[*]', '')}{path[-1].replace('[*]', '')}{shape_mapping_name}'
         return shape_mapping_name
 
     def add_path_mapping(self, mapping_map: CommentedMap, associated_nodeshape: shacl_objects.NodeShapeNode):

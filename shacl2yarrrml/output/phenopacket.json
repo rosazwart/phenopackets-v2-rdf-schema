@@ -8,6 +8,49 @@
                 "parent_index": "PARENTINDEX",
                 "_comment": "[1, 1]"
             },
+            "individual": {
+                "index": "INDEX",
+                "parent_index": "PARENTINDEX",
+                "_comment": "[0, 1]",
+                "role": {
+                    "index": "INDEX",
+                    "parent_index": "PARENTINDEX",
+                    "_comment": "[1, 1]"
+                },
+                "sex": {
+                    "index": "INDEX",
+                    "parent_index": "PARENTINDEX",
+                    "_comment": "[0, 1]",
+                    "sexvalue": {
+                        "index": "INDEX",
+                        "parent_index": "PARENTINDEX",
+                        "_comment": "[1, 1]"
+                    },
+                    "ontologyclass": {
+                        "index": "INDEX",
+                        "parent_index": "PARENTINDEX",
+                        "_comment": "[1, 1]",
+                        "sh_IRI": "IRI"
+                    },
+                    "rdfs_label": "XSD:STRING"
+                },
+                "age": {
+                    "index": "INDEX",
+                    "parent_index": "PARENTINDEX",
+                    "_comment": "[0, 1]",
+                    "agevalue": {
+                        "index": "INDEX",
+                        "parent_index": "PARENTINDEX",
+                        "_comment": "[1, 1]",
+                        "literaloutput": {
+                            "index": "INDEX",
+                            "parent_index": "PARENTINDEX",
+                            "_comment": "[1, 1]"
+                        },
+                        "sio_has-value": "XSD:STRING"
+                    }
+                }
+            },
             "phenotypicfeature": [
                 {
                     "index": "INDEX",
@@ -18,15 +61,31 @@
                         "parent_index": "PARENTINDEX",
                         "_comment": "[1, 1]"
                     },
+                    "excluded": {
+                        "index": "INDEX",
+                        "parent_index": "PARENTINDEX",
+                        "_comment": "[0, 1]",
+                        "excludedvalue": {
+                            "index": "INDEX",
+                            "parent_index": "PARENTINDEX",
+                            "_comment": "[1, 1]",
+                            "literaloutput": {
+                                "index": "INDEX",
+                                "parent_index": "PARENTINDEX",
+                                "_comment": "[1, 1]"
+                            },
+                            "sio_has-value": "XSD:BOOLEAN"
+                        }
+                    },
                     "ontologyclass": {
                         "index": "INDEX",
                         "parent_index": "PARENTINDEX",
                         "_comment": "[1, 1]",
-                        "rdf:type": "IRI"
+                        "sh_IRI": "IRI"
                     },
-                    "dct:identifier": "XSD:STRING",
-                    "rdfs:label": "XSD:STRING",
-                    "dct:description": "XSD:STRING"
+                    "dct_identifier": "XSD:STRING",
+                    "rdfs_label": "XSD:STRING",
+                    "dct_description": "XSD:STRING"
                 }
             ],
             "interpretation": [
@@ -52,7 +111,7 @@
                                 "parent_index": "PARENTINDEX",
                                 "_comment": "[1, 1]"
                             },
-                            "sio:has-value": "XSD:STRING"
+                            "sio_has-value": "XSD:STRING"
                         }
                     },
                     "diagnosis": {
@@ -77,10 +136,10 @@
                                 "index": "INDEX",
                                 "parent_index": "PARENTINDEX",
                                 "_comment": "[1, 1]",
-                                "rdf:type": "IRI"
+                                "sh_IRI": "IRI"
                             },
-                            "dct:identifier": "XSD:STRING",
-                            "rdfs:label": "XSD:STRING"
+                            "dct_identifier": "XSD:STRING",
+                            "rdfs_label": "XSD:STRING"
                         },
                         "genomicinterpretation": [
                             {
@@ -104,7 +163,7 @@
                                                 "parent_index": "PARENTINDEX",
                                                 "_comment": "[1, 1]"
                                             },
-                                            "sio:has-value": "XSD:STRING"
+                                            "sio_has-value": "XSD:STRING"
                                         }
                                     },
                                     "therapeuticactionability": {
@@ -120,7 +179,7 @@
                                                 "parent_index": "PARENTINDEX",
                                                 "_comment": "[1, 1]"
                                             },
-                                            "sio:has-value": "XSD:STRING"
+                                            "sio_has-value": "XSD:STRING"
                                         }
                                     },
                                     "variationdescriptor": {
@@ -145,20 +204,20 @@
                                                         "index": "INDEX",
                                                         "parent_index": "PARENTINDEX",
                                                         "_comment": "[0, *]",
-                                                        "sio:has-value": "XSD:STRING"
+                                                        "sio_has-value": "XSD:STRING"
                                                     }
                                                 ],
-                                                "sio:has-value": "XSD:STRING"
+                                                "sio_has-value": "XSD:STRING"
                                             },
                                             "altid": [
                                                 {
                                                     "index": "INDEX",
                                                     "parent_index": "PARENTINDEX",
                                                     "_comment": "[0, *]",
-                                                    "sio:has-value": "XSD:STRING"
+                                                    "sio_has-value": "XSD:STRING"
                                                 }
                                             ],
-                                            "dct:identifier": "XSD:STRING"
+                                            "dct_identifier": "XSD:STRING"
                                         },
                                         "vcfrecord": {
                                             "index": "INDEX",
@@ -168,33 +227,44 @@
                                                 "index": "INDEX",
                                                 "parent_index": "PARENTINDEX",
                                                 "_comment": "[1, 1]",
-                                                "dct:identifier": "XSD:STRING"
+                                                "dct_identifier": "XSD:STRING"
                                             },
                                             "chromosome": {
                                                 "index": "INDEX",
                                                 "parent_index": "PARENTINDEX",
                                                 "_comment": "[1, 1]",
-                                                "dct:identifier": "XSD:STRING"
+                                                "dct_identifier": "XSD:STRING"
                                             },
                                             "position": {
                                                 "index": "INDEX",
                                                 "parent_index": "PARENTINDEX",
                                                 "_comment": "[1, 1]",
-                                                "rdfs:label": "XSD:STRING"
+                                                "rdfs_label": "XSD:STRING"
                                             },
                                             "reference": {
                                                 "index": "INDEX",
                                                 "parent_index": "PARENTINDEX",
                                                 "_comment": "[1, 1]",
-                                                "rdfs:label": "XSD:STRING"
+                                                "rdfs_label": "XSD:STRING"
                                             },
                                             "alternate": {
                                                 "index": "INDEX",
                                                 "parent_index": "PARENTINDEX",
                                                 "_comment": "[1, 1]",
-                                                "rdfs:label": "XSD:STRING"
+                                                "rdfs_label": "XSD:STRING"
                                             }
                                         },
+                                        "expression": [
+                                            {
+                                                "index": "INDEX",
+                                                "parent_index": "PARENTINDEX",
+                                                "_comment": "[0, *]",
+                                                "sh_IRI": "IRI",
+                                                "rdfs_label": "XSD:STRING",
+                                                "sio_has-value": "XSD:STRING",
+                                                "dct_hasVersion": "XSD:STRING"
+                                            }
+                                        ],
                                         "moleculecontext": {
                                             "index": "INDEX",
                                             "parent_index": "PARENTINDEX",
@@ -208,11 +278,22 @@
                                                     "parent_index": "PARENTINDEX",
                                                     "_comment": "[1, 1]"
                                                 },
-                                                "sio:has-value": "XSD:STRING"
+                                                "sio_has-value": "XSD:STRING"
                                             }
                                         },
-                                        "rdfs:label": "XSD:STRING",
-                                        "dct:description": "XSD:STRING"
+                                        "allelicstate": {
+                                            "index": "INDEX",
+                                            "parent_index": "PARENTINDEX",
+                                            "_comment": "[0, 1]",
+                                            "ontologyclass": {
+                                                "index": "INDEX",
+                                                "parent_index": "PARENTINDEX",
+                                                "_comment": "[1, 1]",
+                                                "sh_IRI": "IRI"
+                                            }
+                                        },
+                                        "rdfs_label": "XSD:STRING",
+                                        "dct_description": "XSD:STRING"
                                     }
                                 },
                                 "genedescriptor": {
@@ -228,25 +309,68 @@
                                                 "index": "INDEX",
                                                 "parent_index": "PARENTINDEX",
                                                 "_comment": "[0, *]",
-                                                "sio:has-value": "XSD:STRING"
+                                                "sio_has-value": "XSD:STRING"
                                             }
                                         ],
-                                        "sio:has-value": "XSD:STRING"
+                                        "sio_has-value": "XSD:STRING"
                                     },
                                     "altid": [
                                         {
                                             "index": "INDEX",
                                             "parent_index": "PARENTINDEX",
                                             "_comment": "[0, *]",
-                                            "sio:has-value": "XSD:STRING"
+                                            "sio_has-value": "XSD:STRING"
                                         }
                                     ],
-                                    "dct:identifier": "XSD:STRING"
+                                    "dct_identifier": "XSD:STRING"
+                                },
+                                "individual": {
+                                    "index": "INDEX",
+                                    "parent_index": "PARENTINDEX",
+                                    "_comment": "Provide with cardinality [1, 1] from the following: individual OR biosample",
+                                    "role": {
+                                        "index": "INDEX",
+                                        "parent_index": "PARENTINDEX",
+                                        "_comment": "[1, 1]"
+                                    },
+                                    "sex": {
+                                        "index": "INDEX",
+                                        "parent_index": "PARENTINDEX",
+                                        "_comment": "[0, 1]",
+                                        "sexvalue": {
+                                            "index": "INDEX",
+                                            "parent_index": "PARENTINDEX",
+                                            "_comment": "[1, 1]"
+                                        },
+                                        "ontologyclass": {
+                                            "index": "INDEX",
+                                            "parent_index": "PARENTINDEX",
+                                            "_comment": "[1, 1]",
+                                            "sh_IRI": "IRI"
+                                        },
+                                        "rdfs_label": "XSD:STRING"
+                                    },
+                                    "age": {
+                                        "index": "INDEX",
+                                        "parent_index": "PARENTINDEX",
+                                        "_comment": "[0, 1]",
+                                        "agevalue": {
+                                            "index": "INDEX",
+                                            "parent_index": "PARENTINDEX",
+                                            "_comment": "[1, 1]",
+                                            "literaloutput": {
+                                                "index": "INDEX",
+                                                "parent_index": "PARENTINDEX",
+                                                "_comment": "[1, 1]"
+                                            },
+                                            "sio_has-value": "XSD:STRING"
+                                        }
+                                    }
                                 },
                                 "biosample": {
                                     "index": "INDEX",
                                     "parent_index": "PARENTINDEX",
-                                    "_comment": "Provide with cardinality [1, 1] from the following: biosample",
+                                    "_comment": "Provide with cardinality [1, 1] from the following: individual OR biosample",
                                     "role": {
                                         "index": "INDEX",
                                         "parent_index": "PARENTINDEX",
@@ -265,9 +389,9 @@
                                             "index": "INDEX",
                                             "parent_index": "PARENTINDEX",
                                             "_comment": "[1, 1]",
-                                            "rdf:type": "IRI"
+                                            "sh_IRI": "IRI"
                                         },
-                                        "rdfs:label": "XSD:STRING"
+                                        "rdfs_label": "XSD:STRING"
                                     }
                                 },
                                 "interpretationstatus": {
@@ -283,7 +407,7 @@
                                             "parent_index": "PARENTINDEX",
                                             "_comment": "[1, 1]"
                                         },
-                                        "sio:has-value": "XSD:STRING"
+                                        "sio_has-value": "XSD:STRING"
                                     }
                                 }
                             }
@@ -292,10 +416,10 @@
                             "index": "INDEX",
                             "parent_index": "PARENTINDEX",
                             "_comment": "[1, 1]",
-                            "rdf:type": "IRI"
+                            "sh_IRI": "IRI"
                         },
-                        "dct:identifier": "XSD:STRING",
-                        "rdfs:label": "XSD:STRING"
+                        "dct_identifier": "XSD:STRING",
+                        "rdfs_label": "XSD:STRING"
                     }
                 }
             ],
@@ -316,7 +440,7 @@
                             "parent_index": "PARENTINDEX",
                             "_comment": "[1, 1]"
                         },
-                        "sio:has-value": "XSD:DATETIME"
+                        "sio_has-value": "XSD:DATETIME"
                     }
                 },
                 "createdby": {
@@ -332,7 +456,7 @@
                             "parent_index": "PARENTINDEX",
                             "_comment": "[1, 1]"
                         },
-                        "sio:has-value": "XSD:STRING"
+                        "sio_has-value": "XSD:STRING"
                     }
                 },
                 "version": {
@@ -348,7 +472,7 @@
                             "parent_index": "PARENTINDEX",
                             "_comment": "[1, 1]"
                         },
-                        "sio:has-value": "XSD:STRING"
+                        "sio_has-value": "XSD:STRING"
                     }
                 }
             }

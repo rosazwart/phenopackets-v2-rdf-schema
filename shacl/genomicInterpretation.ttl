@@ -87,6 +87,7 @@ phenop:genomicInterpretationShape
             sh:qualifiedValueShape [ 
                 sh:or (
                     [ sh:class obo:NCIT_C43412 ; ]   # obo:biosample
+                    [ sh:class obo:NCIT_C41189 ; ]  # obo:study-subject
                 ) ;
             ];
            	sh:qualifiedMinCount 1 ;

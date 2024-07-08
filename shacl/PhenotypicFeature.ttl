@@ -7,48 +7,93 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix phenop: <http://purl.org/ejp-rd/phenopackets-rdf-schema/v200/shacl/> .
 
-phenop:phenotypicFeatureShape
+phenop:excludedShape
+  a sh:NodeShape ;
+  sh:targetClass obo:HP_0040285 ;    # obo:excluded
+  sh:property
+    [
+      sh:path rdf:type ;
+      sh:hasValue sio:SIO_000614 ;    # sio:attribute
+    ],
+    [
+      sh:path [ sh:inversePath sio:SIO_000628 ] ;	# sio:refers-to
+      sh:name "sio:refers-to" ;
+      sh:node phenop:excludedValueShape ;
+      sh:minCount 1 ;
+      sh:maxCount 1 ;
+    ]
+  ;
+.
+
+phenop:excludedValueShape
     a sh:NodeShape ;
-	  sh:node phenop:ontologyClassShape ;
-	  sh:property
+    sh:node phenop:literalOutputShape ;
+    sh:property
 		[
-          	sh:path dct:identifier ;    
-            sh:name "dct:identifier" ;
-            sh:datatype xsd:string ;
-           	sh:minCount 1 ;
-           	sh:maxCount 1 ;
-        ],
-		[
-          	sh:path rdfs:label ;    
-            sh:name "rdfs:label" ;
-            sh:datatype xsd:string ;
-           	sh:minCount 1 ;
-           	sh:maxCount 1 ;
-        ],
-		[
-          	sh:path dct:description ;    
-            sh:name "dct:description" ;
-            sh:datatype xsd:string ;
-           	sh:minCount 0 ;
-           	sh:maxCount 1 ;
-        ],
-		[
-          	sh:path [ sh:inversePath sio:SIO_000628 ] ;	# sio:refers-to
-            sh:name "sio:refers-to" ;
-          	sh:node phenop:phenotypicFeatureValueShape ;
+            sh:path sio:SIO_000300 ;    # sio:has-value
+            sh:name "sio:has-value" ;
+            sh:datatype xsd:boolean ;
             sh:minCount 1 ;
             sh:maxCount 1 ;
         ]
     ;
 .
 
-phenop:phenotypicFeatureValueShape
+phenop:phenotypicFeatureShape
     a sh:NodeShape ;
-    sh:targetClass obo:NCIT_C16977 ;    # obo:phenotype
-    sh:property
-		[
-            sh:path rdf:type ;
-            sh:hasValue sio:SIO_000015 ;    # sio:information-content-entity
-        ]
+	  sh:node phenop:ontologyClassShape ;
+	  sh:property
+      [
+        sh:path dct:identifier ;    
+        sh:name "dct:identifier" ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+      ],
+      [
+        sh:path rdfs:label ;    
+        sh:name "rdfs:label" ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+      ],
+      [
+        sh:path dct:description ;    
+        sh:name "dct:description" ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+      ],
+      [
+        sh:path [ sh:inversePath sio:SIO_000628 ] ;	# sio:refers-to
+        sh:name "sio:refers-to" ;
+        sh:node phenop:phenotypicFeatureValueShape ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+      ],
+      [
+        sh:path sio:SIO_000008 ;    # sio:has-attribute
+        sh:name "sio:has-attribute" ;
+        sh:minCount 0 ;
+      ],
+      [
+        sh:path sio:SIO_000008 ;    # sio:has-attribute
+        sh:qualifiedValueShape [ 
+          sh:class obo:HP_0040285 ;    # obo:excluded
+        ] ;
+        sh:qualifiedMinCount 0 ;
+        sh:qualifiedMaxCount 1 ;
+      ]
     ;
+.
+
+phenop:phenotypicFeatureValueShape
+  a sh:NodeShape ;
+  sh:targetClass obo:NCIT_C16977 ;    # obo:phenotype
+  sh:property
+    [
+      sh:path rdf:type ;
+      sh:hasValue sio:SIO_000015 ;    # sio:information-content-entity
+    ]
+  ;
 .

@@ -7,6 +7,11 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix phenop: <http://purl.org/ejp-rd/phenopackets-rdf-schema/v200/shacl/> .
 
+phenop:allelicStateShape
+    a sh:NodeShape ;
+    sh:node phenop:ontologyClassShape ;
+.
+
 phenop:moleculeContextShape 
     a sh:NodeShape ;
     sh:targetClass obo:NCIT_C63816 ;    # obo:molecule
@@ -55,6 +60,54 @@ phenop:moleculeContextValueShape
             sh:maxCount 1 ;
         ]
     ;
+.
+
+phenop:expressionShape
+    a sh:NodeShape ;
+    sh:property
+		[
+            sh:path rdf:type ;
+            sh:minCount 2 ;
+            sh:maxCount 2 ;
+        ],
+		[
+            sh:path rdf:type ;
+            sh:qualifiedValueShape [ 
+                sh:hasValue sio:SIO_000015 ;    # sio:information-content-entity
+            ];
+           	sh:qualifiedMinCount 1 ;
+           	sh:qualifiedMaxCount 1 ;
+        ],
+		[
+          	sh:path rdf:type ;    
+            sh:qualifiedValueShape [ 
+                sh:nodeKind sh:IRI ;
+            ] ;
+           	sh:qualifiedMinCount 1 ;
+           	sh:qualifiedMaxCount 1 ;
+        ],
+        [
+            sh:path rdfs:label ;    
+            sh:name "rdfs:label" ;
+            sh:datatype xsd:string ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+        ],
+        [
+            sh:path sio:SIO_000300 ;    
+            sh:name "sio:has-value" ;
+            sh:datatype xsd:string ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+        ],
+        [
+            sh:path dct:hasVersion ;    
+            sh:name "dct:hasVersion" ;
+            sh:datatype xsd:string ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+        ]
+	;
 .
 
 phenop:variationDescriptorShape
@@ -109,6 +162,7 @@ phenop:variationDescriptorShape
             sh:or (
                 [ sh:class obo:NCIT_C16612 ; ]   # gene descriptor
                 [ sh:class obo:NCIT_C172216 ; ]  # vcf record
+                [ sh:node phenop:expressionShape ; ]
             ) ;
             sh:minCount 0 ;
         ],
@@ -129,6 +183,13 @@ phenop:variationDescriptorShape
            	sh:qualifiedMaxCount 1 ;
         ],
         [
+            sh:path sio:SIO_001403 ;    # sio:is-associated-with
+            sh:qualifiedValueShape [ 
+                sh:node phenop:expressionShape ;
+            ];
+           	sh:qualifiedMinCount 0 ;
+        ],
+        [
             sh:path sio:SIO_000008 ;    # sio:has-attribute
             sh:name "sio:has-attribute" ;
             sh:minCount 1 ;
@@ -139,6 +200,14 @@ phenop:variationDescriptorShape
                 sh:class obo:NCIT_C63816 ;    # obo:molecule
             ];
            	sh:qualifiedMinCount 1 ;
+           	sh:qualifiedMaxCount 1 ;
+        ],
+        [
+            sh:path sio:SIO_000008 ;    # sio:has-attribute
+            sh:qualifiedValueShape [ 
+                sh:node phenop:allelicStateShape ;
+            ];
+           	sh:qualifiedMinCount 0 ;
            	sh:qualifiedMaxCount 1 ;
         ]
     ;

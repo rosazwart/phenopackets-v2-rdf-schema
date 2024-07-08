@@ -35,6 +35,11 @@ class Traverser:
 
         associated_literals = self.interpreter.get_associated_literals(from_node=root_node.node, rel_path=[], include_inherited=False)
         for associated_literal in associated_literals:
-            association_dict[associated_literal.literal_name] = associated_literal.literal_type.upper()
+            if associated_literal.nodekind_name:
+                value_name = associated_literal.nodekind_name.replace(':', '_')
+            else:
+                value_name = associated_literal.literal_name.replace(':', '_')
+
+            association_dict[value_name] = associated_literal.literal_type.upper()
 
         return association_dict
