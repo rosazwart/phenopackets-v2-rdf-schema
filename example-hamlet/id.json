@@ -1,0 +1,60 @@
+{
+    "id": [
+        {
+            "index": "id1",
+            "role": {
+                "index": "phenopacket01726fa1-066b-4c0d-a906-cfb170e18cb7role1",
+                "parent_index": "id1"
+            },
+            "sio_has-value": "new-reference-files"
+        },
+        {
+            "index": "id2",
+            "role": {
+                "index": "phenopacket01726fa1-066b-4c0d-a906-cfb170e18cb7biosample1role1",
+                "parent_index": "id2"
+            },
+            "sio_has-value": "phenopacket01726fa1-066b-4c0d-a906-cfb170e18cb7_SRR8615409"
+        },
+        {
+            "index": "id3",
+            "role": {
+                "index": "phenopacket01726fa1-066b-4c0d-a906-cfb170e18cb7interpretation1role1",
+                "parent_index": "id3"
+            },
+            "sio_has-value": "new-reference-files_interpr1"
+        },
+        {
+            "index": "id4",
+            "role": {
+                "index": "phenopacket01726fa1-066b-4c0d-a906-cfb170e18cb7interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescr1role1",
+                "parent_index": "id4"
+            },
+            "sio_has-value": "new-reference-files_interpr1_genomicinterpr1_vardescr"
+        },
+        {
+            "index": "id5",
+            "role": {
+                "index": "phenopacket01726fa1-066b-4c0d-a906-cfb170e18cb7interpretation1diagnosis1genomicinterpretation1biosample1role1",
+                "parent_index": "id5"
+            },
+            "sio_has-value": "new-reference-files_interpr1_genomicinterpr1_biosampleSRR8615409"
+        },
+        {
+            "index": "id6",
+            "role": {
+                "index": "phenopacket01726fa1-066b-4c0d-a906-cfb170e18cb7interpretation1diagnosis1genomicinterpretation2variantinterpretation1variationdescr1role1",
+                "parent_index": "id6"
+            },
+            "sio_has-value": "new-reference-files_interpr1_genomicinterpr2_vardescr"
+        },
+        {
+            "index": "id7",
+            "role": {
+                "index": "phenopacket01726fa1-066b-4c0d-a906-cfb170e18cb7interpretation1diagnosis1genomicinterpretation2biosample1role1",
+                "parent_index": "id7"
+            },
+            "sio_has-value": "new-reference-files_interpr1_genomicinterpr2_biosampleSRR8615409"
+        }
+    ]
+}

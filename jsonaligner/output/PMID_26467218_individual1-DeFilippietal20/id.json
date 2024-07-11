@@ -3,7 +3,7 @@
         {
             "index": "id1",
             "role": {
-                "index": "phenopacket9469f1ff-d5a9-40ee-ae3f-eca81062be07role1",
+                "index": "phenopacketec9352c4-ad92-41c9-9d37-5c5d024ae12erole1",
                 "parent_index": "id1"
             },
             "sio_has-value": "PMID_26467218_individual_1_De_Filippi_et_al__20"
@@ -11,7 +11,7 @@
         {
             "index": "id2",
             "role": {
-                "index": "phenopacket9469f1ff-d5a9-40ee-ae3f-eca81062be07individual1role1",
+                "index": "phenopacketec9352c4-ad92-41c9-9d37-5c5d024ae12eindividual1role1",
                 "parent_index": "id2"
             },
             "sio_has-value": "individual 1-De Filippi et al. [20]"
@@ -19,7 +19,7 @@
         {
             "index": "id3",
             "role": {
-                "index": "phenopacket9469f1ff-d5a9-40ee-ae3f-eca81062be07interpretation1role1",
+                "index": "phenopacketec9352c4-ad92-41c9-9d37-5c5d024ae12einterpretation1role1",
                 "parent_index": "id3"
             },
             "sio_has-value": "individual 1-De Filippi et al. [20]_1"
@@ -27,7 +27,7 @@
         {
             "index": "id4",
             "role": {
-                "index": "phenopacket9469f1ff-d5a9-40ee-ae3f-eca81062be07interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1role1",
+                "index": "phenopacketec9352c4-ad92-41c9-9d37-5c5d024ae12einterpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1role1",
                 "parent_index": "id4"
             },
             "sio_has-value": "var_TXqirysAMFPjfQvzVzpGhQvkC"
@@ -35,7 +35,7 @@
         {
             "index": "id5",
             "role": {
-                "index": "phenopacket9469f1ff-d5a9-40ee-ae3f-eca81062be07interpretation1diagnosis1genomicinterpretation1individual1role1",
+                "index": "phenopacketec9352c4-ad92-41c9-9d37-5c5d024ae12einterpretation1diagnosis1genomicinterpretation1individual1role1",
                 "parent_index": "id5"
             },
             "sio_has-value": "individual 1-De Filippi et al. [20]"

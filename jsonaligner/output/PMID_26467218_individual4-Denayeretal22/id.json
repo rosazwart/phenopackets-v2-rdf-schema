@@ -3,7 +3,7 @@
         {
             "index": "id1",
             "role": {
-                "index": "phenopacketc83e2215-46ea-436e-b068-dafea0653c74role1",
+                "index": "phenopacket1693d373-b9aa-4668-824a-a5dbe375e285role1",
                 "parent_index": "id1"
             },
             "sio_has-value": "PMID_26467218_individual_4_Denayer_et_al__22"
@@ -11,7 +11,7 @@
         {
             "index": "id2",
             "role": {
-                "index": "phenopacketc83e2215-46ea-436e-b068-dafea0653c74individual1role1",
+                "index": "phenopacket1693d373-b9aa-4668-824a-a5dbe375e285individual1role1",
                 "parent_index": "id2"
             },
             "sio_has-value": "individual 4-Denayer et al. [22]"
@@ -19,7 +19,7 @@
         {
             "index": "id3",
             "role": {
-                "index": "phenopacketc83e2215-46ea-436e-b068-dafea0653c74interpretation1role1",
+                "index": "phenopacket1693d373-b9aa-4668-824a-a5dbe375e285interpretation1role1",
                 "parent_index": "id3"
             },
             "sio_has-value": "individual 4-Denayer et al. [22]_1"
@@ -27,7 +27,7 @@
         {
             "index": "id4",
             "role": {
-                "index": "phenopacketc83e2215-46ea-436e-b068-dafea0653c74interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1role1",
+                "index": "phenopacket1693d373-b9aa-4668-824a-a5dbe375e285interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1role1",
                 "parent_index": "id4"
             },
             "sio_has-value": "var_QjztYjNFrfytPDmfzhKaidGes"
@@ -35,7 +35,7 @@
         {
             "index": "id5",
             "role": {
-                "index": "phenopacketc83e2215-46ea-436e-b068-dafea0653c74interpretation1diagnosis1genomicinterpretation1individual1role1",
+                "index": "phenopacket1693d373-b9aa-4668-824a-a5dbe375e285interpretation1diagnosis1genomicinterpretation1individual1role1",
                 "parent_index": "id5"
             },
             "sio_has-value": "individual 4-Denayer et al. [22]"

@@ -3,7 +3,7 @@
         {
             "index": "id1",
             "role": {
-                "index": "phenopacket20e1efef-f418-4b06-b80e-2c2f7502dac9role1",
+                "index": "phenopackete7291b34-2d4a-4621-9a44-c17b12a50856role1",
                 "parent_index": "id1"
             },
             "sio_has-value": "PMID_26467218_individual_10_Kraoua_et_al__23"
@@ -11,7 +11,7 @@
         {
             "index": "id2",
             "role": {
-                "index": "phenopacket20e1efef-f418-4b06-b80e-2c2f7502dac9individual1role1",
+                "index": "phenopackete7291b34-2d4a-4621-9a44-c17b12a50856individual1role1",
                 "parent_index": "id2"
             },
             "sio_has-value": "individual 10-Kraoua et al. [23]"
@@ -19,7 +19,7 @@
         {
             "index": "id3",
             "role": {
-                "index": "phenopacket20e1efef-f418-4b06-b80e-2c2f7502dac9interpretation1role1",
+                "index": "phenopackete7291b34-2d4a-4621-9a44-c17b12a50856interpretation1role1",
                 "parent_index": "id3"
             },
             "sio_has-value": "individual 10-Kraoua et al. [23]_1"
@@ -27,7 +27,7 @@
         {
             "index": "id4",
             "role": {
-                "index": "phenopacket20e1efef-f418-4b06-b80e-2c2f7502dac9interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1role1",
+                "index": "phenopackete7291b34-2d4a-4621-9a44-c17b12a50856interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1role1",
                 "parent_index": "id4"
             },
             "sio_has-value": "var_WQXNikGsSkYQPaOnvKZQbBJHy"
@@ -35,7 +35,7 @@
         {
             "index": "id5",
             "role": {
-                "index": "phenopacket20e1efef-f418-4b06-b80e-2c2f7502dac9interpretation1diagnosis1genomicinterpretation1individual1role1",
+                "index": "phenopackete7291b34-2d4a-4621-9a44-c17b12a50856interpretation1diagnosis1genomicinterpretation1individual1role1",
                 "parent_index": "id5"
             },
             "sio_has-value": "individual 10-Kraoua et al. [23]"
