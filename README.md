@@ -39,6 +39,6 @@ To ensure that the resulting RDF knowledge graph still complies to the Phenopack
 Functionalities in the scripts included throughout the workflow are used from the open source Python library [RDFLib](https://rdflib.readthedocs.io/en/stable/index.html) and the additional module [pySHACL](https://github.com/RDFLib/pySHACL). Also, for writing the YARRRML template the package [ruamel.yaml](https://yaml.readthedocs.io/en/latest/) is utilized.
 
 # Used Phenopacket Data
-In folder [`example-json-yarrrml-rdf`](https://github.com/rosazwart/phenopackets-v2-rdf-schema/tree/main/example-json-yarrrml-rdf) mock HAMLET analysis data has been converted to an RDF dataset.
+In folder [`example-hamlet`](https://github.com/rosazwart/phenopackets-v2-rdf-schema/tree/main/example-hamlet) mock HAMLET analysis data has been converted to an RDF dataset.
 
 In folder [`example-phenopacket`](https://github.com/rosazwart/phenopackets-v2-rdf-schema/tree/main/example-phenopacket) a selection of phenopacket instances has been extracted from the [Monarch Initiative phenopacket store](https://github.com/monarch-initiative/phenopacket-store/tree/main/notebooks/NRAS/phenopackets) and converted to RDF datasets.
