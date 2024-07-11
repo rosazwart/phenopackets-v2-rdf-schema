@@ -32,7 +32,7 @@ phenop:moleculeContextShape
 		[
             sh:path rdf:type ;
             sh:qualifiedValueShape [ 
-                sh:hasValue obo:NCIT_C63816 ;    # obo:context
+                sh:hasValue obo:NCIT_C63816 ;    # obo:molecule
             ];
            	sh:qualifiedMinCount 1 ;
            	sh:qualifiedMaxCount 1 ;

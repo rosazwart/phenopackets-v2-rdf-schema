@@ -71,10 +71,37 @@ phenop:biosampleShape
             sh:maxCount 1 ;
         ],
         [
-            sh:path sio:SIO_000008 ;    # sio:has-attribute
-            sh:name "sio:has-attribute" ;
-            sh:node phenop:taxonomyShape ;
+            sh:path dct:description ;    
+            sh:name "dct:description" ;
+            sh:datatype xsd:string ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
+        ],
+        [
+            sh:path rdfs:comment ;    
+            sh:name "rdfs:comment" ;
+            sh:datatype xsd:string ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+        ],
+        [
+            sh:path sio:SIO_000008 ;    # sio:has-attribute
+            sh:name "sio:has-attribute" ;
+            sh:minCount 0 ;
+        ],
+        [
+            sh:path sio:SIO_000008 ;    # sio:has-attribute
+            sh:qualifiedValueShape [ 
+                sh:node phenop:taxonomyShape ;
+            ] ;
+            sh:qualifiedMinCount 0 ;
+            sh:qualifiedMaxCount 1 ;
+        ],
+        [
+            sh:path sio:SIO_000008 ;    # sio:has-attribute
+            sh:qualifiedValueShape [ 
+                sh:node phenop:phenotypicFeatureShape ;
+            ] ;
+            sh:qualifiedMinCount 0 ;
         ]
 .

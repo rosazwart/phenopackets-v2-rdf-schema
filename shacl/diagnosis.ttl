@@ -36,8 +36,8 @@ phenop:diagnosisShape
             sh:path sio:SIO_001403 ;    # sio:is-associated-with
             sh:name "sio:is-associated-with" ;
             sh:or (
-                    [ sh:node phenop:diseaseShape ]
-                    [ sh:node phenop:genomicInterpretationShape ]
+                [ sh:node phenop:diseaseShape ]
+                [ sh:node phenop:genomicInterpretationShape ]
             ) ;
             sh:minCount 1 ;
         ],

@@ -88,6 +88,74 @@
                     "dct_description": "XSD:STRING"
                 }
             ],
+            "biosample": [
+                {
+                    "index": "INDEX",
+                    "parent_index": "PARENTINDEX",
+                    "_comment": "[0, *]",
+                    "role": {
+                        "index": "INDEX",
+                        "parent_index": "PARENTINDEX",
+                        "_comment": "[1, 1]"
+                    },
+                    "taxonomy": {
+                        "index": "INDEX",
+                        "parent_index": "PARENTINDEX",
+                        "_comment": "[0, 1]",
+                        "taxonomyvalue": {
+                            "index": "INDEX",
+                            "parent_index": "PARENTINDEX",
+                            "_comment": "[1, 1]"
+                        },
+                        "ontologyclass": {
+                            "index": "INDEX",
+                            "parent_index": "PARENTINDEX",
+                            "_comment": "[1, 1]",
+                            "sh_IRI": "IRI"
+                        },
+                        "rdfs_label": "XSD:STRING"
+                    },
+                    "phenotypicfeature": [
+                        {
+                            "index": "INDEX",
+                            "parent_index": "PARENTINDEX",
+                            "_comment": "[0, *]",
+                            "phenotypicfeaturevalue": {
+                                "index": "INDEX",
+                                "parent_index": "PARENTINDEX",
+                                "_comment": "[1, 1]"
+                            },
+                            "excluded": {
+                                "index": "INDEX",
+                                "parent_index": "PARENTINDEX",
+                                "_comment": "[0, 1]",
+                                "excludedvalue": {
+                                    "index": "INDEX",
+                                    "parent_index": "PARENTINDEX",
+                                    "_comment": "[1, 1]",
+                                    "literaloutput": {
+                                        "index": "INDEX",
+                                        "parent_index": "PARENTINDEX",
+                                        "_comment": "[1, 1]"
+                                    },
+                                    "sio_has-value": "XSD:BOOLEAN"
+                                }
+                            },
+                            "ontologyclass": {
+                                "index": "INDEX",
+                                "parent_index": "PARENTINDEX",
+                                "_comment": "[1, 1]",
+                                "sh_IRI": "IRI"
+                            },
+                            "dct_identifier": "XSD:STRING",
+                            "rdfs_label": "XSD:STRING",
+                            "dct_description": "XSD:STRING"
+                        }
+                    ],
+                    "dct_description": "XSD:STRING",
+                    "rdfs_comment": "XSD:STRING"
+                }
+            ],
             "interpretation": [
                 {
                     "index": "INDEX",
@@ -239,7 +307,7 @@
                                                 "index": "INDEX",
                                                 "parent_index": "PARENTINDEX",
                                                 "_comment": "[1, 1]",
-                                                "rdfs_label": "XSD:STRING"
+                                                "rdfs_label": "XSD:INTEGER"
                                             },
                                             "reference": {
                                                 "index": "INDEX",
@@ -392,7 +460,46 @@
                                             "sh_IRI": "IRI"
                                         },
                                         "rdfs_label": "XSD:STRING"
-                                    }
+                                    },
+                                    "phenotypicfeature": [
+                                        {
+                                            "index": "INDEX",
+                                            "parent_index": "PARENTINDEX",
+                                            "_comment": "[0, *]",
+                                            "phenotypicfeaturevalue": {
+                                                "index": "INDEX",
+                                                "parent_index": "PARENTINDEX",
+                                                "_comment": "[1, 1]"
+                                            },
+                                            "excluded": {
+                                                "index": "INDEX",
+                                                "parent_index": "PARENTINDEX",
+                                                "_comment": "[0, 1]",
+                                                "excludedvalue": {
+                                                    "index": "INDEX",
+                                                    "parent_index": "PARENTINDEX",
+                                                    "_comment": "[1, 1]",
+                                                    "literaloutput": {
+                                                        "index": "INDEX",
+                                                        "parent_index": "PARENTINDEX",
+                                                        "_comment": "[1, 1]"
+                                                    },
+                                                    "sio_has-value": "XSD:BOOLEAN"
+                                                }
+                                            },
+                                            "ontologyclass": {
+                                                "index": "INDEX",
+                                                "parent_index": "PARENTINDEX",
+                                                "_comment": "[1, 1]",
+                                                "sh_IRI": "IRI"
+                                            },
+                                            "dct_identifier": "XSD:STRING",
+                                            "rdfs_label": "XSD:STRING",
+                                            "dct_description": "XSD:STRING"
+                                        }
+                                    ],
+                                    "dct_description": "XSD:STRING",
+                                    "rdfs_comment": "XSD:STRING"
                                 },
                                 "interpretationstatus": {
                                     "index": "INDEX",

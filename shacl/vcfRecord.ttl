@@ -54,7 +54,7 @@ phenop:positionShape
 		[
           	sh:path rdfs:label ;    
             sh:name "rdfs:label" ;
-            sh:datatype xsd:string ;
+            sh:datatype xsd:integer ;
            	sh:minCount 1 ;
            	sh:maxCount 1 ;
         ]

@@ -7,10 +7,9 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix phenop: <http://purl.org/ejp-rd/phenopackets-rdf-schema/v200/shacl/> .
 
-# TODO: find better ontology term for this concept
 phenop:therapeuticActionabilityShape
     a sh:NodeShape ;
-    sh:targetClass obo:NCIT_C25404 ;    # obo:action    
+    sh:targetClass obo:NCIT_C25277 ;    # obo:therapeutic    
     sh:property
 		[
             sh:path rdf:type ;
@@ -43,7 +42,7 @@ phenop:therapeuticActionabilityValueShape
 
 phenop:acmgPathogenicityClassShape
     a sh:NodeShape ;
-    sh:targetClass obo:NCIT_C168798 ;    # obo:acmg-classification-of-genomic-variant-pathogenicity
+    sh:targetClass obo:NCIT_C168796 ;    # obo:pathogenicity
     sh:property
 		[
             sh:path rdf:type ;
@@ -124,7 +123,7 @@ phenop:variantInterpretationShape
         [
             sh:path sio:SIO_001403 ;    # sio:is-associated-with
             sh:name "sio:is-associated-with" ;
-            sh:class obo:NCIT_C97927 ;  # variation descriptor
+            sh:class obo:NCIT_C97927 ;  # obo:gene-variant
             sh:minCount 1 ;
             sh:maxCount 1 ;
         ]

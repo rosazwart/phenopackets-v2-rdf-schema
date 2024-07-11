@@ -8,39 +8,39 @@
 @prefix phenop: <http://purl.org/ejp-rd/phenopackets-rdf-schema/v200/shacl/> .
 
 phenop:diseaseShape
-    a sh:NodeShape ;
-    sh:node phenop:ontologyClassShape ;
-    sh:property
+  a sh:NodeShape ;
+  sh:node phenop:ontologyClassShape ;
+  sh:property
+    [
+      sh:path dct:identifier ;    
+      sh:name "dct:identifier" ;
+      sh:datatype xsd:string ;
+      sh:minCount 1 ;
+      sh:maxCount 1 ;
+    ],
 		[
-          	sh:path dct:identifier ;    
-            sh:name "dct:identifier" ;
-            sh:datatype xsd:string ;
-           	sh:minCount 1 ;
-           	sh:maxCount 1 ;
-        ],
+      sh:path rdfs:label ;    
+      sh:name "rdfs:label" ;
+      sh:datatype xsd:string ;
+      sh:minCount 1 ;
+      sh:maxCount 1 ;
+    ],
 		[
-          	sh:path rdfs:label ;    
-            sh:name "rdfs:label" ;
-            sh:datatype xsd:string ;
-           	sh:minCount 1 ;
-           	sh:maxCount 1 ;
-        ],
-		[
-          	sh:path [ sh:inversePath sio:SIO_000628 ] ;	# sio:refers-to
-            sh:name "sio:refers-to" ;
-          	sh:node phenop:diseaseValueShape ;
-            sh:minCount 1 ;
-            sh:maxCount 1 ;
-        ]
+      sh:path [ sh:inversePath sio:SIO_000628 ] ;	# sio:refers-to
+      sh:name "sio:refers-to" ;
+      sh:node phenop:diseaseValueShape ;
+      sh:minCount 1 ;
+      sh:maxCount 1 ;
+    ]
 .
 
 phenop:diseaseValueShape
-    a sh:NodeShape ;
-    sh:targetClass obo:NCIT_C2991 ;    # obo:disease-disorder
-    sh:property
-		[
-            sh:path rdf:type ;
-            sh:hasValue sio:SIO_000015 ;    # sio:information-content-entity
-        ]
-    ;
+  a sh:NodeShape ;
+  sh:targetClass obo:NCIT_C2991 ;    # obo:disease-disorder
+  sh:property
+    [
+      sh:path rdf:type ;
+      sh:hasValue sio:SIO_000015 ;    # sio:information-content-entity
+    ]
+  ;
 .
