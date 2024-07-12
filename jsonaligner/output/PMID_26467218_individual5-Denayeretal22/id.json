@@ -1,42 +1,42 @@
 {
     "id": [
         {
-            "index": "id1",
+            "index": "0520c05f-5eb4-474d-b51f-c411d0abb859_id1",
             "role": {
-                "index": "phenopacket45098bfd-8bf6-412c-a077-5d63f8ee2e89role1",
-                "parent_index": "id1"
+                "index": "phenopacket0520c05f-5eb4-474d-b51f-c411d0abb859role1",
+                "parent_index": "0520c05f-5eb4-474d-b51f-c411d0abb859_id1"
             },
             "sio_has-value": "PMID_26467218_individual_5_Denayer_et_al__22"
         },
         {
-            "index": "id2",
+            "index": "0520c05f-5eb4-474d-b51f-c411d0abb859_id2",
             "role": {
-                "index": "phenopacket45098bfd-8bf6-412c-a077-5d63f8ee2e89individual1role1",
-                "parent_index": "id2"
+                "index": "phenopacket0520c05f-5eb4-474d-b51f-c411d0abb859individual1role1",
+                "parent_index": "0520c05f-5eb4-474d-b51f-c411d0abb859_id2"
             },
             "sio_has-value": "individual 5-Denayer et al. [22]"
         },
         {
-            "index": "id3",
+            "index": "0520c05f-5eb4-474d-b51f-c411d0abb859_id3",
             "role": {
-                "index": "phenopacket45098bfd-8bf6-412c-a077-5d63f8ee2e89interpretation1role1",
-                "parent_index": "id3"
+                "index": "phenopacket0520c05f-5eb4-474d-b51f-c411d0abb859interpretation1role1",
+                "parent_index": "0520c05f-5eb4-474d-b51f-c411d0abb859_id3"
             },
             "sio_has-value": "individual 5-Denayer et al. [22]_1"
         },
         {
-            "index": "id4",
+            "index": "0520c05f-5eb4-474d-b51f-c411d0abb859_id4",
             "role": {
-                "index": "phenopacket45098bfd-8bf6-412c-a077-5d63f8ee2e89interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1role1",
-                "parent_index": "id4"
+                "index": "phenopacket0520c05f-5eb4-474d-b51f-c411d0abb859interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1role1",
+                "parent_index": "0520c05f-5eb4-474d-b51f-c411d0abb859_id4"
             },
             "sio_has-value": "var_iwhwDAPCrXLGWWVOyhZFRbfcT"
         },
         {
-            "index": "id5",
+            "index": "0520c05f-5eb4-474d-b51f-c411d0abb859_id5",
             "role": {
-                "index": "phenopacket45098bfd-8bf6-412c-a077-5d63f8ee2e89interpretation1diagnosis1genomicinterpretation1individual1role1",
-                "parent_index": "id5"
+                "index": "phenopacket0520c05f-5eb4-474d-b51f-c411d0abb859interpretation1diagnosis1genomicinterpretation1individual1role1",
+                "parent_index": "0520c05f-5eb4-474d-b51f-c411d0abb859_id5"
             },
             "sio_has-value": "individual 5-Denayer et al. [22]"
         }

@@ -1,42 +1,42 @@
 {
     "id": [
         {
-            "index": "id1",
+            "index": "14db186a-d202-43f4-b1ca-b9de51ce75f6_id1",
             "role": {
-                "index": "phenopacket3195efe4-4982-47b6-a0ef-0cffe860eb4arole1",
-                "parent_index": "id1"
+                "index": "phenopacket14db186a-d202-43f4-b1ca-b9de51ce75f6role1",
+                "parent_index": "14db186a-d202-43f4-b1ca-b9de51ce75f6_id1"
             },
             "sio_has-value": "PMID_26467218_individual_2_Runtuwene_et_al__21"
         },
         {
-            "index": "id2",
+            "index": "14db186a-d202-43f4-b1ca-b9de51ce75f6_id2",
             "role": {
-                "index": "phenopacket3195efe4-4982-47b6-a0ef-0cffe860eb4aindividual1role1",
-                "parent_index": "id2"
+                "index": "phenopacket14db186a-d202-43f4-b1ca-b9de51ce75f6individual1role1",
+                "parent_index": "14db186a-d202-43f4-b1ca-b9de51ce75f6_id2"
             },
             "sio_has-value": "individual 2-Runtuwene et al. [21]"
         },
         {
-            "index": "id3",
+            "index": "14db186a-d202-43f4-b1ca-b9de51ce75f6_id3",
             "role": {
-                "index": "phenopacket3195efe4-4982-47b6-a0ef-0cffe860eb4ainterpretation1role1",
-                "parent_index": "id3"
+                "index": "phenopacket14db186a-d202-43f4-b1ca-b9de51ce75f6interpretation1role1",
+                "parent_index": "14db186a-d202-43f4-b1ca-b9de51ce75f6_id3"
             },
             "sio_has-value": "individual 2-Runtuwene et al. [21]_1"
         },
         {
-            "index": "id4",
+            "index": "14db186a-d202-43f4-b1ca-b9de51ce75f6_id4",
             "role": {
-                "index": "phenopacket3195efe4-4982-47b6-a0ef-0cffe860eb4ainterpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1role1",
-                "parent_index": "id4"
+                "index": "phenopacket14db186a-d202-43f4-b1ca-b9de51ce75f6interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1role1",
+                "parent_index": "14db186a-d202-43f4-b1ca-b9de51ce75f6_id4"
             },
             "sio_has-value": "var_rjwLAoBIuqHOyTxPmicWaULQt"
         },
         {
-            "index": "id5",
+            "index": "14db186a-d202-43f4-b1ca-b9de51ce75f6_id5",
             "role": {
-                "index": "phenopacket3195efe4-4982-47b6-a0ef-0cffe860eb4ainterpretation1diagnosis1genomicinterpretation1individual1role1",
-                "parent_index": "id5"
+                "index": "phenopacket14db186a-d202-43f4-b1ca-b9de51ce75f6interpretation1diagnosis1genomicinterpretation1individual1role1",
+                "parent_index": "14db186a-d202-43f4-b1ca-b9de51ce75f6_id5"
             },
             "sio_has-value": "individual 2-Runtuwene et al. [21]"
         }

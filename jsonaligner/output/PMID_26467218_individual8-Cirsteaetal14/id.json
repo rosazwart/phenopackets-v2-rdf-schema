@@ -1,42 +1,42 @@
 {
     "id": [
         {
-            "index": "id1",
+            "index": "c9101e2b-2e44-4f14-8b3b-0fe3c8cbf5b1_id1",
             "role": {
-                "index": "phenopacket129ea1e4-a221-4a75-9694-b3c6b0c5622frole1",
-                "parent_index": "id1"
+                "index": "phenopacketc9101e2b-2e44-4f14-8b3b-0fe3c8cbf5b1role1",
+                "parent_index": "c9101e2b-2e44-4f14-8b3b-0fe3c8cbf5b1_id1"
             },
             "sio_has-value": "PMID_26467218_individual_8_Cirstea_et_al__14"
         },
         {
-            "index": "id2",
+            "index": "c9101e2b-2e44-4f14-8b3b-0fe3c8cbf5b1_id2",
             "role": {
-                "index": "phenopacket129ea1e4-a221-4a75-9694-b3c6b0c5622findividual1role1",
-                "parent_index": "id2"
+                "index": "phenopacketc9101e2b-2e44-4f14-8b3b-0fe3c8cbf5b1individual1role1",
+                "parent_index": "c9101e2b-2e44-4f14-8b3b-0fe3c8cbf5b1_id2"
             },
             "sio_has-value": "individual 8-Cirstea et al. [14]"
         },
         {
-            "index": "id3",
+            "index": "c9101e2b-2e44-4f14-8b3b-0fe3c8cbf5b1_id3",
             "role": {
-                "index": "phenopacket129ea1e4-a221-4a75-9694-b3c6b0c5622finterpretation1role1",
-                "parent_index": "id3"
+                "index": "phenopacketc9101e2b-2e44-4f14-8b3b-0fe3c8cbf5b1interpretation1role1",
+                "parent_index": "c9101e2b-2e44-4f14-8b3b-0fe3c8cbf5b1_id3"
             },
             "sio_has-value": "individual 8-Cirstea et al. [14]_1"
         },
         {
-            "index": "id4",
+            "index": "c9101e2b-2e44-4f14-8b3b-0fe3c8cbf5b1_id4",
             "role": {
-                "index": "phenopacket129ea1e4-a221-4a75-9694-b3c6b0c5622finterpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1role1",
-                "parent_index": "id4"
+                "index": "phenopacketc9101e2b-2e44-4f14-8b3b-0fe3c8cbf5b1interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1role1",
+                "parent_index": "c9101e2b-2e44-4f14-8b3b-0fe3c8cbf5b1_id4"
             },
             "sio_has-value": "var_WQXNikGsSkYQPaOnvKZQbBJHy"
         },
         {
-            "index": "id5",
+            "index": "c9101e2b-2e44-4f14-8b3b-0fe3c8cbf5b1_id5",
             "role": {
-                "index": "phenopacket129ea1e4-a221-4a75-9694-b3c6b0c5622finterpretation1diagnosis1genomicinterpretation1individual1role1",
-                "parent_index": "id5"
+                "index": "phenopacketc9101e2b-2e44-4f14-8b3b-0fe3c8cbf5b1interpretation1diagnosis1genomicinterpretation1individual1role1",
+                "parent_index": "c9101e2b-2e44-4f14-8b3b-0fe3c8cbf5b1_id5"
             },
             "sio_has-value": "individual 8-Cirstea et al. [14]"
         }

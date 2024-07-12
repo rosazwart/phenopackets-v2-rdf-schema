@@ -27,13 +27,14 @@ def get_unique_id():
 class IdCollector:
     def __init__(self):
         self.counter = 0
+        self.index_id = ''
         self.all_ids_dict = { 'id': [] }
 
     def create_id(self, role_index: str, id_value: str):
         self.counter += 1
         id_dict = {}
 
-        id_dict['index'] = get_hash(['id', self.counter])
+        id_dict['index'] = get_hash([f'{self.index_id}_id', self.counter])
 
         id_dict['role'] = {}
         id_dict['role']['index'] = role_index
@@ -518,7 +519,8 @@ class Aligner:
             'phenopacket': []
         }
 
-        hash_path = ['phenopacket', get_unique_id()]
+        self.id_collector.index_id = get_unique_id()
+        hash_path = ['phenopacket', self.id_collector.index_id]
         phenop_ent = {}
 
         self.add_index(index_dict=phenop_ent, curr_hash_path=hash_path)

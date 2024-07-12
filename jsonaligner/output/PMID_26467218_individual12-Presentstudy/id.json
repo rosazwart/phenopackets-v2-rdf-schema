@@ -1,42 +1,42 @@
 {
     "id": [
         {
-            "index": "id1",
+            "index": "b7df3de7-8263-47e7-8c24-f8d2f9b355a8_id1",
             "role": {
-                "index": "phenopacketd96878d1-d86d-48fb-843e-09ebc015a52arole1",
-                "parent_index": "id1"
+                "index": "phenopacketb7df3de7-8263-47e7-8c24-f8d2f9b355a8role1",
+                "parent_index": "b7df3de7-8263-47e7-8c24-f8d2f9b355a8_id1"
             },
             "sio_has-value": "PMID_26467218_individual_12_Present_study"
         },
         {
-            "index": "id2",
+            "index": "b7df3de7-8263-47e7-8c24-f8d2f9b355a8_id2",
             "role": {
-                "index": "phenopacketd96878d1-d86d-48fb-843e-09ebc015a52aindividual1role1",
-                "parent_index": "id2"
+                "index": "phenopacketb7df3de7-8263-47e7-8c24-f8d2f9b355a8individual1role1",
+                "parent_index": "b7df3de7-8263-47e7-8c24-f8d2f9b355a8_id2"
             },
             "sio_has-value": "individual 12-Present study"
         },
         {
-            "index": "id3",
+            "index": "b7df3de7-8263-47e7-8c24-f8d2f9b355a8_id3",
             "role": {
-                "index": "phenopacketd96878d1-d86d-48fb-843e-09ebc015a52ainterpretation1role1",
-                "parent_index": "id3"
+                "index": "phenopacketb7df3de7-8263-47e7-8c24-f8d2f9b355a8interpretation1role1",
+                "parent_index": "b7df3de7-8263-47e7-8c24-f8d2f9b355a8_id3"
             },
             "sio_has-value": "individual 12-Present study_1"
         },
         {
-            "index": "id4",
+            "index": "b7df3de7-8263-47e7-8c24-f8d2f9b355a8_id4",
             "role": {
-                "index": "phenopacketd96878d1-d86d-48fb-843e-09ebc015a52ainterpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1role1",
-                "parent_index": "id4"
+                "index": "phenopacketb7df3de7-8263-47e7-8c24-f8d2f9b355a8interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1role1",
+                "parent_index": "b7df3de7-8263-47e7-8c24-f8d2f9b355a8_id4"
             },
             "sio_has-value": "var_WQXNikGsSkYQPaOnvKZQbBJHy"
         },
         {
-            "index": "id5",
+            "index": "b7df3de7-8263-47e7-8c24-f8d2f9b355a8_id5",
             "role": {
-                "index": "phenopacketd96878d1-d86d-48fb-843e-09ebc015a52ainterpretation1diagnosis1genomicinterpretation1individual1role1",
-                "parent_index": "id5"
+                "index": "phenopacketb7df3de7-8263-47e7-8c24-f8d2f9b355a8interpretation1diagnosis1genomicinterpretation1individual1role1",
+                "parent_index": "b7df3de7-8263-47e7-8c24-f8d2f9b355a8_id5"
             },
             "sio_has-value": "individual 12-Present study"
         }
