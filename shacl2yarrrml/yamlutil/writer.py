@@ -58,11 +58,6 @@ class Templater:
         """
         associated_literals = self.shacl_interpreter.get_associated_literals(from_node=nodeshape.node, rel_path=[])
         for associated_literal in associated_literals:
-            property_map = CommentedMap()
-
-            property_map['p'] = associated_literal.path_name
-
-            property_map['o'] = CommentedMap()
 
             value_rel_path = []
             value_rel_path += associated_literal.rel_path
@@ -73,9 +68,21 @@ class Templater:
                 value_name = associated_literal.literal_name.replace(':', '_')
             value_rel_path.append(value_name)
 
-            property_map['o']['value'] = f'$({'.'.join(value_rel_path)})'
+            if associated_literal.literal_type == 'IRI':
+                property_map = CommentedSeq()
 
-            if associated_literal.literal_type != 'IRI':
+                property_map.append('a')
+                property_map.append(f'$({'.'.join(value_rel_path)})')
+                property_map.append('schema:URL')
+                property_map.fa.set_flow_style()
+            else:
+                property_map = CommentedMap()
+
+                property_map['p'] = associated_literal.path_name
+
+                property_map['o'] = CommentedMap()
+
+                property_map['o']['value'] = f'$({'.'.join(value_rel_path)})'
                 property_map['o']['datatype'] = associated_literal.literal_type
 
             mapping_map['po'].append(property_map)

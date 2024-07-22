@@ -46,7 +46,7 @@ def get_input_value(input_value, default_value):
 
 if __name__ == "__main__":
     default_rdf_folder_name = 'example-phenopacket'
-    default_rdf_file_name = 'output.ttl'
+    default_rdf_file_name = 'PMID_26467218_individual1-DeFilippietal20.ttl'
 
     default_shacl_folder_name = 'shacl'
 

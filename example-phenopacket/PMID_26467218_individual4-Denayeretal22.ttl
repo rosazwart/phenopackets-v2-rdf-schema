@@ -1,7 +1,9 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ma: <http://www.w3.org/ns/ma-ont#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
+@prefix schema: <http://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix sio: <http://semanticscience.org/resource/> .
@@ -21,7 +23,7 @@ ex:individual_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066individual1 rdf:typ
 
 ex:role_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066individual1role1 rdf:type sio:SIO_000016, obo:NCIT_C48835 .
 
-ex:sex_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066individual1sex1 rdf:type sio:SIO_000614, "http://purl.obolibrary.org/obo/NCIT_C46112" ;
+ex:sex_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066individual1sex1 rdf:type sio:SIO_000614, obo:NCIT_C46112 ;
 	rdfs:label "MALE" .
 
 ex:sexvalue_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066individual1sex1sexvalue1 rdf:type sio:SIO_000015, obo:NCIT_C160908 ;
@@ -33,46 +35,46 @@ ex:agevalue_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066individual1age1ageval
 	sio:SIO_000300 "P19Y" ;
 	sio:SIO_000628 ex:age_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066individual1age1 .
 
-ex:phenotypicfeature_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066phenotypicfeature1 rdf:type sio:SIO_000614, "http://purl.obolibrary.org/obo/HP_0000348" ;
+ex:phenotypicfeature_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066phenotypicfeature1 rdf:type sio:SIO_000614, obo:HP_0000348 ;
 	dct:identifier "HP:0000348" ;
 	rdfs:label "High forehead" .
 
-ex:phenotypicfeature_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066phenotypicfeature2 rdf:type sio:SIO_000614, "http://purl.obolibrary.org/obo/HP_0000494" ;
+ex:phenotypicfeature_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066phenotypicfeature2 rdf:type sio:SIO_000614, obo:HP_0000494 ;
 	dct:identifier "HP:0000494" ;
 	rdfs:label "Downslanted palpebral fissures" .
 
-ex:phenotypicfeature_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066phenotypicfeature3 rdf:type sio:SIO_000614, "http://purl.obolibrary.org/obo/HP_0000316" ;
+ex:phenotypicfeature_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066phenotypicfeature3 rdf:type sio:SIO_000614, obo:HP_0000316 ;
 	dct:identifier "HP:0000316" ;
 	rdfs:label "Hypertelorism" .
 
-ex:phenotypicfeature_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066phenotypicfeature4 rdf:type sio:SIO_000614, "http://purl.obolibrary.org/obo/HP_0000978" ;
+ex:phenotypicfeature_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066phenotypicfeature4 rdf:type sio:SIO_000614, obo:HP_0000978 ;
 	dct:identifier "HP:0000978" ;
 	rdfs:label "Bruising susceptibility" .
 
-ex:phenotypicfeature_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066phenotypicfeature5 rdf:type sio:SIO_000614, "http://purl.obolibrary.org/obo/HP_0000369" ;
+ex:phenotypicfeature_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066phenotypicfeature5 rdf:type sio:SIO_000614, obo:HP_0000369 ;
 	dct:identifier "HP:0000369" ;
 	rdfs:label "Low-set ears" .
 
-ex:phenotypicfeature_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066phenotypicfeature6 rdf:type sio:SIO_000614, "http://purl.obolibrary.org/obo/HP_0000358" ;
+ex:phenotypicfeature_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066phenotypicfeature6 rdf:type sio:SIO_000614, obo:HP_0000358 ;
 	dct:identifier "HP:0000358" ;
 	rdfs:label "Posteriorly rotated ears" .
 
-ex:phenotypicfeature_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066phenotypicfeature7 rdf:type sio:SIO_000614, "http://purl.obolibrary.org/obo/HP_0000508" ;
+ex:phenotypicfeature_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066phenotypicfeature7 rdf:type sio:SIO_000614, obo:HP_0000508 ;
 	dct:identifier "HP:0000508" ;
 	rdfs:label "Ptosis" ;
 	sio:SIO_000008 ex:excluded_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066phenotypicfeature7excluded1 .
 
-ex:phenotypicfeature_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066phenotypicfeature8 rdf:type sio:SIO_000614, "http://purl.obolibrary.org/obo/HP_0000957" ;
+ex:phenotypicfeature_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066phenotypicfeature8 rdf:type sio:SIO_000614, obo:HP_0000957 ;
 	dct:identifier "HP:0000957" ;
 	rdfs:label "Cafe-au-lait spot" ;
 	sio:SIO_000008 ex:excluded_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066phenotypicfeature8excluded1 .
 
-ex:phenotypicfeature_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066phenotypicfeature9 rdf:type sio:SIO_000614, "http://purl.obolibrary.org/obo/HP_0004322" ;
+ex:phenotypicfeature_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066phenotypicfeature9 rdf:type sio:SIO_000614, obo:HP_0004322 ;
 	dct:identifier "HP:0004322" ;
 	rdfs:label "Short stature" ;
 	sio:SIO_000008 ex:excluded_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066phenotypicfeature9excluded1 .
 
-ex:phenotypicfeature_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066phenotypicfeature10 rdf:type sio:SIO_000614, "http://purl.obolibrary.org/obo/HP_0012209" ;
+ex:phenotypicfeature_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066phenotypicfeature10 rdf:type sio:SIO_000614, obo:HP_0012209 ;
 	dct:identifier "HP:0012209" ;
 	rdfs:label "Juvenile myelomonocytic leukemia" ;
 	sio:SIO_000008 ex:excluded_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066phenotypicfeature10excluded1 .
@@ -144,7 +146,7 @@ ex:progressstatusvalue_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066interpreta
 	sio:SIO_000300 "SOLVED" ;
 	sio:SIO_000628 ex:progressstatus_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066interpretation1progressstatus1 .
 
-ex:diagnosis_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066interpretation1diagnosis1 rdf:type sio:SIO_000614, "http://purl.obolibrary.org/obo/NCIT_C17998" ;
+ex:diagnosis_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066interpretation1diagnosis1 rdf:type sio:SIO_000614, obo:NCIT_C17998 ;
 	dct:identifier "diagnosis 1" ;
 	rdfs:label "Noonan syndrome 6 diagnosis" ;
 	sio:SIO_001403 ex:disease_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066interpretation1diagnosis1disease1, ex:genomicinterpretation_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066interpretation1diagnosis1genomicinterpretation1 .
@@ -152,7 +154,7 @@ ex:diagnosis_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066interpretation1diagn
 ex:diagnosisvalue_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066interpretation1diagnosis1diagnosisvalue1 rdf:type sio:SIO_000015, obo:NCIT_C154625 ;
 	sio:SIO_000628 ex:diagnosis_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066interpretation1diagnosis1 .
 
-ex:disease_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066interpretation1diagnosis1disease1 rdf:type sio:SIO_000614, "https://omim.org/entry/613224" ;
+ex:disease_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066interpretation1diagnosis1disease1 rdf:type sio:SIO_000614, <https://omim.org/entry/613224> ;
 	dct:identifier "OMIM:613224" ;
 	rdfs:label "Noonan syndrome 6" .
 
@@ -211,12 +213,12 @@ ex:reference_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066interpretation1diagn
 ex:alternate_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1vcfrecord1alternate1 rdf:type sio:SIO_000614, obo:NCIT_C25415 ;
 	rdfs:label "A" .
 
-ex:expression_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1expression1 rdf:type sio:SIO_000015, "http://purl.obolibrary.org/obo/NCIT_C17998" ;
+ex:expression_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1expression1 rdf:type sio:SIO_000015, obo:NCIT_C17998 ;
 	rdfs:label "NM_002524.5:c.101C>T" ;
 	sio:SIO_000300 "NM_002524.5:c.101C>T" ;
 	dct:hasVersion "hgvs.c" .
 
-ex:expression_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1expression2 rdf:type sio:SIO_000015, "http://purl.obolibrary.org/obo/NCIT_C17998" ;
+ex:expression_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1expression2 rdf:type sio:SIO_000015, obo:NCIT_C17998 ;
 	rdfs:label "NC_000001.11:g.114716060G>A" ;
 	sio:SIO_000300 "NC_000001.11:g.114716060G>A" ;
 	dct:hasVersion "hgvs.g" .
@@ -227,7 +229,7 @@ ex:moleculecontextvalue_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066interpret
 	sio:SIO_000300 "genomic" ;
 	sio:SIO_000628 ex:moleculecontext_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1moleculecontext1 .
 
-ex:allelicstate_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1allelicstate1 rdf:type sio:SIO_000614, "http://purl.obolibrary.org/obo/GENO_0000135" .
+ex:allelicstate_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1allelicstate1 rdf:type sio:SIO_000614, obo:GENO_0000135 .
 
 ex:individual_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066interpretation1diagnosis1genomicinterpretation1individual1 rdf:type sio:SIO_010375, obo:NCIT_C41189 ;
 	sio:SIO_000228 ex:role_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066interpretation1diagnosis1genomicinterpretation1individual1role1 ;
@@ -235,7 +237,7 @@ ex:individual_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066interpretation1diag
 
 ex:role_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066interpretation1diagnosis1genomicinterpretation1individual1role1 rdf:type sio:SIO_000016, obo:NCIT_C48835 .
 
-ex:sex_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066interpretation1diagnosis1genomicinterpretation1individual1sex1 rdf:type sio:SIO_000614, "http://purl.obolibrary.org/obo/NCIT_C46112" ;
+ex:sex_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066interpretation1diagnosis1genomicinterpretation1individual1sex1 rdf:type sio:SIO_000614, obo:NCIT_C46112 ;
 	rdfs:label "MALE" .
 
 ex:sexvalue_phenopacketfa9d7df7-0de4-4981-b482-0e84341f4066interpretation1diagnosis1genomicinterpretation1individual1sex1sexvalue1 rdf:type sio:SIO_000015, obo:NCIT_C160908 ;

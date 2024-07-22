@@ -129,9 +129,7 @@ mappings:
         o:
           value: $(rdfs_label)
           datatype: xsd:string
-      - p: rdf:type
-        o:
-          value: $(ontologyclass.sh_IRI)
+      - [a, $(ontologyclass.sh_IRI), schema:URL]
   phenopacketindividualsexsexValueShapeMapping:
     sources:
       - access: phenopacket.json
@@ -200,9 +198,7 @@ mappings:
         o:
           value: $(dct_description)
           datatype: xsd:string
-      - p: rdf:type
-        o:
-          value: $(ontologyclass.sh_IRI)
+      - [a, $(ontologyclass.sh_IRI), schema:URL]
       - p: sio:SIO_000008
         o:
           mapping: phenopacketphenotypicfeatureexcludedShapeMapping
@@ -322,9 +318,7 @@ mappings:
         o:
           value: $(rdfs_label)
           datatype: xsd:string
-      - p: rdf:type
-        o:
-          value: $(ontologyclass.sh_IRI)
+      - [a, $(ontologyclass.sh_IRI), schema:URL]
   phenopacketbiosampletaxonomytaxonomyValueShapeMapping:
     sources:
       - access: phenopacket.json
@@ -362,9 +356,7 @@ mappings:
         o:
           value: $(dct_description)
           datatype: xsd:string
-      - p: rdf:type
-        o:
-          value: $(ontologyclass.sh_IRI)
+      - [a, $(ontologyclass.sh_IRI), schema:URL]
       - p: sio:SIO_000008
         o:
           mapping: phenopacketbiosamplephenotypicfeatureexcludedShapeMapping
@@ -511,9 +503,7 @@ mappings:
         o:
           value: $(rdfs_label)
           datatype: xsd:string
-      - p: rdf:type
-        o:
-          value: $(ontologyclass.sh_IRI)
+      - [a, $(ontologyclass.sh_IRI), schema:URL]
       - p: sio:SIO_001403
         o:
           mapping: phenopacketinterpretationdiagnosisdiseaseShapeMapping
@@ -563,9 +553,7 @@ mappings:
         o:
           value: $(rdfs_label)
           datatype: xsd:string
-      - p: rdf:type
-        o:
-          value: $(ontologyclass.sh_IRI)
+      - [a, $(ontologyclass.sh_IRI), schema:URL]
   interpretationdiagnosisdiseasediseaseValueShapeMapping:
     sources:
       - access: phenopacket.json
@@ -1032,9 +1020,7 @@ mappings:
     s: ex:expression_$(index)
     po:
       - [a, sio:SIO_000015]
-      - p: rdf:type
-        o:
-          value: $(sh_IRI)
+      - [a, $(sh_IRI), schema:URL]
       - p: rdfs:label
         o:
           value: $(rdfs_label)
@@ -1091,9 +1077,7 @@ mappings:
     s: ex:allelicstate_$(index)
     po:
       - [a, sio:SIO_000614]
-      - p: rdf:type
-        o:
-          value: $(ontologyclass.sh_IRI)
+      - [a, $(ontologyclass.sh_IRI), schema:URL]
   interpretationdiagnosisgenomicinterpretationgeneDescriptorShapeMapping:
     sources:
       - access: phenopacket.json
@@ -1231,9 +1215,7 @@ mappings:
         o:
           value: $(rdfs_label)
           datatype: xsd:string
-      - p: rdf:type
-        o:
-          value: $(ontologyclass.sh_IRI)
+      - [a, $(ontologyclass.sh_IRI), schema:URL]
   genomicinterpretationindividualsexsexValueShapeMapping:
     sources:
       - access: phenopacket.json
@@ -1350,9 +1332,7 @@ mappings:
         o:
           value: $(rdfs_label)
           datatype: xsd:string
-      - p: rdf:type
-        o:
-          value: $(ontologyclass.sh_IRI)
+      - [a, $(ontologyclass.sh_IRI), schema:URL]
   genomicinterpretationbiosampletaxonomytaxonomyValueShapeMapping:
     sources:
       - access: phenopacket.json
@@ -1392,9 +1372,7 @@ mappings:
         o:
           value: $(dct_description)
           datatype: xsd:string
-      - p: rdf:type
-        o:
-          value: $(ontologyclass.sh_IRI)
+      - [a, $(ontologyclass.sh_IRI), schema:URL]
       - p: sio:SIO_000008
         o:
           mapping: genomicinterpretationbiosamplephenotypicfeatureexcludedShapeMapping
