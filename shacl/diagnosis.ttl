@@ -37,7 +37,7 @@ phenop:diagnosisShape
             sh:name "sio:is-associated-with" ;
             sh:or (
                 [ sh:node phenop:diseaseShape ]
-                [ sh:node phenop:genomicInterpretationShape ]
+                [ sh:class obo:SO_0001026 ]
             ) ;
             sh:minCount 1 ;
         ],
@@ -49,7 +49,7 @@ phenop:diagnosisShape
         ],
         [
             sh:path sio:SIO_001403 ;    # sio:is-associated-with
-            sh:qualifiedValueShape [ sh:class obo:SO_0001026 ] ;    # genomic interpretations
+            sh:qualifiedValueShape [ sh:class obo:SO_0001026 ] ;    # obo:genome - genomic interpretation
             sh:qualifiedMinCount 0 ;
         ]
 .

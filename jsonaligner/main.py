@@ -45,12 +45,12 @@ class IdCollector:
         self.all_ids_dict['id'].append(id_dict)
 
 class Aligner:
-    def __init__(self, phenopacket_name: str, origin_phenop_data: dict):
+    def __init__(self, phenopacket_id: str | None, phenopacket_name: str, origin_phenop_data: dict):
         self.id_collector = IdCollector()
 
         self.origin_phenop_data = origin_phenop_data
 
-        self.store_json_file(foldername=phenopacket_name, filename=f'phenopacket.json', dict_values=self.align_data())
+        self.store_json_file(foldername=phenopacket_name, filename=f'phenopacket.json', dict_values=self.align_data(phenopacket_id))
         self.store_json_file(foldername=phenopacket_name, filename=f'id.json', dict_values=self.id_collector.all_ids_dict)
 
     def get_literal_value(self, dict_values: dict, literal_name: str):
@@ -91,17 +91,17 @@ class Aligner:
 
         self.id_collector.create_id(role_index=curr_dict['role']['index'], id_value=id_value)
 
-    def add_ontologyclass(self, curr_dict: dict, curr_hash_path: list, iri_value: str):
+    def add_ontologyclass(self, curr_dict: dict, curr_hash_path: list, iri_value: str, ontologyclass_name: str = 'ontologyclass'):
         """
         """
-        hash_path = curr_hash_path + ['ontologyclass', 1]
+        hash_path = curr_hash_path + [ontologyclass_name, 1]
         ont_ent = {}
 
         self.add_index(index_dict=ont_ent, curr_hash_path=hash_path, parent_index_dict=curr_dict)
 
         ont_ent['sh_IRI'] = iri_value
         
-        curr_dict['ontologyclass'] = ont_ent
+        curr_dict[ontologyclass_name] = ont_ent
     
     def add_literal_output(self, curr_dict: dict, curr_hash_path: list):
         """
@@ -350,7 +350,8 @@ class Aligner:
 
         self.add_index(index_dict=all_st_ent, curr_hash_path=hash_path, parent_index_dict=curr_dict)
 
-        self.add_ontologyclass(curr_dict=all_st_ent, curr_hash_path=hash_path, iri_value=iri_constants.get_iri(allelic_state_data['id']))
+        self.add_ontologyclass(curr_dict=all_st_ent, curr_hash_path=hash_path, iri_value=iri_constants.get_iri(allelic_state_data['id']),
+                               ontologyclass_name='ontologygenoclass')
 
         curr_dict['allelicstate'] = all_st_ent
 
@@ -512,14 +513,18 @@ class Aligner:
 
         curr_dict['metadata'] = metadata_ent
 
-    def align_data(self):
+    def align_data(self, phenopacket_id: str | None):
         """
         """
         phenop_data = {
             'phenopacket': []
         }
 
-        self.id_collector.index_id = get_unique_id()
+        if phenopacket_id:
+            self.id_collector.index_id = phenopacket_id
+        else:
+            self.id_collector.index_id = get_unique_id()
+
         hash_path = ['phenopacket', self.id_collector.index_id]
         phenop_ent = {}
 
@@ -546,7 +551,12 @@ if __name__ == "__main__":
     all_phenopacket_json_filenames = json_loader.get_all_json_filenames()
     for json_filename in all_phenopacket_json_filenames:
         print(f'Align {json_filename}...')
+
+        phenopacket_id = input(f'Enter ID of phenopacket from {json_filename}')
+        if not len(phenopacket_id):
+            phenopacket_id = None
+
         phenopacket_data = json_loader.load_hamlet_json_file(json_filename)
-        json_aligner = Aligner(phenopacket_name=json_filename.replace('.json', ''),
+        json_aligner = Aligner(phenopacket_id=phenopacket_id, phenopacket_name=json_filename.replace('.json', ''),
                                origin_phenop_data=phenopacket_data)
 

@@ -9,7 +9,7 @@
 
 phenop:allelicStateShape
     a sh:NodeShape ;
-    sh:node phenop:ontologyClassShape ;
+    sh:node phenop:ontologyGENOClassShape ;
 .
 
 phenop:moleculeContextShape 
@@ -82,6 +82,7 @@ phenop:expressionShape
           	sh:path rdf:type ;    
             sh:qualifiedValueShape [ 
                 sh:nodeKind sh:IRI ;
+                sh:pattern "^((?!http://semanticscience.org/resource/).)*$" ;
             ] ;
            	sh:qualifiedMinCount 1 ;
            	sh:qualifiedMaxCount 1 ;

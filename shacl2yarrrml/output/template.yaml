@@ -1077,7 +1077,7 @@ mappings:
     s: ex:allelicstate_$(index)
     po:
       - [a, sio:SIO_000614]
-      - [a, $(ontologyclass.sh_IRI), schema:URL]
+      - [a, $(ontologygenoclass.sh_IRI), schema:URL]
   interpretationdiagnosisgenomicinterpretationgeneDescriptorShapeMapping:
     sources:
       - access: phenopacket.json

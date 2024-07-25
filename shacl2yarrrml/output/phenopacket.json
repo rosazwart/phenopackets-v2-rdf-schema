@@ -353,7 +353,7 @@
                                             "index": "INDEX",
                                             "parent_index": "PARENTINDEX",
                                             "_comment": "[0, 1]",
-                                            "ontologyclass": {
+                                            "ontologygenoclass": {
                                                 "index": "INDEX",
                                                 "parent_index": "PARENTINDEX",
                                                 "_comment": "[1, 1]",

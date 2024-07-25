@@ -26,9 +26,40 @@ phenop:ontologyClassShape
           	sh:path rdf:type ;    
             sh:qualifiedValueShape [ 
                 sh:nodeKind sh:IRI ;
+                sh:pattern "^((?!http://semanticscience.org/resource/).)*$" ;
             ] ;
            	sh:qualifiedMinCount 1 ;
            	sh:qualifiedMaxCount 1 ;
         ]
 	;
 .
+
+phenop:ontologyGENOClassShape
+	a sh:NodeShape ;
+    sh:property
+		[
+            sh:path rdf:type ;
+            sh:minCount 2 ;
+            sh:maxCount 2 ;
+        ],
+		[
+            sh:path rdf:type ;
+            sh:qualifiedValueShape [ 
+                sh:hasValue sio:SIO_000614 ;	# sio:attribute
+            ];
+           	sh:qualifiedMinCount 1 ;
+           	sh:qualifiedMaxCount 1 ;
+        ],
+		[
+          	sh:path rdf:type ;    
+            sh:qualifiedValueShape [ 
+                sh:nodeKind sh:IRI ;
+                sh:pattern "^http://purl.obolibrary.org/obo/GENO_" ;
+            ] ;
+           	sh:qualifiedMinCount 1 ;
+           	sh:qualifiedMaxCount 1 ;
+        ]
+	;
+.
+
+

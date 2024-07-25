@@ -577,8 +577,8 @@
                                         "allelicstate": {
                                             "index": "phenopacket1caa9f5a-5158-45fa-b79b-7546c4baff07interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1allelicstate1",
                                             "parent_index": "phenopacket1caa9f5a-5158-45fa-b79b-7546c4baff07interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1",
-                                            "ontologyclass": {
-                                                "index": "phenopacket1caa9f5a-5158-45fa-b79b-7546c4baff07interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1allelicstate1ontologyclass1",
+                                            "ontologygenoclass": {
+                                                "index": "phenopacket1caa9f5a-5158-45fa-b79b-7546c4baff07interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1allelicstate1ontologygenoclass1",
                                                 "parent_index": "phenopacket1caa9f5a-5158-45fa-b79b-7546c4baff07interpretation1diagnosis1genomicinterpretation1variantinterpretation1variationdescriptor1allelicstate1",
                                                 "sh_IRI": "http://purl.obolibrary.org/obo/GENO_0000135"
                                             }

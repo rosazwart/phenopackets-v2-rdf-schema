@@ -419,7 +419,8 @@ class Interpreter:
                 if namespace_provider.SH.name in prop_attr:
                     literal_name = str(prop_attr[namespace_provider.SH.name])
                 else:
-                    raise Exception(f'Literal node {path}, {literal_type} does not have a given name')
+                    _, _, literal_name = self.basic_interpr.extract_values(path)
+                    #raise Exception(f'Literal node {path}, {literal_type} does not have a given name')
                 
                 associated_literals.append(shacl_objects.LiteralNode(path_name=f'{path_prefix}:{path_name}', rel_path=rel_path, literal_name=literal_name, literal_type=f'{literal_prefix}:{literal_type}'))
 
