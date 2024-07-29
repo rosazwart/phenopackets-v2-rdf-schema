@@ -18,7 +18,7 @@ For modelling the phenopackets schema, Shapes Constraint Language (SHACL) files 
 
 ## 2. Generating YARRRML and example JSON file(s) given SHACL files
 
-A script has been developed that generates a YARRRML file containing the maximum requirements of the data structure following the Phenopackets schema. The generator script can be found [here](https://github.com/rosazwart/phenopackets-v2-rdf-schema/tree/main/shacl2yarrrml). Along the generation of a YARRRML file, one or multiple (multiple "root" nodeshapes defined in SHACL results in multiple JSON files) JSON files are created that show how the data that is to be converted should look like. 
+A script has been developed that generates a YARRRML file containing the maximum requirements of the data structure following the Phenopackets schema. The generator script can be found in folder [`shacl2yarrrrml`](https://github.com/rosazwart/phenopackets-v2-rdf-schema/tree/main/shacl2yarrrml). Along the generation of a YARRRML file, one or multiple (multiple "root" nodeshapes defined in SHACL results in multiple JSON files) JSON files are created that show how the data that is to be converted should look like. 
 
 ## 3. Aligning data to JSON file
 
@@ -32,7 +32,7 @@ A browser-based IDE [Matey](https://rml.io/yarrrml/matey/) can be used to genera
 
 ## 5. RDF Validation
 
-To ensure that the resulting RDF knowledge graph still complies to the Phenopackets data model, a script has been written that validates a given RDF file against the SHACL files containing all the class shapes. When the RDF data does not conform to the intended data structure, it will output a report on which instances throw errors. The validator script can be found [here](https://github.com/rosazwart/phenopackets-v2-rdf-schema/tree/main/rdfvalidator).
+To ensure that the resulting RDF knowledge graph still complies to the Phenopackets data model, a script has been written that validates a given RDF file against the SHACL files containing all the class shapes. When the RDF data does not conform to the intended data structure, it will output a report on which instances throw errors. The validator script can be found in folder [`rdfvalidator`](https://github.com/rosazwart/phenopackets-v2-rdf-schema/tree/main/rdfvalidator).
 
 # Used Libraries
 
