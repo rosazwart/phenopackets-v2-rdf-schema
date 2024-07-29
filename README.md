@@ -28,7 +28,7 @@ In folder [`jsonaligner`](https://github.com/rosazwart/phenopackets-v2-rdf-schem
 
 ## 4. RML Mapping
 
-There exist multiple ways to map the given JSON data to the correctly structured knowledge graph with the filled in YARRRML. One option is installing the [yarrrml-parser](https://github.com/rmlio/yarrrml-parser) that translates YARRRML to the RML format. Next, use [RMLMapper](https://github.com/RMLio/rmlmapper-java) to generate the RDF knowledge graph. The second and easier option is using the browser-based IDE [Matey](https://rml.io/yarrrml/matey/) that contains the functionalities of loading data sources, writing YARRRML rules and generating RDF triples.
+A browser-based IDE [Matey](https://rml.io/yarrrml/matey/) can be used to generate RDF triples given your data and YARRRML rules. To enable the automation of this process, in folder [`yarrrml2rdf`](https://github.com/rosazwart/phenopackets-v2-rdf-schema/tree/main/yarrrml2rdf) the script is stored that visits the browser-based IDE, enters the input data files as well as the generated YARRRML rules to then generate the RDF triples that are stored in a Turtle file.
 
 ## 5. RDF Validation
 
