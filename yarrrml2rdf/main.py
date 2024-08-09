@@ -3,9 +3,9 @@ import os
 
 import matey_scraper as matey_scraper
 
-JSON_ALIGNER_FOLDERNAME = 'jsonaligner'
+JSON_ALIGNER_FOLDERNAME = 'fdp_jsonaligner'
 SHACL2YARRRML_FOLDERNAME = 'shacl2yarrrml'
-RDF_OUTPUT_FOLDERNAME = 'example-phenopacket'
+RDF_OUTPUT_FOLDERNAME = 'example-fdp'
 
 def load_json_files(folderpath: list):
     """  """

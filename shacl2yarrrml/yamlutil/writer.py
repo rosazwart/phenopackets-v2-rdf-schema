@@ -56,26 +56,43 @@ class Templater:
     def add_literal_mapping(self, mapping_map: CommentedMap, nodeshape: shacl_objects.NodeShapeNode):
         """
         """
-        associated_literals = self.shacl_interpreter.get_associated_literals(from_node=nodeshape.node, rel_path=[])
-        for associated_literal in associated_literals:
+        associated_literals, associated_literaltypes = self.shacl_interpreter.get_associated_literals(from_node=nodeshape.node, rel_path=[])
 
+        for associated_literaltype in associated_literaltypes:
             value_rel_path = []
-            value_rel_path += associated_literal.rel_path
+            value_rel_path += associated_literaltype.rel_path
 
-            if associated_literal.nodekind_name:
-                value_name = associated_literal.nodekind_name.replace(':', '_')
-            else:
-                value_name = associated_literal.literal_name.replace(':', '_')
+            value_name = associated_literaltype.nodekind_name.replace(':', '_')
             value_rel_path.append(value_name)
 
-            if associated_literal.literal_type == 'IRI':
+            if associated_literaltype.literal_type == 'IRI':
                 property_map = CommentedSeq()
 
                 property_map.append('a')
                 property_map.append(f'$({'.'.join(value_rel_path)})')
                 property_map.append('schema:URL')
                 property_map.fa.set_flow_style()
-            else:
+
+                mapping_map['po'].append(property_map)
+
+        for associated_literal in associated_literals:
+            value_rel_path = []
+            value_rel_path += associated_literal.rel_path
+
+            value_name = associated_literal.literal_name.replace(':', '_')
+            value_rel_path.append(value_name)
+
+            if associated_literal.literal_type == 'sh:IRI':
+                property_map = CommentedSeq()
+
+                property_map.append(associated_literal.path_name)
+                property_map.append(f'$({'.'.join(value_rel_path)})')
+                property_map.append('schema:URL')
+                property_map.fa.set_flow_style()
+
+                mapping_map['po'].append(property_map)
+
+            else: 
                 property_map = CommentedMap()
 
                 property_map['p'] = associated_literal.path_name
@@ -85,7 +102,7 @@ class Templater:
                 property_map['o']['value'] = f'$({'.'.join(value_rel_path)})'
                 property_map['o']['datatype'] = associated_literal.literal_type
 
-            mapping_map['po'].append(property_map)
+                mapping_map['po'].append(property_map)
 
     def add_type_mapping(self, mapping_map: CommentedMap, nodeshape: shacl_objects.NodeShapeNode):
         """
@@ -186,9 +203,9 @@ class Templater:
 
         mapping_map = CommentedMap()
 
-        self.add_source_mapping(mapping=mapping_map, filename=f'{root_node_name}.json', path=new_path)
+        self.add_source_mapping(mapping=mapping_map, filename=f'{root_node_name.lower()}.json', path=new_path)
 
-        mapping_map['s'] = f'ex:{node_name}_$(index)'
+        mapping_map['s'] = f'{namespace_provider.entity_prefix}:{node_name}_$(index)'
         mapping_map['po'] = CommentedSeq()
 
         self.add_type_mapping(mapping_map=mapping_map, nodeshape=curr_nodeshape)

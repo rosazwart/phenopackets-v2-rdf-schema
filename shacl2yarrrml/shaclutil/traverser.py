@@ -33,13 +33,14 @@ class Traverser:
             else:
                 association_dict[common_util.from_nodeshape_name_to_name(associated_nodeshape_name)] = self.get_hierarchy(root_node=associated_nodeshape)
 
-        associated_literals = self.interpreter.get_associated_literals(from_node=root_node.node, rel_path=[], include_inherited=False)
-        for associated_literal in associated_literals:
-            if associated_literal.nodekind_name:
-                value_name = associated_literal.nodekind_name.replace(':', '_')
-            else:
-                value_name = associated_literal.literal_name.replace(':', '_')
+        associated_literals, associated_literaltypes = self.interpreter.get_associated_literals(from_node=root_node.node, rel_path=[], include_inherited=False)
+        
+        for associated_literaltype in associated_literaltypes:
+            value_name = associated_literaltype.nodekind_name.replace(':', '_')
+            association_dict[value_name] = associated_literaltype.literal_type.upper()
 
+        for associated_literal in associated_literals:
+            value_name = associated_literal.literal_name.replace(':', '_')
             association_dict[value_name] = associated_literal.literal_type.upper()
 
         return association_dict

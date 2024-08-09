@@ -8,6 +8,8 @@
     @Date: 04-06-2024
 '''
 
+import os
+
 import shaclutil.loader as loader
 import namespace_provider as namespace_provider
 import yamlutil.writer as yaml_writer
@@ -29,6 +31,12 @@ if __name__ == "__main__":
     shacl_g = loader.load_shacl_files(single_file_name=get_input_value(shacl_file_name, default_single_file_name), 
                                             dir_name=get_input_value(shacl_folder_name, default_shacl_folder_name))
     namespace_provider.bind_namespaces(g=shacl_g)
+    
+    output_folder_path = os.path.join('shacl2yarrrml', 'output')
+    for filename in os.listdir(output_folder_path):
+        file_path = os.path.join(output_folder_path, filename)
+        if os.path.isfile(file_path):
+            os.unlink(file_path)
     
     json_writer.create_template(input_g=shacl_g)
     yaml_writer.create_template(input_g=shacl_g)

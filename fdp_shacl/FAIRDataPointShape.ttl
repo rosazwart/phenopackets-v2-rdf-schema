@@ -1,0 +1,19 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ldp: <http://www.w3.org/ns/ldp#> .
+
+<http://fairdatapoint.org/DataServiceShape> a <http://www.w3.org/ns/shacl#NodeShape>;
+  <http://www.w3.org/ns/shacl#targetClass> dcat:DataService;
+  <http://www.w3.org/ns/shacl#property> [
+      <http://www.w3.org/ns/shacl#path> dcat:endpointURL;
+      <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#IRI>;
+      <http://www.w3.org/ns/shacl#maxCount> 1
+    ], [
+      <http://www.w3.org/ns/shacl#path> dcat:endpointDescription;
+      <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#Literal>;
+      <http://www.w3.org/ns/shacl#maxCount> 1;
+      <http://datashapes.org/dash#editor> <http://datashapes.org/dash#TextAreaEditor>;
+      <http://datashapes.org/dash#viewer> <http://datashapes.org/dash#LiteralViewer>
+    ] .

@@ -20,7 +20,7 @@ class MateyScraper:
     def __setup_driver(self):
         """  """ 
         chrome_options = Options()
-        chrome_options.add_argument('--headless')
+        #chrome_options.add_argument('--headless')
         driver = webdriver.Chrome(options=chrome_options)
         driver.get(self.matey_url)
 

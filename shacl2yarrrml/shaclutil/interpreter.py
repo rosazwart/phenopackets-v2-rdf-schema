@@ -398,11 +398,22 @@ class Interpreter:
 
         return associated_types
     
+    def get_literal_name(self, prop_attr: dict, path: rdflib.URIRef):
+        """
+        """
+        if namespace_provider.SH.name in prop_attr:
+            literal_name = str(prop_attr[namespace_provider.SH.name])
+        else:
+            _, _, literal_name = self.basic_interpr.extract_values(path)
+
+        return literal_name
+    
     def get_associated_literals(self, from_node: rdflib.URIRef, rel_path: list, include_inherited: bool = True):
         """
         """
         from_node_property_triples = self.basic_interpr.find_triples(query_subject=from_node, query_predicate=namespace_provider.SH.property)
         associated_literals = []
+        associated_literaltypes = []
 
         for property_triple in from_node_property_triples:
             _, _, property_node = property_triple
@@ -415,12 +426,7 @@ class Interpreter:
             if namespace_provider.SH.datatype in prop_attr:
                 literal_datatype_node = prop_attr[namespace_provider.SH.datatype]
                 literal_prefix, _, literal_type = self.basic_interpr.extract_values(literal_datatype_node)
-
-                if namespace_provider.SH.name in prop_attr:
-                    literal_name = str(prop_attr[namespace_provider.SH.name])
-                else:
-                    _, _, literal_name = self.basic_interpr.extract_values(path)
-                    #raise Exception(f'Literal node {path}, {literal_type} does not have a given name')
+                literal_name = self.get_literal_name(prop_attr=prop_attr, path=path)
                 
                 associated_literals.append(shacl_objects.LiteralNode(path_name=f'{path_prefix}:{path_name}', rel_path=rel_path, literal_name=literal_name, literal_type=f'{literal_prefix}:{literal_type}'))
 
@@ -432,16 +438,27 @@ class Interpreter:
                 if namespace_provider.SH.nodeKind in qualifiedvalue_attr:
                     nodekind_node = qualifiedvalue_attr[namespace_provider.SH.nodeKind]
                     nodekind_prefix, _, nodekind_name = self.basic_interpr.extract_values(nodekind_node)
-                    associated_literals.append(shacl_objects.LiteralNode(path_name=f'{path_prefix}:{path_name}', rel_path=rel_path, literal_name=f'{path_prefix}:{path_name}', literal_type=nodekind_name, nodekind_name=f'{nodekind_prefix}:{nodekind_name}'))
+
+                    associated_literaltypes.append(shacl_objects.LiteralTypeNode(rel_path=rel_path, nodekind_name=f'{nodekind_prefix}:{nodekind_name}', literal_type=nodekind_name))
+
+            elif namespace_provider.SH.nodeKind in prop_attr:
+                nodekind_node = prop_attr[namespace_provider.SH.nodeKind]
+                nodekind_prefix, _, nodekind_name = self.basic_interpr.extract_values(nodekind_node)
+                literal_name = self.get_literal_name(prop_attr=prop_attr, path=path)
+                
+                associated_literals.append(shacl_objects.LiteralNode(path_name=f'{path_prefix}:{path_name}', rel_path=rel_path, literal_name=literal_name, literal_type=f'{nodekind_prefix}:{nodekind_name}'))
         
         if include_inherited:
             for inherited_nodeshape in self.get_inherited_nodeshapes(from_node):
                 _, _, inherited_nodeshape_name = self.basic_interpr.extract_values(inherited_nodeshape.node)
                 new_path = deepcopy(rel_path)
                 new_path.append(common_util.from_nodeshape_name_to_name(inherited_nodeshape_name))
-                associated_literals += self.get_associated_literals(inherited_nodeshape.node, rel_path=new_path, include_inherited=include_inherited)
 
-        return associated_literals
+                new_associated_literals, new_associated_literaltypes = self.get_associated_literals(inherited_nodeshape.node, rel_path=new_path, include_inherited=include_inherited)
+                associated_literals += new_associated_literals
+                associated_literaltypes += new_associated_literaltypes
+
+        return associated_literals, associated_literaltypes
     
     def get_root_nodeshapes(self):
         """

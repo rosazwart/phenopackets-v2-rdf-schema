@@ -1,0 +1,22 @@
+{
+    "distribution": [
+        {
+            "index": "INDEX",
+            "_comment": "",
+            "dataservice": [
+                {
+                    "index": "INDEX",
+                    "parent_index": "PARENTINDEX",
+                    "_comment": "[0, *]",
+                    "endpointURL": "SH:IRI",
+                    "endpointDescription": "SH:LITERAL"
+                }
+            ],
+            "accessURL": "SH:IRI",
+            "mediaType": "XSD:STRING",
+            "title": "XSD:STRING",
+            "description": "XSD:STRING",
+            "downloadURL": "SH:IRI"
+        }
+    ]
+}
