@@ -111,7 +111,7 @@ class BasicInterpreter:
         from_root_node_triples = self.find_triples(query_subject=root_node)
 
         reached_end = False
-        first_nodeshape_node = None
+        first_node = None
         rest_blank_node = None
 
         for from_root_node_triple in from_root_node_triples:
@@ -119,12 +119,19 @@ class BasicInterpreter:
 
             if p == rdflib.URIRef(namespace_provider.RDF.first):
                 first_triple = self.find_first_triple(query_subject=o)
-                _, class_or_node, class_or_nodeshape_node = first_triple
+                _, property_val, object_node = first_triple
 
-                if class_or_node == rdflib.URIRef('http://www.w3.org/ns/shacl#class'):
-                    first_nodeshape_node = self.get_nodeshape_node_from_class_node(class_or_nodeshape_node)
+                if property_val == rdflib.URIRef('http://www.w3.org/ns/shacl#class'):
+                    first_node = tuple([self.get_nodeshape_node_from_class_node(object_node), rdflib.SH.NodeShape])
+
+                elif property_val == rdflib.SH.node:
+                    first_node = tuple([object_node, rdflib.SH.NodeShape])
+
+                elif property_val == rdflib.SH.nodeKind:
+                    first_node = tuple([object_node, rdflib.SH.NodeKind])
+
                 else:
-                    first_nodeshape_node = class_or_nodeshape_node
+                    raise ValueError(f'SHACL interpreter does not recognize node entity in OR statement ({property_val}).')
 
             elif p == rdflib.URIRef(namespace_provider.RDF.rest):    
                 if o == rdflib.URIRef(namespace_provider.RDF.nil):
@@ -137,35 +144,54 @@ class BasicInterpreter:
         else:
             nested_nodes = self.get_nested_nodes(root_node=rest_blank_node)
 
-        nested_nodes.append(first_nodeshape_node)
+        nested_nodes.append(first_node)
         return nested_nodes
     
-    def get_target_nodeshape_nodes_from_or_node(self, or_node: rdflib.URIRef, min_count: int, max_count: int, path: list, property_path_name: str):
+    def get_target_nodes_from_or_node(self, or_node: rdflib.URIRef, min_count: int, max_count: int, path: list, property_path_name: str):
         """
         """
         associated_nodeshape_nodes = []
+        associated_literal_nodes = []
 
-        or_target_nodeshape_nodes = self.get_nested_nodes(root_node=or_node)
-        for or_target_nodeshape_node in or_target_nodeshape_nodes:
-            associated_nodeshape_nodes.append(shacl_objects.NodeShapeNode(node=or_target_nodeshape_node, property_path=property_path_name, path=path, min_count=min_count, max_count=max_count))
+        or_target_nodes = self.get_nested_nodes(root_node=or_node)
+        for or_target_node in or_target_nodes:
+            or_target_node_obj, or_target_node_type = or_target_node
+            if or_target_node_type == rdflib.SH.NodeShape:
+                associated_nodeshape_nodes.append(shacl_objects.NodeShapeNode(node=or_target_node_obj, property_path=property_path_name, path=path, min_count=min_count, max_count=max_count))
+            elif or_target_node_type == rdflib.SH.NodeKind:
+                nodekind_prefix, _, nodekind_name = self.extract_values(or_target_node_obj)
+                literal_name = property_path_name.split(':')[-1]
+                associated_literal_nodes.append(shacl_objects.LiteralNode(path_name=f'{property_path_name}', rel_path=[], literal_name=f'{literal_name}_{nodekind_name}', literal_type=f'{nodekind_prefix}:{nodekind_name}',
+                                                                          min_count=min_count, max_count=max_count))    # relative path is empty due to being a literal accessed via same nodeshape mapping in YARRRML
+            else:
+                raise ValueError(f'In path {path} for property {property_path_name} a node entity has not been recognized in OR statement.')
 
-        return associated_nodeshape_nodes
+        return associated_nodeshape_nodes, associated_literal_nodes
 
 class Interpreter:
     def __init__(self, g: rdflib.Graph):
         self.shacl_g = g
         self.basic_interpr = BasicInterpreter(g=g)
 
-    def comment_or_constraints(self, min_count: int, max_count: int, or_nodeshapes_list: list):
+    def comment_or_constraints(self, min_count: int, max_count: int, or_nodeshapes_list: list, or_literals_list: list):
         """
         """
-        or_nodeshape_names = []
+        if max_count == -1:
+            max_count_str = '*'
+        else:
+            max_count_str = str(max_count)
+
+        or_node_names = []
         for or_nodeshape in or_nodeshapes_list:
             _, _, or_nodeshape_name = self.basic_interpr.extract_values(node=or_nodeshape.node)
-            or_nodeshape_names.append(common_util.from_nodeshape_name_to_name(or_nodeshape_name))
+            or_node_names.append(common_util.from_nodeshape_name_to_name(or_nodeshape_name))
+        for or_literal in or_literals_list:
+            or_node_names.append(or_literal.literal_name)
 
         for or_nodeshape in or_nodeshapes_list:
-            or_nodeshape.comment = f'Provide with cardinality [{min_count}, {max_count}] from the following: {' OR '.join(or_nodeshape_names)}'
+            or_nodeshape.comment = f'Provide with cardinality [{min_count}, {max_count_str}] from the following: {' OR '.join(or_node_names)}'
+        for or_literal in or_literals_list:
+            or_literal.comment = f'Provide with cardinality [{min_count}, {max_count_str}] from the following: {' OR '.join(or_node_names)}'
 
     def comment_constraints(self, nodeshape: shacl_objects.NodeShapeNode):
         """
@@ -235,9 +261,10 @@ class Interpreter:
 
         if rdflib.URIRef('http://www.w3.org/ns/shacl#or') in qualifiedvalue_dict:
             or_node = qualifiedvalue_dict[rdflib.URIRef('http://www.w3.org/ns/shacl#or')]
-            or_nodes = self.basic_interpr.get_target_nodeshape_nodes_from_or_node(or_node=or_node, min_count=min_count, max_count=max_count, path=path, property_path_name=property_path_name)
-            nodeshape_node_list += or_nodes
-            self.comment_or_constraints(min_count=min_count, max_count=max_count, or_nodeshapes_list=or_nodes)
+            or_nodeshape_nodes, _ = self.basic_interpr.get_target_nodes_from_or_node(or_node=or_node, min_count=min_count, max_count=max_count, path=path, property_path_name=property_path_name)
+            # TODO: Still need to cover OR target nodes that are not nodeshapes but nodekind nodes
+            self.comment_or_constraints(min_count=min_count, max_count=max_count, or_nodeshapes_list=or_nodeshape_nodes, or_literals_list=[])
+            nodeshape_node_list += or_nodeshape_nodes
         else:
             if namespace_provider.SH.node in qualifiedvalue_dict:
                 target_nodeshape_node = qualifiedvalue_dict[namespace_provider.SH.node]
@@ -260,6 +287,7 @@ class Interpreter:
         prop_dict = self.basic_interpr.get_property_attr_dict(property_attributes)
 
         target_nodeshape_nodes = []
+        target_literal_nodes = []
 
         if namespace_provider.SH.path in prop_dict:
             path_node = prop_dict[namespace_provider.SH.path]
@@ -292,7 +320,15 @@ class Interpreter:
                         self.comment_constraints(nodeshape=target_nodeshape_obj)
                         target_nodeshape_nodes.append(target_nodeshape_obj)
 
-        return target_nodeshape_nodes
+                    elif rdflib.URIRef('http://www.w3.org/ns/shacl#or') in prop_dict:
+                        # TODO:
+                        or_node = prop_dict[rdflib.URIRef('http://www.w3.org/ns/shacl#or')]
+                        or_nodeshape_nodes, or_literal_nodes = self.basic_interpr.get_target_nodes_from_or_node(or_node=or_node, min_count=min_count, max_count=max_count, path=path, property_path_name=property_path_name)
+                        self.comment_or_constraints(min_count=min_count, max_count=max_count, or_nodeshapes_list=or_nodeshape_nodes, or_literals_list=or_literal_nodes)
+                        target_nodeshape_nodes += or_nodeshape_nodes
+                        target_literal_nodes += or_literal_nodes
+
+        return target_nodeshape_nodes, target_literal_nodes
         
     def get_associated_nodeshapes(self, from_node: rdflib.URIRef, path: list):
         """
@@ -301,12 +337,15 @@ class Interpreter:
         path_counter_dict = self.get_property_path_counter_dict(prop_triples=from_node_property_triples)
 
         associated_nodeshapes = []
+        associated_literals = []
 
         for property_triple in from_node_property_triples:
             _, _, property_node = property_triple
-            associated_nodeshapes += self.get_property_target_nodeshapes(property_node, path_counter_dict, path)
+            target_nodeshapes, target_literals = self.get_property_target_nodeshapes(property_node, path_counter_dict, path)
+            associated_nodeshapes += target_nodeshapes
+            associated_literals += target_literals
 
-        return associated_nodeshapes
+        return associated_nodeshapes, associated_literals
     
     def get_inverse_associated_nodeshapes(self, from_node: rdflib.URIRef, path: list):
         """
@@ -398,10 +437,10 @@ class Interpreter:
 
         return associated_types
     
-    def get_literal_name(self, prop_attr: dict, path: rdflib.URIRef):
+    def get_literal_name(self, prop_attr: dict | None, path: rdflib.URIRef):
         """
         """
-        if namespace_provider.SH.name in prop_attr:
+        if prop_attr and namespace_provider.SH.name in prop_attr:
             literal_name = str(prop_attr[namespace_provider.SH.name])
         else:
             _, _, literal_name = self.basic_interpr.extract_values(path)

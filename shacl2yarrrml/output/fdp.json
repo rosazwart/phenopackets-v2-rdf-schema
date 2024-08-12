@@ -1,0 +1,14 @@
+{
+    "fdp": [
+        {
+            "index": "INDEX",
+            "_comment": "",
+            "startDate": "XSD:DATETIME",
+            "endDate": "XSD:DATETIME",
+            "uiLanguage": "SH:IRI",
+            "metadataIdentifier": "SH:IRI",
+            "metadataIssued": "XSD:DATETIME",
+            "metadataModified": "XSD:DATETIME"
+        }
+    ]
+}

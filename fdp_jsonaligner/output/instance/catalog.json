@@ -1,0 +1,30 @@
+{
+    "catalog": [
+        {
+            "index": "catalog1",
+            "_comment": "",
+            "dataset": [
+                {
+                    "index": "catalog1dataset1",
+                    "parent_index": "catalog1",
+                    "_comment": "Provide with cardinality [0, *] from the following: dataset OR dataset_IRI",
+                    "agent": [
+                        {
+                            "index": "agent1",
+                            "parent_index": "catalog1dataset1",
+                            "_comment": "[1, *]"
+                        }
+                    ],
+                    "title": "Title of dataset",
+                    "description": "This is a dataset",
+                    "identifier": "dataset1",
+                    "issued": "2024-01-01T12:30:00"
+                }
+            ],
+            "dataset_IRI": [
+                "http://example.org/datasets/dataset2",
+                "http://example.org/datasets/dataset3"
+            ]
+        }
+    ]
+}

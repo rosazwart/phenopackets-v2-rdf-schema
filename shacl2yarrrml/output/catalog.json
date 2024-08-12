@@ -1,0 +1,29 @@
+{
+    "catalog": [
+        {
+            "index": "INDEX",
+            "_comment": "",
+            "dataset": [
+                {
+                    "index": "INDEX",
+                    "parent_index": "PARENTINDEX",
+                    "_comment": "Provide with cardinality [0, *] from the following: dataset OR dataset_IRI",
+                    "agent": [
+                        {
+                            "index": "INDEX",
+                            "parent_index": "PARENTINDEX",
+                            "_comment": "[1, *]"
+                        }
+                    ],
+                    "title": "SH:LITERAL",
+                    "description": "XSD:STRING",
+                    "identifier": "SH:LITERAL",
+                    "issued": "XSD:DATETIME"
+                }
+            ],
+            "dataset_IRI": [
+                "SH:IRI"
+            ]
+        }
+    ]
+}

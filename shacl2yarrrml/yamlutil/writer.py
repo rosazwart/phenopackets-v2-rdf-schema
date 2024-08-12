@@ -53,11 +53,9 @@ class Templater:
 
         mapping['sources'].append(sources_info_map)
 
-    def add_literal_mapping(self, mapping_map: CommentedMap, nodeshape: shacl_objects.NodeShapeNode):
+    def add_literaltype_mapping(self, mapping_map: CommentedMap, associated_literaltypes: list):
         """
         """
-        associated_literals, associated_literaltypes = self.shacl_interpreter.get_associated_literals(from_node=nodeshape.node, rel_path=[])
-
         for associated_literaltype in associated_literaltypes:
             value_rel_path = []
             value_rel_path += associated_literaltype.rel_path
@@ -75,6 +73,9 @@ class Templater:
 
                 mapping_map['po'].append(property_map)
 
+    def add_literal_mapping(self, mapping_map: CommentedMap, associated_literals: list):
+        """
+        """
         for associated_literal in associated_literals:
             value_rel_path = []
             value_rel_path += associated_literal.rel_path
@@ -86,7 +87,12 @@ class Templater:
                 property_map = CommentedSeq()
 
                 property_map.append(associated_literal.path_name)
-                property_map.append(f'$({'.'.join(value_rel_path)})')
+
+                if associated_literal.max_count == 1:
+                    property_map.append(f'$({'.'.join(value_rel_path)})')
+                else:
+                    property_map.append(f"$({'.'.join(value_rel_path)}[*])")
+
                 property_map.append('schema:URL')
                 property_map.fa.set_flow_style()
 
@@ -103,6 +109,14 @@ class Templater:
                 property_map['o']['datatype'] = associated_literal.literal_type
 
                 mapping_map['po'].append(property_map)
+
+    def add_all_literals_mapping(self, mapping_map: CommentedMap, nodeshape: shacl_objects.NodeShapeNode):
+        """
+        """
+        associated_literals, associated_literaltypes = self.shacl_interpreter.get_associated_literals(from_node=nodeshape.node, rel_path=[])
+
+        self.add_literaltype_mapping(mapping_map=mapping_map, associated_literaltypes=associated_literaltypes)
+        self.add_literal_mapping(mapping_map=mapping_map, associated_literals=associated_literals)
 
     def add_type_mapping(self, mapping_map: CommentedMap, nodeshape: shacl_objects.NodeShapeNode):
         """
@@ -202,14 +216,15 @@ class Templater:
             new_path[-1] = f'{new_path[-1]}[*]'
 
         mapping_map = CommentedMap()
+        curr_filename = f'{root_node_name.lower()}.json'
 
-        self.add_source_mapping(mapping=mapping_map, filename=f'{root_node_name.lower()}.json', path=new_path)
+        self.add_source_mapping(mapping=mapping_map, filename=curr_filename, path=new_path)
 
         mapping_map['s'] = f'{namespace_provider.entity_prefix}:{node_name}_$(index)'
         mapping_map['po'] = CommentedSeq()
 
         self.add_type_mapping(mapping_map=mapping_map, nodeshape=curr_nodeshape)
-        self.add_literal_mapping(mapping_map=mapping_map, nodeshape=curr_nodeshape)
+        self.add_all_literals_mapping(mapping_map=mapping_map, nodeshape=curr_nodeshape)
         self.add_inverse_path_mapping(mapping_map=mapping_map, nodeshape=curr_nodeshape)
     	
         mapping_shape_name = self.get_mapping_name(curr_nodeshape_name)
@@ -217,11 +232,13 @@ class Templater:
         
         self.data['mappings'][mapping_shape_name] = mapping_map
 
-        associated_nodeshapes = self.shacl_interpreter.get_associated_nodeshapes(from_node=curr_nodeshape.node, path=new_path)
+        associated_nodeshapes, associated_literals = self.shacl_interpreter.get_associated_nodeshapes(from_node=curr_nodeshape.node, path=new_path)
 
         for associated_nodeshape in associated_nodeshapes:
             self.add_path_mapping(mapping_map=mapping_map, associated_nodeshape=associated_nodeshape)
             self.add_nodeshape_mapping(root_node_name=root_node_name, nodeshape=associated_nodeshape, path=new_path)
+
+        self.add_literal_mapping(mapping_map=mapping_map, associated_literals=associated_literals)
 
     def generate_templates_root_nodes(self):
         root_nodeshape_nodes = self.shacl_interpreter.get_root_nodeshapes()

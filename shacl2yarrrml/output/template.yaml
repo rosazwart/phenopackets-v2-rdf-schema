@@ -6,6 +6,74 @@ prefixes:
   dash: http://datashapes.org/dash#
   dct: http://purl.org/dc/terms/
 mappings:
+  CatalogShapeMapping:
+    sources:
+      - access: catalog.json
+        referenceFormulation: jsonpath
+        iterator: $.catalog[*]
+    s: fdp:catalog_$(index)
+    po:
+      - [a, dcat:Catalog]
+      - p: dcat:dataset
+        o:
+          mapping: catalogDatasetShapeMapping
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(index), s]
+              - [str2, $(parent_index), o]
+      - [dcat:dataset, '$(dataset_IRI[*])', schema:URL]
+  catalogDatasetShapeMapping:
+    sources:
+      - access: catalog.json
+        referenceFormulation: jsonpath
+        iterator: $.catalog[*].dataset[*]
+    s: fdp:dataset_$(index)
+    po:
+      - [a, dcat:Dataset]
+      - p: dct:title
+        o:
+          value: $(title)
+          datatype: sh:Literal
+      - p: dct:description
+        o:
+          value: $(description)
+          datatype: xsd:string
+      - p: dct:identifier
+        o:
+          value: $(identifier)
+          datatype: sh:Literal
+      - p: dct:issued
+        o:
+          value: $(issued)
+          datatype: xsd:dateTime
+      - p: dct:creator
+        o:
+          mapping: catalogdatasetAgentMapping
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(index), s]
+              - [str2, $(parent_index), o]
+  catalogdatasetAgentMapping:
+    sources:
+      - access: catalog.json
+        referenceFormulation: jsonpath
+        iterator: $.catalog[*].dataset[*].agent[*]
+    s: fdp:agent_$(index)
+    po: []
+  AgentShapeMapping:
+    sources:
+      - access: agent.json
+        referenceFormulation: jsonpath
+        iterator: $.agent[*]
+    s: fdp:agent_$(index)
+    po:
+      - [a, foaf:Agent]
+      - p: foaf:name
+        o:
+          value: $(name)
+          datatype: sh:Literal
   DistributionShapeMapping:
     sources:
       - access: distribution.json
@@ -49,3 +117,29 @@ mappings:
         o:
           value: $(endpointDescription)
           datatype: sh:Literal
+  FDPShapeMapping:
+    sources:
+      - access: fdp.json
+        referenceFormulation: jsonpath
+        iterator: $.fdp[*]
+    s: fdp:fdp_$(index)
+    po:
+      - [a, ns1:FAIRDataPoint]
+      - p: ns1:startDate
+        o:
+          value: $(startDate)
+          datatype: xsd:dateTime
+      - p: ns1:endDate
+        o:
+          value: $(endDate)
+          datatype: xsd:dateTime
+      - [ns1:uiLanguage, $(uiLanguage), schema:URL]
+      - [ns1:metadataIdentifier, $(metadataIdentifier), schema:URL]
+      - p: ns1:metadataIssued
+        o:
+          value: $(metadataIssued)
+          datatype: xsd:dateTime
+      - p: ns1:metadataModified
+        o:
+          value: $(metadataModified)
+          datatype: xsd:dateTime

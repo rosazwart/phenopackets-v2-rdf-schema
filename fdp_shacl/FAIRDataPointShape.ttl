@@ -4,16 +4,63 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix ldp: <http://www.w3.org/ns/ldp#> .
 
+<http://fairdatapoint.org/FDPShape> a <http://www.w3.org/ns/shacl#NodeShape> ;
+    <http://www.w3.org/ns/shacl#targetClass> <https://w3id.org/fdp/fdp-o#FAIRDataPoint> ;
+    <http://www.w3.org/ns/shacl#property> [
+        <http://www.w3.org/ns/shacl#path> <https://w3id.org/fdp/fdp-o#startDate> ;
+        <http://www.w3.org/ns/shacl#datatype> xsd:dateTime ;
+        <http://www.w3.org/ns/shacl#maxCount> 1 ;
+        <http://datashapes.org/dash#editor> <http://datashapes.org/dash#DatePickerEditor> ;
+        <http://datashapes.org/dash#viewer> <http://datashapes.org/dash#LiteralViewer>
+    ], 
+    [
+        <http://www.w3.org/ns/shacl#path> <https://w3id.org/fdp/fdp-o#endDate> ;
+        <http://www.w3.org/ns/shacl#datatype> xsd:dateTime ;
+        <http://www.w3.org/ns/shacl#maxCount> 1 ;
+        <http://datashapes.org/dash#editor> <http://datashapes.org/dash#DatePickerEditor> ;
+        <http://datashapes.org/dash#viewer> <http://datashapes.org/dash#LiteralViewer>
+    ], 
+    [
+        <http://www.w3.org/ns/shacl#path> <https://w3id.org/fdp/fdp-o#uiLanguage> ;
+        <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#IRI> ;
+        <http://www.w3.org/ns/shacl#maxCount> 1 ;
+        <http://www.w3.org/ns/shacl#defaultValue> <http://id.loc.gov/vocabulary/iso639-1/en> ;
+        <http://datashapes.org/dash#editor> <http://datashapes.org/dash#URIEditor> ;
+        <http://datashapes.org/dash#viewer> <http://datashapes.org/dash#LabelViewer>
+    ], 
+    [
+        <http://www.w3.org/ns/shacl#path> <https://w3id.org/fdp/fdp-o#metadataIdentifier> ;
+        <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#IRI> ;
+        <http://www.w3.org/ns/shacl#maxCount> 1 ;
+        <http://datashapes.org/dash#editor> <http://datashapes.org/dash#URIEditor> ;
+        <http://datashapes.org/dash#viewer> <http://datashapes.org/dash#LabelViewer>
+    ], 
+    [
+        <http://www.w3.org/ns/shacl#path> <https://w3id.org/fdp/fdp-o#metadataIssued> ;
+        <http://www.w3.org/ns/shacl#datatype> xsd:dateTime ;
+        <http://www.w3.org/ns/shacl#maxCount> 1 ;
+        <http://datashapes.org/dash#editor> <http://datashapes.org/dash#DatePickerEditor> ;
+        <http://datashapes.org/dash#viewer> <http://datashapes.org/dash#LiteralViewer>
+    ], 
+    [
+        <http://www.w3.org/ns/shacl#path> <https://w3id.org/fdp/fdp-o#metadataModified> ;
+        <http://www.w3.org/ns/shacl#datatype> xsd:dateTime ;
+        <http://www.w3.org/ns/shacl#maxCount> 1 ;
+        <http://datashapes.org/dash#editor> <http://datashapes.org/dash#DatePickerEditor> ;
+        <http://datashapes.org/dash#viewer> <http://datashapes.org/dash#LiteralViewer>
+    ] .
+
 <http://fairdatapoint.org/DataServiceShape> a <http://www.w3.org/ns/shacl#NodeShape>;
-  <http://www.w3.org/ns/shacl#targetClass> dcat:DataService;
-  <http://www.w3.org/ns/shacl#property> [
-      <http://www.w3.org/ns/shacl#path> dcat:endpointURL;
-      <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#IRI>;
-      <http://www.w3.org/ns/shacl#maxCount> 1
-    ], [
-      <http://www.w3.org/ns/shacl#path> dcat:endpointDescription;
-      <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#Literal>;
-      <http://www.w3.org/ns/shacl#maxCount> 1;
-      <http://datashapes.org/dash#editor> <http://datashapes.org/dash#TextAreaEditor>;
-      <http://datashapes.org/dash#viewer> <http://datashapes.org/dash#LiteralViewer>
+    <http://www.w3.org/ns/shacl#targetClass> dcat:DataService;
+    <http://www.w3.org/ns/shacl#property> [
+        <http://www.w3.org/ns/shacl#path> dcat:endpointURL ;
+        <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#IRI> ;
+        <http://www.w3.org/ns/shacl#maxCount> 1
+    ], 
+    [
+        <http://www.w3.org/ns/shacl#path> dcat:endpointDescription ;
+        <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#Literal> ;
+        <http://www.w3.org/ns/shacl#maxCount> 1 ;
+        <http://datashapes.org/dash#editor> <http://datashapes.org/dash#TextAreaEditor> ;
+        <http://datashapes.org/dash#viewer> <http://datashapes.org/dash#LiteralViewer>
     ] .
