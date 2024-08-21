@@ -1,0 +1,22 @@
+{
+    "distribution": [
+        {
+            "index": "distribution1",
+            "_comment": "",
+            "dataservice": [
+                {
+                    "index": "distribution1dataservice1",
+                    "parent_index": "distribution1",
+                    "_comment": "[0, *]",
+                    "endpointURL": "https://dataservice.org/",
+                    "endpointDescription": "Endpoint of dataservice"
+                }
+            ],
+            "accessURL": "https://distribution.org/",
+            "mediaType": "Mediatype of distribution",
+            "title": "Distribution 1",
+            "description": "This is a distribution",
+            "downloadURL": "https://distribution.org/download/"
+        }
+    ]
+}

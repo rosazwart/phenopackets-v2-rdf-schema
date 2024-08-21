@@ -1,0 +1,14 @@
+{
+    "id": [
+        {
+            "index": "INDEX",
+            "_comment": "",
+            "role": {
+                "index": "INDEX",
+                "parent_index": "PARENTINDEX",
+                "_comment": "[1, 1]"
+            },
+            "sio_has-value": "XSD:STRING"
+        }
+    ]
+}

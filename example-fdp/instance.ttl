@@ -1,0 +1,46 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cat: <http://www.w3.org/ns/dcat#> .
+@prefix ma: <http://www.w3.org/ns/ma-ont#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix schema: <http://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix fdp: <http://fairdatapoint.org/> .
+@prefix dash: <http://datashapes.org/dash#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+
+fdp:catalog_catalog1 rdf:type dcat:Catalog ;
+	dcat:dataset fdp:dataset_catalog1dataset1, "http://example.org/datasets/dataset2"^^schema:URL, "http://example.org/datasets/dataset3"^^schema:URL .
+
+fdp:dataset_catalog1dataset1 rdf:type dcat:Dataset ;
+	dct:title "Title of dataset"^^sh:Literal ;
+	dct:description "This is a dataset" ;
+	dct:identifier "dataset1"^^sh:Literal ;
+	dct:issued "2024-01-01T12:30:00"^^xsd:dateTime ;
+	dct:creator fdp:agent_agent1 .
+
+fdp:agent_agent1 rdf:type foaf:Agent ;
+	foaf:name "John Doe"^^sh:Literal .
+
+fdp:distribution_distribution1 rdf:type dcat:Distribution ;
+	dcat:accessURL "https://distribution.org/"^^schema:URL ;
+	dcat:mediaType "Mediatype of distribution" ;
+	dct:title "Distribution 1" ;
+	dct:description "This is a distribution" ;
+	dcat:downloadURL "https://distribution.org/download/"^^schema:URL ;
+	dcat:accessService fdp:dataservice_distribution1dataservice1 .
+
+fdp:dataservice_distribution1dataservice1 rdf:type dcat:DataService ;
+	dcat:endpointURL "https://dataservice.org/"^^schema:URL ;
+	dcat:endpointDescription "Endpoint of dataservice"^^sh:Literal .
+
+fdp:fdp_fdp1 rdf:type <ns1:FAIRDataPoint> ;
+	<ns1:startDate> "2024-08-12T14:30:00"^^xsd:dateTime ;
+	<ns1:endDate> "2024-08-12T14:30:00"^^xsd:dateTime ;
+	<ns1:uiLanguage> "english"^^schema:URL ;
+	<ns1:metadataIdentifier> "fdp-1-metadata-1"^^schema:URL ;
+	<ns1:metadataIssued> "2024-07-07T10:15:00"^^xsd:dateTime ;
+	<ns1:metadataModified> "2024-08-12T14:30:00"^^xsd:dateTime .
+
