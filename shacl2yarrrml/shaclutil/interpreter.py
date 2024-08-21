@@ -623,7 +623,8 @@ class Interpreter:
             associated_types.append(shacl_objects.TypeNode(type_name=f'{type_prefix}:{type_name}'))
 
         for inherited_nodeshape in self.get_inherited_nodeshapes(from_node):
-            associated_types += self.get_associated_types(inherited_nodeshape.node)
+            if not inherited_nodeshape.from_or:
+                associated_types += self.get_associated_types(inherited_nodeshape.node)
 
         return associated_types
     

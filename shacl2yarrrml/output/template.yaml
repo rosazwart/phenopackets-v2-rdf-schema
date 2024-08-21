@@ -57,6 +57,30 @@ mappings:
         o:
           value: $(adms_versionNotes.sh_Literal)
           datatype: sh:Literal
+      - p: dct:publisher
+        o:
+          mapping: dcatresource_dct_publisherAgentShapeMapping
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(index), s]
+              - [str2, $(parent_index), o]
+  dcatresource_dct_publisherAgentShapeMapping:
+    sources:
+      - access: dcatresource_.json
+        referenceFormulation: jsonpath
+        iterator: $.dcatresource_[*].dct_publisher.agent[*]
+    s: ex:agent_$(index)
+    po:
+      - [a, foaf:Agent]
+      - p: foaf:name
+        o:
+          value: $(foaf_name.sh_Literal)
+          datatype: sh:Literal
+      - p: dct:identifier
+        o:
+          value: $(dct_identifier.sh_Literal)
+          datatype: sh:Literal
   datasetDcatResource_ShapeMapping:
     sources:
       - access: dcatresource_.json
@@ -123,6 +147,14 @@ mappings:
         o:
           value: $(adms_versionNotes.sh_Literal)
           datatype: sh:Literal
+      - p: dct:publisher
+        o:
+          mapping: dcatresource_dct_publisherAgentShapeMapping
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(index), s]
+              - [str2, $(parent_index), o]
   catalogDcatResource_ShapeMapping:
     sources:
       - access: dcatresource_.json
@@ -165,3 +197,11 @@ mappings:
         o:
           value: $(adms_versionNotes.sh_Literal)
           datatype: sh:Literal
+      - p: dct:publisher
+        o:
+          mapping: dcatresource_dct_publisherAgentShapeMapping
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(index), s]
+              - [str2, $(parent_index), o]

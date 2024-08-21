@@ -248,8 +248,10 @@ class Templater:
             path_map['o'] = CommentedMap()
 
             _, _, shape_mapping_name = self.shacl_interpreter.basic_interpr.extract_values(associated_nodeshape.node)
-            shape_mapping_name = self.get_shape_mapping_name(shape_mapping_name, path=associated_nodeshape.path)
 
+            shape_path = associated_nodeshape.path + [associated_nodeshape.property_path.replace(':', '_')]
+            shape_mapping_name = self.get_shape_mapping_name(shape_mapping_name, path=shape_path)
+            
             path_map['o']['mapping'] = f'{shape_mapping_name}Mapping'
 
             path_map['o']['condition'] = CommentedMap()
@@ -288,7 +290,7 @@ class Templater:
                 path_map['o'] = CommentedMap()
                 _, _, shape_mapping_name = self.shacl_interpreter.basic_interpr.extract_values(inverse_associated_nodeshape.node)
                 shape_mapping_name = self.get_shape_mapping_name(shape_mapping_name, path=inverse_associated_nodeshape.path)
-
+                
                 path_map['o']['mapping'] = f'{shape_mapping_name}Mapping'
 
                 path_map['o']['condition'] = CommentedMap()
@@ -306,6 +308,22 @@ class Templater:
                     path_map['o']['condition']['parameters'].append(str_map)
 
                 mapping_map['po'].append(path_map)
+
+    def get_or_inherited_nodeshapes(self, inherited_nodeshapes: list):
+        """
+            Get all inherited nodeshapes that are included in an OR statement. Meaning that the node is inheriting from only one of these nodeshapes. So, mulitple nodeshape mappings need to be specified.
+            
+            :param inherited_nodeshapes: The inherited nodeshapes
+            :datatype inherited_nodeshapes: List[shacl_objects.NodeShapeNode]
+
+            :returns: List of all inherited nodeshapes that are part of an OR statement
+            :rtype: List[shacl_objects.NodeShapeNode]
+        """
+        choice_inherited_nodeshapes = []
+        for inherited_nodeshape in inherited_nodeshapes:
+            if inherited_nodeshape.from_or:
+                choice_inherited_nodeshapes.append(inherited_nodeshape)
+        return choice_inherited_nodeshapes
 
     def add_nodeshape_mapping(self, root_node_name: str, nodeshape: shacl_objects.NodeShapeNode, path: list):
         """
@@ -333,11 +351,7 @@ class Templater:
         curr_filename = f'{root_node_name.lower()}.json'
 
         inherited_nodeshapes = self.shacl_interpreter.get_inherited_nodeshapes(root_node=curr_nodeshape.node)
-        choice_inherited_nodeshapes = []
-        for inherited_nodeshape in inherited_nodeshapes:
-            if inherited_nodeshape.from_or:
-                choice_inherited_nodeshapes.append(inherited_nodeshape)
-        
+        choice_inherited_nodeshapes = self.get_or_inherited_nodeshapes(inherited_nodeshapes)
         if len(choice_inherited_nodeshapes):
             for choice_inherited_nodeshape in choice_inherited_nodeshapes:
                 mapping_map = CommentedMap()
@@ -349,18 +363,37 @@ class Templater:
                 inheritance_path = deepcopy(path)
                 inheritance_path.append(inherited_node_name)
 
-                mapping_shape_name = self.get_mapping_name(curr_nodeshape_name)
-                mapping_shape_name = self.get_shape_mapping_name(mapping_shape_name, path=inheritance_path)
-
                 mapping_map['s'] = f'{self.rdf_prefix}:{node_name}_$(index)'
                 mapping_map['po'] = CommentedSeq()
 
                 self.add_type_mapping(mapping_map=mapping_map, nodeshape=choice_inherited_nodeshape)
+                self.add_type_mapping(mapping_map=mapping_map, nodeshape=curr_nodeshape)
                 
                 self.add_all_literals_mapping(mapping_map=mapping_map, nodeshape=choice_inherited_nodeshape, rel_path=inheritance_path)
                 self.add_all_literals_mapping(mapping_map=mapping_map, nodeshape=curr_nodeshape)
+
+                self.add_inverse_path_mapping(mapping_map=mapping_map, nodeshape=choice_inherited_nodeshape)
+                self.add_inverse_path_mapping(mapping_map=mapping_map, nodeshape=curr_nodeshape)
                 
+                mapping_shape_name = self.get_mapping_name(curr_nodeshape_name)
+                mapping_shape_name = self.get_shape_mapping_name(mapping_shape_name, path=inheritance_path)
+
                 self.data['mappings'][mapping_shape_name] = mapping_map
+
+                associated_nodeshapes, associated_literals = self.shacl_interpreter.get_associated_nodes(from_node=curr_nodeshape.node, path=new_path)
+                associated_nodeshapes += inherited_nodeshapes
+
+                for associated_nodeshape in associated_nodeshapes:
+                    if associated_nodeshape not in choice_inherited_nodeshapes:
+                        self.add_path_mapping(mapping_map=mapping_map, associated_nodeshape=associated_nodeshape)
+
+                        nodeshape_new_path = deepcopy(new_path)
+                        nodeshape_new_path.append(associated_nodeshape.property_path.replace(':', '_'))
+                        self.add_nodeshape_mapping(root_node_name=root_node_name, nodeshape=associated_nodeshape, path=nodeshape_new_path)
+
+                        self.add_literal_mapping(mapping_map=mapping_map, associated_literals=associated_literals)
+
+                self.add_literal_mapping(mapping_map=mapping_map, associated_literals=associated_literals)
         else:
             mapping_map = CommentedMap()
             self.add_source_mapping(mapping=mapping_map, filename=curr_filename, path=new_path)
