@@ -8,6 +8,12 @@ import shaclutil.objects as shacl_objects
 
 class BasicInterpreter:
     def __init__(self, g: rdflib.Graph):
+        """
+            This interpreter interprets the basic SHACL syntax represented in RDF and has basic functionalities to extract information from these RDF triples.
+
+            :param g: The RDF graph that represents the SHACL model
+            :datatype g: rdflib.Graph
+        """
         self.shacl_g = g
 
     def extract_values(self, node: rdflib.URIRef):
@@ -252,7 +258,6 @@ class BasicInterpreter:
                 associated_nodeshape_nodes.append(shacl_objects.NodeShapeNode(node=or_target_node_obj, property_path=property_path_name, path=path, min_count=min_count, max_count=max_count))
             elif or_target_node_type == rdflib.SH.NodeKind:
                 nodekind_prefix, _, nodekind_name = self.extract_values(or_target_node_obj)
-                literal_name = property_path_name.split(':')[-1]
                 associated_literal_nodes.append(shacl_objects.LiteralNode(path_name=f'{property_path_name}', rel_path=[], literal_type=f'{nodekind_prefix}:{nodekind_name}',
                                                                           min_count=min_count, max_count=max_count))    # relative path is empty due to being a literal accessed via same nodeshape mapping in YARRRML
             else:
@@ -262,6 +267,12 @@ class BasicInterpreter:
 
 class Interpreter:
     def __init__(self, g: rdflib.Graph):
+        """
+            Interpreter that interprets more complex and composed SHACL syntax and adds functionalities that are used to interpret the SHACL in order to create the JSON and YARRRML templates.
+
+            :param g: The RDF graph that represents the SHACL model
+            :datatype g: rdflib.Graph
+        """
         self.shacl_g = g
         self.basic_interpr = BasicInterpreter(g=g)
 
@@ -499,7 +510,7 @@ class Interpreter:
     
     def get_inverse_associated_nodeshapes(self, from_node: rdflib.URIRef, path: list):
         """
-            Get nodeshape nodes that are targeted by an inversed property path.
+            Get nodeshape nodes that are targeted by an inversed property path with as subject the given node.
 
             :param from_node: The node that is the subject of the property path
             :datatype from_node: rdflib.URIRef
@@ -565,7 +576,7 @@ class Interpreter:
             inherited_nodeshape_obj = shacl_objects.NodeShapeNode(node=inherited_nodeshape_node, add_cardinality_comment=True)
             inherited_nodeshapes.append(inherited_nodeshape_obj)
 
-        # TODO:
+        # TODO: Detect OR statement related to inherited nodeshapes, specify this in the NodeShapeNode object for later reference
         or_triples = self.basic_interpr.find_triples(query_subject=root_node, query_predicate=rdflib.URIRef('http://www.w3.org/ns/shacl#or'))  
         inherited_or_nodeshapes = []
         for or_triple in or_triples:

@@ -4,7 +4,13 @@ import re
 
 def fill_declared_prefixes(prefix_dict: dict, file_path: str):
     """
+        Read out the SHACL files and use regex to get all declared namespaces and their prefixes.
 
+        :param prefix_dict: Dictionary of already declared namespaces (standard namespaces always included no matter the model)
+        :datatype prefix_dict: dict
+
+        :param file_path: Path to SHACL file
+        :datatype file_path: str
     """
     with open(file_path, 'r') as f:
         content = f.read()

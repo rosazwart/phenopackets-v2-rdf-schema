@@ -353,6 +353,13 @@ class Templater:
         inherited_nodeshapes = self.shacl_interpreter.get_inherited_nodeshapes(root_node=curr_nodeshape.node)
         choice_inherited_nodeshapes = self.get_or_inherited_nodeshapes(inherited_nodeshapes)
         if len(choice_inherited_nodeshapes):
+            # TODO: This IF statement added to accommodate the OR statement and inherited nodeshapes for now... 
+            # It basically is the same as for the else statement but now it includes the properties of both the
+            # current nodeshape and the nodeshape it inherits. Because it is an OR statement, the inherited nodeshape
+            # varies and are exclusive from each other. EITHER it inherits the properties of nodeshape A OR B. 
+            # Each possible variation of the current nodeshape needs to be added to the mapping such as current nodeshape
+            # inheriting nodeshape A, current nodeshape inheriting nodeshape B, etc...
+            # This function is getting very rough, probably needs quite a overhaul to accommodate this in a better way.
             for choice_inherited_nodeshape in choice_inherited_nodeshapes:
                 mapping_map = CommentedMap()
                 _, _, inherited_nodeshape_name = self.shacl_interpreter.basic_interpr.extract_values(node=choice_inherited_nodeshape.node)
@@ -361,7 +368,7 @@ class Templater:
                 self.add_source_mapping(mapping=mapping_map, filename=curr_filename, path=new_path)
 
                 inheritance_path = deepcopy(path)
-                inheritance_path.append(inherited_node_name)
+                inheritance_path.append(inherited_node_name)    # Add the inherited nodeshape to the current path (nodeshape hierarchy levels) in order to know where to look for in the JSOn file for the values of properties related to the inherited nodeshape
 
                 mapping_map['s'] = f'{self.rdf_prefix}:{node_name}_$(index)'
                 mapping_map['po'] = CommentedSeq()
@@ -395,6 +402,7 @@ class Templater:
 
                 self.add_literal_mapping(mapping_map=mapping_map, associated_literals=associated_literals)
         else:
+            # This comes from the current converter script version
             mapping_map = CommentedMap()
             self.add_source_mapping(mapping=mapping_map, filename=curr_filename, path=new_path)
 

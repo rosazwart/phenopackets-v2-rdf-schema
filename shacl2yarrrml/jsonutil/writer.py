@@ -10,6 +10,12 @@ import shaclutil.traverser as shacl_traverser
 
 class Templater:
     def __init__(self, g: rdflib.Graph):
+        """
+            Generates JSON template to show the structure that is needed as input for converting data to RDF with YARRRML
+
+            :param g: The RDF graph that represents the SHACL model
+            :datatype g: rdflib.Graph
+        """
         self.shacl_interpreter = shacl_interpreter.Interpreter(g=g)
         self.shacl_traverser = shacl_traverser.Traverser(g=g)
 

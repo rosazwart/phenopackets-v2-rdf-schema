@@ -8,6 +8,12 @@ import shaclutil.interpreter as shacl_interpreter
 
 class Traverser:
     def __init__(self, g: rdflib.Graph):
+        """ 
+            When initialized, it traverses through the RDF graph representing the SHACL model and creates a dictionary that represents the hierarchy, associations between entities and class inheritance.
+
+            :param g: The RDF graph representing the SHACL model
+            :datatype g: rdflib.Graph
+        """
         self.shacl_g = g
         self.interpreter = shacl_interpreter.Interpreter(g=g)
 
@@ -82,11 +88,19 @@ class Traverser:
             _, _, associated_nodeshape_name = self.interpreter.basic_interpr.extract_values(node=associated_nodeshape.node)
 
             if root_node.node == associated_nodeshape.node:
+                # If the node is associated with another node of the same nodeshape, do not 
+                # create the whole dictionary with all information fields of the same nodeshape 
+                # (infinite loop!) but terminate with inserting a dictionary that only contains
+                # the index fields in order to link to its datafields defined somewhere else in 
+                # the JSON file and the parent index in order to associate with the subject of the
+                # association.
                 dict_to_append[common_util.from_nodeshape_name_to_name(associated_nodeshape_name)] = self._init_assoc_dict(is_initial_root=False, comment=associated_nodeshape.comment)
             else:
                 if associated_nodeshape.max_count == -1:
+                    # JSON datafield is a list because multiple entities are allowed to be associated with the subject
                     dict_to_append[common_util.from_nodeshape_name_to_name(associated_nodeshape_name)] = [self.get_hierarchy(root_node=associated_nodeshape)]
                 else:
+                    # JSON datafield is a dictionary representing a single entity
                     dict_to_append[common_util.from_nodeshape_name_to_name(associated_nodeshape_name)] = self.get_hierarchy(root_node=associated_nodeshape)
 
         other_associated_literals, other_associated_literaltypes = self.interpreter.get_associated_literals(from_node=root_node.node, rel_path=[], include_inherited=False)
@@ -94,7 +108,7 @@ class Traverser:
         associated_literals += other_associated_literals
         
         for associated_literaltype in associated_literaltypes:
-            value_name = associated_literaltype.nodekind_name.replace(':', '_')
+            value_name = associated_literaltype.nodekind_name.replace(':', '_') # this string formatting is needed to allow YARRRML to be directed to the correct datafield
             association_dict[value_name] = associated_literaltype.literal_type.upper()
 
         for associated_literal in associated_literals:

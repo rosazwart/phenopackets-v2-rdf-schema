@@ -8,7 +8,15 @@ SHACL2YARRRML_FOLDERNAME = 'shacl2yarrrml'
 RDF_OUTPUT_FOLDERNAME = 'example-fdp'
 
 def load_json_files(folderpath: list):
-    """  """
+    """ 
+        Load all aligned JSON files found in given folder.
+
+        :param folderpath: Path to folder containing the needed JSON files that are correctly aligned in order to work with the YARRRML file
+        :datatype folderpath: list
+
+        :returns: List of all JSON files represented as a dictionary
+        :rtype: List[dict]
+    """
     path_to_json_folder = os.getcwd()
     
     for path_level in folderpath:
@@ -25,7 +33,12 @@ def load_json_files(folderpath: list):
     return json_files
 
 def load_yarrrml(folderpath: list):
-    """  """
+    """
+        Load first YARRRML file found in folder path.
+
+        :param folderpath: Path to folder represented in a list
+        :datatype list
+    """
     path_to_yarrrml_folder = os.getcwd()
     
     for path_level in folderpath:
@@ -38,6 +51,12 @@ def load_yarrrml(folderpath: list):
                 return file.read()
             
 def get_all_jsonaligner_output_names():
+    """
+        Extract names from the JSON files to use as names for each RDF dataset instance.
+
+        :returns: List of names for each RDF instance
+        :rtype: list
+    """
     instance_names = []
 
     curr_wdir = os.getcwd()
