@@ -8,6 +8,14 @@ In order to develop this workflow further in increasing its generalization over 
 
 As this RDF conversion workflow proved to be useful for automatic conversion of phenopacket data and insightful about the implications of changes in the SHACL file on the actual data, more development of this tool is recommended. In this branch, the workflow has already been modified to implement the improvements. However, more steps need to be taken to implement the functionalities of the tool to work properly on the new SHACL models. 
 
+## Implemented Improvements
+
+In the current workflow version, the namespaces declared in the SHACL files needed to be defined manually to the script:
+
+https://github.com/rosazwart/phenopackets-v2-rdf-schema/blob/445d6db863ddb2e82379573c417adad487a96652/shacl2yarrrml/namespace_provider.py#L23-L25
+
+In this new version, these namespaces are detected automatically and a prompt is given to the user when starting the SHACL2YARRRML script asking which namespace and prefix need to be used to add to the RDF entities that are to be created.
+
 ## Future Work
 
 This branch contains the work in progress of the improved version of the RDF conversion workflow. The main improvements that are worked on at the moment are also summarized by the added issues to this branch.
