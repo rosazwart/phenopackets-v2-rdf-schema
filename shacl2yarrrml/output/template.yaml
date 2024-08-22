@@ -1,17 +1,20 @@
 prefixes:
-  dcat: http://www.w3.org/ns/dcat#
   sh: http://www.w3.org/ns/shacl#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
   xsd: http://www.w3.org/2001/XMLSchema#
+  obo: http://purl.obolibrary.org/obo/
+  sio: http://semanticscience.org/resource/
   dct: http://purl.org/dc/terms/
-  fdp: http://fairdatapoint.org/
-  dash: http://datashapes.org/dash#
+  phenop: http://purl.org/ejp-rd/phenopackets-rdf-schema/v200/shacl/
+  ex: https://example.org/
 mappings:
   phenopacketShapeMapping:
     sources:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*]
-    s: fdp:phenopacket_$(index)
+    s: ex:phenopacket_$(index)
     po:
       - [a, sio:SIO_000015]
       - [a, obo:NCIT_C79269]
@@ -68,7 +71,7 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*].role
-    s: fdp:role_$(index)
+    s: ex:role_$(index)
     po:
       - [a, sio:SIO_000016]
       - [a, obo:NCIT_C48835]
@@ -77,7 +80,7 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*].individual
-    s: fdp:individual_$(index)
+    s: ex:individual_$(index)
     po:
       - [a, sio:SIO_010375]
       - [a, obo:NCIT_C41189]
@@ -110,7 +113,7 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*].individual.role
-    s: fdp:role_$(index)
+    s: ex:role_$(index)
     po:
       - [a, sio:SIO_000016]
       - [a, obo:NCIT_C48835]
@@ -119,7 +122,7 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*].individual.sex
-    s: fdp:sex_$(index)
+    s: ex:sex_$(index)
     po:
       - [a, sio:SIO_000614]
       - [a, $(ontologyclass.sh_IRI), schema:URL]
@@ -132,7 +135,7 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*].individual.sex.sexvalue
-    s: fdp:sexvalue_$(index)
+    s: ex:sexvalue_$(index)
     po:
       - [a, sio:SIO_000015]
       - [a, obo:NCIT_C160908]
@@ -149,7 +152,7 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*].individual.age
-    s: fdp:age_$(index)
+    s: ex:age_$(index)
     po:
       - [a, sio:SIO_000614]
       - [a, obo:NCIT_C192262]
@@ -158,7 +161,7 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*].individual.age.agevalue
-    s: fdp:agevalue_$(index)
+    s: ex:agevalue_$(index)
     po:
       - [a, sio:SIO_000015]
       - [a, obo:NCIT_C70856]
@@ -180,7 +183,7 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*].phenotypicfeature[*]
-    s: fdp:phenotypicfeature_$(index)
+    s: ex:phenotypicfeature_$(index)
     po:
       - [a, sio:SIO_000614]
       - [a, $(ontologyclass.sh_IRI), schema:URL]
@@ -209,7 +212,7 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*].phenotypicfeature[*].phenotypicfeaturevalue
-    s: fdp:phenotypicfeaturevalue_$(index)
+    s: ex:phenotypicfeaturevalue_$(index)
     po:
       - [a, sio:SIO_000015]
       - [a, obo:NCIT_C16977]
@@ -226,7 +229,7 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*].phenotypicfeature[*].excluded
-    s: fdp:excluded_$(index)
+    s: ex:excluded_$(index)
     po:
       - [a, sio:SIO_000614]
       - [a, obo:HP_0040285]
@@ -235,7 +238,7 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*].phenotypicfeature[*].excluded.excludedvalue
-    s: fdp:excludedvalue_$(index)
+    s: ex:excludedvalue_$(index)
     po:
       - [a, sio:SIO_000015]
       - [a, obo:NCIT_C70856]
@@ -257,7 +260,7 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*].biosample[*]
-    s: fdp:biosample_$(index)
+    s: ex:biosample_$(index)
     po:
       - [a, sio:SIO_010412]
       - [a, obo:NCIT_C43412]
@@ -299,7 +302,7 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*].biosample[*].role
-    s: fdp:role_$(index)
+    s: ex:role_$(index)
     po:
       - [a, sio:SIO_000016]
       - [a, obo:NCIT_C48835]
@@ -308,7 +311,7 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*].biosample[*].taxonomy
-    s: fdp:taxonomy_$(index)
+    s: ex:taxonomy_$(index)
     po:
       - [a, sio:SIO_000614]
       - [a, $(ontologyclass.sh_IRI), schema:URL]
@@ -321,7 +324,7 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*].biosample[*].taxonomy.taxonomyvalue
-    s: fdp:taxonomyvalue_$(index)
+    s: ex:taxonomyvalue_$(index)
     po:
       - [a, sio:SIO_000015]
       - [a, obo:NCIT_C17469]
@@ -338,7 +341,7 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*].biosample[*].phenotypicfeature[*]
-    s: fdp:phenotypicfeature_$(index)
+    s: ex:phenotypicfeature_$(index)
     po:
       - [a, sio:SIO_000614]
       - [a, $(ontologyclass.sh_IRI), schema:URL]
@@ -367,7 +370,7 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*].biosample[*].phenotypicfeature[*].phenotypicfeaturevalue
-    s: fdp:phenotypicfeaturevalue_$(index)
+    s: ex:phenotypicfeaturevalue_$(index)
     po:
       - [a, sio:SIO_000015]
       - [a, obo:NCIT_C16977]
@@ -384,7 +387,7 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*].biosample[*].phenotypicfeature[*].excluded
-    s: fdp:excluded_$(index)
+    s: ex:excluded_$(index)
     po:
       - [a, sio:SIO_000614]
       - [a, obo:HP_0040285]
@@ -394,7 +397,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].biosample.phenotypicfeature[*].excluded.excludedvalue
-    s: fdp:excludedvalue_$(index)
+    s: ex:excludedvalue_$(index)
     po:
       - [a, sio:SIO_000015]
       - [a, obo:NCIT_C70856]
@@ -416,7 +419,7 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*].interpretation[*]
-    s: fdp:interpretation_$(index)
+    s: ex:interpretation_$(index)
     po:
       - [a, sio:SIO_001003]
       - [a, obo:NCIT_C41255]
@@ -449,7 +452,7 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*].interpretation[*].role
-    s: fdp:role_$(index)
+    s: ex:role_$(index)
     po:
       - [a, sio:SIO_000016]
       - [a, obo:NCIT_C48835]
@@ -458,7 +461,7 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*].interpretation[*].progressstatus
-    s: fdp:progressstatus_$(index)
+    s: ex:progressstatus_$(index)
     po:
       - [a, sio:SIO_000614]
       - [a, obo:NCIT_C25630]
@@ -467,7 +470,7 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*].interpretation[*].progressstatus.progressstatusvalue
-    s: fdp:progressstatusvalue_$(index)
+    s: ex:progressstatusvalue_$(index)
     po:
       - [a, sio:SIO_000015]
       - [a, obo:NCIT_C70856]
@@ -489,7 +492,7 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*].interpretation[*].diagnosis
-    s: fdp:diagnosis_$(index)
+    s: ex:diagnosis_$(index)
     po:
       - [a, sio:SIO_000614]
       - [a, $(ontologyclass.sh_IRI), schema:URL]
@@ -522,7 +525,7 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*].interpretation[*].diagnosis.diagnosisvalue
-    s: fdp:diagnosisvalue_$(index)
+    s: ex:diagnosisvalue_$(index)
     po:
       - [a, sio:SIO_000015]
       - [a, obo:NCIT_C154625]
@@ -539,7 +542,7 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*].interpretation[*].diagnosis.disease
-    s: fdp:disease_$(index)
+    s: ex:disease_$(index)
     po:
       - [a, sio:SIO_000614]
       - [a, $(ontologyclass.sh_IRI), schema:URL]
@@ -556,7 +559,7 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*].interpretation[*].diagnosis.disease.diseasevalue
-    s: fdp:diseasevalue_$(index)
+    s: ex:diseasevalue_$(index)
     po:
       - [a, sio:SIO_000015]
       - [a, obo:NCIT_C2991]
@@ -573,7 +576,7 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*]
-    s: fdp:genomicinterpretation_$(index)
+    s: ex:genomicinterpretation_$(index)
     po:
       - [a, sio:SIO_000614]
       - [a, obo:SO_0001026]
@@ -624,7 +627,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation
-    s: fdp:variantinterpretation_$(index)
+    s: ex:variantinterpretation_$(index)
     po:
       - [a, sio:SIO_000614]
       - [a, obo:SO_0001060]
@@ -662,7 +665,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.acmgpathogenicityclass
-    s: fdp:acmgpathogenicityclass_$(index)
+    s: ex:acmgpathogenicityclass_$(index)
     po:
       - [a, sio:SIO_000614]
       - [a, obo:NCIT_C168796]
@@ -672,7 +675,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.acmgpathogenicityclass.acmgpathogenicityclassvalue
-    s: fdp:acmgpathogenicityclassvalue_$(index)
+    s: ex:acmgpathogenicityclassvalue_$(index)
     po:
       - [a, sio:SIO_000015]
       - [a, obo:NCIT_C70856]
@@ -696,7 +699,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.therapeuticactionability
-    s: fdp:therapeuticactionability_$(index)
+    s: ex:therapeuticactionability_$(index)
     po:
       - [a, sio:SIO_000614]
       - [a, obo:NCIT_C25277]
@@ -706,7 +709,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.therapeuticactionability.therapeuticactionabilityvalue
-    s: fdp:therapeuticactionabilityvalue_$(index)
+    s: ex:therapeuticactionabilityvalue_$(index)
     po:
       - [a, sio:SIO_000015]
       - [a, obo:NCIT_C70856]
@@ -730,7 +733,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor
-    s: fdp:variationdescriptor_$(index)
+    s: ex:variationdescriptor_$(index)
     po:
       - [a, sio:SIO_000015]
       - [a, obo:NCIT_C97927]
@@ -802,7 +805,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.role
-    s: fdp:role_$(index)
+    s: ex:role_$(index)
     po:
       - [a, sio:SIO_000016]
       - [a, obo:NCIT_C48835]
@@ -812,7 +815,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.genedescriptor
-    s: fdp:genedescriptor_$(index)
+    s: ex:genedescriptor_$(index)
     po:
       - [a, sio:SIO_000015]
       - [a, obo:NCIT_C16612]
@@ -843,7 +846,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.genedescriptor.genesymbol
-    s: fdp:genesymbol_$(index)
+    s: ex:genesymbol_$(index)
     po:
       - [a, sio:SIO_001383]
       - [a, obo:NCIT_C43568]
@@ -865,7 +868,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.genedescriptor.genesymbol.altid[*]
-    s: fdp:altid_$(index)
+    s: ex:altid_$(index)
     po:
       - [a, sio:SIO_000115]
       - [a, obo:NCIT_C90353]
@@ -879,7 +882,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.genedescriptor.altid[*]
-    s: fdp:altid_$(index)
+    s: ex:altid_$(index)
     po:
       - [a, sio:SIO_000115]
       - [a, obo:NCIT_C90353]
@@ -893,7 +896,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord
-    s: fdp:vcfrecord_$(index)
+    s: ex:vcfrecord_$(index)
     po:
       - [a, sio:SIO_000396]
       - [a, obo:NCIT_C172216]
@@ -944,7 +947,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.genomeassembly
-    s: fdp:genomeassembly_$(index)
+    s: ex:genomeassembly_$(index)
     po:
       - [a, sio:SIO_000614]
       - [a, obo:NCIT_C73517]
@@ -958,7 +961,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.chromosome
-    s: fdp:chromosome_$(index)
+    s: ex:chromosome_$(index)
     po:
       - [a, sio:SIO_000614]
       - [a, obo:NCIT_C13202]
@@ -972,7 +975,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.position
-    s: fdp:position_$(index)
+    s: ex:position_$(index)
     po:
       - [a, sio:SIO_000614]
       - [a, obo:NCIT_C93628]
@@ -986,7 +989,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.reference
-    s: fdp:reference_$(index)
+    s: ex:reference_$(index)
     po:
       - [a, sio:SIO_000614]
       - [a, obo:NCIT_C48294]
@@ -1000,7 +1003,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.vcfrecord.alternate
-    s: fdp:alternate_$(index)
+    s: ex:alternate_$(index)
     po:
       - [a, sio:SIO_000614]
       - [a, obo:NCIT_C25415]
@@ -1014,7 +1017,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.expression[*]
-    s: fdp:expression_$(index)
+    s: ex:expression_$(index)
     po:
       - [a, sio:SIO_000015]
       - [a, $(sh_IRI), schema:URL]
@@ -1036,7 +1039,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.moleculecontext
-    s: fdp:moleculecontext_$(index)
+    s: ex:moleculecontext_$(index)
     po:
       - [a, sio:SIO_000614]
       - [a, obo:NCIT_C63816]
@@ -1047,7 +1050,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.moleculecontext.moleculecontextvalue
-    s: fdp:moleculecontextvalue_$(index)
+    s: ex:moleculecontextvalue_$(index)
     po:
       - [a, sio:SIO_000015]
       - [a, obo:NCIT_C70856]
@@ -1071,7 +1074,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].variantinterpretation.variationdescriptor.allelicstate
-    s: fdp:allelicstate_$(index)
+    s: ex:allelicstate_$(index)
     po:
       - [a, sio:SIO_000614]
       - [a, $(ontologygenoclass.sh_IRI), schema:URL]
@@ -1081,7 +1084,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].genedescriptor
-    s: fdp:genedescriptor_$(index)
+    s: ex:genedescriptor_$(index)
     po:
       - [a, sio:SIO_000015]
       - [a, obo:NCIT_C16612]
@@ -1112,7 +1115,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].genedescriptor.genesymbol
-    s: fdp:genesymbol_$(index)
+    s: ex:genesymbol_$(index)
     po:
       - [a, sio:SIO_001383]
       - [a, obo:NCIT_C43568]
@@ -1134,7 +1137,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].genedescriptor.genesymbol.altid[*]
-    s: fdp:altid_$(index)
+    s: ex:altid_$(index)
     po:
       - [a, sio:SIO_000115]
       - [a, obo:NCIT_C90353]
@@ -1148,7 +1151,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].genedescriptor.altid[*]
-    s: fdp:altid_$(index)
+    s: ex:altid_$(index)
     po:
       - [a, sio:SIO_000115]
       - [a, obo:NCIT_C90353]
@@ -1161,7 +1164,7 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].individual
-    s: fdp:individual_$(index)
+    s: ex:individual_$(index)
     po:
       - [a, sio:SIO_010375]
       - [a, obo:NCIT_C41189]
@@ -1195,7 +1198,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].individual.role
-    s: fdp:role_$(index)
+    s: ex:role_$(index)
     po:
       - [a, sio:SIO_000016]
       - [a, obo:NCIT_C48835]
@@ -1205,7 +1208,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].individual.sex
-    s: fdp:sex_$(index)
+    s: ex:sex_$(index)
     po:
       - [a, sio:SIO_000614]
       - [a, $(ontologyclass.sh_IRI), schema:URL]
@@ -1219,7 +1222,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].individual.sex.sexvalue
-    s: fdp:sexvalue_$(index)
+    s: ex:sexvalue_$(index)
     po:
       - [a, sio:SIO_000015]
       - [a, obo:NCIT_C160908]
@@ -1237,7 +1240,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].individual.age
-    s: fdp:age_$(index)
+    s: ex:age_$(index)
     po:
       - [a, sio:SIO_000614]
       - [a, obo:NCIT_C192262]
@@ -1247,7 +1250,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].individual.age.agevalue
-    s: fdp:agevalue_$(index)
+    s: ex:agevalue_$(index)
     po:
       - [a, sio:SIO_000015]
       - [a, obo:NCIT_C70856]
@@ -1269,7 +1272,7 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].biosample
-    s: fdp:biosample_$(index)
+    s: ex:biosample_$(index)
     po:
       - [a, sio:SIO_010412]
       - [a, obo:NCIT_C43412]
@@ -1312,7 +1315,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].biosample.role
-    s: fdp:role_$(index)
+    s: ex:role_$(index)
     po:
       - [a, sio:SIO_000016]
       - [a, obo:NCIT_C48835]
@@ -1322,7 +1325,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].biosample.taxonomy
-    s: fdp:taxonomy_$(index)
+    s: ex:taxonomy_$(index)
     po:
       - [a, sio:SIO_000614]
       - [a, $(ontologyclass.sh_IRI), schema:URL]
@@ -1336,7 +1339,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].biosample.taxonomy.taxonomyvalue
-    s: fdp:taxonomyvalue_$(index)
+    s: ex:taxonomyvalue_$(index)
     po:
       - [a, sio:SIO_000015]
       - [a, obo:NCIT_C17469]
@@ -1354,7 +1357,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].biosample.phenotypicfeature[*]
-    s: fdp:phenotypicfeature_$(index)
+    s: ex:phenotypicfeature_$(index)
     po:
       - [a, sio:SIO_000614]
       - [a, $(ontologyclass.sh_IRI), schema:URL]
@@ -1384,7 +1387,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].biosample.phenotypicfeature[*].phenotypicfeaturevalue
-    s: fdp:phenotypicfeaturevalue_$(index)
+    s: ex:phenotypicfeaturevalue_$(index)
     po:
       - [a, sio:SIO_000015]
       - [a, obo:NCIT_C16977]
@@ -1402,7 +1405,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].biosample.phenotypicfeature[*].excluded
-    s: fdp:excluded_$(index)
+    s: ex:excluded_$(index)
     po:
       - [a, sio:SIO_000614]
       - [a, obo:HP_0040285]
@@ -1412,7 +1415,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].interpretationstatus
-    s: fdp:interpretationstatus_$(index)
+    s: ex:interpretationstatus_$(index)
     po:
       - [a, sio:SIO_000614]
       - [a, obo:NCIT_C164628]
@@ -1422,7 +1425,7 @@ mappings:
         referenceFormulation: jsonpath
         iterator: 
           $.phenopacket[*].interpretation[*].diagnosis.genomicinterpretation[*].interpretationstatus.interpretationstatusvalue
-    s: fdp:interpretationstatusvalue_$(index)
+    s: ex:interpretationstatusvalue_$(index)
     po:
       - [a, sio:SIO_000015]
       - [a, obo:NCIT_C70856]
@@ -1444,7 +1447,7 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*].metadata
-    s: fdp:metadata_$(index)
+    s: ex:metadata_$(index)
     po:
       - [a, sio:SIO_001330]
       - [a, obo:NCIT_C52095]
@@ -1477,7 +1480,7 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*].metadata.created
-    s: fdp:created_$(index)
+    s: ex:created_$(index)
     po:
       - [a, sio:SIO_000614]
       - [a, dct:created]
@@ -1486,7 +1489,7 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*].metadata.created.createdvalue
-    s: fdp:createdvalue_$(index)
+    s: ex:createdvalue_$(index)
     po:
       - [a, sio:SIO_000015]
       - [a, obo:NCIT_C70856]
@@ -1508,7 +1511,7 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*].metadata.createdby
-    s: fdp:createdby_$(index)
+    s: ex:createdby_$(index)
     po:
       - [a, sio:SIO_000614]
       - [a, dct:creator]
@@ -1517,7 +1520,7 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*].metadata.createdby.createdbyvalue
-    s: fdp:createdbyvalue_$(index)
+    s: ex:createdbyvalue_$(index)
     po:
       - [a, sio:SIO_000015]
       - [a, obo:NCIT_C70856]
@@ -1539,7 +1542,7 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*].metadata.version
-    s: fdp:version_$(index)
+    s: ex:version_$(index)
     po:
       - [a, sio:SIO_000614]
       - [a, obo:NCIT_C25714]
@@ -1548,7 +1551,7 @@ mappings:
       - access: phenopacket.json
         referenceFormulation: jsonpath
         iterator: $.phenopacket[*].metadata.version.versionvalue
-    s: fdp:versionvalue_$(index)
+    s: ex:versionvalue_$(index)
     po:
       - [a, sio:SIO_000015]
       - [a, obo:NCIT_C70856]
@@ -1570,7 +1573,7 @@ mappings:
       - access: id.json
         referenceFormulation: jsonpath
         iterator: $.id[*]
-    s: fdp:id_$(index)
+    s: ex:id_$(index)
     po:
       - [a, sio:SIO_000115]
       - [a, obo:IAO_0020000]
@@ -1591,7 +1594,7 @@ mappings:
       - access: id.json
         referenceFormulation: jsonpath
         iterator: $.id[*].role
-    s: fdp:role_$(index)
+    s: ex:role_$(index)
     po:
       - [a, sio:SIO_000016]
       - [a, obo:NCIT_C48835]

@@ -22,7 +22,9 @@ def get_input_value(input_value, default_value):
         return default_value
 
 if __name__ == "__main__":
-    default_shacl_folder_name = 'shacl'
+    print(f'WARNING: Change namespaces that need to be defined in the RDF dataset by modifying namespace_provider.py')
+
+    default_shacl_folder_name = 'phenopacketv2_shacl'
     default_single_file_name = None
 
     shacl_folder_name = input(f'Folder containing SHACL files (default: {default_shacl_folder_name}):')
